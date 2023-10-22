@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://15o8kkohojx5"]
+
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_m1scm"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1scm")
+
+[node name="continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+text = "continue"
+
+[node name="save" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+offset_left = -159.0
+offset_top = 135.8
+offset_right = -159.0
+offset_bottom = 135.8
+text = "save"
+
+[node name="load" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+offset_left = 107.0
+offset_top = 133.8
+offset_right = 107.0
+offset_bottom = 133.8
+text = "load"
+
+[node name="new" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+offset_left = 9.0
+offset_top = 271.8
+offset_right = 9.0
+offset_bottom = 271.8
+text = "new"
+
+[connection signal="pressed" from="continue" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="load" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="new" to="." method="_on_new_game_pressed"]
