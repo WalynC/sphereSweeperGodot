@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://NewGameBasicMenu.gd" id="1_i18yl"]
 
-[node name="newGameBasicMenu" type="Control"]
+[node name="newGameBasicMenu" type="Control" node_paths=PackedStringArray("densities")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i18yl")
+densities = [NodePath("5p"), NodePath("10p"), NodePath("15p")]
 
 [node name="5p" type="Button" parent="."]
 layout_mode = 1
@@ -100,3 +101,7 @@ anchor_right = 0.8
 anchor_bottom = 0.9
 toggle_mode = true
 text = "play"
+
+[connection signal="toggled" from="5p" to="." method="_change_density" binds= [0]]
+[connection signal="toggled" from="10p" to="." method="_change_density" binds= [1]]
+[connection signal="toggled" from="15p" to="." method="_change_density" binds= [2]]

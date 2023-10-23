@@ -27,6 +27,8 @@ static var loading: bool
 static var seed = 0
 static var visualSeed = 0
 
+static var density := 10
+
 var gameRNG = RandomNumberGenerator.new()
 var visRNG = RandomNumberGenerator.new()
 
