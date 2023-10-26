@@ -36,7 +36,20 @@ func _ready():
 	won = false;
 	mined.clear()
 	numbered.clear()
+	if (GameManager.loading):
+		subdiv = SaveManager.saveData.size
+		percentMined = SaveManager.saveData.percentMined
+	else:
+		gm.new_game()
+		if GameManager.gameMode == 0: #basic
+			subdiv = GameManager.size
+			percentMined = GameManager.density
+		elif GameManager.gameMode == 1: #custom
+			subdiv = GameManager.advSize
+			percentMined = GameManager.advDensity
 	build_board()
+	if (GameManager.loading): LoadSave()
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -318,24 +331,26 @@ func GetGeodesicPoints(amount,a,b):
 	return ret
 
 func LoadSave():
-	PutMinesOnBoard(GameManager.saveData.firstSelected)
-	var lastMove = GameManager.saveData.selected.size()-1
+	PutMinesOnBoard(SaveManager.saveData.firstSelected)
+	var lastMove = SaveManager.saveData.selected.size()-1
 	for i in range(0,lastMove):
-		SelectTriangle_List(GameManager.saveData.selectArr[i], GameManager.saveData.selected[i], true)
-		GameManager.saveData.flagActs[i].Load(gm)
-	SelectTriangle_List(GameManager.saveData.selectArr[lastMove], GameManager.saveData.selected[lastMove], true)
-	GameManager.saveData.flagActs[lastMove].LoadPending(gm)
-	for i in GameManager.saveData.flagged:
+		SelectTriangle_List(SaveManager.saveData.selectArr[i], SaveManager.saveData.selected[i], true)
+		SaveManager.saveData.flagActs[i].Load(gm)
+	SelectTriangle_List(SaveManager.saveData.selectArr[lastMove], SaveManager.saveData.selected[lastMove], true)
+	SaveManager.saveData.flagActs[lastMove].LoadPending(gm)
+	for i in SaveManager.saveData.flagged:
 		triangles[i].UpdateVisuals(gm)
-	mines = GameManager.saveData.mines
-	nonMines = GameManager.saveData.nonMines
+	mines = SaveManager.saveData.mines
+	nonMines = SaveManager.saveData.nonMines
 	GameManager.loading = false
 
 func GenerateNewBoard(triangleHit):
 	var mineAmt = PutMinesOnBoard(triangleHit)
 	mines -= mineAmt
 	nonMines -= mines
-	gm.saveData.firstSelected = triangleHit
+	SaveManager.saveData.firstSelected = triangleHit
+	SaveManager.saveData.mines = mines
+	SaveManager.saveData.size = subdiv
 
 func ResetBoard():
 	mines = 0
@@ -366,7 +381,7 @@ func Flag(selected):
 	else:
 		mines+=1
 		t.ChangeIcon(2,4, gm)
-	GameManager.saveData.mines = mines
+	SaveManager.saveData.mines = mines
 	FlagAction.currentFlagAct.Change(gm,selected)
 
 func SelectTriangle(triangleHit):
@@ -388,10 +403,10 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 		if (!loading):
 			mines-=1
 			FlagAction.Start()
-			GameManager.saveData.mines = mines
-			GameManager.saveData.mineHit = true
-			GameManager.saveData.selectArr.append(indexArr)
-			GameManager.saveData.selected.append(index)
+			SaveManager.saveData.mines = mines
+			SaveManager.saveData.mineHit = true
+			SaveManager.saveData.selectArr.append(indexArr)
+			SaveManager.saveData.selected.append(index)
 	else:
 		for i in indexArr:
 			if (triangles[i].mineCount > high): high = triangles[i].mineCount
@@ -421,9 +436,9 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 				won = true
 			else:
 				FlagAction.Start()
-				GameManager.saveData.nonMines = nonMines
-				GameManager.saveData.selectArr.append(indexArr)
-				GameManager.saveData.selected.append(index)
+				SaveManager.saveData.nonMines = nonMines
+				SaveManager.saveData.selectArr.append(indexArr)
+				SaveManager.saveData.selected.append(index)
 	
 func PutMinesOnBoard(loc):
 	boardGenerated = true

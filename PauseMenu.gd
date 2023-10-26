@@ -9,9 +9,9 @@ signal load_game()
 func _ready():
 	hide()
 	gm.connect("toggle_game_paused", _on_game_paused)
-	self.connect("new_game", gm.new_game)
-	self.connect("save_game", gm.save_data)
-	self.connect("load_game", gm.load_data)
+	self.connect("new_game", gm.reset_game)
+	self.connect("save_game", SaveManager.save_data)
+	self.connect("load_game", SaveManager.load_data)
 
 func _on_new_game_pressed():
 	emit_signal("new_game")

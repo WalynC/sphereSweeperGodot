@@ -8,7 +8,7 @@ var unflagRanges:Array
 
 static func Start():
 	currentFlagAct = FlagAction.new()
-	GameManager.saveData.flagActs.append(currentFlagAct)
+	SaveManager.saveData.flagActs.append(currentFlagAct)
 
 func Load(gm):
 	for ran in flagRanges:
@@ -34,20 +34,20 @@ func Change(gm, tri):
 		if newUnflags.has(tri):
 			RemoveInt(tri,true)
 			newUnflags.erase(tri)
-			GameManager.saveData.flagged[tri]=null
+			SaveManager.saveData.flagged[tri]=null
 		else:
 			AddInt(tri,false)
 			newFlags[tri] = null
-			GameManager.saveData.flagged[tri]=null
+			SaveManager.saveData.flagged[tri]=null
 	else:
 		if newUnflags.has(tri):
 			RemoveInt(tri,false)
 			newFlags.erase(tri)
-			GameManager.saveData.flagged.erase(tri)
+			SaveManager.saveData.flagged.erase(tri)
 		else:
 			AddInt(tri,true)
 			newUnflags[tri] = null
-			GameManager.saveData.flagged.erase(tri)
+			SaveManager.saveData.flagged.erase(tri)
 
 func AddInt(add,unflag):
 	var ranges = unflag if unflagRanges else flagRanges

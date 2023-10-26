@@ -4,6 +4,7 @@ class_name SaveData
 @export var size:int
 @export var mines:int
 @export var nonMines:int
+@export var mineHit:bool
 @export var firstSelected:int
 @export var flagged:Dictionary
 @export var rot:Vector3
