@@ -36,6 +36,8 @@ func _process(delta):
 	pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
 	inertia = inertia.move_toward(Vector2.ZERO, decel * delta)
 	confirmButton.disabled = previousTriangleHit == -1
+	if Input.is_action_pressed("scroll_down"): cam.fov -=1
+	if Input.is_action_pressed("scroll_up"): cam.fov +=1
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
