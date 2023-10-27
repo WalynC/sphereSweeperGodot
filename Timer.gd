@@ -1,8 +1,10 @@
 extends Button
 
+class_name GameTimer
+
 @export var gm: Node3D
 
-var elapsed = 0
+static var elapsed = 0
 var secondsOnly = true
 
 func _process(delta):
@@ -27,7 +29,6 @@ func GetHMSString():
 	if (e < 10): s += "0" #add 0 to front of seconds if needed
 	s += str(e)
 	return s
-	
 
 func _on_pressed():
 	secondsOnly = !secondsOnly

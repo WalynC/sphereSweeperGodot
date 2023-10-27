@@ -177,9 +177,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 fov = 30.0
 
 [connection signal="pressed" from="Control/NeighborButton" to="Controls" method="ChangeNeighborSelect"]
+[connection signal="pressed" from="Control/Pause" to="Control" method="hide"]
 [connection signal="pressed" from="Control/Pause" to="Control/Pause" method="_on_pressed"]
+[connection signal="pressed" from="Control/Pause" to="PauseMenu" method="show"]
 [connection signal="pressed" from="Control/ConfirmButton" to="Controls" method="Confirm"]
 [connection signal="pressed" from="Control/MineCounter" to="Control/MineCounter" method="_on_pressed"]
 [connection signal="toggled" from="Control/LockButton" to="Controls" method="SetFlag"]
 [connection signal="toggled" from="Control/LockButton" to="Control/LockButton" method="_on_toggled"]
 [connection signal="pressed" from="Control/Timer" to="Control/Timer" method="_on_pressed"]
+[connection signal="new_game" from="PauseMenu" to="." method="reset_game"]
+[connection signal="unpause_game" from="PauseMenu" to="Control" method="show"]
+[connection signal="unpause_game" from="PauseMenu" to="PauseMenu" method="hide"]

@@ -36,18 +36,10 @@ func _ready():
 	won = false;
 	mined.clear()
 	numbered.clear()
-	if (GameManager.loading):
-		subdiv = SaveManager.saveData.size
-		percentMined = SaveManager.saveData.percentMined
-	else:
-		if GameManager.gameMode == 0: #basic
-			subdiv = GameManager.size
-			percentMined = GameManager.density
-		elif GameManager.gameMode == 1: #custom
-			subdiv = GameManager.advSize
-			percentMined = GameManager.advDensity
 	build_board()
 	if (GameManager.loading): LoadSave()
+	else:
+		boardGenerated = false
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -329,6 +321,7 @@ func GetGeodesicPoints(amount,a,b):
 	return ret
 
 func LoadSave():
+	print("Loading: "+str(SaveManager.saveData.ToData()))
 	PutMinesOnBoard(SaveManager.saveData.firstSelected)
 	var lastMove = SaveManager.saveData.selected.size()-1
 	for i in range(0,lastMove):

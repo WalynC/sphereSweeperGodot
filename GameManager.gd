@@ -39,15 +39,29 @@ func _ready():
 	if (loading):
 		gameRNG.seed = SaveManager.saveData.seed
 		visRNG.seed = SaveManager.saveData.visualSeed
+		board.subdiv = SaveManager.saveData.size
+		board.percentMined = SaveManager.saveData.percentMined
 	else:
+		
 		new_game()
 	board._ready()
 
 func new_game(): #called from _ready if not loading save data
+	SaveManager.saveData = SaveData.new()
+	if gameMode == 0: #basic
+		board.subdiv = GameManager.size
+		board.percentMined = GameManager.density
+	elif gameMode == 1: #custom
+		board.subdiv = GameManager.advSize
+		board.percentMined = GameManager.advDensity
+	else:
+		board.subdiv = GameManager.advSize
+		board.percentMined = GameManager.advDensity
 	SaveManager.saveData.seed = Time.get_unix_time_from_system()
 	SaveManager.saveData.visualSeed = SaveManager.saveData.seed
 	gameRNG.seed = SaveManager.saveData.seed
 	visRNG.seed = SaveManager.saveData.visualSeed
+	SaveManager.saveData.percentMined = board.percentMined
 
 func reset_game():
 	reset_save_game()

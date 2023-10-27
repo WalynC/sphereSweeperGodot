@@ -14,3 +14,7 @@ func _ready():
 	SaveManager.load_data()
 	#if there is a save, continue button should be enabled
 	continueButton.disabled = SaveManager.saveData == null
+
+func continue_game():
+	GameManager.loading = true
+	get_tree().change_scene_to_file("res://game.tscn")
