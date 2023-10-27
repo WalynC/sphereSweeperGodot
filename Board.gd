@@ -155,7 +155,6 @@ func build_board():
 				neighborPoints.resize(subdiv-1)
 				match j:
 					0:
-						var pt = face.points[1]
 						if face.points[1] != -1: break
 						for k in range(1,subdiv):
 							face.points[leftSidePointIndex[k]] = totalPointCount
