@@ -40,7 +40,6 @@ func _ready():
 		subdiv = SaveManager.saveData.size
 		percentMined = SaveManager.saveData.percentMined
 	else:
-		gm.new_game()
 		if GameManager.gameMode == 0: #basic
 			subdiv = GameManager.size
 			percentMined = GameManager.density
@@ -52,7 +51,7 @@ func _ready():
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if colorsChanged:
 		var arrays = []
 		arrays.resize(ArrayMesh.ARRAY_MAX);
