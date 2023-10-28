@@ -40,7 +40,7 @@ func Change(gm, tri):
 			newFlags[tri] = null
 			SaveManager.saveData.flagged[tri]=null
 	else:
-		if newUnflags.has(tri):
+		if newFlags.has(tri):
 			RemoveInt(tri,false)
 			newFlags.erase(tri)
 			SaveManager.saveData.flagged.erase(tri)
