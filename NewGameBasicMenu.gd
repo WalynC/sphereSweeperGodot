@@ -12,6 +12,8 @@ signal custom_button()
 
 func _ready():
 	hide()
+	densities[GameManager.density/5].button_pressed = true
+	sizes[(GameManager.size-3)/2].button_pressed = true
 
 func _change_density(toggle, density):
 	if called: return
