@@ -50,7 +50,11 @@ func Change(gm, tri):
 			SaveManager.saveData.flagged.erase(tri)
 
 func AddInt(add,unflag):
-	var ranges = unflag if unflagRanges else flagRanges
+	print(str(add) + " " +str(unflag))
+	var ranges = unflagRanges if unflag else flagRanges
+	print(unflagRanges)
+	print(flagRanges)
+	print(ranges)
 	for i in range(0,ranges.size()):
 		var ran = ranges[i]
 		if (add < ranges[i].x - 1): #cant reach next range
@@ -72,19 +76,23 @@ func AddInt(add,unflag):
 	ranges.append(Vector2i(add,add))
 
 func RemoveInt(rem,unflag):
-	var ranges = unflag if unflagRanges else flagRanges
+	print(str(rem) + " " +str(unflag))
+	var ranges = unflagRanges if unflag else flagRanges
+	print(unflagRanges)
+	print(flagRanges)
+	print(ranges)
 	for i in range(0,ranges.size()):
 		var ran = ranges[i]
 		if (rem < ranges[i].x): return #all ranges ahead greater
 		if rem == ranges[i].x:
 			ran.x +=1
 			if (ran.x > ran.y): ranges.remove_at(i)
-			else: ranges[i] = ranges
+			else: ranges[i] = ran
 			return
 		elif rem == ranges[i].y:
 			ran.y-=1
 			if (ran.x > ran.y): ranges.remove_at(i)
-			else: ranges[i] = ranges
+			else: ranges[i] = ran
 			return
 		elif rem > ranges[i].x && rem < ranges[i].y: #removed int in middle of range, splitting
 			var newRange = Vector2i(ranges[i].x, rem - 1)
