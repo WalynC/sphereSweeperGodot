@@ -398,6 +398,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 			SaveManager.saveData.mineHit = true
 			SaveManager.saveData.selectArr.append(indexArr)
 			SaveManager.saveData.selected.append(index)
+			gm.lose()
 	else:
 		for i in indexArr:
 			if (triangles[i].mineCount > high): high = triangles[i].mineCount
@@ -425,6 +426,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 		if doneCheck.size() > 0:
 			if nonMines == 0:
 				won = true
+				gm.win()
 			else:
 				FlagAction.Start()
 				SaveManager.saveData.nonMines = nonMines

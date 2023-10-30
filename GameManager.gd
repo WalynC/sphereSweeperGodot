@@ -32,6 +32,9 @@ static var advSize := 3
 static var gameRNG = RandomNumberGenerator.new()
 static var visRNG = RandomNumberGenerator.new()
 
+signal winEvent()
+signal loseEvent()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	board.gm = self
@@ -45,6 +48,11 @@ func _ready():
 		
 		new_game()
 	board._ready()
+
+func win():
+	emit_signal("winEvent")
+func lose():
+	emit_signal("loseEvent")
 
 func new_game(): #called from _ready if not loading save data
 	SaveManager.saveData = SaveData.new()
