@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CustomGameMenu.gd" id="1_dj66g"]
 
-[node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText")]
+[node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText", "densRange", "sizeRange")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,8 @@ grow_vertical = 2
 script = ExtResource("1_dj66g")
 densText = NodePath("densText")
 sizeText = NodePath("sizeText")
+densRange = NodePath("density")
+sizeRange = NodePath("size")
 
 [node name="density" type="HSlider" parent="."]
 layout_mode = 1

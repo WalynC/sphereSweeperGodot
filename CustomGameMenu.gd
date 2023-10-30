@@ -4,11 +4,15 @@ extends Control
 signal back_button()
 @export var densText: RichTextLabel
 @export var sizeText: RichTextLabel
+@export var densRange: Range
+@export var sizeRange: Range
 
 func _ready():
 	hide()
 	densText.text = str(GameManager.advDensity)
 	sizeText.text = str(GameManager.advSize)
+	densRange.value = GameManager.advDensity
+	sizeRange.value = GameManager.advSize
 
 func _new_game_adv():
 	GameManager.gameMode = 1
