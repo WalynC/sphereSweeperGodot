@@ -14,7 +14,7 @@ func _on_new_game_pressed():
 func go_to_main_menu():
 	if (gm.board.boardGenerated):
 		SaveManager.saveData.time = GameTimer.elapsed
-		SaveManager.save_data()
+		SaveManager.save_game()
 	get_tree().change_scene_to_file("res://menu_scene.tscn")
 
 func unpause():

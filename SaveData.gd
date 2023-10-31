@@ -7,7 +7,7 @@ class_name SaveData
 @export var mineHit:bool
 @export var firstSelected:int
 @export var flagged:Dictionary
-@export var rot:Vector3
+@export var rot:Basis
 @export var zoom:float
 @export var time:float
 @export var percentMined:float
@@ -52,8 +52,7 @@ func LoadFromData(data):
 	firstSelected = data.firstSelected
 	var flaggedString = data.flagged
 	for i in flaggedString: flagged[int(i)]=null
-	var rotStrings = data.rot.split_floats(",")
-	rot = Vector3(rotStrings[0],rotStrings[1],rotStrings[2])
+	rot = StringToBasis(data.rot)
 	zoom = data.zoom
 	time = data.time
 	percentMined = data.percentMined
@@ -62,3 +61,18 @@ func LoadFromData(data):
 	selected = data.selected
 	selectArr = data.selectArr
 	visualTime = data.visualTime
+
+func StringToBasis(input):
+	var slices = input.split(')')
+	slices[0]=slices[0].erase(0, 5)
+	slices[1]=slices[1].erase(0, 6)
+	slices[2]=slices[2].erase(0, 6)
+	var xSlices = slices[0].split_floats(",")
+	var x = Vector3(xSlices[0],xSlices[1],xSlices[2])
+	var ySlices = slices[1].split_floats(",")
+	var y = Vector3(ySlices[0],ySlices[1],ySlices[2])
+	var zSlices = slices[2].split_floats(",")
+	var z = Vector3(zSlices[0],zSlices[1],zSlices[2])
+	var res = Basis(x,y,z)
+	print(res)
+	return res

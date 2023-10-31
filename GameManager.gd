@@ -29,6 +29,8 @@ static var visRNG = RandomNumberGenerator.new()
 signal winEvent()
 signal loseEvent()
 
+@export var controls: Controls
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	board.gm = self
@@ -38,6 +40,8 @@ func _ready():
 		visRNG.seed = SaveManager.saveData.visualSeed
 		board.subdiv = SaveManager.saveData.size
 		board.percentMined = SaveManager.saveData.percentMined
+		controls.pivot.basis = SaveManager.saveData.rot
+		controls.cam.fov = SaveManager.saveData.zoom
 	else:
 		new_game()
 	board._ready()

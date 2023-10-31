@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Controls
+
 @export var gm: Node3D
 @export var pivot: Node3D
 @export var confirmButton: CanvasItem
@@ -9,6 +11,8 @@ var touch_points = {}
 var touch_ending = {}
 var start_distance
 var start_zoom
+
+static var instance:Controls
 
 var inertia = Vector2.ZERO
 var decel = 1
@@ -24,6 +28,7 @@ func SetFlag(val):
 	flag = val
 
 func _ready():
+	instance = self
 	cam = get_viewport().get_camera_3d()
 	confirmButton.visible = confirmSelect == 2
 

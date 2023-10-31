@@ -20,6 +20,11 @@ static func save_data():
 	file.store_string(data)
 	file.close()
 
+static func save_game():
+	saveData.rot = Controls.instance.pivot.basis
+	saveData.zoom = Controls.instance.cam.fov
+	save_data()
+
 static func load_data():
 	verify_save_directory(pathString)
 	var path = pathString + fileName

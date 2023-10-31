@@ -44,10 +44,11 @@ Button/styles/disabled = SubResource("StyleBoxFlat_fat8n")
 Button/styles/normal = ExtResource("6_xtt44")
 Button/styles/pressed = ExtResource("7_q4jbx")
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "controls")]
 script = ExtResource("1_mvm8t")
 mainMesh = NodePath("MeshInstance3D")
 iconMesh = NodePath("MeshInstance3D2")
+controls = NodePath("Controls")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mnlou")

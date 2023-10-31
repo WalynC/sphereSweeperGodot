@@ -398,7 +398,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 			SaveManager.saveData.selectArr.append(indexArr)
 			SaveManager.saveData.selected.append(index)
 			gm.paused = true
-			SaveManager.save_data()
+			SaveManager.save_game()
 			gm.lose()
 	else:
 		for i in indexArr:
@@ -428,7 +428,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 			if nonMines == 0:
 				won = true
 				gm.paused = true
-				if (GameManager.gameMode != 2): SaveManager.save_data()
+				if (GameManager.gameMode != 2): SaveManager.save_game()
 				gm.win()
 			else:
 				FlagAction.Start()
