@@ -11,13 +11,7 @@ var isphere = IconSphere.new()
 var iconSize
 
 #pausing
-var paused : bool = false:
-	get:
-		return paused
-	set(value):
-		paused = value
-		emit_signal("toggle_game_paused", paused)
-signal toggle_game_paused(is_paused : bool)
+var paused : bool = false
 
 static var loading: bool
 static var seed = 0
