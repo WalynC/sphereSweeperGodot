@@ -40,7 +40,6 @@ func _ready():
 	if (GameManager.loading): LoadSave()
 	else:
 		boardGenerated = false
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

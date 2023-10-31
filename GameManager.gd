@@ -45,7 +45,6 @@ func _ready():
 		board.subdiv = SaveManager.saveData.size
 		board.percentMined = SaveManager.saveData.percentMined
 	else:
-		
 		new_game()
 	board._ready()
 
