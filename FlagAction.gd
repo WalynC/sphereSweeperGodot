@@ -50,11 +50,7 @@ func Change(gm, tri):
 			SaveManager.saveData.flagged.erase(tri)
 
 func AddInt(add,unflag):
-	print(str(add) + " " +str(unflag))
 	var ranges = unflagRanges if unflag else flagRanges
-	print(unflagRanges)
-	print(flagRanges)
-	print(ranges)
 	for i in range(0,ranges.size()):
 		var ran = ranges[i]
 		if (add < ranges[i].x - 1): #cant reach next range
@@ -76,11 +72,7 @@ func AddInt(add,unflag):
 	ranges.append(Vector2i(add,add))
 
 func RemoveInt(rem,unflag):
-	print(str(rem) + " " +str(unflag))
 	var ranges = unflagRanges if unflag else flagRanges
-	print(unflagRanges)
-	print(flagRanges)
-	print(ranges)
 	for i in range(0,ranges.size()):
 		var ran = ranges[i]
 		if (rem < ranges[i].x): return #all ranges ahead greater

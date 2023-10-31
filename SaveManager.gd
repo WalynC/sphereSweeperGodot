@@ -10,7 +10,6 @@ static func verify_save_directory(path : String):
 static func save_data():
 	verify_save_directory(pathString)
 	var path = pathString + fileName
-	print(path)
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, "walyn is a winner")
 	if file == null:
 		print("err")
@@ -18,7 +17,6 @@ static func save_data():
 		return
 	
 	var data = JSON.stringify(saveData.ToData())
-	print("data:" +data)
 	file.store_string(data)
 	file.close()
 
@@ -37,7 +35,6 @@ static func load_data():
 			printerr("cannot parse %s as json_string: (%s)"%[path, content])
 			return
 		else:
-			print(data)
 			saveData.LoadFromData(data)
 	else:
 		printerr("cannot open non-existent file at %s" %[path])
