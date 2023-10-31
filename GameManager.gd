@@ -71,12 +71,15 @@ func reset_game():
 	paused = false
 
 func reset_save_game():
-	SaveManager.saveData = SaveData.new()
+	#retain visual seed and time
+	var newData = SaveData.new()
+	newData.visualTime = SaveManager.saveData.visualTime
+	newData.visualSeed = SaveManager.saveData.visualSeed
+	SaveManager.saveData = newData
 	GameTimer.elapsed = 0
-	SaveManager.saveData.visualSeed = SaveManager.saveData.visualSeed
 	SaveManager.saveData.percentMined = board.percentMined
 	SaveManager.saveData.size = board.subdiv
-	#setup data
+	#set seed
 	SaveManager.saveData.seed = Time.get_unix_time_from_system()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
