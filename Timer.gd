@@ -10,6 +10,7 @@ var secondsOnly = true
 func _process(delta):
 	if (!gm.paused):
 		if (gm.board.boardGenerated): elapsed += delta
+	SaveManager.saveData.visualTime += delta
 	if (secondsOnly):
 		text = str(elapsed as int)
 	else:

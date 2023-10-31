@@ -16,7 +16,7 @@ class_name SaveData
 @export var selected:Array
 @export var selectArr:Array
 @export var flagActs:Array
-@export var timeBeforeFirstSelect:float
+@export var visualTime:float
 
 func ToData():
 	var flagActsData = []
@@ -37,7 +37,7 @@ func ToData():
 		"selected":selected,
 		"selectArr":selectArr,
 		"flagActs":flagActsData,
-		"timeBeforeFirstSelect":timeBeforeFirstSelect
+		"visualTime":visualTime
 	}
 	return data
 
@@ -61,4 +61,4 @@ func LoadFromData(data):
 	visualSeed = data.visualSeed
 	selected = data.selected
 	selectArr = data.selectArr
-	timeBeforeFirstSelect = data.timeBeforeFirstSelect
+	visualTime = data.visualTime

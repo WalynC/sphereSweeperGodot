@@ -69,17 +69,19 @@ func new_game(): #called from _ready if not loading save data
 	gameRNG.seed = SaveManager.saveData.seed
 	visRNG.seed = SaveManager.saveData.visualSeed
 	SaveManager.saveData.percentMined = board.percentMined
+	SaveManager.saveData.size = board.subdiv
 
 func reset_game():
 	reset_save_game()
 	board.ResetBoard()
+	paused = false
 
 func reset_save_game():
-	var newGame = SaveData.new()
-	#some data needs to be carried over
-	newGame.timeBeforeFirstSelect += SaveManager.saveData.time + SaveManager.saveData.timeBeforeFirstSelect
-	newGame.visualSeed = SaveManager.saveData.visualSeed
-	SaveManager.saveData = newGame
+	SaveManager.saveData = SaveData.new()
+	GameTimer.elapsed = 0
+	SaveManager.saveData.visualSeed = SaveManager.saveData.visualSeed
+	SaveManager.saveData.percentMined = board.percentMined
+	SaveManager.saveData.size = board.subdiv
 	#setup data
 	SaveManager.saveData.seed = Time.get_unix_time_from_system()
 

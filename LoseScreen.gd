@@ -16,6 +16,7 @@ func _restart_pressed():
 	emit_signal("restart_button")
 
 func _continue_pressed():
+	gm.paused = false
 	emit_signal("continue_button")
 
 func _menu_pressed():
