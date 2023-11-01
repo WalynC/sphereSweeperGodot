@@ -11,7 +11,7 @@ class_name SaveData
 @export var zoom:float
 @export var time:float
 @export var percentMined:float
-@export var seed:int
+@export var gameSeed:int
 @export var visualSeed:int
 @export var selected:Array
 @export var selectArr:Array
@@ -32,7 +32,7 @@ func ToData():
 		"zoom":zoom,
 		"time":time,
 		"percentMined":percentMined,
-		"seed":seed,
+		"seed":gameSeed,
 		"visualSeed":visualSeed,
 		"selected":selected,
 		"selectArr":selectArr,
@@ -56,7 +56,7 @@ func LoadFromData(data):
 	zoom = data.zoom
 	time = data.time
 	percentMined = data.percentMined
-	seed = data.seed
+	gameSeed = data.gameSeed
 	visualSeed = data.visualSeed
 	selected = data.selected
 	selectArr = data.selectArr

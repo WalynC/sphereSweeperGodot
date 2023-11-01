@@ -14,8 +14,6 @@ var iconSize
 var paused : bool = false
 
 static var loading: bool
-static var seed = 0
-static var visualSeed = 0
 
 static var density := 10
 static var size := 3
@@ -36,7 +34,7 @@ func _ready():
 	board.gm = self
 	isphere.gm = self
 	if (loading):
-		gameRNG.seed = SaveManager.saveData.seed
+		gameRNG.seed = SaveManager.saveData.gameSeed
 		visRNG.seed = SaveManager.saveData.visualSeed
 		board.subdiv = SaveManager.saveData.size
 		board.percentMined = SaveManager.saveData.percentMined
@@ -62,9 +60,9 @@ func new_game(): #called from _ready if not loading save data
 	else:
 		board.subdiv = GameManager.advSize
 		board.percentMined = GameManager.advDensity
-	SaveManager.saveData.seed = Time.get_unix_time_from_system()
-	SaveManager.saveData.visualSeed = SaveManager.saveData.seed
-	gameRNG.seed = SaveManager.saveData.seed
+	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
+	SaveManager.saveData.visualSeed = SaveManager.saveData.gameSeed
+	gameRNG.seed = SaveManager.saveData.gameSeed
 	visRNG.seed = SaveManager.saveData.visualSeed
 	SaveManager.saveData.percentMined = board.percentMined
 	SaveManager.saveData.size = board.subdiv
@@ -84,8 +82,8 @@ func reset_save_game():
 	SaveManager.saveData.percentMined = board.percentMined
 	SaveManager.saveData.size = board.subdiv
 	#set seed
-	SaveManager.saveData.seed = Time.get_unix_time_from_system()
-	gameRNG.seed = SaveManager.saveData.seed
+	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
+	gameRNG.seed = SaveManager.saveData.gameSeed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

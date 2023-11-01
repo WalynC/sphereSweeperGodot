@@ -15,7 +15,7 @@ func _ready():
 	densities[(GameManager.density/5)-1].button_pressed = true
 	sizes[(GameManager.size-3)/2].button_pressed = true
 
-func _change_density(toggle, density):
+func _change_density(_toggle, density):
 	if called: return
 	called = true
 	GameManager.density = (density+1)*5
@@ -24,13 +24,13 @@ func _change_density(toggle, density):
 	densities[density].button_pressed = true
 	called = false
 
-func _change_size(toggle, size):
+func _change_size(_toggle, boardSize):
 	if called: return
 	called = true
-	GameManager.size = (size*2)+3
+	GameManager.size = (boardSize*2)+3
 	for i in range(0,3):
 		sizes[i].button_pressed = false
-	sizes[size].button_pressed = true
+	sizes[boardSize].button_pressed = true
 	called = false
 
 func _new_game_basic():

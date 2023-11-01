@@ -161,8 +161,8 @@ func GetTriangleHit(pos):
 	para.to = end
 	var result = worldspace.intersect_ray(para)
 	if result != null and result.size() > 0:
-		var triangleHit = GetHitMeshTriangleFaceIndex(result["position"], start)
-		return triangleHit
+		var tHit = GetHitMeshTriangleFaceIndex(result["position"], start)
+		return tHit
 	return -999
 
 func GetHitMeshTriangleFaceIndex(hitVector, start):

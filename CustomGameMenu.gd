@@ -25,6 +25,6 @@ func density_changed(dens):
 	GameManager.advDensity = int(dens)
 	densText.text = str(GameManager.advDensity)
 	
-func size_changed(size):
-	GameManager.advSize = int(size)
+func size_changed(boardSize):
+	GameManager.advSize = int(boardSize)
 	sizeText.text = str(GameManager.advSize)

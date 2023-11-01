@@ -94,13 +94,13 @@ func RemoveInt(rem,unflag):
 			return
 
 func ToString():
-	var str = ""
+	var s = ""
 	for i in range(0,flagRanges.size()):
-		str +=str(flagRanges[i])
-	str += "|"
+		s +=str(flagRanges[i])
+	s += "|"
 	for i in range(0,unflagRanges.size()):
-		str +=str(unflagRanges[i])
-	return str
+		s +=str(unflagRanges[i])
+	return s
 
 func ToData():
 	var data = {
