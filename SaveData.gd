@@ -74,5 +74,4 @@ func StringToBasis(input):
 	var zSlices = slices[2].split_floats(",")
 	var z = Vector3(zSlices[0],zSlices[1],zSlices[2])
 	var res = Basis(x,y,z)
-	print(res)
 	return res
