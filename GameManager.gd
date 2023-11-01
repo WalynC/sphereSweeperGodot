@@ -85,6 +85,7 @@ func reset_save_game():
 	SaveManager.saveData.size = board.subdiv
 	#set seed
 	SaveManager.saveData.seed = Time.get_unix_time_from_system()
+	gameRNG.seed = SaveManager.saveData.seed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
