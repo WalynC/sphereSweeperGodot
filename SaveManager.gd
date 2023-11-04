@@ -32,14 +32,16 @@ static func load_data():
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, "walyn is a winner")
 		if (file == null):
 			print(FileAccess.get_open_error())
-			return
+			return false
 		var content = file.get_as_text()
 		file.close()
 		var data = JSON.parse_string(content)
 		if data == null:
 			printerr("cannot parse %s as json_string: (%s)"%[path, content])
-			return
+			return false
 		else:
 			saveData.LoadFromData(data)
+			return true
 	else:
 		printerr("cannot open non-existent file at %s" %[path])
+		return false
