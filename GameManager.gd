@@ -24,6 +24,8 @@ static var advSize := 3
 static var gameRNG = RandomNumberGenerator.new()
 static var visRNG = RandomNumberGenerator.new()
 
+static var visualTheme
+
 signal winEvent()
 signal loseEvent()
 
@@ -31,6 +33,10 @@ signal loseEvent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visualTheme = preload("res://visualThemes/testTheme.tscn")
+	var visInstance = visualTheme.instantiate()
+	add_child(visInstance)
+	visInstance.InitTheme(VisualTheme.SceneType.MainMenu)
 	board.gm = self
 	isphere.gm = self
 	if (loading):
