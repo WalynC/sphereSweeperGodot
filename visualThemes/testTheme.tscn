@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds6c4aexj5rin"]
+[gd_scene load_steps=3 format=3 uid="uid://ds6c4aexj5rin"]
 
 [ext_resource type="Script" path="res://VisualTheme.gd" id="1_o2c41"]
+[ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://main_menu.tscn" id="2_nq20g"]
 
 [node name="testTheme" type="Node"]
 script = ExtResource("1_o2c41")
+scenes = Array[PackedScene]([ExtResource("2_nq20g")])
