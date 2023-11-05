@@ -1,22 +1,17 @@
-extends Button
+extends Node
 
 class_name GameTimer
 
 @export var gm: Node3D
 
 static var elapsed = 0
-var secondsOnly = true
 
 func _process(delta):
 	if (!gm.paused):
 		if (gm.board.boardGenerated): elapsed += delta
 	SaveManager.saveData.visualTime += delta
-	if (secondsOnly):
-		text = str(elapsed as int)
-	else:
-		text = GetHMSString()
-		
-func GetHMSString():
+
+static func GetHMSString():
 	var e := elapsed as int
 	var s = ""
 	var hours = e / 3600
@@ -30,6 +25,3 @@ func GetHMSString():
 	if (e < 10): s += "0" #add 0 to front of seconds if needed
 	s += str(e)
 	return s
-
-func _on_pressed():
-	secondsOnly = !secondsOnly

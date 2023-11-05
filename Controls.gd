@@ -30,7 +30,6 @@ func SetFlag(val):
 func _ready():
 	instance = self
 	cam = get_viewport().get_camera_3d()
-	confirmButton.visible = confirmSelect == 2
 
 func ChangeNeighborSelect():
 	neighborSelect += 1
@@ -40,7 +39,6 @@ func _process(delta):
 	pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
 	pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
 	inertia = inertia.move_toward(Vector2.ZERO, decel * delta)
-	confirmButton.disabled = previousTriangleHit == -1
 	if Input.is_action_pressed("scroll_down"): cam.fov -=1
 	if Input.is_action_pressed("scroll_up"): cam.fov +=1
 

@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://31bhtpbuqpqp"]
+
+[ext_resource type="Script" path="res://GameUI.gd" id="1_3xq2l"]
+[ext_resource type="StyleBox" uid="uid://bq0y127c58xo4" path="res://new_style_box_flat.tres" id="2_4q5bn"]
+[ext_resource type="StyleBox" uid="uid://by6fiwt4i4g4q" path="res://toggled.tres" id="3_naoas"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fat8n"]
+bg_color = Color(1, 0.329412, 0.372549, 1)
+
+[sub_resource type="Theme" id="Theme_jwlx6"]
+Button/styles/disabled = SubResource("StyleBoxFlat_fat8n")
+Button/styles/normal = ExtResource("2_4q5bn")
+Button/styles/pressed = ExtResource("3_naoas")
+
+[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_3xq2l")
+timerButton = NodePath("Timer")
+neighborButton = NodePath("NeighborButton")
+mineButton = NodePath("MineCounter")
+confirmButton = NodePath("ConfirmButton")
+
+[node name="NeighborButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 0.2
+anchor_bottom = 0.9
+theme = SubResource("Theme_jwlx6")
+button_mask = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.9
+theme = SubResource("Theme_jwlx6")
+button_mask = 3
+text = "pause"
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.9
+theme = SubResource("Theme_jwlx6")
+button_mask = 3
+text = "confirm"
+metadata/_edit_use_anchors_ = true
+
+[node name="MineCounter" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 0.2
+anchor_bottom = 1.0
+theme = SubResource("Theme_jwlx6")
+button_mask = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="LockButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.9
+anchor_right = 0.8
+anchor_bottom = 1.0
+theme = SubResource("Theme_jwlx6")
+toggle_mode = true
+button_mask = 3
+text = "lock"
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme_jwlx6")
+button_mask = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="NeighborButton" to="." method="toggle_neighborSelect"]
+[connection signal="pressed" from="Pause" to="." method="pause"]
+[connection signal="pressed" from="ConfirmButton" to="." method="confirm"]
+[connection signal="pressed" from="MineCounter" to="." method="toggle_mine_display"]
+[connection signal="toggled" from="LockButton" to="." method="SetFlag"]
+[connection signal="pressed" from="Timer" to="." method="toggle_time_display"]
