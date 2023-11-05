@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds6c4aexj5rin"]
-
-[ext_resource type="Script" path="res://VisualTheme.gd" id="1_o2c41"]
-
-[node name="testTheme" type="Node"]
-script = ExtResource("1_o2c41")
