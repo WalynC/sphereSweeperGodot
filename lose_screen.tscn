@@ -48,7 +48,6 @@ anchor_bottom = 0.4
 offset_right = 1.0
 text = "you lose"
 
-[connection signal="continue_button" from="." to="." method="hide"]
 [connection signal="pressed" from="restart" to="." method="_restart_pressed"]
 [connection signal="pressed" from="continue" to="." method="_continue_pressed"]
 [connection signal="pressed" from="menu" to="." method="_menu_pressed"]

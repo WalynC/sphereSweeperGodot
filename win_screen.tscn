@@ -58,6 +58,5 @@ anchor_right = 0.8
 anchor_bottom = 0.4
 text = "bombs hit: 0"
 
-[connection signal="again_button" from="." to="." method="hide"]
 [connection signal="pressed" from="play again" to="." method="_again_pressed"]
 [connection signal="pressed" from="menu" to="." method="_menu_pressed"]

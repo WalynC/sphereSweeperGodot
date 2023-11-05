@@ -39,8 +39,6 @@ anchor_right = 0.8
 anchor_bottom = 0.5
 text = "continue"
 
-[connection signal="new_game" from="." to="." method="hide"]
-[connection signal="unpause_game" from="." to="." method="hide"]
 [connection signal="pressed" from="menu" to="." method="go_to_main_menu"]
 [connection signal="pressed" from="new" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="continue" to="." method="unpause"]

@@ -2,11 +2,9 @@ extends Control
 
 @export var gm : GameManager
 
+@export var gameUI : Control
+
 signal new_game()
-signal unpause_game()
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	hide()
 
 func _on_new_game_pressed():
 	emit_signal("new_game")
@@ -18,5 +16,10 @@ func go_to_main_menu():
 	get_tree().change_scene_to_file("res://menu_scene.tscn")
 
 func unpause():
-	gm.paused = false
-	emit_signal("unpause_game")
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_callback(gameUI.enter_screen)
+
+func enter_screen():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,0),.5)

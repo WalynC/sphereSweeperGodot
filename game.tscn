@@ -66,18 +66,30 @@ script = ExtResource("4_2rx0h")
 gm = NodePath("..")
 pivot = NodePath("../Node3D")
 
-[node name="lose_screen" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("5_lbl5g")]
+[node name="lose_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_lbl5g")]
+offset_top = 1024.0
+offset_bottom = 1024.0
 gm = NodePath("..")
+gameUI = NodePath("../game_ui")
 
-[node name="win_screen" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("6_trc5c")]
+[node name="win_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("6_trc5c")]
+offset_top = 1024.0
+offset_bottom = 1024.0
 gm = NodePath("..")
+gameUI = NodePath("../game_ui")
 
-[node name="game_ui" parent="." node_paths=PackedStringArray("gm", "controls") instance=ExtResource("7_gsk4y")]
+[node name="game_ui" parent="." node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_gsk4y")]
+offset_top = 1024.0
+offset_bottom = 1024.0
 gm = NodePath("..")
 controls = NodePath("../Controls")
+pauseScreen = NodePath("../PauseMenu")
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("13_kmv0j")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("13_kmv0j")]
+offset_top = 1024.0
+offset_bottom = 1024.0
 gm = NodePath("..")
+gameUI = NodePath("../game_ui")
 
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("6_3j33h")
@@ -91,6 +103,5 @@ script = ExtResource("11_w41y1")
 gm = NodePath("..")
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
-[connection signal="restart_button" from="lose_screen" to="lose_screen" method="emit_signal" binds= ["continue_button"]]
 [connection signal="again_button" from="win_screen" to="." method="reset_game"]
 [connection signal="new_game" from="PauseMenu" to="." method="reset_game"]

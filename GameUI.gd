@@ -7,14 +7,19 @@ extends Control
 @export var gm : GameManager
 @export var controls : Controls
 
+@export var pauseScreen : Control
+
 var useMines = false
 var secondsOnly = false
 
+signal pause_game()
+
 func _ready():
 	confirmButton.visible = controls.confirmSelect == 2
+	enter_screen()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#display time
 	if (secondsOnly):
 		timerButton.text = str(GameTimer.elapsed as int)
@@ -36,8 +41,19 @@ func _process(delta):
 	#change confirm button behavior
 	confirmButton.disabled = controls.previousTriangleHit == -1
 
-func pause():
+func enter_screen():
+	gm.paused = false
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,0),.5)
+	
+func exit_screen():
 	gm.paused = true
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	return tween
+
+func pause():
+	exit_screen().tween_callback(pauseScreen.enter_screen)
 
 func confirm():
 	controls.Confirm()
