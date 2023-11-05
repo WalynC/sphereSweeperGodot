@@ -58,5 +58,5 @@ anchor_bottom = 0.8
 text = "quit
 "
 
-[connection signal="pressed" from="cont" to="." method="continue_game"]
+[connection signal="pressed" from="cont" to="." method="continue_game_pressed"]
 [connection signal="pressed" from="new" to="." method="new_game_button_pressed"]

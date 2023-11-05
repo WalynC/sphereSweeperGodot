@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://usiusro6nnqg"]
 
-[ext_resource type="Script" path="res://GameManager.gd" id="1_mvm8t"]
-[ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_74byj"]
-[ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_2rjly"]
-[ext_resource type="Script" path="res://Controls.gd" id="4_2rx0h"]
-[ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://lose_screen.tscn" id="5_lbl5g"]
-[ext_resource type="Script" path="res://rotate.gd" id="6_3j33h"]
-[ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://win_screen.tscn" id="6_trc5c"]
-[ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://game_ui.tscn" id="7_gsk4y"]
-[ext_resource type="Script" path="res://Timer.gd" id="11_w41y1"]
-[ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://pause_menu.tscn" id="13_kmv0j"]
+[ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
+[ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
+[ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
+[ext_resource type="Script" path="res://Controls.gd" id="4_umdi1"]
+[ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://lose_screen.tscn" id="5_ya7ol"]
+[ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://win_screen.tscn" id="6_h0wn7"]
+[ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://game_ui.tscn" id="7_su4m3"]
+[ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://pause_menu.tscn" id="8_6obnv"]
+[ext_resource type="Script" path="res://rotate.gd" id="9_m8nli"]
+[ext_resource type="Script" path="res://Timer.gd" id="10_6cnhi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4sy1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,7 +32,7 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 [sub_resource type="ArrayMesh" id="ArrayMesh_53dkf"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "controls")]
-script = ExtResource("1_mvm8t")
+script = ExtResource("1_2oltq")
 mainMesh = NodePath("MeshInstance3D")
 iconMesh = NodePath("MeshInstance3D2")
 controls = NodePath("Controls")
@@ -45,7 +45,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("2_74byj")
+material_override = ExtResource("2_wc7oy")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
 
@@ -57,49 +57,49 @@ shape = SubResource("ConcavePolygonShape3D_s1hfp")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 sorting_offset = 1.0
-material_override = ExtResource("3_2rjly")
+material_override = ExtResource("3_3hapr")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_53dkf")
 
 [node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
-script = ExtResource("4_2rx0h")
+script = ExtResource("4_umdi1")
 gm = NodePath("..")
 pivot = NodePath("../Node3D")
 
-[node name="lose_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_lbl5g")]
+[node name="lose_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_ya7ol")]
 offset_top = 1024.0
 offset_bottom = 1024.0
 gm = NodePath("..")
 gameUI = NodePath("../game_ui")
 
-[node name="win_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("6_trc5c")]
+[node name="win_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("6_h0wn7")]
 offset_top = 1024.0
 offset_bottom = 1024.0
 gm = NodePath("..")
 gameUI = NodePath("../game_ui")
 
-[node name="game_ui" parent="." node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_gsk4y")]
+[node name="game_ui" parent="." node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_su4m3")]
 offset_top = 1024.0
 offset_bottom = 1024.0
 gm = NodePath("..")
 controls = NodePath("../Controls")
 pauseScreen = NodePath("../PauseMenu")
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("13_kmv0j")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("8_6obnv")]
 offset_top = 1024.0
 offset_bottom = 1024.0
 gm = NodePath("..")
 gameUI = NodePath("../game_ui")
 
 [node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("6_3j33h")
+script = ExtResource("9_m8nli")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 fov = 30.0
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
-script = ExtResource("11_w41y1")
+script = ExtResource("10_6cnhi")
 gm = NodePath("..")
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]

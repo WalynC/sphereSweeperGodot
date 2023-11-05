@@ -14,7 +14,7 @@ func Change(index, value):
 	uvs[index] = value
 	changed = true
 
-func _process(delta):
+func _process(_delta):
 	if (changed):
 		gm.iconMesh.mesh.clear_surfaces()
 		arr[Mesh.ARRAY_TEX_UV] = uvs

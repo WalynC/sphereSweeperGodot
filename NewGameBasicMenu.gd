@@ -4,14 +4,19 @@ extends Control
 @export var sizes: Array[Button]
 var called = false
 
-signal back_button()
-signal custom_button()
+@export var mainMenuUI:Control
+@export var customGameUI:Control
 
-	
-@export var continueButton:Button
+func enter_screen():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,0),.5)
+
+func exit_screen():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	return tween
 
 func _ready():
-	hide()
 	densities[(GameManager.density/5)-1].button_pressed = true
 	sizes[(GameManager.size-3)/2].button_pressed = true
 
@@ -38,6 +43,7 @@ func _new_game_basic():
 	get_tree().change_scene_to_file("res://game.tscn")
 
 func back_button_pressed():
-	emit_signal("back_button")
+	exit_screen().tween_callback(mainMenuUI.enter_screen)
+
 func custom_button_pressed():
-	emit_signal("custom_button")
+	exit_screen().tween_callback(customGameUI.enter_screen)

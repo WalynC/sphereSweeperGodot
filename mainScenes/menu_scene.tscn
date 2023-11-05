@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://di55ecqry3xcg"]
+
+[ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://main_menu.tscn" id="1_6ny5j"]
+[ext_resource type="PackedScene" uid="uid://b3tq7nhujaby" path="res://new_game_basic_menu.tscn" id="2_0f0tg"]
+[ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://custom_game_menu.tscn" id="3_m8si6"]
+
+[node name="MenuScene" type="Node"]
+
+[node name="mainMenu" parent="." node_paths=PackedStringArray("basicGameUI") instance=ExtResource("1_6ny5j")]
+offset_top = 1024.0
+offset_bottom = 1024.0
+basicGameUI = NodePath("../newGameBasicMenu")
+
+[node name="newGameBasicMenu" parent="." node_paths=PackedStringArray("mainMenuUI", "customGameUI") instance=ExtResource("2_0f0tg")]
+offset_top = 1024.0
+offset_bottom = 1024.0
+mainMenuUI = NodePath("../mainMenu")
+customGameUI = NodePath("../customGameMenu")
+
+[node name="customGameMenu" parent="." node_paths=PackedStringArray("basicGameUI") instance=ExtResource("3_m8si6")]
+offset_top = 1024.0
+offset_bottom = 1024.0
+basicGameUI = NodePath("../newGameBasicMenu")
