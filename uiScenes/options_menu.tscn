@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_g7l5b"]
 
-[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons")]
+[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g7l5b")
 modeButtons = [NodePath("one"), NodePath("double"), NodePath("button")]
+volText = NodePath("volumeText")
 
 [node name="one" type="Button" parent="."]
 layout_mode = 1
@@ -51,7 +52,28 @@ anchor_right = 0.5
 anchor_bottom = 0.8
 text = "back"
 
+[node name="volume" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.35
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="volumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.25
+anchor_right = 0.6
+anchor_bottom = 0.3
+text = "volume"
+
 [connection signal="toggled" from="one" to="." method="_change_confirm_mode" binds= [0]]
 [connection signal="toggled" from="double" to="." method="_change_confirm_mode" binds= [1]]
 [connection signal="toggled" from="button" to="." method="_change_confirm_mode" binds= [2]]
 [connection signal="pressed" from="back" to="." method="back_button_pressed"]
+[connection signal="value_changed" from="volume" to="." method="volume_changed"]

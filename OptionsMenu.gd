@@ -4,6 +4,10 @@ extends Control
 @export var modeButtons: Array[Button]
 var called = false
 @export var previousUI:Control
+@export var volText:RichTextLabel
+
+func volume_changed(vol):
+	volText.text = "Volume: "+str(int(vol))
 
 func _change_confirm_mode(_toggle, mode):
 	if called: return
