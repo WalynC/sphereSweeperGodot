@@ -39,6 +39,7 @@ func _process(_delta):
 	else:
 		mineButton.text = str(gm.board.nonMines)
 	#change confirm button behavior
+	confirmButton.visible = controls.confirmSelect == 2
 	confirmButton.disabled = controls.previousTriangleHit == -1
 
 func enter_screen():

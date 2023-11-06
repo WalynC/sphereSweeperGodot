@@ -105,6 +105,8 @@ script = ExtResource("10_6cnhi")
 gm = NodePath("..")
 
 [node name="options_menu" parent="." node_paths=PackedStringArray("previousUI") instance=ExtResource("11_uimh0")]
+offset_top = 1024.0
+offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
