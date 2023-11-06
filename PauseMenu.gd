@@ -3,6 +3,7 @@ extends Control
 @export var gm : GameManager
 
 @export var gameUI : Control
+@export var optionsUI : Control
 
 signal new_game()
 
@@ -15,11 +16,17 @@ func go_to_main_menu():
 		SaveManager.save_game()
 	get_tree().change_scene_to_file("res://menu_scene.tscn")
 
+func options_pressed():
+	exit_screen().tween_callback(optionsUI.enter_screen)
+
 func unpause():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
-	tween.tween_callback(gameUI.enter_screen)
+	exit_screen().tween_callback(gameUI.enter_screen)
 
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
+
+func exit_screen():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	return tween

@@ -6,9 +6,13 @@ signal new_game_button()
 	
 @export var continueButton:Button
 @export var basicGameUI:Control
+@export var optionsMenuUI:Control
 
 func new_game_button_pressed():
 	exit_screen().tween_callback(basicGameUI.enter_screen)
+	
+func options_button_pressed():
+	exit_screen().tween_callback(optionsMenuUI.enter_screen)
 	
 func _ready():
 	#load save, if there is a save, continue button should be enabled

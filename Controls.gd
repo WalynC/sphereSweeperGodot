@@ -22,7 +22,7 @@ var previousTriangleHit = -1
 
 var flag = false
 var neighborSelect = 0
-var confirmSelect = 2
+static var confirmSelect = 2
 
 func SetFlag(val):
 	flag = val

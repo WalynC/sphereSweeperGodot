@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=18 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
 [ext_resource type="Script" path="res://Controls.gd" id="4_umdi1"]
-[ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://lose_screen.tscn" id="5_ya7ol"]
-[ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://win_screen.tscn" id="6_h0wn7"]
-[ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://game_ui.tscn" id="7_su4m3"]
-[ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://pause_menu.tscn" id="8_6obnv"]
+[ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
+[ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
+[ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
+[ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
 [ext_resource type="Script" path="res://rotate.gd" id="9_m8nli"]
 [ext_resource type="Script" path="res://Timer.gd" id="10_6cnhi"]
+[ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4sy1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,11 +86,12 @@ gm = NodePath("..")
 controls = NodePath("../Controls")
 pauseScreen = NodePath("../PauseMenu")
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("8_6obnv")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("8_6obnv")]
 offset_top = 1024.0
 offset_bottom = 1024.0
 gm = NodePath("..")
 gameUI = NodePath("../game_ui")
+optionsUI = NodePath("../options_menu")
 
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("9_m8nli")
@@ -101,6 +103,9 @@ fov = 30.0
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("10_6cnhi")
 gm = NodePath("..")
+
+[node name="options_menu" parent="." node_paths=PackedStringArray("previousUI") instance=ExtResource("11_uimh0")]
+previousUI = NodePath("../PauseMenu")
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="win_screen" to="." method="reset_game"]

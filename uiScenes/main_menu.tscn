@@ -60,3 +60,4 @@ text = "quit
 
 [connection signal="pressed" from="cont" to="." method="continue_game_pressed"]
 [connection signal="pressed" from="new" to="." method="new_game_button_pressed"]
+[connection signal="pressed" from="opt" to="." method="options_button_pressed"]
