@@ -32,7 +32,7 @@ func ToData():
 		"zoom":zoom,
 		"time":time,
 		"percentMined":percentMined,
-		"seed":gameSeed,
+		"gameSeed":gameSeed,
 		"visualSeed":visualSeed,
 		"selected":selected,
 		"selectArr":selectArr,
