@@ -30,4 +30,4 @@ func _continue_pressed():
 	tween.tween_callback(gameUI.enter_screen)
 
 func _menu_pressed():
-	get_tree().change_scene_to_file("res://menu_scene.tscn")
+	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")

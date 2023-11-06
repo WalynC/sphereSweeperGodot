@@ -14,7 +14,7 @@ func go_to_main_menu():
 	if (gm.board.boardGenerated):
 		SaveManager.saveData.time = GameTimer.elapsed
 		SaveManager.save_game()
-	get_tree().change_scene_to_file("res://menu_scene.tscn")
+	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
 
 func options_pressed():
 	exit_screen().tween_callback(optionsUI.enter_screen)

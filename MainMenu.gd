@@ -24,7 +24,7 @@ func continue_game_pressed():
 
 func continue_game():
 	GameManager.loading = true
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 
 func enter_screen():
 	var tween = create_tween()
