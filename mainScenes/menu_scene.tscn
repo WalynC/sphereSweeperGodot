@@ -8,6 +8,9 @@
 
 [node name="MenuScene" type="Node"]
 
+[node name="UserSettings" type="Node" parent="."]
+script = ExtResource("5_4vrgx")
+
 [node name="mainMenu" parent="." node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
 offset_top = 1024.0
 offset_bottom = 1024.0
@@ -29,6 +32,3 @@ basicGameUI = NodePath("../newGameBasicMenu")
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("5_4vrgx")

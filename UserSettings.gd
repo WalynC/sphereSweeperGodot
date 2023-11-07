@@ -5,8 +5,9 @@ static var config = ConfigFile.new()
 static var volume = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var err = config.load("user://scores.cfg")
-	if (err != OK): return
+	print("load")
+	var err = config.load("user://settings.cfg")
+	if (err != OK): SetDefaultSettings()
 	GameManager.density = config.get_value("Settings", "density")
 	GameManager.size = config.get_value("Settings", "size")
 	GameManager.advDensity = config.get_value("Settings", "advDensity")
@@ -16,19 +17,33 @@ func _ready():
 	GameUI.useMines = config.get_value("Settings", "useMines")
 	GameUI.secondsOnly = config.get_value("Settings", "secondsOnly")
 
+static func SetDefaultSettings():
+	config.set_value("Settings", "density", GameManager.density)
+	config.set_value("Settings", "size", GameManager.size)
+	config.set_value("Settings", "confirmSelect", Controls.confirmSelect)
+	config.set_value("Settings", "volume", volume)
+	config.set_value("Settings", "advDensity", GameManager.advDensity)
+	config.set_value("Settings", "advSize", GameManager.advSize)
+	config.set_value("Settings", "useMines", GameUI.useMines)
+	config.set_value("Settings", "secondsOnly", GameUI.secondsOnly)
+
 static func SaveBasicSettings():
 	config.set_value("Settings", "density", GameManager.density)
 	config.set_value("Settings", "size", GameManager.size)
+	config.save("user://settings.cfg")
 
 static func SaveOptionsMenuSettings():
 	config.set_value("Settings", "confirmSelect", Controls.confirmSelect)
 	config.set_value("Settings", "volume", volume)
+	config.save("user://scores.cfg")
 	
 static func SaveCustomGameSettings():
 	config.set_value("Settings", "advDensity", GameManager.advDensity)
 	config.set_value("Settings", "advSize", GameManager.advSize)
+	config.save("user://scores.cfg")
 
 static func SaveGameUISettings():
 	config.set_value("Settings", "useMines", GameUI.useMines)
 	config.set_value("Settings", "secondsOnly", GameUI.secondsOnly)
+	config.save("user://scores.cfg")
 	
