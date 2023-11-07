@@ -1,4 +1,5 @@
 extends Control
+class_name GameUI
 
 @export var timerButton : Button
 @export var neighborButton : Button
@@ -9,8 +10,8 @@ extends Control
 
 @export var pauseScreen : Control
 
-var useMines = false
-var secondsOnly = false
+static var useMines = false
+static var secondsOnly = false
 
 signal pause_game()
 
@@ -48,6 +49,7 @@ func enter_screen():
 	tween.tween_property(self, "position", Vector2(0,0),.5)
 	
 func exit_screen():
+	UserSettings.SaveGameUISettings()
 	gm.paused = true
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,1024),.5)

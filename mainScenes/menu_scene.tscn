@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=6 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
 [ext_resource type="PackedScene" uid="uid://b3tq7nhujaby" path="res://uiScenes/new_game_basic_menu.tscn" id="2_0f0tg"]
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
+[ext_resource type="Script" path="res://UserSettings.gd" id="5_4vrgx"]
 
 [node name="MenuScene" type="Node"]
 
@@ -28,3 +29,6 @@ basicGameUI = NodePath("../newGameBasicMenu")
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("5_4vrgx")

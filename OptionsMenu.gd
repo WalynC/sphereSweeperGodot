@@ -23,6 +23,7 @@ func enter_screen():
 	tween.tween_property(self, "position", Vector2(0,0),.5)
 
 func exit_screen():
+	UserSettings.SaveOptionsMenuSettings()
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,1024),.5)
 	return tween
