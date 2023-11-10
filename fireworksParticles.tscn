@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bodelg7ahssyr"]
+[gd_scene load_steps=16 format=3 uid="uid://bodelg7ahssyr"]
 
 [ext_resource type="Texture2D" uid="uid://cwj754524ns8j" path="res://trail - Copy.png" id="1_3suwr"]
 [ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="1_dq0o4"]
+[ext_resource type="Script" path="res://FireworkParticle.gd" id="2_2s7y5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2ere"]
-direction = Vector3(5, 5, 5)
+direction = Vector3(1, 1, 1)
 spread = 0.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+scale_min = 0.1
+scale_max = 0.1
 sub_emitter_mode = 2
 sub_emitter_amount_at_end = 25
 
@@ -29,21 +32,34 @@ use_particle_trails = true
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ab84c"]
 material = SubResource("StandardMaterial3D_int0h")
 shape = 0
-section_length = 0.1
+size = 0.025
+section_length = 0.001
 section_segments = 10
 curve = SubResource("Curve_0fvqj")
+
+[sub_resource type="Gradient" id="Gradient_xbtej"]
+offsets = PackedFloat32Array(0.788618, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_le7qn"]
+gradient = SubResource("Gradient_xbtej")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xgfli"]
 emission_shape = 1
 emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
 spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+color_ramp = SubResource("GradientTexture1D_le7qn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vggfs"]
 transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_dq0o4")
+disable_receive_shadows = true
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -51,22 +67,48 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ywcow"]
 material = SubResource("StandardMaterial3D_vggfs")
+size = Vector2(0.025, 0.025)
 
-[node name="GPUParticles3D" type="GPUParticles3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gvf4"]
+direction = Vector3(1, 1, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t10r0"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_dq0o4")
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_bkqdt"]
+material = SubResource("StandardMaterial3D_t10r0")
+size = Vector2(0.025, 0.025)
+
+[node name="fireworkTrail" type="GPUParticles3D" node_paths=PackedStringArray("star", "explosion")]
+emitting = false
 amount = 1
-sub_emitter = NodePath("explode")
 lifetime = 2.0
 explosiveness = 1.0
-randomness = 1.0
 collision_base_size = 0.0
+local_coords = true
 trail_enabled = true
-trail_lifetime = 3.0
+trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_n2ere")
 draw_pass_1 = SubResource("RibbonTrailMesh_ab84c")
+script = ExtResource("2_2s7y5")
+star = NodePath("star")
+explosion = NodePath("explode")
 
 [node name="explode" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.495049, 0.868865, 0, -0.868865, 0.495049, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
 amount = 25
 explosiveness = 1.0
@@ -75,3 +117,11 @@ collision_base_size = 0.0
 visibility_aabb = AABB(0, 0, 0, 1, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_xgfli")
 draw_pass_1 = SubResource("QuadMesh_ywcow")
+
+[node name="star" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+sub_emitter = NodePath("../explode")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_0gvf4")
+draw_pass_1 = SubResource("QuadMesh_bkqdt")
