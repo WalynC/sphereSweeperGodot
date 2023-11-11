@@ -15,6 +15,9 @@ func _ready():
 
 func _new_game_adv():
 	GameManager.gameMode = 1
+	exit_screen().tween_callback(toGame)
+	
+func toGame():
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 	
 func back_button_pressed():

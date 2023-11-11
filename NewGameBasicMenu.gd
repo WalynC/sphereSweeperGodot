@@ -41,6 +41,9 @@ func _change_size(_toggle, boardSize):
 
 func _new_game_basic():
 	GameManager.gameMode = 0
+	exit_screen().tween_callback(toGame)
+
+func toGame():
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 
 func back_button_pressed():

@@ -22,9 +22,16 @@ func enter_screen():
 
 func _again_pressed():
 	emit_signal("again_button")
+	exit_screen().tween_callback(gameUI.enter_screen)
+	
+func exit_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,1024),.5)
-	tween.tween_callback(gameUI.enter_screen)
+	return tween
+
+func toMainMenu():
+	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
+	
 
 func _menu_pressed():
-	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
+	exit_screen().tween_callback(toMainMenu)
