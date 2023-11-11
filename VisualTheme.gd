@@ -35,7 +35,7 @@ func StartExplosion():
 		explosions.insert(0,mined[rando])
 		mined.remove_at(rando)
 
-func _process(delta):
+func _process(_delta):
 	if (timeSinceLastExplosion < Time.get_ticks_msec() && explosions.size() > 0):
 		timeSinceLastExplosion = Time.get_ticks_msec() + timeBetweenExplosions
 		Explode(explosions[explosions.size()-1])
@@ -44,25 +44,25 @@ func _process(delta):
 		#sound.loop = false;
 		pass
 
-func Explode(exp):
+func Explode(explo):
 	var obj = GetExplosion()
 	inUse.append(obj)
-	obj.begin(numberColors[exp.mineCount], 
-	(GameManager.instance.board.vertices[exp.vertIndices[0]] +
-	GameManager.instance.board.vertices[exp.vertIndices[1]] +
-	GameManager.instance.board.vertices[exp.vertIndices[2]]) /
+	obj.begin(numberColors[explo.mineCount], 
+	(GameManager.instance.board.vertices[explo.vertIndices[0]] +
+	GameManager.instance.board.vertices[explo.vertIndices[1]] +
+	GameManager.instance.board.vertices[explo.vertIndices[2]]) /
 	3.0)
 
 func GetExplosion():
 	if (pool.size() == 0):
 		var n = firework.instantiate()
 		add_child(n)
-		n.hide()
-		n.set_process(false)
 		n.home = self
+		n.reset_values()
 		return n
 	var ret = pool[pool.size()-1]
 	pool.remove_at(pool.size()-1)
+	ret.reset_values()
 	return ret
 
 func ReturnExplosion(ret):

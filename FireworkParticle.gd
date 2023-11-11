@@ -6,12 +6,16 @@ extends GPUParticles3D
 var timePassed = 0
 var home
 
-func begin(color, direction):
-	transform.origin = direction
+func reset_values():
+	restart()
 	show()
 	set_process(true)
 	timePassed = 0
 	speed_scale = 1
+
+func begin(color, direction):
+	print(speed_scale)
+	transform.origin = direction
 	draw_pass_1.surface_get_material(0).albedo_color = color
 	process_material.direction = direction
 	emit_particle(transform, Vector3.ZERO, Color.WHITE, Color.WHITE, 0)
@@ -20,7 +24,6 @@ func begin(color, direction):
 	star.emit_particle(transform, Vector3.ZERO, Color.WHITE, Color.WHITE, 0)
 	explosion.process_material.color_ramp.gradient.set_color(0, color)
 	explosion.process_material.color_ramp.gradient.set_color(1, Color(color.r, color.g, color.b, 0))
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
