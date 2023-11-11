@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=19 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://rotate.gd" id="9_m8nli"]
 [ext_resource type="Script" path="res://Timer.gd" id="10_6cnhi"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
+[ext_resource type="PackedScene" uid="uid://bd17xvf5sbmuf" path="res://visualThemes/visual_theme.tscn" id="12_u3ofe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4sy1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -108,6 +109,8 @@ gm = NodePath("..")
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
+
+[node name="VisualTheme" parent="." instance=ExtResource("12_u3ofe")]
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="win_screen" to="." method="reset_game"]

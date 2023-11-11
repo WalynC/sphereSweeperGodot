@@ -4,11 +4,13 @@ extends GPUParticles3D
 @export var explosion:GPUParticles3D
 
 var timePassed = 0
-
-func _ready():
-	begin(Color(1,0,0), Vector3(0,1,-5))
+var home
 
 func begin(color, direction):
+	print("begin")
+	transform.origin = direction
+	show()
+	set_process(true)
 	timePassed = 0
 	speed_scale = 1
 	draw_pass_1.surface_get_material(0).albedo_color = color
@@ -27,4 +29,6 @@ func _process(delta):
 	if (timePassed > 2):
 		speed_scale = 0
 	if (timePassed > 3):
-		queue_free()
+		hide()
+		set_process(false)
+		home.ReturnExplosion(self)

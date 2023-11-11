@@ -10,6 +10,8 @@ var IconSphere = load("res://IconSphere.gd")
 var isphere = IconSphere.new()
 var iconSize
 
+static var instance : GameManager
+
 #pausing
 var paused : bool = false
 
@@ -31,6 +33,7 @@ signal loseEvent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	instance = self
 	board.gm = self
 	isphere.gm = self
 	if (loading):
@@ -85,10 +88,14 @@ func reset_save_game():
 	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
 	gameRNG.seed = SaveManager.saveData.gameSeed
 
+var debug = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	board._process(delta)
 	isphere._process(delta)
+	if (Input.is_mouse_button_pressed(2) && !debug):
+		VisualTheme.instance.StartExplosion()
+		debug = true
 	
 func update_mainMesh():
 	mainMesh.mesh.clear_surfaces()

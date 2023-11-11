@@ -20,6 +20,7 @@ _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_int0h"]
+resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("1_3suwr")
@@ -30,6 +31,7 @@ particles_anim_loop = false
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ab84c"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_int0h")
 shape = 0
 size = 0.025
@@ -55,6 +57,7 @@ initial_velocity_max = 0.1
 color_ramp = SubResource("GradientTexture1D_le7qn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vggfs"]
+resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -66,6 +69,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ywcow"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_vggfs")
 size = Vector2(0.025, 0.025)
 
@@ -79,6 +83,7 @@ sub_emitter_mode = 2
 sub_emitter_amount_at_end = 25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t10r0"]
+resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("1_dq0o4")
@@ -89,6 +94,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_bkqdt"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t10r0")
 size = Vector2(0.025, 0.025)
 
@@ -108,7 +114,6 @@ star = NodePath("star")
 explosion = NodePath("explode")
 
 [node name="explode" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
 amount = 25
 explosiveness = 1.0

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd17xvf5sbmuf"]
+
+[ext_resource type="Script" path="res://VisualTheme.gd" id="1_trois"]
+[ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="2_ejquq"]
+
+[node name="VisualTheme" type="Node"]
+script = ExtResource("1_trois")
+numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.501961, 0, 1, 1), Color(0, 0.501961, 1, 1), Color(0, 1, 0.501961, 1), Color(0.501961, 1, 0, 1), Color(1, 0.501961, 0, 1), Color(0.501961, 0, 0, 1), Color(1, 0, 0, 1)])
+firework = ExtResource("2_ejquq")
