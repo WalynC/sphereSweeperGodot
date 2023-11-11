@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3yt7115p46nf"]
+
+[ext_resource type="Texture2D" uid="uid://bvecgguaytvhw" path="res://smoke.png" id="1_qomny"]
+[ext_resource type="Script" path="res://ExplosionParticles.gd" id="2_32kd8"]
+
+[sub_resource type="Gradient" id="Gradient_t7sgv"]
+offsets = PackedFloat32Array(0, 0.097561, 0.227642, 0.406504, 0.642276, 0.837398, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1, 1, 0.270588, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.05, 0.05, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r32ti"]
+gradient = SubResource("Gradient_t7sgv")
+
+[sub_resource type="CurveTexture" id="CurveTexture_jhxt6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vrgak"]
+resource_local_to_scene = true
+direction = Vector3(0, 1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.5
+initial_velocity_max = 1.5
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_jhxt6")
+color_ramp = SubResource("GradientTexture1D_r32ti")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftjh3"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qomny")
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_d4wxx"]
+material = SubResource("StandardMaterial3D_ftjh3")
+size = Vector2(0.1, 0.1)
+
+[node name="ExplosionParticles" type="GPUParticles3D"]
+emitting = false
+amount = 75
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.75
+process_material = SubResource("ParticleProcessMaterial_vrgak")
+draw_pass_1 = SubResource("QuadMesh_d4wxx")
+script = ExtResource("2_32kd8")

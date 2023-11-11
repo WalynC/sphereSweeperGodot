@@ -53,6 +53,7 @@ func win():
 	
 func lose():
 	emit_signal("loseEvent")
+	VisualTheme.lost()
 
 func new_game(): #called from _ready if not loading save data
 	SaveManager.saveData = SaveData.new()

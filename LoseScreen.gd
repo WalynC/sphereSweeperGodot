@@ -18,11 +18,13 @@ func enter_screen():
 
 func _restart_pressed():
 	emit_signal("restart_button")
+	VisualTheme.endlost()
 	exit_screen().tween_callback(gameUI.enter_screen)
 
 func _continue_pressed():
 	gm.paused = false
 	emit_signal("continue_button")
+	VisualTheme.endlost()
 	exit_screen().tween_callback(gameUI.enter_screen)
 
 func exit_screen():

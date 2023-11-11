@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd17xvf5sbmuf"]
+[gd_scene load_steps=6 format=3 uid="uid://bd17xvf5sbmuf"]
 
 [ext_resource type="Script" path="res://VisualTheme.gd" id="1_trois"]
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="2_ejquq"]
 [ext_resource type="Script" path="res://FireworksEffect.gd" id="3_b6xbn"]
+[ext_resource type="Script" path="res://ExplosionEffect.gd" id="4_xmqpq"]
+[ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="5_krasa"]
 
 [node name="VisualTheme" type="Node"]
 script = ExtResource("1_trois")
@@ -12,5 +14,11 @@ script = ExtResource("3_b6xbn")
 numberColors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 firework = ExtResource("2_ejquq")
 
+[node name="ExplosionEffect" type="Node" parent="."]
+script = ExtResource("4_xmqpq")
+firework = ExtResource("5_krasa")
+
+[connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]
+[connection signal="lose" from="." to="ExplosionEffect" method="StartExplosion"]
 [connection signal="win" from="." to="FireworksEffect" method="StartExplosion"]
