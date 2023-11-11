@@ -4,7 +4,7 @@ class_name VisualTheme
 @export var numberColors : Array[Color]
 @export var firework : PackedScene
 
-var timeToExplodeAll = 3.0
+var timeToExplodeAll = 10.0
 var timeSinceLastExplosion = -1.0
 var timeBetweenExplosions = 0.0
 
@@ -16,7 +16,7 @@ static var pool = []
 
 func _ready():
 	instance = self
-	timeToExplodeAll = 3 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));
+	timeToExplodeAll = 10 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));
 
 func Reset():
 	#return in use objects to pool
@@ -25,13 +25,11 @@ func Reset():
 	explosions.clear()
 
 func StartExplosion():
-	print("explosion begin")
 	var mined = []
 	for i in range(0, GameManager.instance.board.numbered.size()):
 		var num = GameManager.instance.board.numbered.keys()[i]
-		print(GameManager.instance.board.triangles[num].mineCount)
 		mined.append(GameManager.instance.board.triangles[num])
-	timeBetweenExplosions = (timeToExplodeAll / mined.size())/1000 #milliseconds
+	timeBetweenExplosions = (timeToExplodeAll / float(mined.size())*1000) #milliseconds
 	while mined.size() > 0:
 		var rando = randi() % mined.size()
 		explosions.insert(0,mined[rando])
@@ -39,7 +37,6 @@ func StartExplosion():
 
 func _process(delta):
 	if (timeSinceLastExplosion < Time.get_ticks_msec() && explosions.size() > 0):
-		print("explode")
 		timeSinceLastExplosion = Time.get_ticks_msec() + timeBetweenExplosions
 		Explode(explosions[explosions.size()-1])
 		explosions.remove_at(explosions.size()-1)

@@ -7,7 +7,6 @@ var timePassed = 0
 var home
 
 func begin(color, direction):
-	print("begin")
 	transform.origin = direction
 	show()
 	set_process(true)

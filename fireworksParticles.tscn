@@ -40,13 +40,16 @@ section_segments = 10
 curve = SubResource("Curve_0fvqj")
 
 [sub_resource type="Gradient" id="Gradient_xbtej"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0.788618, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_le7qn"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_xbtej")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xgfli"]
+resource_local_to_scene = true
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, 0, 0)
