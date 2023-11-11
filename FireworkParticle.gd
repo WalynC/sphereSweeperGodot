@@ -14,7 +14,6 @@ func reset_values():
 	speed_scale = 1
 
 func begin(color, direction):
-	print(speed_scale)
 	transform.origin = direction
 	draw_pass_1.surface_get_material(0).albedo_color = color
 	process_material.direction = direction

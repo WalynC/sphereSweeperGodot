@@ -49,6 +49,8 @@ func _ready():
 
 func win():
 	emit_signal("winEvent")
+	VisualTheme.won()
+	
 func lose():
 	emit_signal("loseEvent")
 
@@ -93,9 +95,6 @@ var debug = false
 func _process(delta):
 	board._process(delta)
 	isphere._process(delta)
-	if (Input.is_mouse_button_pressed(2) && !debug):
-		VisualTheme.instance.StartExplosion()
-		debug = true
 	
 func update_mainMesh():
 	mainMesh.mesh.clear_surfaces()
