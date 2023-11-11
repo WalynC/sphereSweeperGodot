@@ -22,6 +22,7 @@ func enter_screen():
 
 func _again_pressed():
 	emit_signal("again_button")
+	VisualTheme.endwon()
 	exit_screen().tween_callback(gameUI.enter_screen)
 	
 func exit_screen():

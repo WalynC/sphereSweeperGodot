@@ -5,15 +5,20 @@ extends GPUParticles3D
 
 var timePassed = 0
 var home
+var used = false
 
 func reset_values():
-	restart()
+	if (used):
+		restart()
+		star.restart()
+		explosion.restart()
 	show()
 	set_process(true)
 	timePassed = 0
 	speed_scale = 1
 
 func begin(color, direction):
+	used = true
 	transform.origin = direction
 	draw_pass_1.surface_get_material(0).albedo_color = color
 	process_material.direction = direction

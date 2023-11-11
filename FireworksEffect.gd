@@ -18,6 +18,11 @@ func _ready():
 
 func Reset():
 	#return in use objects to pool
+	var copy = inUse.duplicate()
+	for i in range(0,copy.size()):
+		copy[i].hide()
+		copy[i].set_process(false)
+		ReturnExplosion(copy[i])
 	#stop explosions
 	timeSinceLastExplosion = -1
 	explosions.clear()
