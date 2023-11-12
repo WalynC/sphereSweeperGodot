@@ -21,9 +21,10 @@ func Setup(vertices, tris):
 
 func Add(orig, valid):
 	for t in valid.keys():
-		colors[t.vertIndices[0]] = VisualTheme.instance.numberColors[t.mineCount]
-		colors[t.vertIndices[1]] = VisualTheme.instance.numberColors[t.mineCount]
-		colors[t.vertIndices[2]] = VisualTheme.instance.numberColors[t.mineCount]
+		var color = VisualTheme.instance.numberColors[t.mineCount] if (t.reveal and !t.mine) else Color.WHITE
+		colors[t.vertIndices[0]] = color
+		colors[t.vertIndices[1]] = color
+		colors[t.vertIndices[2]] = color
 	var glow = Glow.new()
 	glow.valid = valid.duplicate()
 	glow.lastChange = Time.get_ticks_msec() + timeBetweenWaves
