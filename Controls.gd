@@ -41,6 +41,7 @@ func _process(delta):
 	inertia = inertia.move_toward(Vector2.ZERO, decel * delta)
 	if Input.is_action_pressed("scroll_down"): cam.fov -=1
 	if Input.is_action_pressed("scroll_up"): cam.fov +=1
+	cam.fov = clamp(cam.fov, 10, 90)
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -80,7 +81,9 @@ func handle_drag(event: InputEventScreenDrag):
 		var touch_point_positions = touch_points.values()
 		var curDist = touch_point_positions[0].distance_to(touch_point_positions[1])
 		var zoom_factor = start_distance/curDist
-		cam.fov = start_zoom/zoom_factor
+		var fov = start_zoom/zoom_factor
+		fov = clamp(fov, 10, 90)
+		cam.fov = fov
 
 func CompleteTap():
 	if flag:
