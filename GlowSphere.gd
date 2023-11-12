@@ -4,7 +4,7 @@ var colors : PackedColorArray
 var array = []
 
 var glowSpeed = 3.0
-var timeBetweenWaves = .25
+var timeBetweenWaves = .1*1000
 var startTransparency = .66
 
 var glows = {}
