@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=24 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -38,10 +38,14 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fihdx"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("14_6773y")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hijw3"]
+resource_local_to_scene = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "controls")]
 script = ExtResource("1_2oltq")
@@ -133,7 +137,7 @@ mesh = SubResource("ArrayMesh_hijw3")
 
 [node name="outer" type="MeshInstance3D" parent="SelectIndicator"]
 material_override = SubResource("StandardMaterial3D_fihdx")
-mesh = SubResource("ArrayMesh_hijw3")
+mesh = SubResource("ArrayMesh_cy6in")
 
 [connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="win_screen" to="." method="reset_game"]
