@@ -7,10 +7,10 @@ var timeToExplodeAll = 10.0
 var timeSinceLastExplosion = -1.0
 var timeBetweenExplosions = 0.0
 
-static var explosions : Array
-static var inUse : Array
+var explosions : Array
+var inUse : Array
 
-static var pool = []
+var pool = []
 
 func _ready():
 	timeToExplodeAll = 10 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));

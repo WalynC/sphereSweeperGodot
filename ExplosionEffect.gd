@@ -2,10 +2,10 @@ extends Node
 
 
 @export var firework : PackedScene
-static var explosions : Array
-static var inUse : Array
+var explosions : Array
+var inUse : Array
 
-static var pool = []
+var pool = []
 
 func Reset():
 	#return in use objects to pool
