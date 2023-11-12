@@ -1,9 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=27 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
 [ext_resource type="Script" path="res://Controls.gd" id="4_umdi1"]
+[ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="4_w2e11"]
+[ext_resource type="Script" path="res://GlowSphere.gd" id="5_oelwr"]
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
@@ -35,6 +37,8 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_53dkf"]
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_oukfc"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fihdx"]
 transparency = 1
 cull_mode = 2
@@ -47,10 +51,11 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "controls")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls")]
 script = ExtResource("1_2oltq")
-mainMesh = NodePath("MeshInstance3D")
-iconMesh = NodePath("MeshInstance3D2")
+mainMesh = NodePath("board")
+iconMesh = NodePath("icosphere")
+glowMesh = NodePath("glowsphere")
 controls = NodePath("Controls")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -60,22 +65,32 @@ environment = SubResource("Environment_mnlou")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="board" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_wc7oy")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="board"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="board/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s1hfp")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="icosphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("3_3hapr")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_53dkf")
+
+[node name="glowsphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
+sorting_offset = 1.0
+material_override = ExtResource("4_w2e11")
+transparency = 1.0
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_oukfc")
+skeleton = NodePath("../icosphere")
+script = ExtResource("5_oelwr")
 
 [node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
 script = ExtResource("4_umdi1")

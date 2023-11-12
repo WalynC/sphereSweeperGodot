@@ -271,6 +271,7 @@ func BuildBoardVisuals():
 	colors.resize(vertices.size())
 	uvs= []
 	uvs.resize(vertices.size())
+	gm.glowMesh.colors.resize(vertices.size())
 	var uvForEmpty = [Vector2(0,0),Vector2(0,1),Vector2(1,1)]
 	for t in triangles:
 		for i in t.vertIndices:
@@ -281,6 +282,7 @@ func BuildBoardVisuals():
 				else: colors[i] = Color(smoothstep(-gold,gold,vertices[i].x),smoothstep(-gold,gold,vertices[i].y),smoothstep(-gold,gold,vertices[i].z)) * .2
 			else:
 				colors[i] = Color(smoothstep(-gold,gold,vertices[i].x),smoothstep(-gold,gold,vertices[i].y),smoothstep(-gold,gold,vertices[i].z))
+			gm.glowMesh.colors[i] = Color(1,1,1,0)
 	#build main mesh
 	var arrays = []
 	arrays.resize(Mesh.ARRAY_MAX)
@@ -289,6 +291,8 @@ func BuildBoardVisuals():
 	arrays[Mesh.ARRAY_INDEX] = tris
 	arrays[Mesh.ARRAY_COLOR] = colors
 	gm.mainMesh.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	gm.glowMesh.Setup(vertices, tris)
+	gm.glowMesh.Highlight(triangles[0])
 	BuildIconBoard()
 	
 func BuildIconBoard():

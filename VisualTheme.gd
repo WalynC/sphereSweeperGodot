@@ -8,6 +8,8 @@ signal endWon
 signal lose
 signal endLose
 
+@export var numberColors : Array[Color]
+
 func _ready():
 	instance = self
 

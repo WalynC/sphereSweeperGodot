@@ -1,7 +1,6 @@
 extends Node
 class_name FireworksEffect
 
-@export var numberColors : Array[Color]
 @export var firework : PackedScene
 
 var timeToExplodeAll = 10.0
@@ -50,7 +49,7 @@ func _process(_delta):
 func Explode(explo):
 	var obj = GetExplosion()
 	inUse.append(obj)
-	obj.begin(numberColors[explo.mineCount], 
+	obj.begin(VisualTheme.instance.numberColors[explo.mineCount], 
 	(GameManager.instance.board.vertices[explo.vertIndices[0]] +
 	GameManager.instance.board.vertices[explo.vertIndices[1]] +
 	GameManager.instance.board.vertices[explo.vertIndices[2]]) /
