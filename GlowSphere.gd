@@ -3,6 +3,15 @@ extends MeshInstance3D
 var colors : PackedColorArray
 var array = []
 
+var glowSpeed = 3.0
+var timeBetweenWaves = .25
+var startTransparency = .66
+
+var glows = {}
+var toRemove = {}
+
+var needsUpdating = false
+
 func Setup(vertices, tris):
 	array.resize(Mesh.ARRAY_MAX)
 	array[Mesh.ARRAY_VERTEX] = vertices
@@ -10,11 +19,36 @@ func Setup(vertices, tris):
 	array[Mesh.ARRAY_INDEX] = tris
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
 
-func Highlight(t):
-	colors[t.vertIndices[0]] = VisualTheme.instance.numberColors[t.mineCount]
-	colors[t.vertIndices[1]] = VisualTheme.instance.numberColors[t.mineCount]
-	colors[t.vertIndices[2]] = VisualTheme.instance.numberColors[t.mineCount]
+func Add(orig, valid):
+	for t in valid.keys():
+		colors[t.vertIndices[0]] = VisualTheme.instance.numberColors[t.mineCount]
+		colors[t.vertIndices[1]] = VisualTheme.instance.numberColors[t.mineCount]
+		colors[t.vertIndices[2]] = VisualTheme.instance.numberColors[t.mineCount]
+	var glow = Glow.new()
+	glow.valid = valid.duplicate()
+	glow.lastChange = Time.get_ticks_msec() + timeBetweenWaves
+	for i in orig.sharedIndices:
+		glow.current[i]=null
+		for t in GameManager.instance.board.pointTriangleNeighbors[i]:
+			if (!valid.has(t)): continue
+			for v in t.vertIndices: glow.glowing[v] = null
+	glows[glow] = null
 	array[Mesh.ARRAY_COLOR] = colors
 	mesh.clear_surfaces()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
-	print(colors)
+
+func Reset():
+	for c in colors: c = Color(1,1,1,0)
+	glows.clear()
+	array[Mesh.ARRAY_COLOR] = colors
+	mesh.clear_surfaces()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
+
+func _process(delta):
+	for g in toRemove: glows.erase(g)
+	for g in glows: g.Update(delta)
+	if needsUpdating:
+		needsUpdating = false
+		array[Mesh.ARRAY_COLOR] = colors
+		mesh.clear_surfaces()
+		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)

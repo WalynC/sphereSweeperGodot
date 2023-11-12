@@ -292,7 +292,6 @@ func BuildBoardVisuals():
 	arrays[Mesh.ARRAY_COLOR] = colors
 	gm.mainMesh.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	gm.glowMesh.Setup(vertices, tris)
-	gm.glowMesh.Highlight(triangles[0])
 	BuildIconBoard()
 	
 func BuildIconBoard():
@@ -427,6 +426,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 			nonMines -= 1
 		toCheck = nextCheck.duplicate()
 	if !loading:
+		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate())
 		for t in revealed: doneCheck.erase(t)
 		if doneCheck.size() > 0:
 			if nonMines == 0:
