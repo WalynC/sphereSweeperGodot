@@ -56,6 +56,7 @@ func handle_touch(event: InputEventScreenTouch):
 			triangleHit = GetTriangleHit(event.position)
 			if (triangleHit < 0):
 				ResetTriangleHit()
+				SelectIndicator.inst.EndIndicate()
 	else:
 		var endHit = GetTriangleHit(event.position)
 		if (triangleHit == endHit):
@@ -85,6 +86,7 @@ func CompleteTap():
 	if flag:
 		Flag()
 	else:
+		SelectIndicator.inst.EndIndicate()
 		match confirmSelect:
 			0:
 				previousTriangleHit = triangleHit
@@ -92,9 +94,13 @@ func CompleteTap():
 			1:
 				if (previousTriangleHit != triangleHit):
 					previousTriangleHit = triangleHit
+					if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
+					else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
 				else: Confirm()
 			2:
 				previousTriangleHit = triangleHit
+				if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
+				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
 				pass
 
 func Flag():

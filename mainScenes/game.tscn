@@ -122,11 +122,16 @@ previousUI = NodePath("../PauseMenu")
 
 [node name="VisualTheme" parent="." instance=ExtResource("12_u3ofe")]
 
-[node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner")]
+[node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner", "outer")]
 script = ExtResource("13_jc1vu")
-inner = NodePath("MeshInstance3D")
+inner = NodePath("inner")
+outer = NodePath("outer")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SelectIndicator"]
+[node name="inner" type="MeshInstance3D" parent="SelectIndicator"]
+material_override = SubResource("StandardMaterial3D_fihdx")
+mesh = SubResource("ArrayMesh_hijw3")
+
+[node name="outer" type="MeshInstance3D" parent="SelectIndicator"]
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_hijw3")
 

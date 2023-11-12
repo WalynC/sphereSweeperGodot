@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3yt7115p46nf"]
+[gd_scene load_steps=10 format=3 uid="uid://c3yt7115p46nf"]
 
 [ext_resource type="Texture2D" uid="uid://bvecgguaytvhw" path="res://smoke.png" id="1_qomny"]
 [ext_resource type="Script" path="res://ExplosionParticles.gd" id="2_32kd8"]
@@ -10,7 +10,12 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1, 1, 0.270588, 0, 1, 1, 0, 0, 1,
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_r32ti"]
 gradient = SubResource("Gradient_t7sgv")
 
+[sub_resource type="Curve" id="Curve_rrhtk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_jhxt6"]
+curve = SubResource("Curve_rrhtk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vrgak"]
 resource_local_to_scene = true
