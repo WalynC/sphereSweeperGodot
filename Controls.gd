@@ -131,6 +131,7 @@ func Confirm():
 	if (triangleHit == -1): pass
 	Select()
 	previousTriangleHit = -1
+	SelectIndicator.inst.EndIndicate()
 	
 func Select():
 	if (!gm.board.boardGenerated):
