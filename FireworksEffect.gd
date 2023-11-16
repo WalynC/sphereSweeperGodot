@@ -60,6 +60,7 @@ func GetExplosion():
 		var n = firework.instantiate()
 		add_child(n)
 		n.home = self
+		n.setParticleScale()
 		n.reset_values()
 		return n
 	var ret = pool[pool.size()-1]

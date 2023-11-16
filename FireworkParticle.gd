@@ -7,6 +7,17 @@ var timePassed = 0
 var home
 var used = false
 
+func setParticleScale():
+	var scale = lerp(1,2,float(GameManager.instance.board.subdiv)/20.0)
+	setScales(self, scale)
+	setScales(star, scale)
+	setScales(explosion, scale)
+
+func setScales(particle, scale):
+	#particle.process_material.scale_min /= scale
+	#particle.process_material.scale_max /= scale
+	particle.draw_pass_1.size /= scale
+
 func reset_values():
 	if (used):
 		restart()
