@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=7 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
 [ext_resource type="PackedScene" uid="uid://b3tq7nhujaby" path="res://uiScenes/new_game_basic_menu.tscn" id="2_0f0tg"]
+[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_kkpnc"]
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
 [ext_resource type="Script" path="res://UserSettings.gd" id="5_4vrgx"]
@@ -11,24 +12,37 @@
 [node name="UserSettings" type="Node" parent="."]
 script = ExtResource("5_4vrgx")
 
-[node name="mainMenu" parent="." node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
-offset_top = 1024.0
-offset_bottom = 1024.0
+[node name="menu root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kkpnc")
+
+[node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
+layout_mode = 1
+offset_top = 1023.0
+offset_bottom = 1023.0
 basicGameUI = NodePath("../newGameBasicMenu")
 optionsMenuUI = NodePath("../options_menu")
 
-[node name="newGameBasicMenu" parent="." node_paths=PackedStringArray("mainMenuUI", "customGameUI") instance=ExtResource("2_0f0tg")]
+[node name="newGameBasicMenu" parent="menu root" node_paths=PackedStringArray("mainMenuUI", "customGameUI") instance=ExtResource("2_0f0tg")]
+layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 mainMenuUI = NodePath("../mainMenu")
 customGameUI = NodePath("../customGameMenu")
 
-[node name="customGameMenu" parent="." node_paths=PackedStringArray("basicGameUI") instance=ExtResource("3_m8si6")]
+[node name="customGameMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI") instance=ExtResource("3_m8si6")]
+layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 basicGameUI = NodePath("../newGameBasicMenu")
 
-[node name="options_menu" parent="." node_paths=PackedStringArray("previousUI") instance=ExtResource("4_dlvh5")]
+[node name="options_menu" parent="menu root" node_paths=PackedStringArray("previousUI") instance=ExtResource("4_dlvh5")]
+layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwue6rvli2gbi"]
+[gd_scene load_steps=2 format=3 uid="uid://bwue6rvli2gbi"]
 
 [ext_resource type="Script" path="res://WinScreen.gd" id="1_m8m2m"]
-[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_mnwpc"]
 
 [node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs")]
 layout_mode = 3
@@ -21,7 +20,6 @@ anchor_left = 0.4
 anchor_top = 0.7
 anchor_right = 0.6
 anchor_bottom = 0.75
-theme = ExtResource("2_mnwpc")
 text = "play again"
 
 [node name="menu" type="Button" parent="."]
@@ -31,7 +29,6 @@ anchor_left = 0.4
 anchor_top = 0.8
 anchor_right = 0.6
 anchor_bottom = 0.85
-theme = ExtResource("2_mnwpc")
 text = "menu"
 
 [node name="loseLabel" type="RichTextLabel" parent="."]
@@ -41,7 +38,6 @@ anchor_left = 0.2
 anchor_top = 0.1
 anchor_right = 0.8
 anchor_bottom = 0.2
-theme = ExtResource("2_mnwpc")
 text = "you win"
 
 [node name="time" type="RichTextLabel" parent="."]
@@ -51,7 +47,6 @@ anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.3
-theme = ExtResource("2_mnwpc")
 text = "time: 0"
 
 [node name="bombs hit" type="RichTextLabel" parent="."]
@@ -61,7 +56,6 @@ anchor_left = 0.2
 anchor_top = 0.3
 anchor_right = 0.8
 anchor_bottom = 0.4
-theme = ExtResource("2_mnwpc")
 text = "bombs hit: 0"
 
 [connection signal="pressed" from="play again" to="." method="_again_pressed"]

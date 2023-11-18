@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://31bhtpbuqpqp"]
+[gd_scene load_steps=2 format=3 uid="uid://31bhtpbuqpqp"]
 
 [ext_resource type="Script" path="res://GameUI.gd" id="1_3xq2l"]
-[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_wwf7q"]
 
 [node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton")]
 layout_mode = 3
@@ -25,7 +24,6 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 0.2
 anchor_bottom = 0.9
-theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
@@ -36,7 +34,6 @@ anchor_left = 0.8
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 0.9
-theme = ExtResource("2_wwf7q")
 button_mask = 3
 text = "pause"
 metadata/_edit_use_anchors_ = true
@@ -48,7 +45,6 @@ anchor_left = 0.4
 anchor_top = 0.8
 anchor_right = 0.6
 anchor_bottom = 0.9
-theme = ExtResource("2_wwf7q")
 button_mask = 3
 text = "confirm"
 metadata/_edit_use_anchors_ = true
@@ -59,7 +55,6 @@ anchors_preset = -1
 anchor_top = 0.9
 anchor_right = 0.2
 anchor_bottom = 1.0
-theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
@@ -70,7 +65,6 @@ anchor_left = 0.2
 anchor_top = 0.9
 anchor_right = 0.8
 anchor_bottom = 1.0
-theme = ExtResource("2_wwf7q")
 toggle_mode = true
 button_mask = 3
 text = "lock"
@@ -83,7 +77,6 @@ anchor_left = 0.8
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
