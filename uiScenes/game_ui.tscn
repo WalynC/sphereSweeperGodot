@@ -1,16 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://31bhtpbuqpqp"]
+[gd_scene load_steps=3 format=3 uid="uid://31bhtpbuqpqp"]
 
 [ext_resource type="Script" path="res://GameUI.gd" id="1_3xq2l"]
-[ext_resource type="StyleBox" uid="uid://bq0y127c58xo4" path="res://new_style_box_flat.tres" id="2_4q5bn"]
-[ext_resource type="StyleBox" uid="uid://by6fiwt4i4g4q" path="res://toggled.tres" id="3_naoas"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fat8n"]
-bg_color = Color(1, 0.329412, 0.372549, 1)
-
-[sub_resource type="Theme" id="Theme_jwlx6"]
-Button/styles/disabled = SubResource("StyleBoxFlat_fat8n")
-Button/styles/normal = ExtResource("2_4q5bn")
-Button/styles/pressed = ExtResource("3_naoas")
+[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_wwf7q"]
 
 [node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton")]
 layout_mode = 3
@@ -34,7 +25,7 @@ anchors_preset = -1
 anchor_top = 0.8
 anchor_right = 0.2
 anchor_bottom = 0.9
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
@@ -45,7 +36,7 @@ anchor_left = 0.8
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 0.9
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 button_mask = 3
 text = "pause"
 metadata/_edit_use_anchors_ = true
@@ -57,7 +48,7 @@ anchor_left = 0.4
 anchor_top = 0.8
 anchor_right = 0.6
 anchor_bottom = 0.9
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 button_mask = 3
 text = "confirm"
 metadata/_edit_use_anchors_ = true
@@ -68,7 +59,7 @@ anchors_preset = -1
 anchor_top = 0.9
 anchor_right = 0.2
 anchor_bottom = 1.0
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
@@ -79,7 +70,7 @@ anchor_left = 0.2
 anchor_top = 0.9
 anchor_right = 0.8
 anchor_bottom = 1.0
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 toggle_mode = true
 button_mask = 3
 text = "lock"
@@ -92,7 +83,7 @@ anchor_left = 0.8
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource("Theme_jwlx6")
+theme = ExtResource("2_wwf7q")
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 

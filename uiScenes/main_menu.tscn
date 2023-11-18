@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp2rlrqracaje"]
+[gd_scene load_steps=3 format=3 uid="uid://cp2rlrqracaje"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_lohpg"]
+[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_7yfb4"]
 
 [node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton")]
 layout_mode = 3
@@ -19,6 +20,7 @@ anchor_left = 0.3
 anchor_top = 0.3
 anchor_right = 0.7
 anchor_bottom = 0.4
+theme = ExtResource("2_7yfb4")
 text = "continue"
 
 [node name="new" type="Button" parent="."]
@@ -28,6 +30,7 @@ anchor_left = 0.3
 anchor_top = 0.4
 anchor_right = 0.7
 anchor_bottom = 0.5
+theme = ExtResource("2_7yfb4")
 text = "new"
 
 [node name="tut" type="Button" parent="."]
@@ -37,6 +40,7 @@ anchor_left = 0.3
 anchor_top = 0.5
 anchor_right = 0.7
 anchor_bottom = 0.6
+theme = ExtResource("2_7yfb4")
 text = "tutorial"
 
 [node name="opt" type="Button" parent="."]
@@ -46,6 +50,7 @@ anchor_left = 0.3
 anchor_top = 0.6
 anchor_right = 0.7
 anchor_bottom = 0.7
+theme = ExtResource("2_7yfb4")
 text = "options"
 
 [node name="quit" type="Button" parent="."]
@@ -55,6 +60,7 @@ anchor_left = 0.3
 anchor_top = 0.7
 anchor_right = 0.7
 anchor_bottom = 0.8
+theme = ExtResource("2_7yfb4")
 text = "quit
 "
 
