@@ -10,16 +10,14 @@ var called = false
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
+	densities[(GameManager.density/5)-1].button_pressed = true
+	sizes[(GameManager.size-3)/2].button_pressed = true
 
 func exit_screen():
 	UserSettings.SaveBasicSettings()
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,1024),.5)
 	return tween
-
-func _ready():
-	densities[(GameManager.density/5)-1].button_pressed = true
-	sizes[(GameManager.size-3)/2].button_pressed = true
 
 func _change_density(_toggle, density):
 	if called: return
