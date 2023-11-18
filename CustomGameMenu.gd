@@ -7,11 +7,6 @@ extends Control
 
 @export var basicGameUI:Control
 
-func _ready():
-	densText.text = str(GameManager.advDensity)
-	sizeText.text = str(GameManager.advSize)
-	densRange.value = GameManager.advDensity
-	sizeRange.value = GameManager.advSize
 
 func _new_game_adv():
 	GameManager.gameMode = 1
@@ -34,6 +29,10 @@ func size_changed(boardSize):
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
+	densText.text = str(GameManager.advDensity)
+	sizeText.text = str(GameManager.advSize)
+	densRange.value = GameManager.advDensity
+	sizeRange.value = GameManager.advSize
 
 func exit_screen():
 	UserSettings.SaveCustomGameSettings()
