@@ -31,10 +31,12 @@ signal winEvent()
 signal loseEvent()
 
 @export var controls: Controls
+@export var visLoad: VisualLoader
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instance = self
+	visLoad.init()
 	board.gm = self
 	isphere.gm = self
 	if (loading):

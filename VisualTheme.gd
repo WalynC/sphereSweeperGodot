@@ -8,13 +8,34 @@ signal endWon
 signal lose
 signal endLose
 
+const gold = (1 + sqrt(5))/2
+
 @export var numberColors : Array[Color]
 @export var theme : Theme
 
 func LoadVisualTheme():
 	instance = self
 	VisualLoader.instance.controlRoot.theme = theme
-	print("visual theme loaded")
+	match VisualLoader.instance.scene:
+		VisualLoader.SceneType.MainMenu:
+			LoadMainMenuVisuals()
+		VisualLoader.SceneType.Game:
+			LoadGameVisuals()
+
+func LoadMainMenuVisuals():
+	pass
+
+func LoadGameVisuals():
+	pass
+
+func GetBaseColor_int(i):
+	return GetBaseColor(GameManager.instance.board.vertices[i])
+
+func GetBaseColor(vector):
+	return Color(lerpf(0, 1, invlerp(-gold, gold, vector.x)),lerpf(0, 1, invlerp(-gold, gold, vector.y)),lerpf(0, 1, invlerp(-gold, gold, vector.z)))
+
+static func invlerp(a, b, v):
+	return (v-a)/(b-a)
 
 static func won():
 	instance.emit_signal("win")

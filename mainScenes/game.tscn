@@ -51,12 +51,13 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad")]
 script = ExtResource("1_2oltq")
 mainMesh = NodePath("board")
 iconMesh = NodePath("icosphere")
 glowMesh = NodePath("glowsphere")
 controls = NodePath("Controls")
+visLoad = NodePath("VisualLoader")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mnlou")

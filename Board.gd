@@ -360,7 +360,7 @@ func ResetBoard():
 		t.flagged = false
 		t.ChangeIcon(2,4,gm)
 		for i in range(0,3):
-			colors[t.vertIndices[i]] = Color(smoothstep(-gold,gold,vertices[i].x),smoothstep(-gold,gold,vertices[i].y),smoothstep(-gold,gold,vertices[i].z))
+			colors[t.vertIndices[i]] = VisualTheme.instance.GetBaseColor(vertices[i])
 	colorsChanged = true
 	
 func Flag(selected):

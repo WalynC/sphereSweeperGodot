@@ -3,7 +3,7 @@ class_name VisualLoader
 
 static var theme = 0
 
-enum SceneType {Main, Game, Tutorial}
+enum SceneType {MainMenu, Game, Tutorial}
 @export var scene : SceneType
 
 @export var themePaths: Array[PackedScene]
@@ -13,6 +13,9 @@ static var instance
 
 
 func _ready():
+	if (instance != self): init()
+
+func init():
 	instance = self
 	#load visual theme and tell it to process
 	var tInst = themePaths[theme].instantiate()
