@@ -13,9 +13,9 @@
 [ext_resource type="Script" path="res://rotate.gd" id="9_m8nli"]
 [ext_resource type="Script" path="res://Timer.gd" id="10_6cnhi"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
-[ext_resource type="PackedScene" uid="uid://bd17xvf5sbmuf" path="res://visualThemes/visual_theme.tscn" id="12_u3ofe"]
 [ext_resource type="Script" path="res://SelectIndicator.gd" id="13_jc1vu"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
+[ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4sy1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -97,32 +97,6 @@ script = ExtResource("4_umdi1")
 gm = NodePath("..")
 pivot = NodePath("../Node3D")
 
-[node name="lose_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_ya7ol")]
-offset_top = 1024.0
-offset_bottom = 1024.0
-gm = NodePath("..")
-gameUI = NodePath("../game_ui")
-
-[node name="win_screen" parent="." node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("6_h0wn7")]
-offset_top = 1024.0
-offset_bottom = 1024.0
-gm = NodePath("..")
-gameUI = NodePath("../game_ui")
-
-[node name="game_ui" parent="." node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_su4m3")]
-offset_top = 1024.0
-offset_bottom = 1024.0
-gm = NodePath("..")
-controls = NodePath("../Controls")
-pauseScreen = NodePath("../PauseMenu")
-
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("8_6obnv")]
-offset_top = 1024.0
-offset_bottom = 1024.0
-gm = NodePath("..")
-gameUI = NodePath("../game_ui")
-optionsUI = NodePath("../options_menu")
-
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("9_m8nli")
 
@@ -134,12 +108,8 @@ fov = 30.0
 script = ExtResource("10_6cnhi")
 gm = NodePath("..")
 
-[node name="options_menu" parent="." node_paths=PackedStringArray("previousUI") instance=ExtResource("11_uimh0")]
-offset_top = 1024.0
-offset_bottom = 1024.0
-previousUI = NodePath("../PauseMenu")
-
-[node name="VisualTheme" parent="." instance=ExtResource("12_u3ofe")]
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("14_o12r5")]
+controlRoot = NodePath("../ControlRoot")
 
 [node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner", "outer")]
 script = ExtResource("13_jc1vu")
@@ -154,6 +124,51 @@ mesh = SubResource("ArrayMesh_hijw3")
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_cy6in")
 
-[connection signal="restart_button" from="lose_screen" to="." method="reset_game"]
-[connection signal="again_button" from="win_screen" to="." method="reset_game"]
-[connection signal="new_game" from="PauseMenu" to="." method="reset_game"]
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="lose_screen" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_ya7ol")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 1024.0
+gm = NodePath("../..")
+gameUI = NodePath("../game_ui")
+
+[node name="win_screen" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("6_h0wn7")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 1024.0
+gm = NodePath("../..")
+gameUI = NodePath("../game_ui")
+
+[node name="game_ui" parent="ControlRoot" node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_su4m3")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 1024.0
+gm = NodePath("../..")
+controls = NodePath("../../Controls")
+pauseScreen = NodePath("../PauseMenu")
+
+[node name="PauseMenu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("8_6obnv")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 1024.0
+gm = NodePath("../..")
+gameUI = NodePath("../game_ui")
+optionsUI = NodePath("../options_menu")
+
+[node name="options_menu" parent="ControlRoot" node_paths=PackedStringArray("previousUI") instance=ExtResource("11_uimh0")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 1024.0
+previousUI = NodePath("../PauseMenu")
+
+[connection signal="restart_button" from="ControlRoot/lose_screen" to="." method="reset_game"]
+[connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
+[connection signal="new_game" from="ControlRoot/PauseMenu" to="." method="reset_game"]

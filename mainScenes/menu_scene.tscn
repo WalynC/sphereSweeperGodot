@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
 [ext_resource type="PackedScene" uid="uid://b3tq7nhujaby" path="res://uiScenes/new_game_basic_menu.tscn" id="2_0f0tg"]
-[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_kkpnc"]
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
 [ext_resource type="Script" path="res://UserSettings.gd" id="5_4vrgx"]
+[ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
 
 [node name="MenuScene" type="Node"]
 
@@ -19,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_kkpnc")
 
 [node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
 layout_mode = 1
@@ -46,3 +45,6 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
+
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("7_csdbo")]
+controlRoot = NodePath("../menu root")

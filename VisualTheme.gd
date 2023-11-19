@@ -9,9 +9,12 @@ signal lose
 signal endLose
 
 @export var numberColors : Array[Color]
+@export var theme : Theme
 
-func _ready():
+func LoadVisualTheme():
 	instance = self
+	VisualLoader.instance.controlRoot.theme = theme
+	print("visual theme loaded")
 
 static func won():
 	instance.emit_signal("win")

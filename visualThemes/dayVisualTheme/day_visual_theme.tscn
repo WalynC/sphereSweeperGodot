@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://b10grb17d2j0h"]
+
+[ext_resource type="Script" path="res://VisualTheme.gd" id="1_8b5op"]
+[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_f58ti"]
+[ext_resource type="Script" path="res://FireworksEffect.gd" id="2_p3pj7"]
+[ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="3_mjqkn"]
+[ext_resource type="Script" path="res://ExplosionEffect.gd" id="4_utmo8"]
+[ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="5_coj37"]
+
+[node name="VisualTheme" type="Node"]
+script = ExtResource("1_8b5op")
+numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
+theme = ExtResource("2_f58ti")
+
+[node name="FireworksEffect" type="Node" parent="."]
+script = ExtResource("2_p3pj7")
+firework = ExtResource("3_mjqkn")
+
+[node name="ExplosionEffect" type="Node" parent="."]
+script = ExtResource("4_utmo8")
+firework = ExtResource("5_coj37")
+
+[connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
+[connection signal="endWon" from="." to="FireworksEffect" method="Reset"]
+[connection signal="lose" from="." to="ExplosionEffect" method="StartExplosion"]
+[connection signal="win" from="." to="FireworksEffect" method="StartExplosion"]

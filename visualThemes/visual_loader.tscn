@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo5ntnh4m0fh2"]
+
+[ext_resource type="Script" path="res://VisualLoader.gd" id="1_wudq1"]
+[ext_resource type="PackedScene" uid="uid://b10grb17d2j0h" path="res://visualThemes/dayVisualTheme/day_visual_theme.tscn" id="2_mjp1q"]
+
+[node name="VisualLoader" type="Node"]
+script = ExtResource("1_wudq1")
+themePaths = Array[PackedScene]([ExtResource("2_mjp1q")])
