@@ -21,6 +21,7 @@ static func save_data():
 	file.close()
 
 static func save_game():
+	if saveData.selected.size() == 0: return
 	saveData.rot = Controls.instance.pivot.basis
 	saveData.zoom = Controls.instance.cam.fov
 	save_data()
