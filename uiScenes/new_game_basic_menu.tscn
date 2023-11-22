@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3tq7nhujaby"]
 
-[ext_resource type="Script" path="res://NewGameBasicMenu.gd" id="1_i18yl"]
+[ext_resource type="Script" path="res://scripts/NewGameBasicMenu.gd" id="1_i18yl"]
 
 [node name="newGameBasicMenu" type="Control" node_paths=PackedStringArray("densities", "sizes")]
 layout_mode = 3

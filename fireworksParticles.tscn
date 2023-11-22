@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwj754524ns8j" path="res://trail - Copy.png" id="1_3suwr"]
 [ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="1_dq0o4"]
-[ext_resource type="Script" path="res://FireworkParticle.gd" id="2_2s7y5"]
+[ext_resource type="Script" path="res://scripts/FireworkParticle.gd" id="2_2s7y5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2ere"]
 resource_local_to_scene = true

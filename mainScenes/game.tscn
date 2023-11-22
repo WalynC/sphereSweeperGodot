@@ -1,19 +1,19 @@
 [gd_scene load_steps=27 format=3 uid="uid://usiusro6nnqg"]
 
-[ext_resource type="Script" path="res://GameManager.gd" id="1_2oltq"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
-[ext_resource type="Script" path="res://Controls.gd" id="4_umdi1"]
 [ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="4_w2e11"]
-[ext_resource type="Script" path="res://GlowSphere.gd" id="5_oelwr"]
+[ext_resource type="Script" path="res://scripts/GlowSphere.gd" id="5_lsqos"]
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
+[ext_resource type="Script" path="res://scripts/Controls.gd" id="6_pd3oa"]
+[ext_resource type="Script" path="res://scripts/rotate.gd" id="7_o5242"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
 [ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
-[ext_resource type="Script" path="res://rotate.gd" id="9_m8nli"]
-[ext_resource type="Script" path="res://Timer.gd" id="10_6cnhi"]
+[ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
+[ext_resource type="Script" path="res://scripts/SelectIndicator.gd" id="10_oj52j"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
-[ext_resource type="Script" path="res://SelectIndicator.gd" id="13_jc1vu"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
 
@@ -52,7 +52,7 @@ resource_local_to_scene = true
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad")]
-script = ExtResource("1_2oltq")
+script = ExtResource("1_phl8j")
 mainMesh = NodePath("board")
 iconMesh = NodePath("icosphere")
 glowMesh = NodePath("glowsphere")
@@ -91,29 +91,29 @@ transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_oukfc")
 skeleton = NodePath("../icosphere")
-script = ExtResource("5_oelwr")
+script = ExtResource("5_lsqos")
 
 [node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
-script = ExtResource("4_umdi1")
+script = ExtResource("6_pd3oa")
 gm = NodePath("..")
 pivot = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("9_m8nli")
+script = ExtResource("7_o5242")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 fov = 30.0
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
-script = ExtResource("10_6cnhi")
+script = ExtResource("8_jmfnr")
 gm = NodePath("..")
 
 [node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("14_o12r5")]
 controlRoot = NodePath("../ControlRoot")
 
 [node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner", "outer")]
-script = ExtResource("13_jc1vu")
+script = ExtResource("10_oj52j")
 inner = NodePath("inner")
 outer = NodePath("outer")
 

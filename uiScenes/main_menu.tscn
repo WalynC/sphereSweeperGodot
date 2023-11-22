@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp2rlrqracaje"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_lohpg"]
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_lohpg"]
 
 [node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton")]
 layout_mode = 3

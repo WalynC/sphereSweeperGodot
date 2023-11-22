@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6t1icjq8ahl8"]
 
-[ext_resource type="Script" path="res://CustomGameMenu.gd" id="1_dj66g"]
+[ext_resource type="Script" path="res://scripts/CustomGameMenu.gd" id="1_dj66g"]
 
 [node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText", "densRange", "sizeRange")]
 layout_mode = 3

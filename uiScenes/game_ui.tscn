@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://31bhtpbuqpqp"]
 
-[ext_resource type="Script" path="res://GameUI.gd" id="1_3xq2l"]
+[ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_3xq2l"]
 
 [node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton")]
 layout_mode = 3
