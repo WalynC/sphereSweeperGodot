@@ -27,6 +27,9 @@ func exit_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,1024),.5)
 	return tween
-	
+
+func change_theme_pressed(val):
+	VisualLoader.instance.change_button_pressed(val)
+
 func back_button_pressed():
 	exit_screen().tween_callback(previousUI.enter_screen)

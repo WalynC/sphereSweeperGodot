@@ -18,6 +18,23 @@ func _ready():
 func init():
 	instance = self
 	#load visual theme and tell it to process
+	loadTheme()
+
+func loadTheme():
 	var tInst = themePaths[theme].instantiate()
 	add_child(tInst)
 	tInst.LoadVisualTheme()
+
+func unloadTheme():
+	VisualTheme.instance.UnloadVisualTheme()
+	VisualTheme.instance.queue_free()
+
+func change_button_pressed(increase):
+	var next = 1
+	if !increase: next = -1
+	changeTheme((theme+next)%themePaths.size())
+
+func changeTheme(i):
+	unloadTheme()
+	theme = i
+	loadTheme()
