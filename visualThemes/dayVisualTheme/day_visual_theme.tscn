@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b10grb17d2j0h"]
 
-[ext_resource type="Script" path="res://scripts/VisualTheme.gd" id="1_8b5op"]
+[ext_resource type="Script" path="res://scripts/visual themes/VisualTheme.gd" id="1_8b5op"]
 [ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_f58ti"]
 [ext_resource type="Script" path="res://scripts/FireworksEffect.gd" id="2_p3pj7"]
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="3_mjqkn"]
