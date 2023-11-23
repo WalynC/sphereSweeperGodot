@@ -47,6 +47,9 @@ func GetBaseColor_int(i):
 func GetBaseColor(vector):
 	return Color(lerpf(0, 1, invlerp(-gold, gold, vector.x)),lerpf(0, 1, invlerp(-gold, gold, vector.y)),lerpf(0, 1, invlerp(-gold, gold, vector.z)))
 
+func GetClearedColor(vector):
+	return Color.DIM_GRAY
+
 static func invlerp(a, b, v):
 	return (v-a)/(b-a)
 

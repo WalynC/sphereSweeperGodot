@@ -275,7 +275,7 @@ func BuildBoardVisuals():
 			uvs[i] = uvForEmpty[i%3]
 			if t.reveal:
 				if t.mine: colors[i] = Color.RED
-				else: colors[i] = Color(smoothstep(-gold,gold,vertices[i].x),smoothstep(-gold,gold,vertices[i].y),smoothstep(-gold,gold,vertices[i].z)) * .2
+				else: colors[i] = VisualTheme.instance.GetClearedColor(vertices[i])
 			else:
 				colors[i] = VisualTheme.instance.GetBaseColor(vertices[i])
 			gm.glowMesh.colors[i] = Color(1,1,1,0)

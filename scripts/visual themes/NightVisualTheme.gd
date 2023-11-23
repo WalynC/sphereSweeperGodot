@@ -11,3 +11,6 @@ func GetBaseColor(vector):
 		randColor = randomColors[GameManager.visRNG.randi_range(0,randomColors.size()-1)]
 	randomCount-=1
 	return randColor
+
+func GetClearedColor(vector):
+	return Color.BLACK
