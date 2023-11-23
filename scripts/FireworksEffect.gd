@@ -33,7 +33,7 @@ func StartExplosion():
 		mined.append(GameManager.instance.board.triangles[num])
 	timeBetweenExplosions = (timeToExplodeAll / float(mined.size())*1000) #milliseconds
 	while mined.size() > 0:
-		var rando = randi() % mined.size()
+		var rando = GameManager.visRNG.randi() % mined.size()
 		explosions.insert(0,mined[rando])
 		mined.remove_at(rando)
 

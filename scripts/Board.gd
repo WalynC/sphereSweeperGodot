@@ -37,9 +37,6 @@ func _ready():
 	mined.clear()
 	numbered.clear()
 	build_board()
-	if (GameManager.loading): LoadSave()
-	else:
-		boardGenerated = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -262,7 +259,6 @@ func build_board():
 			for neighbor in pointTriangleNeighbors[tri.sharedIndices[i]]:
 				tri.neighbors[neighbor] = null
 		tri.neighbors.erase(tri)
-	BuildBoardVisuals()
 	
 func BuildBoardVisuals():
 	tris= []

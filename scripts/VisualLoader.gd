@@ -11,14 +11,13 @@ enum SceneType {MainMenu, Game, Tutorial}
 
 static var instance
 
-
 func _ready():
-	if (scene != SceneType.Game && instance != self): 
+	if (scene == SceneType.MainMenu):
 		init()
+		loadTheme()
 
 func init():
 	instance = self
-	loadTheme()
 
 func loadTheme():
 	var tInst = themePaths[theme].instantiate()
@@ -36,5 +35,7 @@ func change_button_pressed(increase):
 
 func changeTheme(i):
 	unloadTheme()
+	if (scene == SceneType.Game):
+		GameManager.instance.reset_visual_rng()
 	theme = i
 	loadTheme()

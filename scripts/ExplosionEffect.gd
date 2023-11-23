@@ -25,7 +25,7 @@ func StartExplosion():
 		mined.append(GameManager.instance.board.triangles[num])
 	for i in range(0, 20):
 		if mined.size() == 0: break
-		var rando = randi() % mined.size()
+		var rando = GameManager.visRNG.randi() % mined.size()
 		Explode(mined[rando])
 		mined.remove_at(rando)
 

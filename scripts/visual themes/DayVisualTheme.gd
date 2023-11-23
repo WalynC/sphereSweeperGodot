@@ -16,18 +16,6 @@ func UnloadVisualTheme():
 		VisualLoader.SceneType.Game:
 			UnloadGameVisuals()
 
-func UnloadMainMenuVisuals():
-	pass
-
-func UnloadGameVisuals():
-	pass
-
-func LoadMainMenuVisuals():
-	pass
-
-func LoadGameVisuals():
-	pass
-
 func GetBaseColor_int(i):
 	return GetBaseColor(GameManager.instance.board.vertices[i])
 

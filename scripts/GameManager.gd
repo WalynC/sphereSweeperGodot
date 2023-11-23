@@ -41,7 +41,7 @@ func _ready():
 	visLoad.init()
 	if (loading):
 		gameRNG.seed = SaveManager.saveData.gameSeed
-		visRNG.seed = SaveManager.saveData.visualSeed
+		reset_visual_rng()
 		board.subdiv = SaveManager.saveData.size
 		board.percentMined = SaveManager.saveData.percentMined
 		controls.pivot.basis = SaveManager.saveData.rot
@@ -50,6 +50,7 @@ func _ready():
 		new_game()
 	board._ready()
 	visLoad.loadTheme()
+	if (loading): board.LoadSave()
 
 func win():
 	emit_signal("winEvent")
@@ -73,9 +74,12 @@ func new_game(): #called from _ready if not loading save data
 	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
 	SaveManager.saveData.visualSeed = SaveManager.saveData.gameSeed
 	gameRNG.seed = SaveManager.saveData.gameSeed
-	visRNG.seed = SaveManager.saveData.visualSeed
+	reset_visual_rng()
 	SaveManager.saveData.percentMined = board.percentMined
 	SaveManager.saveData.size = board.subdiv
+
+func reset_visual_rng():
+	visRNG.seed = SaveManager.saveData.visualSeed
 
 func reset_game():
 	reset_save_game()
@@ -93,6 +97,7 @@ func reset_save_game():
 	SaveManager.saveData.size = board.subdiv
 	#set seed
 	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
+	reset_visual_rng()
 	gameRNG.seed = SaveManager.saveData.gameSeed
 
 var debug = false
