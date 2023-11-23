@@ -1,8 +1,8 @@
 
 var subdiv: int = 4
 var percentMined: float = 10
-var Triangle = load("res://Triangle.gd")
-var IcoFace = load("res://IcoFace.gd")
+var Triangle = load("res://scripts/Triangle.gd")
+var IcoFace = load("res://scripts/IcoFace.gd")
 var triangles: Array
 var vertices: PackedVector3Array
 var boardGenerated: bool = false
