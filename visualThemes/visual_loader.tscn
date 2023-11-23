@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo5ntnh4m0fh2"]
+[gd_scene load_steps=4 format=3 uid="uid://bo5ntnh4m0fh2"]
 
 [ext_resource type="Script" path="res://scripts/VisualLoader.gd" id="1_wudq1"]
 [ext_resource type="PackedScene" uid="uid://b10grb17d2j0h" path="res://visualThemes/dayVisualTheme/day_visual_theme.tscn" id="2_mjp1q"]
+[ext_resource type="PackedScene" uid="uid://37pv38vmtiag" path="res://visualThemes/nightVisualTheme/night_visual_theme.tscn" id="3_j6u6s"]
 
 [node name="VisualLoader" type="Node"]
 script = ExtResource("1_wudq1")
-themePaths = Array[PackedScene]([ExtResource("2_mjp1q")])
+themePaths = Array[PackedScene]([ExtResource("2_mjp1q"), ExtResource("3_j6u6s")])

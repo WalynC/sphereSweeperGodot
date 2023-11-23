@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://37pv38vmtiag"]
 
-[ext_resource type="Script" path="res://scripts/visual themes/VisualTheme.gd" id="1_r63ji"]
-[ext_resource type="Theme" uid="uid://cafactgbmt" path="res://visualThemes/dayVisualTheme/dayTheme.tres" id="2_acqtl"]
+[ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
+[ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
 [ext_resource type="Script" path="res://scripts/FireworksEffect.gd" id="3_ldqnx"]
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="4_bb0qw"]
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="5_fxv7w"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="6_3gh2b"]
 
 [node name="VisualTheme" type="Node"]
-script = ExtResource("1_r63ji")
+script = ExtResource("1_k8isp")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
-theme = ExtResource("2_acqtl")
+theme = ExtResource("2_14pb6")
 
 [node name="FireworksEffect" type="Node" parent="."]
 script = ExtResource("3_ldqnx")
