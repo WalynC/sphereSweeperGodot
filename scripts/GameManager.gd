@@ -36,9 +36,9 @@ signal loseEvent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instance = self
-	visLoad.init()
 	board.gm = self
 	isphere.gm = self
+	visLoad.init()
 	if (loading):
 		gameRNG.seed = SaveManager.saveData.gameSeed
 		visRNG.seed = SaveManager.saveData.visualSeed
@@ -49,6 +49,7 @@ func _ready():
 	else:
 		new_game()
 	board._ready()
+	visLoad.loadTheme()
 
 func win():
 	emit_signal("winEvent")

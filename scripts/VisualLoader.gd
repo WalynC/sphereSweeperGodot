@@ -13,11 +13,11 @@ static var instance
 
 
 func _ready():
-	if (instance != self): init()
+	if (scene != SceneType.Game && instance != self): 
+		init()
 
 func init():
 	instance = self
-	#load visual theme and tell it to process
 	loadTheme()
 
 func loadTheme():

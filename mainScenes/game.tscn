@@ -110,6 +110,7 @@ script = ExtResource("8_jmfnr")
 gm = NodePath("..")
 
 [node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("14_o12r5")]
+scene = 1
 controlRoot = NodePath("../ControlRoot")
 
 [node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner", "outer")]

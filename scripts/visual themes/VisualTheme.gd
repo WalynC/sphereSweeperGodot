@@ -39,7 +39,7 @@ func LoadMainMenuVisuals():
 	pass
 
 func LoadGameVisuals():
-	pass
+	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
 
 func GetBaseColor_int(i):
 	return GetBaseColor(GameManager.instance.board.vertices[i])
