@@ -14,3 +14,10 @@ func GetBaseColor(vector):
 
 func GetClearedColor(vector):
 	return Color.BLACK
+	
+func LoadGameVisuals():
+	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
+	print("loading night game visuals")
+
+func UnloadGameVisuals():
+	print("unloading night game visuals")
