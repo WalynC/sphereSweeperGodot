@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ly6v5kdqotjd"]
+[gd_scene load_steps=6 format=3 uid="uid://ly6v5kdqotjd"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/day/CloudManager.gd" id="1_sm0pl"]
+[ext_resource type="Material" uid="uid://dglqm4i42x5w" path="res://visualThemes/dayVisualTheme/CloudShader.tres" id="2_akwwm"]
 [ext_resource type="Texture2D" uid="uid://xtuvs8ptx7u5" path="res://clouds2.png" id="2_amaqu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jnuc5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c12y4"]
 transparency = 1
@@ -10,13 +13,23 @@ shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.133333)
 albedo_texture = ExtResource("2_amaqu")
 
-[sub_resource type="SphereMesh" id="SphereMesh_jnuc5"]
-
 [node name="CloudManager" type="Node" node_paths=PackedStringArray("clouds")]
 script = ExtResource("1_sm0pl")
-clouds = [NodePath("MeshInstance3D")]
+clouds = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.126666, -0.599586, 0.41343)
+material_override = ExtResource("2_akwwm")
+mesh = SubResource("SphereMesh_jnuc5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_c12y4")
+mesh = SubResource("SphereMesh_jnuc5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_c12y4")
 mesh = SubResource("SphereMesh_jnuc5")

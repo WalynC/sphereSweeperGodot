@@ -15,8 +15,9 @@ func GenerateClouds():
 		clouds[i].rotate_object_local(Vector3.UP, deg_to_rad(GameManager.visRNG.randf_range(-180, 180)))
 		clouds[i].rotate_object_local(Vector3.RIGHT, deg_to_rad(GameManager.visRNG.randf_range(-180, 180)))
 		clouds[i].rotate_object_local(Vector3.FORWARD, deg_to_rad(GameManager.visRNG.randf_range(-180, 180)))
+		clouds[i].rotation *= Quaternion.from_euler(rotDir[i] * time)
 
 func _process(delta):
-	#if paused return
+	if (GameManager.instance.paused): return
 	for i in range(0, clouds.size()):
 		clouds[i].rotation *= Quaternion.from_euler(rotDir[i] * delta)
