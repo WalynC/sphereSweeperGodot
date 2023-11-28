@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
 [ext_resource type="Script" path="res://scripts/Controls.gd" id="6_pd3oa"]
-[ext_resource type="Script" path="res://scripts/rotate.gd" id="7_o5242"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
 [ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
@@ -100,7 +99,6 @@ gm = NodePath("..")
 pivot = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("7_o5242")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
