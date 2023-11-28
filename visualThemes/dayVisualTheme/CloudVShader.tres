@@ -1,9 +1,10 @@
-[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://gt6hyoqv6abc"]
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://gt6hyoqv6abc"]
 
 [ext_resource type="Texture2D" uid="uid://xtuvs8ptx7u5" path="res://clouds2.png" id="1_6mj5c"]
 
 [sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_7hbd1"]
 output_port_for_preview = 0
+default_input_values = [2, true, 3, 1.0]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_fm1nd"]
 output_port_for_preview = 0
@@ -16,36 +17,23 @@ texture = ExtResource("1_6mj5c")
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_xy7jh"]
-input_name = "vertex"
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_tvpx7"]
+default_input_values = [0, 0.0, 1, 0.25]
+operator = 1
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l4w0m"]
-default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(-1, -1, -1)]
-operator = 2
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8p1r0"]
+output_port_for_preview = 0
+operator = 7
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_xu6s8"]
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, cull_front, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
 uniform sampler2D tex_frg_5;
 
 
-
-void vertex() {
-// Input:2
-	vec3 n_out2p0 = VERTEX;
-
-
-// VectorOp:3
-	vec3 n_in3p1 = vec3(-1.00000, -1.00000, -1.00000);
-	vec3 n_out3p0 = n_out2p0 * n_in3p1;
-
-
-// Output:0
-	VERTEX = n_out3p0;
-
-
-}
 
 void fragment() {
 // Texture2D:5
@@ -57,11 +45,25 @@ void fragment() {
 
 
 // Fresnel:2
-	float n_out2p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out3p0);
+	float n_out2p0 = pow(clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out3p0);
+
+
+// FloatOp:7
+	float n_in7p1 = 0.25000;
+	float n_out7p0 = n_out2p0 - n_in7p1;
+
+
+// Fresnel:9
+	float n_in9p3 = 1.00000;
+	float n_out9p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in9p3);
+
+
+// FloatOp:8
+	float n_out8p0 = min(n_out7p0, n_out9p0);
 
 
 // FloatOp:6
-	float n_out6p0 = n_out5p0.x * n_out2p0;
+	float n_out6p0 = n_out5p0.x * n_out8p0;
 
 
 // Output:0
@@ -71,12 +73,10 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-406.213, -56.7343)
-nodes/vertex/2/node = SubResource("VisualShaderNodeInput_xy7jh")
-nodes/vertex/2/position = Vector2(-240, 240)
-nodes/vertex/3/node = SubResource("VisualShaderNodeVectorOp_l4w0m")
-nodes/vertex/3/position = Vector2(140, 260)
-nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 3, 0, 0, 0)
+graph_offset = Vector2(-567.714, -201.162)
+modes/cull = 1
+flags/unshaded = true
+flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(720, -60)
 nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_7hbd1")
 nodes/fragment/2/position = Vector2(-680, 180)
@@ -85,5 +85,11 @@ nodes/fragment/3/position = Vector2(-940, 320)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_7xnhv")
 nodes/fragment/5/position = Vector2(-460, -260)
 nodes/fragment/6/node = SubResource("VisualShaderNodeFloatOp_fhnl7")
-nodes/fragment/6/position = Vector2(60, 60)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 3, 5, 0, 0, 0, 5, 0, 6, 0, 6, 0, 0, 1, 2, 0, 6, 1)
+nodes/fragment/6/position = Vector2(200, 0)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_tvpx7")
+nodes/fragment/7/position = Vector2(-360, 140)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_8p1r0")
+nodes/fragment/8/position = Vector2(-83.7133, 169.021)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFresnel_xu6s8")
+nodes/fragment/9/position = Vector2(-540, 520)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 3, 5, 0, 6, 0, 2, 0, 7, 0, 7, 0, 8, 0, 8, 0, 6, 1, 9, 0, 8, 1, 5, 0, 0, 0, 6, 0, 0, 1)
