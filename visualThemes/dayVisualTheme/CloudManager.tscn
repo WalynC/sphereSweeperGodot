@@ -13,7 +13,7 @@ shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.133333)
 albedo_texture = ExtResource("2_amaqu")
 
-[node name="CloudManager" type="Node" node_paths=PackedStringArray("clouds")]
+[node name="CloudManager" type="Node3D" node_paths=PackedStringArray("clouds")]
 script = ExtResource("1_sm0pl")
 clouds = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3")]
 

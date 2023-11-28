@@ -51,39 +51,45 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot")]
 script = ExtResource("1_phl8j")
-mainMesh = NodePath("board")
-iconMesh = NodePath("icosphere")
-glowMesh = NodePath("glowsphere")
+mainMesh = NodePath("WorldPivot/board")
+iconMesh = NodePath("WorldPivot/icosphere")
+glowMesh = NodePath("WorldPivot/glowsphere")
 controls = NodePath("Controls")
 visLoad = NodePath("VisualLoader")
+worldPivot = NodePath("WorldPivot")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mnlou")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
+[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
+script = ExtResource("6_pd3oa")
+gm = NodePath("..")
+pivot = NodePath("../WorldPivot")
 
-[node name="board" type="MeshInstance3D" parent="."]
+[node name="WorldPivot" type="Node3D" parent="."]
+
+[node name="board" type="MeshInstance3D" parent="WorldPivot"]
 material_override = ExtResource("2_wc7oy")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="board"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldPivot/board"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="board/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldPivot/board/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s1hfp")
 
-[node name="icosphere" type="MeshInstance3D" parent="."]
+[node name="icosphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("3_3hapr")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_53dkf")
+skeleton = NodePath("../..")
 
-[node name="glowsphere" type="MeshInstance3D" parent="."]
+[node name="glowsphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("4_w2e11")
@@ -93,16 +99,9 @@ mesh = SubResource("ArrayMesh_oukfc")
 skeleton = NodePath("../icosphere")
 script = ExtResource("5_lsqos")
 
-[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
-script = ExtResource("6_pd3oa")
-gm = NodePath("..")
-pivot = NodePath("../Node3D")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-fov = 30.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldPivot"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 1.62405)
+shadow_enabled = true
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")
@@ -169,6 +168,10 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 30.0
 
 [connection signal="restart_button" from="ControlRoot/lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]

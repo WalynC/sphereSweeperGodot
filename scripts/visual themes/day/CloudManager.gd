@@ -6,7 +6,7 @@ var rotDir : Array[Vector3]
 func GenerateClouds():
 	print("GenerateClouds")
 	rotDir.resize(clouds.size())
-	reparent(GameManager.instance)
+	reparent(GameManager.instance.worldPivot)
 	print(GameManager.loading)
 	var time = SaveManager.saveData.visualTime if GameManager.loading else 0.0
 	for i in range(0, clouds.size()):
