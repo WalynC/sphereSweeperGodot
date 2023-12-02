@@ -19,6 +19,7 @@ var _lifePoints = []
 @export var _endColor : Color = Color(1,1,1,0)
 
 var _oldPos : Vector3
+var _oldPosArr : Array[Vector3]
 
 func _ready():
 	_oldPos = get_global_transform().origin
@@ -29,12 +30,14 @@ func AppendPoint():
 	_widths.append([
 		get_global_transform().basis.x * _fromWidth, 
 		get_global_transform().basis.x * _fromWidth - get_global_transform().basis.x * _toWidth])
+	_oldPosArr.append(_oldPos)
 	_lifePoints.append(0.0)
 
 func RemovePoint(i):
 	_points.remove_at(i)
 	_widths.remove_at(i)
 	_lifePoints.remove_at(i)
+	_oldPosArr.remove_at(i)
 
 func _process(delta):
 	if (_oldPos - get_global_transform().origin).length() > _motionDelta and _trailEnabled:
@@ -57,7 +60,11 @@ func _process(delta):
 		var t = float(i) / (_points.size() - 1.0)
 		var currColor = _startColor.lerp(_endColor, 1-t)
 		mesh.surface_set_color(currColor)
-		var currWidth = _widths[i][0] - pow(1-t, _scaleAcceleration) * _widths[i][1]
+		var camPos = get_viewport().get_camera_3d().position
+		var camDir = camPos - _points[i]
+		var oldDir = _points[i] - _oldPosArr[i]
+		var viewDir = camDir.cross(oldDir).normalized()
+		var currWidth = (viewDir*_fromWidth) - pow(1-t, _scaleAcceleration) * (viewDir*_fromWidth-viewDir*_toWidth)
 		var t0 = i/_points.size()
 		var t1 = t
 		mesh.surface_set_uv(Vector2(t0, 0))

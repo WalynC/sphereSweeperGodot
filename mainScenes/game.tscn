@@ -129,6 +129,7 @@ mesh = SubResource("RibbonTrailMesh_b4b35")
 [node name="Trail3D" type="MeshInstance3D" parent="WorldPivot/MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_oxpbe")
 script = ExtResource("7_7mlrb")
+_fromWidth = 0.1
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")
