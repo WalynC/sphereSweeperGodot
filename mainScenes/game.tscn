@@ -40,13 +40,13 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oukfc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0212r"]
-billboard_mode = 1
-use_particle_trails = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w40hs"]
+shading_mode = 0
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_b4b35"]
-material = SubResource("StandardMaterial3D_0212r")
-shape = 0
+[sub_resource type="SphereMesh" id="SphereMesh_orprc"]
+material = SubResource("StandardMaterial3D_w40hs")
+radius = 0.1
+height = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxpbe"]
 transparency = 1
@@ -124,12 +124,13 @@ shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50735, 0, 0)
-mesh = SubResource("RibbonTrailMesh_b4b35")
+mesh = SubResource("SphereMesh_orprc")
 
 [node name="Trail3D" type="MeshInstance3D" parent="WorldPivot/MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_oxpbe")
 script = ExtResource("7_7mlrb")
 _fromWidth = 0.1
+_lifespan = 0.3
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")

@@ -55,6 +55,8 @@ func _process(delta):
 		p += 1
 	mesh.clear_surfaces()
 	if _points.size() < 2: return
+	_points.append(get_global_transform().origin)
+	_oldPosArr.append(_points[_points.size()-2])
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
 	for i in range(_points.size()):
 		var t = float(i) / (_points.size() - 1.0)
@@ -71,4 +73,6 @@ func _process(delta):
 		mesh.surface_add_vertex(to_local(_points[i]+currWidth))
 		mesh.surface_set_uv(Vector2(t1, 1))
 		mesh.surface_add_vertex(to_local(_points[i]-currWidth))
+	_points.remove_at(_points.size()-1)
+	_oldPosArr.remove_at(_oldPosArr.size()-1)
 	mesh.surface_end()
