@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=32 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
 [ext_resource type="Script" path="res://scripts/Controls.gd" id="6_pd3oa"]
 [ext_resource type="Script" path="res://scripts/Trail3D.gd" id="7_7mlrb"]
+[ext_resource type="Texture2D" uid="uid://c6cwsbpd4j3vw" path="res://star.png" id="7_scjy4"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
 [ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
+[ext_resource type="Texture2D" uid="uid://cwj754524ns8j" path="res://trail - Copy.png" id="8_aausl"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
 [ext_resource type="Script" path="res://scripts/SelectIndicator.gd" id="10_oj52j"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
@@ -40,13 +42,20 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oukfc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w40hs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lx6j"]
+transparency = 1
+cull_mode = 2
 shading_mode = 0
+albedo_texture = ExtResource("7_scjy4")
+disable_receive_shadows = true
+billboard_mode = 2
+billboard_keep_scale = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_orprc"]
-material = SubResource("StandardMaterial3D_w40hs")
-radius = 0.1
-height = 0.2
+[sub_resource type="PlaneMesh" id="PlaneMesh_03mqr"]
+material = SubResource("StandardMaterial3D_1lx6j")
+flip_faces = true
+size = Vector2(0.35, 0.35)
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxpbe"]
 transparency = 1
@@ -54,6 +63,7 @@ blend_mode = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_aausl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fihdx"]
 transparency = 1
@@ -124,7 +134,7 @@ shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50735, 0, 0)
-mesh = SubResource("SphereMesh_orprc")
+mesh = SubResource("PlaneMesh_03mqr")
 
 [node name="Trail3D" type="MeshInstance3D" parent="WorldPivot/MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_oxpbe")

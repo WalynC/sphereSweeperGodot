@@ -67,8 +67,8 @@ func _process(delta):
 		var oldDir = _points[i] - _oldPosArr[i]
 		var viewDir = camDir.cross(oldDir).normalized()
 		var currWidth = (viewDir*_fromWidth) - pow(1-t, _scaleAcceleration) * (viewDir*_fromWidth-viewDir*_toWidth)
-		var t0 = i/_points.size()
-		var t1 = t
+		var t0 = (i/_points.size())/2
+		var t1 = 1-t0
 		mesh.surface_set_uv(Vector2(t0, 0))
 		mesh.surface_add_vertex(to_local(_points[i]+currWidth))
 		mesh.surface_set_uv(Vector2(t1, 1))
