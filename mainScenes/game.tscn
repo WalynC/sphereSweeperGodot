@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=30 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
 [ext_resource type="Script" path="res://scripts/Controls.gd" id="6_pd3oa"]
+[ext_resource type="Script" path="res://scripts/Trail3D.gd" id="7_7mlrb"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
 [ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
@@ -38,6 +39,21 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 [sub_resource type="ArrayMesh" id="ArrayMesh_53dkf"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oukfc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0212r"]
+billboard_mode = 1
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_b4b35"]
+material = SubResource("StandardMaterial3D_0212r")
+shape = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxpbe"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fihdx"]
 transparency = 1
@@ -71,6 +87,7 @@ pivot = NodePath("../WorldPivot")
 [node name="WorldPivot" type="Node3D" parent="."]
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
+visible = false
 material_override = ExtResource("2_wc7oy")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
@@ -83,6 +100,7 @@ shape = SubResource("ConcavePolygonShape3D_s1hfp")
 
 [node name="icosphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+visible = false
 sorting_offset = 1.0
 material_override = ExtResource("3_3hapr")
 cast_shadow = 0
@@ -91,6 +109,7 @@ skeleton = NodePath("../..")
 
 [node name="glowsphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
+visible = false
 sorting_offset = 1.0
 material_override = ExtResource("4_w2e11")
 transparency = 1.0
@@ -102,6 +121,14 @@ script = ExtResource("5_lsqos")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldPivot"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 1.62405)
 shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50735, 0, 0)
+mesh = SubResource("RibbonTrailMesh_b4b35")
+
+[node name="Trail3D" type="MeshInstance3D" parent="WorldPivot/MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_oxpbe")
+script = ExtResource("7_7mlrb")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")
