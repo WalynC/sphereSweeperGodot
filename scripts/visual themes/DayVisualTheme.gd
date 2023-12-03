@@ -11,7 +11,8 @@ func LoadGameVisuals():
 	cloudInstance.GenerateClouds()
 
 func UnloadGameVisuals():
-	print("unloading day game visuals")
+	cloudInstance.Cleanup()
+	cloudInstance.queue_free()
 
 func GetBaseColor(vector):
 	return Color(smoothstep(0, 1, invlerp(-gold, gold, vector.x)),smoothstep(0, 1, invlerp(-gold, gold, vector.y)),smoothstep(0, 1, invlerp(-gold, gold, vector.z)))

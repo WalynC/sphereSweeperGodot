@@ -71,7 +71,6 @@ pivot = NodePath("../WorldPivot")
 [node name="WorldPivot" type="Node3D" parent="."]
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
-visible = false
 material_override = ExtResource("2_wc7oy")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
@@ -84,7 +83,6 @@ shape = SubResource("ConcavePolygonShape3D_s1hfp")
 
 [node name="icosphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
-visible = false
 sorting_offset = 1.0
 material_override = ExtResource("3_3hapr")
 cast_shadow = 0
@@ -93,7 +91,6 @@ skeleton = NodePath("../..")
 
 [node name="glowsphere" type="MeshInstance3D" parent="WorldPivot"]
 transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
-visible = false
 sorting_offset = 1.0
 material_override = ExtResource("4_w2e11")
 transparency = 1.0
