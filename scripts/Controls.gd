@@ -176,24 +176,24 @@ func GetTriangleHit(pos):
 
 func GetHitMeshTriangleFaceIndex(hitVector, start):
 	var vertices = gm.mainMesh.mesh.get_faces()
-	var arrayMesh = ArrayMesh.new()
-	var arrays = []
-	arrays.resize(Mesh.ARRAY_MAX)
-	arrays[Mesh.ARRAY_VERTEX] = vertices
-	arrayMesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	#var arrayMesh = ArrayMesh.new()
+	#var arrays = []
+	#arrays.resize(Mesh.ARRAY_MAX)
+	#arrays[Mesh.ARRAY_VERTEX] = vertices
+	#arrayMesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	var meshDataTool = MeshDataTool.new()
-	meshDataTool.create_from_surface(arrayMesh,0)
+	meshDataTool.create_from_surface(gm.mainMesh.mesh,0) #previous function was using the arrayMesh created here
 	var cameraOrigin = start
 	var purpleArrow = hitVector - cameraOrigin
 	var i = 0
 	while i < vertices.size():
 		var faceIndex = i/3
-		var a = to_global(vertices[i])
-		var b = to_global(vertices[i+1])
-		var c = to_global(vertices[i+2])
+		var a = pivot.to_global(vertices[i])
+		var b = pivot.to_global(vertices[i+1])
+		var c = pivot.to_global(vertices[i+2])
 		var intersectsTriangle = Geometry3D.ray_intersects_triangle(cameraOrigin,purpleArrow,a,b,c)
 		if intersectsTriangle != null:
-			var angle = rad_to_deg(purpleArrow.angle_to(to_global(meshDataTool.get_face_normal(faceIndex))))
+			var angle = rad_to_deg(purpleArrow.angle_to(pivot.to_global(meshDataTool.get_face_normal(faceIndex))))
 			if angle > 90 and angle < 180: return faceIndex
 		i+=3
 	return -999

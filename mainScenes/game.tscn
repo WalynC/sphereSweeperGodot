@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=27 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -51,6 +51,8 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_noirp"]
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot")]
 script = ExtResource("1_phl8j")
 mainMesh = NodePath("WorldPivot/board")
@@ -100,8 +102,25 @@ skeleton = NodePath("../icosphere")
 script = ExtResource("5_lsqos")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldPivot"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 1.62405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.62405)
 shadow_enabled = true
+
+[node name="SelectIndicator" type="Node3D" parent="WorldPivot" node_paths=PackedStringArray("inner", "outer")]
+script = ExtResource("10_oj52j")
+inner = NodePath("inner")
+outer = NodePath("outer")
+
+[node name="inner" type="MeshInstance3D" parent="WorldPivot/SelectIndicator"]
+material_override = SubResource("StandardMaterial3D_fihdx")
+mesh = SubResource("ArrayMesh_hijw3")
+
+[node name="outer" type="MeshInstance3D" parent="WorldPivot/SelectIndicator"]
+material_override = SubResource("StandardMaterial3D_fihdx")
+mesh = SubResource("ArrayMesh_cy6in")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.40898)
+mesh = SubResource("SphereMesh_noirp")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")
@@ -110,19 +129,6 @@ gm = NodePath("..")
 [node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("14_o12r5")]
 scene = 1
 controlRoot = NodePath("../ControlRoot")
-
-[node name="SelectIndicator" type="Node" parent="." node_paths=PackedStringArray("inner", "outer")]
-script = ExtResource("10_oj52j")
-inner = NodePath("inner")
-outer = NodePath("outer")
-
-[node name="inner" type="MeshInstance3D" parent="SelectIndicator"]
-material_override = SubResource("StandardMaterial3D_fihdx")
-mesh = SubResource("ArrayMesh_hijw3")
-
-[node name="outer" type="MeshInstance3D" parent="SelectIndicator"]
-material_override = SubResource("StandardMaterial3D_fihdx")
-mesh = SubResource("ArrayMesh_cy6in")
 
 [node name="ControlRoot" type="Control" parent="."]
 layout_mode = 3
