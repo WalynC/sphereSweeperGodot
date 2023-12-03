@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://37pv38vmtiag"]
+[gd_scene load_steps=9 format=3 uid="uid://37pv38vmtiag"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
 [ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="4_bb0qw"]
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="5_fxv7w"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="6_3gh2b"]
+[ext_resource type="Script" path="res://scripts/visual themes/night/StarLoader.gd" id="7_uo1x5"]
+[ext_resource type="PackedScene" uid="uid://pjjgk8s8k82g" path="res://star.tscn" id="8_hb4fy"]
 
-[node name="VisualTheme" type="Node"]
+[node name="VisualTheme" type="Node" node_paths=PackedStringArray("starLoader")]
 script = ExtResource("1_k8isp")
 randomColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
+starLoader = NodePath("StarLoader")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 theme = ExtResource("2_14pb6")
 
@@ -20,6 +23,10 @@ firework = ExtResource("4_bb0qw")
 [node name="ExplosionEffect" type="Node" parent="."]
 script = ExtResource("5_fxv7w")
 firework = ExtResource("6_3gh2b")
+
+[node name="StarLoader" type="Node" parent="."]
+script = ExtResource("7_uo1x5")
+star = ExtResource("8_hb4fy")
 
 [connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]

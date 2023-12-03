@@ -4,6 +4,7 @@ extends VisualTheme
 var randomCount = 0
 var randColor = Color.RED
 
+@export var starLoader : StarLoader
 
 func GetBaseColor(vector):
 	if (randomCount == 0):
@@ -17,6 +18,7 @@ func GetClearedColor(vector):
 	
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
+	starLoader.Generate()
 	print("loading night game visuals")
 
 func UnloadGameVisuals():
