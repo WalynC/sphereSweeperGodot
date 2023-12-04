@@ -5,7 +5,7 @@ class_name StarLoader
 var objects = []
 
 func Generate():
-	for i in range(500):
+	for i in range(100):
 		var o = star.instantiate()
 		objects.append(o)
 		GameManager.instance.worldPivot.add_child(o)
@@ -18,3 +18,9 @@ func GetRandomPointOnUnitSphereSurface(rng:RandomNumberGenerator):
 	var phi = acos(2*u1-1)-(PI/2)
 	var lambda = 2*PI*u2
 	return Vector3(cos(phi)*cos(lambda), cos(phi)*sin(lambda), sin(phi))
+
+func Cleanup():
+	while objects.size() > 0:
+		var o = objects[0]
+		o.queue_free()
+		objects.remove_at(0)

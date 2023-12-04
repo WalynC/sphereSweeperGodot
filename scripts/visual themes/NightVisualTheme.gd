@@ -22,4 +22,5 @@ func LoadGameVisuals():
 	print("loading night game visuals")
 
 func UnloadGameVisuals():
+	starLoader.Cleanup()
 	print("unloading night game visuals")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
@@ -50,8 +50,6 @@ albedo_texture = ExtResource("14_6773y")
 resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_noirp"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot")]
 script = ExtResource("1_phl8j")
@@ -117,10 +115,6 @@ mesh = SubResource("ArrayMesh_hijw3")
 [node name="outer" type="MeshInstance3D" parent="WorldPivot/SelectIndicator"]
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_cy6in")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.40898)
-mesh = SubResource("SphereMesh_noirp")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")

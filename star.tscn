@@ -16,7 +16,7 @@ billboard_keep_scale = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_03mqr"]
 material = SubResource("StandardMaterial3D_1lx6j")
 flip_faces = true
-size = Vector2(0.35, 0.35)
+size = Vector2(0.2, 0.2)
 orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxpbe"]
@@ -34,5 +34,5 @@ mesh = SubResource("PlaneMesh_03mqr")
 [node name="Trail3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_oxpbe")
 script = ExtResource("3_84rb5")
-_fromWidth = 0.1
-_lifespan = 0.3
+_fromWidth = 0.05
+_lifespan = 0.1
