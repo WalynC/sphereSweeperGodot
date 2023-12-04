@@ -39,11 +39,11 @@ func UpdateVisuals(gm):
 	if reveal:
 		if mine:
 			for i in range(0,3):
-				gm.board.colors[vertIndices[i]] = Color(1,0,0) #ThemeLoader.current.GetMinedColor(vertIndices[i]);
+				gm.board.colors[vertIndices[i]] = Color.RED
 			ChangeIcon(0,4,gm)
 		else:
 			for i in range(0,3):
-				gm.board.colors[vertIndices[i]] = gm.board.colors[vertIndices[i]] * 0.2
+				gm.board.colors[vertIndices[i]] = VisualTheme.instance.GetClearedColor(vertices[i])
 			var count = mineCount
 			if (count > 0):
 				var y = 4
