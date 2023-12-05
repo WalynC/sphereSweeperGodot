@@ -44,10 +44,13 @@ func _process(_delta):
 	confirmButton.disabled = controls.previousTriangleHit == -1
 
 func enter_screen():
-	gm.paused = false
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
-	
+	tween.tween_callback(unpause)
+
+func unpause():
+	gm.paused = false
+
 func exit_screen():
 	UserSettings.SaveGameUISettings()
 	gm.paused = true
