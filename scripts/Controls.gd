@@ -86,6 +86,7 @@ func handle_drag(event: InputEventScreenDrag):
 		cam.fov = fov
 
 func CompleteTap():
+	if (gm.paused): return
 	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 	if flag:
 		Flag()
