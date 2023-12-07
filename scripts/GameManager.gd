@@ -33,6 +33,7 @@ signal loseEvent()
 @export var controls: Controls
 @export var visLoad: VisualLoader
 @export var worldPivot: Node3D
+@export var controlBlocker : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +59,7 @@ func win():
 	VisualTheme.won()
 	
 func lose():
+	controlBlocker.visible = true
 	emit_signal("loseEvent")
 	VisualTheme.lost()
 

@@ -51,7 +51,7 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot", "controlBlocker")]
 script = ExtResource("1_phl8j")
 mainMesh = NodePath("WorldPivot/board")
 iconMesh = NodePath("WorldPivot/icosphere")
@@ -59,6 +59,7 @@ glowMesh = NodePath("WorldPivot/glowsphere")
 controls = NodePath("Controls")
 visLoad = NodePath("VisualLoader")
 worldPivot = NodePath("WorldPivot")
+controlBlocker = NodePath("ControlRoot/controlBlocker")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mnlou")
@@ -132,6 +133,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="controlBlocker" type="Control" parent="ControlRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="lose_screen" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("5_ya7ol")]
 layout_mode = 1

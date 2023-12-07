@@ -50,6 +50,7 @@ func enter_screen():
 
 func unpause():
 	gm.paused = false
+	gm.controlBlocker.visible = false
 
 func exit_screen():
 	UserSettings.SaveGameUISettings()
@@ -59,6 +60,7 @@ func exit_screen():
 	return tween
 
 func pause():
+	gm.controlBlocker.visible = true
 	exit_screen().tween_callback(pauseScreen.enter_screen)
 
 func confirm():
