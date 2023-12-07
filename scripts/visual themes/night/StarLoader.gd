@@ -5,7 +5,7 @@ class_name StarLoader
 var objects = []
 
 func Generate():
-	for i in range(100):
+	for i in range(250):
 		var o = star.instantiate()
 		objects.append(o)
 		GameManager.instance.worldPivot.add_child(o)
