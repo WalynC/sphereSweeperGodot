@@ -58,7 +58,7 @@ func Explode(explo):
 func GetExplosion():
 	if (pool.size() == 0):
 		var n = firework.instantiate()
-		add_child(n)
+		GameManager.instance.worldPivot.add_child(n)
 		n.home = self
 		n.setParticleScale()
 		n.reset_values()
