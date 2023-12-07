@@ -154,6 +154,7 @@ gameUI = NodePath("../game_ui")
 layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
+mouse_filter = 1
 gm = NodePath("../..")
 gameUI = NodePath("../game_ui")
 
