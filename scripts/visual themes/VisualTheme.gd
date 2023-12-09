@@ -50,6 +50,9 @@ func GetBaseColor(vector):
 func GetClearedColor(vector):
 	return Color.DIM_GRAY
 
+func GetClearedColor_int(i):
+	return GetClearedColor(GameManager.instance.board.vertices[i])
+
 static func invlerp(a, b, v):
 	return (v-a)/(b-a)
 

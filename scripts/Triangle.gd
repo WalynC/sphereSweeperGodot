@@ -43,7 +43,7 @@ func UpdateVisuals(gm):
 			ChangeIcon(0,4,gm)
 		else:
 			for i in range(0,3):
-				gm.board.colors[vertIndices[i]] = VisualTheme.instance.GetClearedColor(vertIndices[i])
+				gm.board.colors[vertIndices[i]] = VisualTheme.instance.GetClearedColor_int(vertIndices[i])
 			var count = mineCount
 			if (count > 0):
 				var y = 4
