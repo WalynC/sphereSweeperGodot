@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blx7bqr1tl2xm"
+path="res://.godot/imported/wind woosh loop.ogg-619567e7540c9a201f918b6cbf375bb4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/wind woosh loop.ogg"
+dest_files=["res://.godot/imported/wind woosh loop.ogg-619567e7540c9a201f918b6cbf375bb4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

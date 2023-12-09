@@ -1,0 +1,14 @@
+cannon_fire - https://opengameart.org/content/battle-at-sea
+ - cannon_fire_modified
+
+fw_04 - https://opengameart.org/content/25-cc0-bang-firework-sfx
+
+wind woosh loop - https://opengameart.org/content/wind-whoosh-loop
+
+click_2 - https://opengameart.org/content/ui-sound-effects-button-clicks-user-feedback-notifications
+
+click_3 - https://opengameart.org/content/ui-sound-effects-button-clicks-user-feedback-notifications
+
+click_4 - https://opengameart.org/content/ui-sound-effects-button-clicks-user-feedback-notifications
+
+xyl sounds - Bosca Ceoil
