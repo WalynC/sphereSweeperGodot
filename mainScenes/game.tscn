@@ -1,6 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
+[ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
 [ext_resource type="Material" uid="uid://d113q267j7oa0" path="res://baseMat.tres" id="2_wc7oy"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
 [ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="4_w2e11"]
@@ -13,22 +14,9 @@
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
 [ext_resource type="Script" path="res://scripts/SelectIndicator.gd" id="10_oj52j"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
+[ext_resource type="Shader" path="res://uiblur.gdshader" id="11_xtyvi"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4sy1"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_yista"]
-sky_material = SubResource("ProceduralSkyMaterial_f4sy1")
-
-[sub_resource type="Environment" id="Environment_mnlou"]
-background_mode = 1
-background_color = Color(0, 0.270588, 0.592157, 1)
-sky = SubResource("Sky_yista")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -51,6 +39,10 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwbbn"]
+shader = ExtResource("11_xtyvi")
+shader_parameter/lod = 5.0
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot", "controlBlocker")]
 script = ExtResource("1_phl8j")
 mainMesh = NodePath("WorldPivot/board")
@@ -62,7 +54,7 @@ worldPivot = NodePath("WorldPivot")
 controlBlocker = NodePath("ControlRoot/controlBlocker")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mnlou")
+environment = ExtResource("2_87th6")
 
 [node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
 script = ExtResource("6_pd3oa")
@@ -125,6 +117,10 @@ gm = NodePath("..")
 scene = 1
 controlRoot = NodePath("../ControlRoot")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 30.0
+
 [node name="ControlRoot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -134,8 +130,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="controlBlocker" type="Control" parent="ControlRoot"]
-visible = false
+[node name="controlBlocker" type="ColorRect" parent="ControlRoot"]
+material = SubResource("ShaderMaterial_fwbbn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,10 +175,6 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-fov = 30.0
 
 [connection signal="restart_button" from="ControlRoot/lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
