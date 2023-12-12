@@ -425,6 +425,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate())
 		for t in revealed: doneCheck.erase(t)
 		if doneCheck.size() > 0:
+			RevealSound.Play(waves, high)
 			if nonMines == 0:
 				won = true
 				gm.paused = true

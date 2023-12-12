@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=41 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
@@ -17,6 +17,21 @@
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="11_xtyvi"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
+[ext_resource type="Script" path="res://scripts/RevealSound.gd" id="19_26ntl"]
+[ext_resource type="Script" path="res://scripts/WindSound.gd" id="19_lyepm"]
+[ext_resource type="AudioStream" uid="uid://b071gsm2i5i3u" path="res://Sounds/xylC.wav" id="19_tqec0"]
+[ext_resource type="AudioStream" uid="uid://bo86f37aeajl3" path="res://Sounds/xylCSh.wav" id="20_d0bkp"]
+[ext_resource type="AudioStream" uid="uid://ctwugljvi66li" path="res://Sounds/xylD.wav" id="21_vbfdg"]
+[ext_resource type="AudioStream" uid="uid://d0pa6uekbwoke" path="res://Sounds/xylDSh.wav" id="22_yyqye"]
+[ext_resource type="AudioStream" uid="uid://bespwd85baj3u" path="res://Sounds/xylE.wav" id="23_0mnr6"]
+[ext_resource type="AudioStream" uid="uid://cmnc8ynm5j75q" path="res://Sounds/xylF.wav" id="24_geifm"]
+[ext_resource type="AudioStream" uid="uid://bwmjquu0daawi" path="res://Sounds/xylFSh.wav" id="25_rh5uu"]
+[ext_resource type="AudioStream" uid="uid://b4616fsnncd8s" path="res://Sounds/xylG.wav" id="26_ejywl"]
+[ext_resource type="AudioStream" uid="uid://d0rymqiwnxuq7" path="res://Sounds/xylGSh.wav" id="27_rr6bw"]
+[ext_resource type="AudioStream" uid="uid://0ckjgph4mwbb" path="res://Sounds/xylA.wav" id="28_pqkwe"]
+[ext_resource type="AudioStream" uid="uid://decrtf0aidb0o" path="res://Sounds/xylASh.wav" id="29_dnowr"]
+[ext_resource type="AudioStream" uid="uid://o38dtq2oatym" path="res://Sounds/xylB.wav" id="30_866r4"]
+[ext_resource type="AudioStream" uid="uid://c7552iopov3fc" path="res://Sounds/xylC2.wav" id="31_5mdfl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -175,6 +190,16 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
+
+[node name="RevealSound" type="Node" parent="."]
+script = ExtResource("19_26ntl")
+sounds = Array[AudioStream]([ExtResource("19_tqec0"), ExtResource("20_d0bkp"), ExtResource("21_vbfdg"), ExtResource("22_yyqye"), ExtResource("23_0mnr6"), ExtResource("24_geifm"), ExtResource("25_rh5uu"), ExtResource("26_ejywl"), ExtResource("27_rr6bw"), ExtResource("28_pqkwe"), ExtResource("29_dnowr"), ExtResource("30_866r4"), ExtResource("31_5mdfl")])
+
+[node name="WindSound" type="Node" parent="." node_paths=PackedStringArray("source")]
+script = ExtResource("19_lyepm")
+source = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WindSound"]
 
 [connection signal="restart_button" from="ControlRoot/lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
