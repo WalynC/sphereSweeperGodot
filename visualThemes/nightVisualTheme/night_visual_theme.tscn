@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://37pv38vmtiag"]
+[gd_scene load_steps=10 format=3 uid="uid://37pv38vmtiag"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
 [ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="5_fxv7w"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="6_3gh2b"]
 [ext_resource type="Script" path="res://scripts/visual themes/night/StarLoader.gd" id="7_uo1x5"]
+[ext_resource type="AudioStream" uid="uid://b30olikw45ukg" path="res://Sounds/cannon_fire_modified.ogg" id="7_ycui3"]
 [ext_resource type="PackedScene" uid="uid://pjjgk8s8k82g" path="res://star.tscn" id="8_hb4fy"]
 
 [node name="VisualTheme" type="Node" node_paths=PackedStringArray("starLoader")]
@@ -20,9 +21,13 @@ theme = ExtResource("2_14pb6")
 script = ExtResource("3_ldqnx")
 firework = ExtResource("4_bb0qw")
 
-[node name="ExplosionEffect" type="Node" parent="."]
+[node name="ExplosionEffect" type="Node" parent="." node_paths=PackedStringArray("explosionSound")]
 script = ExtResource("5_fxv7w")
 firework = ExtResource("6_3gh2b")
+explosionSound = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ExplosionEffect"]
+stream = ExtResource("7_ycui3")
 
 [node name="StarLoader" type="Node" parent="."]
 script = ExtResource("7_uo1x5")

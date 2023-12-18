@@ -4,6 +4,7 @@ extends Node
 @export var firework : PackedScene
 var explosions : Array
 var inUse : Array
+@export var explosionSound : AudioStreamPlayer
 
 var pool = []
 
@@ -28,6 +29,7 @@ func StartExplosion():
 		var rando = GameManager.visRNG.randi() % mined.size()
 		Explode(mined[rando])
 		mined.remove_at(rando)
+	explosionSound.play()
 
 func Explode(explo):
 	var obj = GetExplosion()
