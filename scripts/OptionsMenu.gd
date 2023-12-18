@@ -8,6 +8,8 @@ var called = false
 
 func volume_changed(vol):
 	volText.text = "Volume: "+str(int(vol))
+	UserSettings.volume = int(vol)
+	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,vol/100)))
 
 func _change_confirm_mode(_toggle, mode):
 	if called: return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=42 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://decrtf0aidb0o" path="res://Sounds/xylASh.wav" id="29_dnowr"]
 [ext_resource type="AudioStream" uid="uid://o38dtq2oatym" path="res://Sounds/xylB.wav" id="30_866r4"]
 [ext_resource type="AudioStream" uid="uid://c7552iopov3fc" path="res://Sounds/xylC2.wav" id="31_5mdfl"]
+[ext_resource type="AudioStream" uid="uid://blx7bqr1tl2xm" path="res://Sounds/wind woosh loop.ogg" id="33_yumah"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -200,6 +201,8 @@ script = ExtResource("19_lyepm")
 source = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WindSound"]
+stream = ExtResource("33_yumah")
+autoplay = true
 
 [connection signal="restart_button" from="ControlRoot/lose_screen" to="." method="reset_game"]
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]

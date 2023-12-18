@@ -15,7 +15,7 @@ var start_zoom
 static var instance:Controls
 
 var inertia = Vector2.ZERO
-var decel = 1
+var decel = .1
 
 var triangleHit = -1
 var previousTriangleHit = -1
@@ -23,6 +23,8 @@ var previousTriangleHit = -1
 var flag = false
 var neighborSelect = 0
 static var confirmSelect = 2
+
+var rotated = false
 
 func SetFlag(val):
 	flag = val
@@ -36,11 +38,13 @@ func ChangeNeighborSelect():
 	if (neighborSelect > 2): neighborSelect = 0
 
 func _process(delta):
-	pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
-	pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
-	inertia = inertia.move_toward(Vector2.ZERO, decel * delta)
+	if (!rotated):
+		pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
+		pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
+		inertia = inertia.move_toward(Vector2.ZERO, decel * delta)
 	if Input.is_action_pressed("scroll_down"): cam.fov -=1
 	if Input.is_action_pressed("scroll_up"): cam.fov +=1
+	rotated = false
 	cam.fov = clamp(cam.fov, 10, 150)
 
 func _unhandled_input(event):
@@ -52,6 +56,7 @@ func _unhandled_input(event):
 func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
 		inertia = Vector2.ZERO
+		WindSound.instance.Spin(.5, 1, true)
 		touch_points[event.index] = event.position
 		if (touch_points.size() == 1):
 			triangleHit = GetTriangleHit(event.position)
@@ -75,8 +80,11 @@ func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
 	if touch_points.size() == 1:
 		inertia = event.relative * -0.005
+		#print(inertia)
+		WindSound.instance.Spin(inertia.length(), decel)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
+		rotated = true
 	elif touch_points.size() == 2:
 		var touch_point_positions = touch_points.values()
 		var curDist = touch_point_positions[0].distance_to(touch_point_positions[1])
@@ -90,6 +98,7 @@ func CompleteTap():
 	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 	if flag:
 		Flag()
+		#play select sound
 	else:
 		SelectIndicator.inst.EndIndicate()
 		match confirmSelect:
@@ -98,11 +107,13 @@ func CompleteTap():
 				Confirm()
 			1:
 				if (previousTriangleHit != triangleHit):
+					#play touch sound
 					previousTriangleHit = triangleHit
 					if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
 					else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
 				else: Confirm()
 			2:
+				#play touch sound
 				previousTriangleHit = triangleHit
 				if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
 				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
@@ -140,7 +151,9 @@ func Select():
 		gm.board.SelectTriangle(triangleHit)
 	elif (neighborSelect == 0):
 		if (gm.board.triangles[triangleHit].flagged || gm.board.triangles[triangleHit].reveal):
+			#play bad select sound
 			return
+		#play select sound
 		gm.board.SelectTriangle(triangleHit)
 	else:
 		if (neighborSelect == 1): neighborSelect = 0 #mode 1 is to only use neighbor select once
@@ -154,8 +167,10 @@ func Select():
 				return
 			indexList.append(t.vertIndices[0]/3)
 		if (indexList.size() > 0):
+			#play select sound
 			gm.board.SelectTriangle_List(indexList, triangleHit)
 		else:
+			#play bad seect sound
 			pass#will have "bad select" sound when it is time to add sounds
 
 func ResetTriangleHit():
