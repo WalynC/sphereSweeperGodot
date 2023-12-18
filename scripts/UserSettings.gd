@@ -8,6 +8,7 @@ static var volume = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var err = config.load(path)
+	err = config.get_value("Settings", "density")
 	if (err != OK): SetDefaultSettings()
 	GameManager.density = config.get_value("Settings", "density")
 	GameManager.size = config.get_value("Settings", "size")
@@ -15,6 +16,7 @@ func _ready():
 	GameManager.advSize = config.get_value("Settings", "advSize")
 	Controls.confirmSelect = config.get_value("Settings", "confirmSelect")
 	volume = config.get_value("Settings", "volume")
+	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,volume/100)))
 	GameUI.useMines = config.get_value("Settings", "useMines")
 	GameUI.secondsOnly = config.get_value("Settings", "secondsOnly")
 	VisualLoader.theme = config.get_value("Settings", "theme", 0)

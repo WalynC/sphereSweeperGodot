@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_g7l5b"]
 
-[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText")]
+[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_g7l5b")
 modeButtons = [NodePath("one"), NodePath("double"), NodePath("button")]
 volText = NodePath("volumeText")
+volSlider = NodePath("volume")
 
 [node name="one" type="Button" parent="."]
 layout_mode = 1

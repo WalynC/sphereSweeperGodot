@@ -5,6 +5,15 @@ extends Control
 var called = false
 @export var previousUI:Control
 @export var volText:RichTextLabel
+@export var volSlider:Slider
+
+func _ready():
+	for i in range(0,3):
+		modeButtons[i].button_pressed = false
+	modeButtons[Controls.confirmSelect].button_pressed = true
+	volText.text = "Volume: "+str(int(UserSettings.volume))
+	volSlider.value = UserSettings.volume
+
 
 func volume_changed(vol):
 	volText.text = "Volume: "+str(int(vol))
