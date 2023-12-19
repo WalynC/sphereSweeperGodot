@@ -2,6 +2,7 @@ extends Node
 class_name FireworksEffect
 
 @export var firework : PackedScene
+@export var sound : AudioStreamPlayer
 
 var timeToExplodeAll = 10.0
 var timeSinceLastExplosion = -1.0
@@ -9,11 +10,14 @@ var timeBetweenExplosions = 0.0
 
 var explosions : Array
 var inUse : Array
+var playSound = false
 
 var pool = []
 
 func _ready():
-	timeToExplodeAll = 10 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));
+	timeToExplodeAll = sound.stream.get_length() * int(timeToExplodeAll / sound.stream.get_length())
+	print(timeToExplodeAll)
+	 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));
 
 func Reset():
 	#return in use objects to pool
@@ -24,10 +28,12 @@ func Reset():
 		ReturnExplosion(copy[i])
 	#stop explosions
 	timeSinceLastExplosion = -1
+	sound.stop()
 	explosions.clear()
 
 func StartExplosion():
 	var mined = []
+	playSound = true
 	for i in range(0, GameManager.instance.board.numbered.size()):
 		var num = GameManager.instance.board.numbered.keys()[i]
 		mined.append(GameManager.instance.board.triangles[num])
@@ -43,8 +49,9 @@ func _process(_delta):
 		Explode(explosions[explosions.size()-1])
 		explosions.remove_at(explosions.size()-1)
 	if (explosions.size() == 0 && inUse.size() == 0):
-		#sound.loop = false;
-		pass
+		playSound = false
+	if (playSound && !sound.playing):
+		sound.play()
 
 func Explode(explo):
 	var obj = GetExplosion()

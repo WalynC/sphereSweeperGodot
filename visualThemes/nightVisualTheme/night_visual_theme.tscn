@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://37pv38vmtiag"]
+[gd_scene load_steps=11 format=3 uid="uid://37pv38vmtiag"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
 [ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
 [ext_resource type="Script" path="res://scripts/FireworksEffect.gd" id="3_ldqnx"]
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="4_bb0qw"]
+[ext_resource type="AudioStream" uid="uid://rg2v2pdrfifr" path="res://Sounds/fw_04.ogg" id="5_7isth"]
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="5_fxv7w"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="6_3gh2b"]
 [ext_resource type="Script" path="res://scripts/visual themes/night/StarLoader.gd" id="7_uo1x5"]
@@ -17,9 +18,13 @@ starLoader = NodePath("StarLoader")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 theme = ExtResource("2_14pb6")
 
-[node name="FireworksEffect" type="Node" parent="."]
+[node name="FireworksEffect" type="Node" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("3_ldqnx")
 firework = ExtResource("4_bb0qw")
+sound = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FireworksEffect"]
+stream = ExtResource("5_7isth")
 
 [node name="ExplosionEffect" type="Node" parent="." node_paths=PackedStringArray("explosionSound")]
 script = ExtResource("5_fxv7w")
