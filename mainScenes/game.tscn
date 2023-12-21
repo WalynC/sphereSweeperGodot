@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=43 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
@@ -17,6 +17,7 @@
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="11_xtyvi"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
+[ext_resource type="Script" path="res://scripts/ChainClearText.gd" id="18_fkkoe"]
 [ext_resource type="Script" path="res://scripts/RevealSound.gd" id="19_26ntl"]
 [ext_resource type="Script" path="res://scripts/WindSound.gd" id="19_lyepm"]
 [ext_resource type="AudioStream" uid="uid://b071gsm2i5i3u" path="res://Sounds/xylC.wav" id="19_tqec0"]
@@ -191,6 +192,17 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
+
+[node name="chainClearText" type="RichTextLabel" parent="ControlRoot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_fkkoe")
 
 [node name="RevealSound" type="Node" parent="."]
 script = ExtResource("19_26ntl")

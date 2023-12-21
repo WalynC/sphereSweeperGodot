@@ -424,6 +424,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 	if !loading:
 		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate())
 		for t in revealed: doneCheck.erase(t)
+		if (doneCheck.size() > indexArr.size()): ChainClearText.instance.UpdateText(doneCheck.size())
 		if doneCheck.size() > 0:
 			RevealSound.Play(waves, high)
 			if nonMines == 0:
