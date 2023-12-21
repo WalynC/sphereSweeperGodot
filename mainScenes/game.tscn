@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=45 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
@@ -59,6 +59,16 @@ resource_local_to_scene = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwbbn"]
 shader = ExtResource("11_xtyvi")
 shader_parameter/lod = 5.0
+
+[sub_resource type="FontVariation" id="FontVariation_rljuc"]
+variation_embolden = 0.66
+spacing_glyph = 2
+
+[sub_resource type="Theme" id="Theme_l0gl4"]
+default_font = SubResource("FontVariation_rljuc")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 1, 0.223529, 1)
+Label/constants/outline_size = 3
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainMesh", "iconMesh", "glowMesh", "controls", "visLoad", "worldPivot", "controlBlocker")]
 script = ExtResource("1_phl8j")
@@ -193,7 +203,7 @@ offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../PauseMenu")
 
-[node name="chainClearText" type="RichTextLabel" parent="ControlRoot"]
+[node name="chainClearText" type="Label" parent="ControlRoot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
@@ -202,6 +212,9 @@ anchor_right = 0.7
 anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_l0gl4")
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("18_fkkoe")
 
 [node name="RevealSound" type="Node" parent="."]

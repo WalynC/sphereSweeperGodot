@@ -1,4 +1,4 @@
-extends RichTextLabel
+extends Label
 class_name ChainClearText
 
 static var instance
