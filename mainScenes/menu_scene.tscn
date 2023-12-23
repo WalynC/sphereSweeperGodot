@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=9 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
+
+[sub_resource type="Environment" id="Environment_sixj6"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.9
+reflected_light_source = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvw28"]
 
 [node name="MenuScene" type="Node"]
 
@@ -45,6 +53,30 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="menu root"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.2
+offset_top = -0.400002
+offset_right = -260.0
+offset_bottom = -2.8
+
+[node name="SubViewport" type="SubViewport" parent="menu root/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 100)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="menu root/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.34887)
+environment = SubResource("Environment_sixj6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="menu root/SubViewportContainer/SubViewport"]
+mesh = SubResource("SphereMesh_kvw28")
 
 [node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("7_csdbo")]
 controlRoot = NodePath("../menu root")
