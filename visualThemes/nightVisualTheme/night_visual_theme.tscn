@@ -45,13 +45,13 @@ script = ExtResource("7_uo1x5")
 star = ExtResource("8_hb4fy")
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_opt7m")
+stream = ExtResource("12_1ux10")
 
 [node name="FailClearAction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_af38t")
 
 [node name="ClearAction" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_1ux10")
+stream = ExtResource("11_opt7m")
 
 [connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]

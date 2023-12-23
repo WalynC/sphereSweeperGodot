@@ -39,13 +39,13 @@ explosionSound = NodePath("AudioStreamPlayer")
 stream = ExtResource("8_ofb4e")
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ruqcv")
+stream = ExtResource("11_i1nd5")
 
 [node name="FailClearAction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_1riux")
 
 [node name="ClearAction" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_i1nd5")
+stream = ExtResource("10_ruqcv")
 
 [connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]
