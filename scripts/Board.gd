@@ -319,7 +319,6 @@ func GetGeodesicPoints(amount,a,b):
 	return ret
 
 func LoadSave():
-	#print("Loading: "+str(SaveManager.saveData.ToData()))
 	PutMinesOnBoard(SaveManager.saveData.firstSelected)
 	var lastMove = SaveManager.saveData.selected.size()-1
 	for i in range(0,lastMove):

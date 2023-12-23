@@ -10,12 +10,10 @@ signal new_game_button()
 
 func new_game_button_pressed():
 	VisualTheme.instance.buttonPress.play()
-	print(UserSettings.volume)
 	exit_screen().tween_callback(basicGameUI.enter_screen)
 	
 func options_button_pressed():
 	VisualTheme.instance.buttonPress.play()
-	print(UserSettings.volume)
 	exit_screen().tween_callback(optionsMenuUI.enter_screen)
 	
 func _ready():

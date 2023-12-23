@@ -23,7 +23,6 @@ func volume_changed(vol):
 	UserSettings.volume = vol
 	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,vol/100)))
 	VisualTheme.instance.buttonPress.play()
-	print(AudioServer.get_bus_volume_db(0))
 
 func _change_confirm_mode(_toggle, mode):
 	if called: return

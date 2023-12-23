@@ -4,10 +4,8 @@ extends Node
 var rotDir : Array[Vector3]
 
 func GenerateClouds():
-	print("GenerateClouds")
 	rotDir.resize(clouds.size())
 	reparent(GameManager.instance.worldPivot)
-	print(GameManager.loading)
 	var time = SaveManager.saveData.visualTime if GameManager.loading else 0.0
 	for i in range(0, clouds.size()):
 		var speed = deg_to_rad(GameManager.visRNG.randf_range(0.5, 0.25) * (-1 if GameManager.visRNG.randi_range(0,1) == 0 else 1))

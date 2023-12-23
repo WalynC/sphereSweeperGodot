@@ -80,7 +80,6 @@ func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
 	if touch_points.size() == 1:
 		inertia = event.relative * -0.005
-		#print(inertia)
 		WindSound.instance.Spin(inertia.length(), decel)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
@@ -165,7 +164,6 @@ func Select():
 				gm.board.SelectTriangle(t.vertIndices[0]/3)
 				return
 			indexList.append(t.vertIndices[0]/3)
-		print(indexList)
 		if (indexList.size() > 0):
 			VisualTheme.instance.select.play()
 			gm.board.SelectTriangle_List(indexList, triangleHit)

@@ -16,8 +16,6 @@ var pool = []
 
 func _ready():
 	timeToExplodeAll = sound.stream.get_length() * int(timeToExplodeAll / sound.stream.get_length())
-	print(timeToExplodeAll)
-	 #timeToExplodeAll = sound.clip.length * ((int)(timeToExplodeAll / sound.clip.length));
 
 func Reset():
 	#return in use objects to pool

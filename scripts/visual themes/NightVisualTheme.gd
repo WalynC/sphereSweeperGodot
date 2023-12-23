@@ -19,8 +19,6 @@ func GetClearedColor(vector):
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
 	starLoader.Generate()
-	print("loading night game visuals")
 
 func UnloadGameVisuals():
 	starLoader.Cleanup()
-	print("unloading night game visuals")

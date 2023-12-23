@@ -5,7 +5,6 @@ var cloudInstance
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
-	print("loading day game visuals")
 	cloudInstance = clouds.instantiate()
 	add_child(cloudInstance)
 	cloudInstance.GenerateClouds()
