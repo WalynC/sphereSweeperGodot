@@ -60,6 +60,7 @@ func exit_screen():
 	return tween
 
 func pause():
+	VisualTheme.instance.buttonPress.play()
 	gm.controlBlocker.visible = true
 	exit_screen().tween_callback(pauseScreen.enter_screen)
 
@@ -67,6 +68,7 @@ func confirm():
 	controls.Confirm()
 
 func toggle_neighborSelect():
+	VisualTheme.instance.buttonPress.play()
 	controls.neighborSelect +=1
 	controls.neighborSelect %= 3
 
@@ -74,7 +76,9 @@ func SetFlag(val):
 	controls.SetFlag(val)
 
 func toggle_time_display():
+	VisualTheme.instance.buttonPress.play()
 	secondsOnly = !secondsOnly
 
 func toggle_mine_display():
+	VisualTheme.instance.buttonPress.play()
 	useMines = !useMines

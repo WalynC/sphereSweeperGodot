@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b10grb17d2j0h"]
+[gd_scene load_steps=13 format=3 uid="uid://b10grb17d2j0h"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/DayVisualTheme.gd" id="1_larij"]
 [ext_resource type="PackedScene" uid="uid://ly6v5kdqotjd" path="res://visualThemes/dayVisualTheme/CloudManager.tscn" id="2_3neiw"]
@@ -9,12 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="5_coj37"]
 [ext_resource type="AudioStream" uid="uid://rg2v2pdrfifr" path="res://Sounds/fw_04.ogg" id="6_1n7pj"]
 [ext_resource type="AudioStream" uid="uid://b30olikw45ukg" path="res://Sounds/cannon_fire_modified.ogg" id="8_ofb4e"]
+[ext_resource type="AudioStream" uid="uid://buugj3hak0mh1" path="res://Sounds/click_2.ogg" id="10_ruqcv"]
+[ext_resource type="AudioStream" uid="uid://cm1dliylav0xr" path="res://Sounds/click_3_modified.ogg" id="11_i1nd5"]
+[ext_resource type="AudioStream" uid="uid://dyxaevd4glktf" path="res://Sounds/click_4.ogg" id="12_1riux"]
 
-[node name="VisualTheme" type="Node"]
+[node name="VisualTheme" type="Node" node_paths=PackedStringArray("buttonPress", "failSelect", "select")]
 script = ExtResource("1_larij")
 clouds = ExtResource("2_3neiw")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 theme = ExtResource("2_f58ti")
+buttonPress = NodePath("ButtonPress")
+failSelect = NodePath("FailClearAction")
+select = NodePath("ClearAction")
 
 [node name="FireworksEffect" type="Node" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("2_p3pj7")
@@ -31,6 +37,15 @@ explosionSound = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ExplosionEffect"]
 stream = ExtResource("8_ofb4e")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ruqcv")
+
+[node name="FailClearAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1riux")
+
+[node name="ClearAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_i1nd5")
 
 [connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]

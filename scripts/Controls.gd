@@ -98,7 +98,7 @@ func CompleteTap():
 	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 	if flag:
 		Flag()
-		#play select sound
+		VisualTheme.instance.buttonPress.play()
 	else:
 		SelectIndicator.inst.EndIndicate()
 		match confirmSelect:
@@ -107,17 +107,16 @@ func CompleteTap():
 				Confirm()
 			1:
 				if (previousTriangleHit != triangleHit):
-					#play touch sound
+					VisualTheme.instance.buttonPress.play()
 					previousTriangleHit = triangleHit
 					if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
 					else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
 				else: Confirm()
 			2:
-				#play touch sound
+				VisualTheme.instance.buttonPress.play()
 				previousTriangleHit = triangleHit
 				if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
 				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
-				pass
 
 func Flag():
 	if (neighborSelect == 0):
@@ -140,7 +139,7 @@ func Flag():
 				gm.board.Flag(flagged[i])
 
 func Confirm():
-	if (triangleHit == -1): pass
+	if (triangleHit == -1): return
 	Select()
 	previousTriangleHit = -1
 	SelectIndicator.inst.EndIndicate()
@@ -151,9 +150,9 @@ func Select():
 		gm.board.SelectTriangle(triangleHit)
 	elif (neighborSelect == 0):
 		if (gm.board.triangles[triangleHit].flagged || gm.board.triangles[triangleHit].reveal):
-			#play bad select sound
+			VisualTheme.instance.failSelect.play()
 			return
-		#play select sound
+		VisualTheme.instance.select.play()
 		gm.board.SelectTriangle(triangleHit)
 	else:
 		if (neighborSelect == 1): neighborSelect = 0 #mode 1 is to only use neighbor select once
@@ -166,12 +165,12 @@ func Select():
 				gm.board.SelectTriangle(t.vertIndices[0]/3)
 				return
 			indexList.append(t.vertIndices[0]/3)
+		print(indexList)
 		if (indexList.size() > 0):
-			#play select sound
+			VisualTheme.instance.select.play()
 			gm.board.SelectTriangle_List(indexList, triangleHit)
 		else:
-			#play bad seect sound
-			pass#will have "bad select" sound when it is time to add sounds
+			VisualTheme.instance.failSelect.play()
 
 func ResetTriangleHit():
 	triangleHit = -1

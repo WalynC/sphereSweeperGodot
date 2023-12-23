@@ -21,6 +21,7 @@ func enter_screen():
 	tween.tween_property(self, "position", Vector2(0,0),.5)
 
 func _again_pressed():
+	VisualTheme.instance.buttonPress.play()
 	emit_signal("again_button")
 	VisualTheme.endwon()
 	exit_screen().tween_callback(gameUI.enter_screen)
@@ -35,4 +36,5 @@ func toMainMenu():
 	
 
 func _menu_pressed():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(toMainMenu)

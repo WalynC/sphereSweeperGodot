@@ -4,7 +4,7 @@ class_name UserSettings
 const path = "user://settings.cfg"
 
 static var config = ConfigFile.new()
-static var volume = 50
+static var volume = 50.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var err = config.load(path)
@@ -16,7 +16,9 @@ func _ready():
 	GameManager.advSize = config.get_value("Settings", "advSize")
 	Controls.confirmSelect = config.get_value("Settings", "confirmSelect")
 	volume = config.get_value("Settings", "volume")
+	print(volume)
 	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,volume/100)))
+	print(AudioServer.get_bus_volume_db(0))
 	GameUI.useMines = config.get_value("Settings", "useMines")
 	GameUI.secondsOnly = config.get_value("Settings", "secondsOnly")
 	VisualLoader.theme = config.get_value("Settings", "theme", 0)

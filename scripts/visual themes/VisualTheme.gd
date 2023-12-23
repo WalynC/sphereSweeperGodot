@@ -12,6 +12,9 @@ const gold = (1 + sqrt(5))/2
 
 @export var numberColors : Array[Color]
 @export var theme : Theme
+@export var buttonPress : AudioStreamPlayer
+@export var failSelect : AudioStreamPlayer
+@export var select : AudioStreamPlayer
 
 func LoadVisualTheme():
 	instance = self

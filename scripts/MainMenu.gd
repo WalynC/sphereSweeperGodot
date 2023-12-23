@@ -9,9 +9,13 @@ signal new_game_button()
 @export var optionsMenuUI:Control
 
 func new_game_button_pressed():
+	VisualTheme.instance.buttonPress.play()
+	print(UserSettings.volume)
 	exit_screen().tween_callback(basicGameUI.enter_screen)
 	
 func options_button_pressed():
+	VisualTheme.instance.buttonPress.play()
+	print(UserSettings.volume)
 	exit_screen().tween_callback(optionsMenuUI.enter_screen)
 	
 func _ready():
@@ -20,6 +24,7 @@ func _ready():
 	enter_screen()
 
 func continue_game_pressed():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(continue_game)
 
 func continue_game():

@@ -20,6 +20,7 @@ func exit_screen():
 	return tween
 
 func _change_density(_toggle, density):
+	VisualTheme.instance.buttonPress.play()
 	if called: return
 	called = true
 	GameManager.density = (density+1)*5
@@ -29,6 +30,7 @@ func _change_density(_toggle, density):
 	called = false
 
 func _change_size(_toggle, boardSize):
+	VisualTheme.instance.buttonPress.play()
 	if called: return
 	called = true
 	GameManager.size = (boardSize*2)+3
@@ -38,6 +40,7 @@ func _change_size(_toggle, boardSize):
 	called = false
 
 func _new_game_basic():
+	VisualTheme.instance.buttonPress.play()
 	GameManager.gameMode = 0
 	exit_screen().tween_callback(toGame)
 
@@ -45,7 +48,9 @@ func toGame():
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 
 func back_button_pressed():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(mainMenuUI.enter_screen)
 
 func custom_button_pressed():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(customGameUI.enter_screen)

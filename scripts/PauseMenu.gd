@@ -8,6 +8,7 @@ extends Control
 signal new_game()
 
 func _on_new_game_pressed():
+	VisualTheme.instance.buttonPress.play()
 	var tween = exit_screen()
 	tween.tween_callback(newGameSignal)
 	tween.tween_callback(gameUI.enter_screen)
@@ -16,6 +17,7 @@ func newGameSignal():
 	emit_signal("new_game")
 	
 func go_to_main_menu():
+	VisualTheme.instance.buttonPress.play()
 	if (gm.board.boardGenerated):
 		SaveManager.saveData.time = GameTimer.elapsed
 		SaveManager.save_game()
@@ -25,6 +27,7 @@ func ToMenu():
 	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
 
 func options_pressed():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(optionsUI.enter_screen)
 
 func unpause():

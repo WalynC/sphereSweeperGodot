@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://37pv38vmtiag"]
+[gd_scene load_steps=14 format=3 uid="uid://37pv38vmtiag"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
 [ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
@@ -10,13 +10,19 @@
 [ext_resource type="Script" path="res://scripts/visual themes/night/StarLoader.gd" id="7_uo1x5"]
 [ext_resource type="AudioStream" uid="uid://b30olikw45ukg" path="res://Sounds/cannon_fire_modified.ogg" id="7_ycui3"]
 [ext_resource type="PackedScene" uid="uid://pjjgk8s8k82g" path="res://star.tscn" id="8_hb4fy"]
+[ext_resource type="AudioStream" uid="uid://buugj3hak0mh1" path="res://Sounds/click_2.ogg" id="11_opt7m"]
+[ext_resource type="AudioStream" uid="uid://cm1dliylav0xr" path="res://Sounds/click_3_modified.ogg" id="12_1ux10"]
+[ext_resource type="AudioStream" uid="uid://dyxaevd4glktf" path="res://Sounds/click_4.ogg" id="13_af38t"]
 
-[node name="VisualTheme" type="Node" node_paths=PackedStringArray("starLoader")]
+[node name="VisualTheme" type="Node" node_paths=PackedStringArray("starLoader", "buttonPress", "failSelect", "select")]
 script = ExtResource("1_k8isp")
 randomColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 starLoader = NodePath("StarLoader")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 theme = ExtResource("2_14pb6")
+buttonPress = NodePath("ButtonPress")
+failSelect = NodePath("FailClearAction")
+select = NodePath("ClearAction")
 
 [node name="FireworksEffect" type="Node" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("3_ldqnx")
@@ -37,6 +43,15 @@ stream = ExtResource("7_ycui3")
 [node name="StarLoader" type="Node" parent="."]
 script = ExtResource("7_uo1x5")
 star = ExtResource("8_hb4fy")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_opt7m")
+
+[node name="FailClearAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_af38t")
+
+[node name="ClearAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1ux10")
 
 [connection signal="endLose" from="." to="ExplosionEffect" method="Reset"]
 [connection signal="endWon" from="." to="FireworksEffect" method="Reset"]
