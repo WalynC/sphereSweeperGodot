@@ -1,4 +1,4 @@
-
+class_name Board
 var subdiv: int = 4
 var percentMined: float = 10
 var Triangle = load("res://scripts/Triangle.gd")
@@ -22,8 +22,8 @@ var colorsChanged: bool = false
 var previousHit
 var won: bool = false
 
-var leftSidePointIndex=[0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190, 210]
-var rightSidePointIndex=[ 0, 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152, 170, 189, 209, 230 ]
+static var leftSidePointIndex=[0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, 136, 153, 171, 190, 210]
+static var rightSidePointIndex=[ 0, 2, 5, 9, 14, 20, 27, 35, 44, 54, 65, 77, 90, 104, 119, 135, 152, 170, 189, 209, 230 ]
 
 var gm: Node3D
 var gold: float = (1 + sqrt(5)) / 2
