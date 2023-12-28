@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=13 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://lxllurc0jbjm" path="res://texture.png" id="6_hi2x8"]
 [ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="6_kedia"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
+[ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="8_0ivn8"]
 
 [sub_resource type="Environment" id="Environment_sixj6"]
 ambient_light_source = 2
@@ -70,18 +71,19 @@ previousUI = NodePath("../mainMenu")
 [node name="SubViewportContainer" type="SubViewportContainer" parent="menu root"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.1
-anchor_right = 0.8
-anchor_bottom = 0.3
-offset_top = -0.400002
-offset_right = -160.0
-offset_bottom = -5.20001
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.4
+offset_left = 7.0
+offset_top = -99.8
+offset_right = -273.0
+offset_bottom = -104.6
 
 [node name="SubViewport" type="SubViewport" parent="menu root/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(100, 100)
+size = Vector2i(200, 200)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="menu root/SubViewportContainer/SubViewport"]
@@ -89,11 +91,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.34887)
 environment = SubResource("Environment_sixj6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="menu root/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.377709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.843696)
 material_override = SubResource("StandardMaterial3D_jl4ec")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_eh5b7")
 script = ExtResource("6_kedia")
+
+[node name="TextureRect" type="TextureRect" parent="menu root"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.35
+offset_left = -25.824
+offset_top = -104.8
+offset_right = 25.824
+offset_bottom = -52.576
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_0ivn8")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere") instance=ExtResource("7_csdbo")]
 controlRoot = NodePath("../menu root")

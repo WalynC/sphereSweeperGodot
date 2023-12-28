@@ -47,25 +47,20 @@ func Build():
 	var total = 0
 	vertices.resize(trisPerFace*60)
 	for i in range(0, faces.size(), 3):
-		print("i: "+str(i))
 		var pointsAC = GetGeodesicPoints(subdiv, verts[faces[i+1]], verts[faces[i]])
 		var pointsAB = GetGeodesicPoints(subdiv,verts[faces[i+2]], verts[faces[i]])
 		var vectors : Array[Vector3]
 		vectors.resize(pointsPerFace)
 		vectors[0] = verts[faces[i]]
 		for k in range(1,subdiv+1):
-			print("k: "+str(k))
 			var geodesic = GetGeodesicPoints(k, pointsAB[k], pointsAC[k])
 			for j in range(Board.leftSidePointIndex[k], Board.rightSidePointIndex[k]+1):
-				print("j: "+str(j))
 				vectors[j] = geodesic[j-Board.leftSidePointIndex[k]]
 		for k in range(subdiv):
-			print("k: "+str(k))
 			var top = Board.leftSidePointIndex[k]
 			var bottom = Board.leftSidePointIndex[k+1]
 			var curTri = 0
 			while curTri < 1 + (k * 2):
-				print("total: "+str(total))
 				var indices = []
 				indices.resize(3)
 				if curTri % 2 == 0:
@@ -108,6 +103,9 @@ func BuildBoardVisuals():
 	arrays[Mesh.ARRAY_INDEX] = tris
 	arrays[Mesh.ARRAY_COLOR] = colors
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	rotate(Vector3.UP, randf_range(-180, 180))
+	rotate(Vector3.RIGHT, randf_range(-180, 180))
+	rotate(Vector3.FORWARD, randf_range(-180, 180))
 
 func GetGeodesicPoints(amount,a,b):
 	var ret = []
@@ -120,4 +118,4 @@ func GetGeodesicPoints(amount,a,b):
 	return ret
 
 func _process(delta):
-	pass
+	rotate(Vector3.UP, .2*delta)
