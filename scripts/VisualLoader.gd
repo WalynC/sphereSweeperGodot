@@ -39,5 +39,7 @@ func changeTheme(i):
 	unloadTheme()
 	if (scene == SceneType.Game):
 		GameManager.instance.reset_visual_rng()
+	elif (scene == SceneType.MainMenu):
+		mainMenuSphere.BuildBoardVisuals()
 	theme = i
 	loadTheme()
