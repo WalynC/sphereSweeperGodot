@@ -18,17 +18,17 @@ func _ready():
 
 
 func volume_changed(vol):
-	if called: return
 	volText.text = "Volume: "+str(int(vol))
 	UserSettings.volume = vol
 	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,vol/100)))
+	if called: return
 	VisualTheme.instance.buttonPress.play()
 
 func _change_confirm_mode(_toggle, mode):
+	Controls.confirmSelect = mode
 	if called: return
 	called = true
 	VisualTheme.instance.buttonPress.play()
-	Controls.confirmSelect = mode
 	for i in range(0,3):
 		modeButtons[i].button_pressed = false
 	modeButtons[mode].button_pressed = true
