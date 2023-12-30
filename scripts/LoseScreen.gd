@@ -36,4 +36,8 @@ func exit_screen():
 
 func _menu_pressed():
 	VisualTheme.instance.buttonPress.play()
+	exit_screen().tween_callback(returnToMenu)
+
+func returnToMenu():
 	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
+	
