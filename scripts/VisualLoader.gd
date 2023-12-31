@@ -7,19 +7,23 @@ enum SceneType {MainMenu, Game, Tutorial}
 @export var scene : SceneType
 
 @export var themePaths: Array[PackedScene]
+@export var themeNames: Array[String]
 @export var controlRoot: Control
 @export var mainMenuSphere : MeshInstance3D
 
 static var instance
 
 func _ready():
+	init()
 	if (scene == SceneType.MainMenu):
-		init()
 		loadTheme()
 		mainMenuSphere.Build()
 
 func init():
 	instance = self
+
+func GetCurrentThemeName():
+	return themeNames[theme]
 
 func loadTheme():
 	var tInst = themePaths[theme].instantiate()

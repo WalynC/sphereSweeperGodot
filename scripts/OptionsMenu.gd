@@ -6,6 +6,7 @@ var called = false
 @export var previousUI:Control
 @export var volText:RichTextLabel
 @export var volSlider:Slider
+@export var themeText:Label
 
 func _ready():
 	for i in range(0,3):
@@ -13,6 +14,7 @@ func _ready():
 	called = true
 	modeButtons[Controls.confirmSelect].button_pressed = true
 	volText.text = "Volume: "+str(int(UserSettings.volume))
+	themeText.text = VisualLoader.instance.GetCurrentThemeName()
 	volSlider.value = UserSettings.volume
 	called = false
 
@@ -47,6 +49,7 @@ func exit_screen():
 func change_theme_pressed(val):
 	VisualLoader.instance.change_button_pressed(val)
 	VisualTheme.instance.buttonPress.play()
+	themeText.text = VisualLoader.instance.GetCurrentThemeName()
 
 func back_button_pressed():
 	VisualTheme.instance.buttonPress.play()

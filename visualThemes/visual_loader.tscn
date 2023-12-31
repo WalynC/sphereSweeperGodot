@@ -7,3 +7,4 @@
 [node name="VisualLoader" type="Node"]
 script = ExtResource("1_wudq1")
 themePaths = Array[PackedScene]([ExtResource("2_mjp1q"), ExtResource("3_j6u6s")])
+themeNames = Array[String](["Day", "Night"])

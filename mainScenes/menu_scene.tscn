@@ -31,6 +31,10 @@ disable_receive_shadows = true
 
 [node name="MenuScene" type="Node"]
 
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere") instance=ExtResource("7_csdbo")]
+controlRoot = NodePath("../menu root")
+mainMenuSphere = NodePath("../menu root/mainMenu/SubViewportContainer/SubViewport/MeshInstance3D")
+
 [node name="UserSettings" type="Node" parent="."]
 script = ExtResource("1_0stym")
 
@@ -112,7 +116,3 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
-
-[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere") instance=ExtResource("7_csdbo")]
-controlRoot = NodePath("../menu root")
-mainMenuSphere = NodePath("../menu root/mainMenu/SubViewportContainer/SubViewport/MeshInstance3D")
