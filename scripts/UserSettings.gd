@@ -20,6 +20,7 @@ func _ready():
 	GameUI.useMines = config.get_value("Settings", "useMines")
 	GameUI.secondsOnly = config.get_value("Settings", "secondsOnly")
 	VisualLoader.theme = config.get_value("Settings", "theme", 0)
+	VisualLoader.instance.changeTheme(VisualLoader.theme)
 
 static func SetDefaultSettings():
 	config.set_value("Settings", "density", GameManager.density)
