@@ -8,7 +8,6 @@ static var volume = 50.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var err = config.load(path)
-	err = config.get_value("Settings", "density")
 	if (err != OK): SetDefaultSettings()
 	GameManager.density = config.get_value("Settings", "density")
 	GameManager.size = config.get_value("Settings", "size")
