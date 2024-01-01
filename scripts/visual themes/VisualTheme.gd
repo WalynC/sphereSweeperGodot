@@ -15,6 +15,7 @@ const gold = (1 + sqrt(5))/2
 @export var buttonPress : AudioStreamPlayer
 @export var failSelect : AudioStreamPlayer
 @export var select : AudioStreamPlayer
+@export var borderColor := Color.BLACK
 
 func LoadVisualTheme():
 	instance = self

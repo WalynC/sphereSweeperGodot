@@ -40,7 +40,8 @@ input_name = "color"
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_pddw3"]
 output_port_for_preview = 0
-parameter_name = "ColorParameter"
+parameter_name = "BorderColor"
+qualifier = 2
 default_value_enabled = true
 default_value = Color(0.113725, 1, 1, 1)
 
@@ -55,7 +56,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon, shadows_disabled, ambient_light_disabled;
 
 uniform sampler2D Texture2DParameter : filter_nearest;
-uniform vec4 ColorParameter : source_color = vec4(0.113725, 1.000000, 1.000000, 1.000000);
+instance uniform vec4 BorderColor : source_color = vec4(0.113725, 1.000000, 1.000000, 1.000000);
 
 
 
@@ -88,7 +89,7 @@ void fragment() {
 
 
 // ColorParameter:8
-	vec4 n_out8p0 = ColorParameter;
+	vec4 n_out8p0 = BorderColor;
 
 
 // VectorOp:11
@@ -105,7 +106,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-674.553, 28.5033)
+graph_offset = Vector2(-650.843, 337.22)
 modes/diffuse = 3
 modes/specular = 1
 flags/shadows_disabled = true

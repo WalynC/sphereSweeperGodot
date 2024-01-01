@@ -5,6 +5,7 @@ var cloudInstance
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
+	GameManager.instance.mainMesh.set_instance_shader_parameter("BorderColor", borderColor)
 	cloudInstance = clouds.instantiate()
 	add_child(cloudInstance)
 	cloudInstance.GenerateClouds()
