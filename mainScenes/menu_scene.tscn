@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=15 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="6_kedia"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
 [ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="8_0ivn8"]
+[ext_resource type="Script" path="res://scripts/tutorial/TutorialMode.gd" id="10_eo1sn"]
+[ext_resource type="Script" path="res://scripts/tutorial/TutorialStep.gd" id="11_4ud5h"]
 
 [sub_resource type="Environment" id="Environment_sixj6"]
 ambient_light_source = 2
@@ -116,3 +118,20 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
+
+[node name="TutorialMode" type="Node" parent="." node_paths=PackedStringArray("tutorialStepContainer")]
+script = ExtResource("10_eo1sn")
+tutorialStepContainer = NodePath(".")
+
+[node name="a" type="Node" parent="TutorialMode"]
+script = ExtResource("11_4ud5h")
+
+[node name="a2" type="Node" parent="TutorialMode"]
+
+[node name="a3" type="Node" parent="TutorialMode"]
+
+[node name="a4" type="Node" parent="TutorialMode"]
+
+[node name="a5" type="Node" parent="TutorialMode"]
+
+[node name="a6" type="Node" parent="TutorialMode"]
