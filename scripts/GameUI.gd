@@ -9,6 +9,7 @@ class_name GameUI
 @export var controls : Controls
 
 @export var pauseScreen : Control
+@export var tutorial : Control
 
 static var useMines = false
 static var secondsOnly = false
@@ -49,6 +50,7 @@ func enter_screen():
 	tween.tween_callback(unpause)
 
 func unpause():
+	if (tutorial != null): tutorial.visible = true
 	gm.paused = false
 	gm.controlBlocker.visible = false
 
@@ -60,6 +62,7 @@ func exit_screen():
 	return tween
 
 func pause():
+	if (tutorial != null): tutorial.visible = false
 	VisualTheme.instance.buttonPress.play()
 	gm.controlBlocker.visible = true
 	exit_screen().tween_callback(pauseScreen.enter_screen)

@@ -7,6 +7,11 @@ var update = false
 @export var steps : Array[Node]
 
 @export var tutorialStepContainer : Node
+@export var instructionsText : Label
+
+func GetCurrentStep():
+	if current == -1 || current >= steps.size(): return null
+	return steps[current]
 
 func _ready():
 	instance = self
@@ -16,4 +21,17 @@ func _ready():
 	NextStep()
 
 func NextStep():
-	steps[0].Begin()
+	current +=1
+	if (current >= steps.size()):
+		update = false
+	else:
+		steps[current].Begin()
+		instructionsText.text = steps[current].GetText()
+		update = steps[current].checkUpdate
+
+func UpdateText():
+	if current < steps.size() && current >= 0:
+		instructionsText.text = steps[current].GetText()
+
+func _process(delta):
+	if (update): steps[current].Check()

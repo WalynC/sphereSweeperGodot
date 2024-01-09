@@ -25,6 +25,13 @@ func continue_game_pressed():
 	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(continue_game)
 
+func tutorial_button_pressed():
+	VisualTheme.instance.buttonPress.play()
+	exit_screen().tween_callback(tutorial)
+
+func tutorial():
+	get_tree().change_scene_to_file("res://mainScenes/tutorial.tscn")
+
 func continue_game():
 	GameManager.loading = true
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")

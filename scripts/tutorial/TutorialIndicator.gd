@@ -1,0 +1,2 @@
+extends SelectIndicator
+class_name TutorialIndicator

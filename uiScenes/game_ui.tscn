@@ -25,6 +25,7 @@ anchor_top = 0.8
 anchor_right = 0.2
 anchor_bottom = 0.9
 button_mask = 3
+text_overrun_behavior = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause" type="Button" parent="."]

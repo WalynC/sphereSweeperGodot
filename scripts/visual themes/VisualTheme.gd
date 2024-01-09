@@ -25,6 +25,8 @@ func LoadVisualTheme():
 			LoadMainMenuVisuals()
 		VisualLoader.SceneType.Game:
 			LoadGameVisuals()
+		VisualLoader.SceneType.Tutorial:
+			LoadGameVisuals()
 
 func UnloadVisualTheme():
 	match VisualLoader.instance.scene:
