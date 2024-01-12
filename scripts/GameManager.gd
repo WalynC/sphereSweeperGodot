@@ -35,6 +35,8 @@ signal loseEvent()
 @export var worldPivot: Node3D
 @export var controlBlocker : Control
 
+@export var preset: Array[int]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instance = self
@@ -53,6 +55,8 @@ func _ready():
 	board._ready()
 	visLoad.loadTheme()
 	if (loading): board.LoadSave()
+	if (preset.size() > 0):
+		board.LoadPreset()
 
 func win():
 	emit_signal("winEvent")

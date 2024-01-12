@@ -308,6 +308,18 @@ func BuildIconBoard():
 	gm.isphere.arr[Mesh.ARRAY_VERTEX] = vecs
 	gm.isphere.Init()
 
+func LoadPreset():
+	boardGenerated = true
+	mines = gm.preset.size()
+	nonMines = triangles.size() - mines
+	for i in gm.preset:
+		var tri = triangles[i/3]
+		mined[i/3]=null
+		for t in tri.neighbors:
+			numbered[t.vertIndices[0]/3] = null
+			t.mineCount +=1
+		tri.mine = true
+
 func GetGeodesicPoints(amount,a,b):
 	var ret = []
 	var ran = range(0,amount)

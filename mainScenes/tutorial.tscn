@@ -80,6 +80,7 @@ controls = NodePath("Controls")
 visLoad = NodePath("VisualLoader")
 worldPivot = NodePath("WorldPivot")
 controlBlocker = NodePath("ControlRoot/controlBlocker")
+preset = Array[int]([495, 471, 483, 102])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_o1heu")
@@ -182,7 +183,35 @@ offset_bottom = 1024.0
 gm = NodePath("../..")
 controls = NodePath("../../Controls")
 pauseScreen = NodePath("../tutorial_pause_menu")
-tutorial = NodePath("../tutorialBox")
+tutorial = NodePath("tutorialBox")
+
+[node name="tutorialBox" type="Control" parent="ControlRoot/game_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="tutorialText" type="Label" parent="ControlRoot/game_ui/tutorialBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ControlRoot/game_ui/tutorialBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.2
+offset_bottom = 32.0
+text = "next"
 
 [node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
 layout_mode = 1
@@ -212,34 +241,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("18_uscf3")
 
-[node name="tutorialBox" type="Control" parent="ControlRoot"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="tutorialText" type="Label" parent="ControlRoot/tutorialBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="ControlRoot/tutorialBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.2
-anchor_right = 0.9
-anchor_bottom = 0.2
-offset_bottom = 32.0
-text = "next"
-
 [node name="RevealSound" type="Node" parent="."]
 script = ExtResource("19_ni5lf")
 sounds = Array[AudioStream]([ExtResource("20_s31lb"), ExtResource("21_2iaph"), ExtResource("22_1hu3f"), ExtResource("23_73c18"), ExtResource("24_mpolc"), ExtResource("25_4epar"), ExtResource("26_y28f2"), ExtResource("27_1bavv"), ExtResource("28_58eya"), ExtResource("29_4jvi3"), ExtResource("30_djdo8"), ExtResource("31_uuqp4"), ExtResource("32_leoju")])
@@ -255,10 +256,11 @@ autoplay = true
 [node name="Tutorial" type="Node" parent="." node_paths=PackedStringArray("tutorialStepContainer", "instructionsText")]
 script = ExtResource("35_t3qiy")
 tutorialStepContainer = NodePath(".")
-instructionsText = NodePath("../ControlRoot/tutorialBox/tutorialText")
+instructionsText = NodePath("../ControlRoot/game_ui/tutorialBox/tutorialText")
 
 [node name="DialogueStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
 script = ExtResource("36_axjuh")
-button = NodePath("../../ControlRoot/tutorialBox/Button")
+button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
+instructions = "Dialogue Step 1"
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
