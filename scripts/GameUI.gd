@@ -5,6 +5,7 @@ class_name GameUI
 @export var neighborButton : Button
 @export var mineButton : Button
 @export var confirmButton : Button
+@export var flagButton : Button
 @export var gm : GameManager
 @export var controls : Controls
 
@@ -14,9 +15,12 @@ class_name GameUI
 static var useMines = false
 static var secondsOnly = false
 
+static var instance
+
 signal pause_game()
 
 func _ready():
+	instance = self
 	confirmButton.visible = controls.confirmSelect == 2
 	enter_screen()
 

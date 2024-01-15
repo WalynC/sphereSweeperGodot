@@ -8,7 +8,7 @@ func Begin():
 	controls.allowSelect = true
 	controls.tapStep = self
 	for i in movesNeeded:
-		pass #indicate tutorial spaces
+		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
 		
 func Check():
 	if movesNeeded.size() == 0: End()
@@ -16,5 +16,5 @@ func Check():
 func End():
 	controls.allowSelect = false
 	controls.selectStep = null
-	#end tutorial indicator
+	TutorialIndicator.tutorialInst.EndIndicate()
 	super.End()

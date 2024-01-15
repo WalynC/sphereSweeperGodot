@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c3j18nni4wkf7"]
+[gd_scene load_steps=52 format=3 uid="uid://c3j18nni4wkf7"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_tnfhq"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_o1heu"]
@@ -39,6 +39,8 @@
 [ext_resource type="Script" path="res://scripts/tutorial/RotateStep.gd" id="36_hceoi"]
 [ext_resource type="Script" path="res://scripts/tutorial/ZoomStep.gd" id="37_vms3l"]
 [ext_resource type="Script" path="res://scripts/tutorial/SelectStep.gd" id="38_2x61c"]
+[ext_resource type="Script" path="res://scripts/tutorial/TapStep.gd" id="40_dgwno"]
+[ext_resource type="Script" path="res://scripts/tutorial/ToggleStep.gd" id="41_rca63"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -308,5 +310,31 @@ textVariants = Array[String](["To reveal a space, tap the space. A space has bee
 script = ExtResource("36_axjuh")
 button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
 instructions = "When you reveal a space, the amount of bombs hidden around that space will be displayed. If there are no bombs nearby, all of the spaces neighboring it will be revealed!"
+
+[node name="TapStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("40_dgwno")
+movesNeeded = Array[int]([111])
+controls = NodePath("../../Controls")
+instructions = "The indicated space has only one bomb nearby, and only one space nearby that has yet to be revealed. Tap the indicated space to continue."
+
+[node name="toggleFlag" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+instructions = "Because there's only one bomb near that space, and only one unrevealed neighbor, we can Lock that space. First, press the Reveal/Lock button to switch to Lock mode."
+
+[node name="tapToLock" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([157])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["Now, tap the indicated space in order to lock it.", "Now, tap the indicated space in order to lock it.", "Now, tap the indicated space in order to lock it."])
+
+[node name="toggleFlag2" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+instructions = "The space is now locked, and cannot be revealed. If you want to unlock a space, simply tap the space again in Lock mode. Switch back to Reveal mode now."
+
+[node name="TapStep2" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("40_dgwno")
+movesNeeded = Array[int]([158, 117])
+controls = NodePath("../../Controls")
+instructions = "Now that we know where one of the bombs are, we can use that information to reveal more spaces. The two indicated spaces have one bomb, and are next to the bomb space we just locked. Tap the indicated spaces now."
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]

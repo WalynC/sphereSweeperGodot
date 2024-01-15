@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_3xq2l"]
 
-[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton")]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ timerButton = NodePath("Timer")
 neighborButton = NodePath("NeighborButton")
 mineButton = NodePath("MineCounter")
 confirmButton = NodePath("ConfirmButton")
+flagButton = NodePath("LockButton")
 
 [node name="NeighborButton" type="Button" parent="."]
 layout_mode = 1
