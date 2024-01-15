@@ -1,14 +1,15 @@
-[gd_scene load_steps=46 format=3 uid="uid://c3j18nni4wkf7"]
+[gd_scene load_steps=50 format=3 uid="uid://c3j18nni4wkf7"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_tnfhq"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_o1heu"]
-[ext_resource type="Script" path="res://scripts/Controls.gd" id="3_frx3a"]
+[ext_resource type="Script" path="res://scripts/tutorial/TutorialControls.gd" id="3_lnfho"]
 [ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="4_jlrgy"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="5_3gfps"]
 [ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="6_et1kc"]
 [ext_resource type="Script" path="res://scripts/GlowSphere.gd" id="7_ojxuq"]
 [ext_resource type="Script" path="res://scripts/SelectIndicator.gd" id="8_d3qi8"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="9_wtc3v"]
+[ext_resource type="Script" path="res://scripts/tutorial/TutorialIndicator.gd" id="10_h2jcx"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="10_o8y3b"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="11_2clgv"]
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="12_dvn5q"]
@@ -35,6 +36,9 @@
 [ext_resource type="AudioStream" uid="uid://blx7bqr1tl2xm" path="res://Sounds/wind woosh loop.ogg" id="34_52dg4"]
 [ext_resource type="Script" path="res://scripts/tutorial/TutorialMode.gd" id="35_t3qiy"]
 [ext_resource type="Script" path="res://scripts/tutorial/DialogueStep.gd" id="36_axjuh"]
+[ext_resource type="Script" path="res://scripts/tutorial/RotateStep.gd" id="36_hceoi"]
+[ext_resource type="Script" path="res://scripts/tutorial/ZoomStep.gd" id="37_vms3l"]
+[ext_resource type="Script" path="res://scripts/tutorial/SelectStep.gd" id="38_2x61c"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -86,7 +90,7 @@ preset = Array[int]([495, 471, 483, 102])
 environment = ExtResource("2_o1heu")
 
 [node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
-script = ExtResource("3_frx3a")
+script = ExtResource("3_lnfho")
 gm = NodePath("..")
 pivot = NodePath("../WorldPivot")
 
@@ -135,6 +139,19 @@ material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_hijw3")
 
 [node name="outer" type="MeshInstance3D" parent="WorldPivot/SelectIndicator"]
+material_override = SubResource("StandardMaterial3D_fihdx")
+mesh = SubResource("ArrayMesh_cy6in")
+
+[node name="TutorialIndicator" type="Node3D" parent="WorldPivot" node_paths=PackedStringArray("inner", "outer")]
+script = ExtResource("10_h2jcx")
+inner = NodePath("inner")
+outer = NodePath("outer")
+
+[node name="inner" type="MeshInstance3D" parent="WorldPivot/TutorialIndicator"]
+material_override = SubResource("StandardMaterial3D_fihdx")
+mesh = SubResource("ArrayMesh_hijw3")
+
+[node name="outer" type="MeshInstance3D" parent="WorldPivot/TutorialIndicator"]
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_cy6in")
 
@@ -202,6 +219,7 @@ anchor_bottom = 0.2
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Button" type="Button" parent="ControlRoot/game_ui/tutorialBox"]
 layout_mode = 1
@@ -258,9 +276,37 @@ script = ExtResource("35_t3qiy")
 tutorialStepContainer = NodePath(".")
 instructionsText = NodePath("../ControlRoot/game_ui/tutorialBox/tutorialText")
 
-[node name="DialogueStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
+[node name="intro" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
 script = ExtResource("36_axjuh")
 button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
-instructions = "Dialogue Step 1"
+instructions = "Welcome to the tutorial for Sphere Sweeper. The objective of the game is to reveal all the spaces on the sphere that do not have bombs."
+
+[node name="RotateStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("pivot")]
+script = ExtResource("36_hceoi")
+pivot = NodePath("../../WorldPivot")
+instructions = "To rotate the sphere, drag your finger along the screen. Try rotating the sphere now."
+
+[node name="ZoomStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("zoomTarget", "controls")]
+script = ExtResource("37_vms3l")
+zoomTarget = NodePath("../../Camera3D")
+controls = NodePath("../../Controls")
+req = 10.0
+instructions = "To zoom, first touch the screen with two fingers. Moving your fingers closer together will zoom out, and moving them further apart will zoom in. Try zooming in and out now."
+
+[node name="beginExplain" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
+script = ExtResource("36_axjuh")
+button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
+instructions = "The game begins when you reveal a space. In this tutorial, you will be instructed as to which space to reveal first, but in a normal game you can reveal any space you want."
+
+[node name="SelectStep" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([110])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["To reveal a space, tap the space. A space has been indicated by a green glow, try revealing that space now. If you cannot see the space, rotate the sphere until you find it.", "To reveal a space, tap the space twice. A space has been indicated by a green glow, try revealing that space now. If you cannot see the space, rotate the sphere until you find it.", "To reveal a space, first tap the space you want to reveal, then press the Confirm button on the screen. A space has been indicated by a green glow, try revealing that space now. If you cannot see the space, rotate the sphere until you find it."])
+
+[node name="revealExplain" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
+script = ExtResource("36_axjuh")
+button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
+instructions = "When you reveal a space, the amount of bombs hidden around that space will be displayed. If there are no bombs nearby, all of the spaces neighboring it will be revealed!"
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]

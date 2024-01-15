@@ -6,6 +6,8 @@ var allowSelect = true
 var selectStep = null
 var tapStep = null
 
+@export var test : int
+
 func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
 		inertia = Vector2.ZERO
@@ -20,12 +22,12 @@ func handle_touch(event: InputEventScreenTouch):
 		if (allowSelect):
 			var endHit = GetTriangleHit(event.position)
 			if (triangleHit == endHit):
-				if (selectStep != null && selectStep.movesNeeded.contains(triangleHit)):
+				if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
 					CompleteTap()
-				elif (tapStep != null && tapStep.movesNeeded.contains(triangleHit)):
-					tapStep.movesNeeded.Remove(triangleHit)
+				elif (tapStep != null && tapStep.movesNeeded.has(triangleHit)):
+					tapStep.movesNeeded.erase(triangleHit)
 					tapStep.Check()
-					
+					VisualTheme.instance.buttonPress.play()
 			touch_points.erase(event.index)
 	
 	if touch_points.size() == 2:
@@ -40,6 +42,8 @@ func CompleteTap():
 	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 	if flag:
 		Flag()
+		selectStep.movesNeeded.erase(triangleHit) #we are on a flag step, so remove flag
+		selectStep.Check()
 		VisualTheme.instance.buttonPress.play()
 	else:
 		SelectIndicator.inst.EndIndicate()
@@ -64,4 +68,6 @@ func Confirm():
 	if (triangleHit == -1): return
 	Select()
 	previousTriangleHit = -1
+	selectStep.movesNeeded.erase(triangleHit)
+	selectStep.Check()
 	SelectIndicator.inst.EndIndicate()

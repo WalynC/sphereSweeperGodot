@@ -8,9 +8,9 @@ class_name SelectStep
 func Begin():
 	controls.allowSelect = true
 	controls.selectStep = self
-	#turn on glow if needed
+	#turn on button glow if needed
 	for i in movesNeeded:
-		pass #indicate tutorial spaces
+		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
 
 func Check():
 	if movesNeeded.size() == 0: End()
@@ -20,7 +20,7 @@ func End():
 	controls.selectStep = null
 	#activate timer if timer is not on
 	#turn off glow if needed
-	#end tutorial indicator
+	TutorialIndicator.tutorialInst.EndIndicate()
 	super.End()
 
 func GetText():

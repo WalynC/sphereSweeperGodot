@@ -8,7 +8,7 @@ var outReq
 var inReq
 var zoomedIn = false
 var zoomedOut = false
-var req = 3.0
+@export var req : float = 3.0
 
 func Begin():
 	checkUpdate = true
@@ -17,6 +17,6 @@ func Begin():
 	inReq = clampf(start - req, controls.minZoom, controls.maxZoom)
 
 func Check():
-	zoomedOut |= zoomTarget.fov <= inReq
-	zoomedIn |= zoomTarget.fov >= outReq
+	zoomedIn = zoomedIn || (zoomTarget.fov <= inReq)
+	zoomedOut = zoomedOut || (zoomTarget.fov >= outReq)
 	if (zoomedOut && zoomedIn): End()

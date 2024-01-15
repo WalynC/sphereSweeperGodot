@@ -2,7 +2,7 @@ extends TutorialStep
 class_name RotateStep
 
 @export var pivot : Node3D
-var angleReq = 45.0
+@export var angleReq : int = 60
 var initial : Quaternion
 
 func Begin():

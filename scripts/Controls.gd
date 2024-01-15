@@ -4,7 +4,6 @@ class_name Controls
 
 @export var gm: Node3D
 @export var pivot: Node3D
-@export var confirmButton: CanvasItem
 
 var cam
 var touch_points = {}
@@ -19,6 +18,9 @@ var decel = .1
 
 var triangleHit = -1
 var previousTriangleHit = -1
+
+var minZoom = 10
+var maxZoom = 150
 
 var flag = false
 var neighborSelect = 0
@@ -45,7 +47,7 @@ func _process(delta):
 	if Input.is_action_pressed("scroll_down"): cam.fov -=1
 	if Input.is_action_pressed("scroll_up"): cam.fov +=1
 	rotated = false
-	cam.fov = clamp(cam.fov, 10, 150)
+	cam.fov = clamp(cam.fov, minZoom, maxZoom)
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -89,7 +91,7 @@ func handle_drag(event: InputEventScreenDrag):
 		var curDist = touch_point_positions[0].distance_to(touch_point_positions[1])
 		var zoom_factor = start_distance/curDist
 		var fov = start_zoom/zoom_factor
-		fov = clamp(fov, 10, 150)
+		fov = clamp(fov, minZoom, maxZoom)
 		cam.fov = fov
 
 func CompleteTap():
