@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c3j18nni4wkf7"]
+[gd_scene load_steps=53 format=3 uid="uid://c3j18nni4wkf7"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_tnfhq"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_o1heu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/tutorial/TutorialIndicator.gd" id="10_h2jcx"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="10_o8y3b"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="11_2clgv"]
+[ext_resource type="PackedScene" uid="uid://c61xurvr1hpv4" path="res://indicator.tscn" id="11_q0stj"]
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="12_dvn5q"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="14_e8obx"]
 [ext_resource type="PackedScene" uid="uid://dny37jal4ohdg" path="res://uiScenes/tutorial_pause_menu.tscn" id="15_kkf3v"]
@@ -146,16 +147,9 @@ mesh = SubResource("ArrayMesh_cy6in")
 
 [node name="TutorialIndicator" type="Node3D" parent="WorldPivot" node_paths=PackedStringArray("inner", "outer")]
 script = ExtResource("10_h2jcx")
-inner = NodePath("inner")
-outer = NodePath("outer")
-
-[node name="inner" type="MeshInstance3D" parent="WorldPivot/TutorialIndicator"]
-material_override = SubResource("StandardMaterial3D_fihdx")
-mesh = SubResource("ArrayMesh_hijw3")
-
-[node name="outer" type="MeshInstance3D" parent="WorldPivot/TutorialIndicator"]
-material_override = SubResource("StandardMaterial3D_fihdx")
-mesh = SubResource("ArrayMesh_cy6in")
+indicatorObject = ExtResource("11_q0stj")
+inner = NodePath("")
+outer = NodePath("")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("10_o8y3b")
