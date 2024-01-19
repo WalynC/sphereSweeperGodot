@@ -22,6 +22,7 @@ func handle_touch(event: InputEventScreenTouch):
 		if (allowSelect):
 			var endHit = GetTriangleHit(event.position)
 			if (triangleHit == endHit):
+				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 				if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
 					CompleteTap()
 				elif (tapStep != null && tapStep.movesNeeded.has(triangleHit)):
@@ -39,7 +40,6 @@ func handle_touch(event: InputEventScreenTouch):
 
 func CompleteTap():
 	if (gm.paused): return
-	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
 	if flag:
 		Flag()
 		selectStep.movesNeeded.erase(triangleHit) #we are on a flag step, so remove flag
