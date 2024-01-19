@@ -145,11 +145,9 @@ mesh = SubResource("ArrayMesh_hijw3")
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_cy6in")
 
-[node name="TutorialIndicator" type="Node3D" parent="WorldPivot" node_paths=PackedStringArray("inner", "outer")]
+[node name="TutorialIndicator" type="Node3D" parent="WorldPivot"]
 script = ExtResource("10_h2jcx")
 indicatorObject = ExtResource("11_q0stj")
-inner = NodePath("")
-outer = NodePath("")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("10_o8y3b")
@@ -330,5 +328,57 @@ script = ExtResource("40_dgwno")
 movesNeeded = Array[int]([158, 117])
 controls = NodePath("../../Controls")
 instructions = "Now that we know where one of the bombs are, we can use that information to reveal more spaces. The two indicated spaces have one bomb, and are next to the bomb space we just locked. Tap the indicated spaces now."
+
+[node name="SelectStep2" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([80, 79, 75])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["Since we know where the bomb for those two spaces are, we can safely reveal the neighboring spaces of those two. Reveal the indicated spaces now.", "Since we know where the bomb for those two spaces are, we can safely reveal the neighboring spaces of those two. Reveal the indicated spaces now.", "Since we know where the bomb for those two spaces are, we can safely reveal the neighboring spaces of those two. Reveal the indicated spaces now."])
+
+[node name="toggleNeighbor" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+whichToToggle = 1
+instructions = "We can interact with a space and its neighbors at the same time by using Neighbor Select Mode. Press the Neighbor Select button to activate it."
+
+[node name="toggleFlag3" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+instructions = "Pressing Neighbor Select once will make it stay on for one selection. You can switch between Reveal and Lock mode while Neighbor Select mode is active. Switch to Lock mode."
+
+[node name="neighborExplain" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]
+script = ExtResource("36_axjuh")
+button = NodePath("../../ControlRoot/game_ui/tutorialBox/Button")
+instructions = "When you reveal a space in Neighbor Select mode, the space you selected and its neighbors will be revealed. When in Lock mode, if there are unlocked neighbors, they will be locked; otherwise, all neighbors will be unlocked."
+
+[node name="SelectStep3" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([68])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["The indicated space has one bomb nearby and one unrevealed neighbor. Since we have Neighbor Select active, we can tap the space to lock the remaining neighboring space. Tap the indicated space now.", "The indicated space has one bomb nearby and one unrevealed neighbor. Since we have Neighbor Select active, we can tap the space to lock the remaining neighboring space. Tap the indicated space now.", "The indicated space has one bomb nearby and one unrevealed neighbor. Since we have Neighbor Select active, we can tap the space to lock the remaining neighboring space. Tap the indicated space now."])
+
+[node name="toggleFlag4" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+instructions = "Now we know where another bomb is, there's more spaces we can safely reveal the neighbors of. Switch to Reveal mode."
+
+[node name="toggleNeighbor2" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+whichToToggle = 1
+instructions = "Instead of revealing each neighboring space one at a time, we can use Neighbor Select. Turn on Neighbor Select mode now."
+
+[node name="toggleNeighbor3" type="Node" parent="Tutorial"]
+script = ExtResource("41_rca63")
+whichToToggle = 1
+instructions = "If we press Neighbor Select again, it will remain active until we press it a third time. Press the Neighbor Select button again."
+
+[node name="SelectStep4" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([67])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["The indicated space is one where we have locked all the neighboring spaces that contain bombs. We can safely use Neighbor Select to reveal the neighboring spaces - do so by tapping the indicated space.", "The indicated space is one where we have locked all the neighboring spaces that contain bombs. We can safely use Neighbor Select to reveal the neighboring spaces - do so by tapping the indicated space twice.", "The indicated space is one where we have locked all the neighboring spaces that contain bombs. We can safely use Neighbor Select to reveal the neighboring spaces - do so by tapping the indicated space and then pressing the Confirm button."])
+
+[node name="SelectStep5" type="Node" parent="Tutorial" node_paths=PackedStringArray("controls")]
+script = ExtResource("38_2x61c")
+movesNeeded = Array[int]([75])
+controls = NodePath("../../Controls")
+textVariants = Array[String](["As you can see, Neighbor Select is still active. There is a revealed space that has 2 bombs nearby, and we know where those bombs are. Reveal the indicated space's neighbors to complete the tutorial.", "As you can see, Neighbor Select is still active. There is a revealed space that has 2 bombs nearby, and we know where those bombs are. Reveal the indicated space's neighbors to complete the tutorial.", "As you can see, Neighbor Select is still active. There is a revealed space that has 2 bombs nearby, and we know where those bombs are. Reveal the indicated space's neighbors to complete the tutorial."])
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
