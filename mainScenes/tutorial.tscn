@@ -238,7 +238,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="ControlRoot/game_ui/tutorialBox"]
-self_modulate = Color(1, 1, 1.49012e-08, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8
@@ -252,7 +251,6 @@ text = "next"
 libraries = {
 "": SubResource("AnimationLibrary_amicg")
 }
-autoplay = "glow"
 
 [node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
 layout_mode = 1

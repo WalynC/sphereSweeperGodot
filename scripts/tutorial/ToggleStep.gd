@@ -3,6 +3,7 @@ class_name ToggleStep
 
 @export var whichToToggle : int #0 is flag, 1 is neighbor
 var button
+var anim
 
 func Begin():
 	match whichToToggle:
@@ -11,11 +12,14 @@ func Begin():
 		1:
 			button = GameUI.instance.neighborButton
 	#play animation
+	anim = button.get_node("AnimationPlayer")
+	anim.play("glow")
 	button.disabled = false
 	button.button_up.connect(End)
 
 func End():
 	#stop animation
+	anim.stop()
 	button.disabled = true
 	button.button_up.disconnect(End)
 	super.End()

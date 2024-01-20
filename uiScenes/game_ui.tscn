@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://31bhtpbuqpqp"]
+[gd_scene load_steps=4 format=3 uid="uid://31bhtpbuqpqp"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_3xq2l"]
+
+[sub_resource type="Animation" id="Animation_j3iip"]
+resource_name = "glow"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amicg"]
+_data = {
+"glow": SubResource("Animation_j3iip")
+}
 
 [node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton")]
 layout_mode = 3
@@ -28,6 +50,11 @@ anchor_bottom = 0.9
 button_mask = 3
 text_overrun_behavior = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NeighborButton"]
+libraries = {
+"": SubResource("AnimationLibrary_amicg")
+}
 
 [node name="Pause" type="Button" parent="."]
 layout_mode = 1
@@ -71,6 +98,11 @@ toggle_mode = true
 button_mask = 3
 text = "lock"
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LockButton"]
+libraries = {
+"": SubResource("AnimationLibrary_amicg")
+}
 
 [node name="Timer" type="Button" parent="."]
 layout_mode = 1
