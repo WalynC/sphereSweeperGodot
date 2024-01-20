@@ -16,6 +16,8 @@ func GetCurrentStep():
 	return steps[current]
 
 func _ready():
+	GameUI.instance.flagButton.disabled = true
+	GameUI.instance.neighborButton.disabled = true
 	instance = self
 	steps.resize(tutorialStepContainer.get_child_count())
 	for i in range(steps.size()):
