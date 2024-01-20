@@ -9,6 +9,8 @@ var update = false
 @export var tutorialStepContainer : Node
 @export var instructionsText : Label
 
+@export var nextStepSound : AudioStreamPlayer
+
 func GetCurrentStep():
 	if current == -1 || current >= steps.size(): return null
 	return steps[current]
@@ -21,6 +23,7 @@ func _ready():
 	NextStep()
 
 func NextStep():
+	if (GetCurrentStep() != null && GetCurrentStep().playSoundOnCompletion): nextStepSound.play()
 	current +=1
 	if (current >= steps.size()):
 		update = false

@@ -3,7 +3,7 @@ class_name TutorialStep
 
 var checkUpdate = false
 @export var instructions:String
-var playSoundOnCompletion = true
+@export var playSoundOnCompletion = true
 
 func Begin():
 	print("begin")
