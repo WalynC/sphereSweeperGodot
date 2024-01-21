@@ -1,9 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=46 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
 [ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="4_5055k"]
+[ext_resource type="Script" path="res://scripts/WorldPivotMover.gd" id="4_r5hh3"]
 [ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="4_w2e11"]
 [ext_resource type="Script" path="res://scripts/GlowSphere.gd" id="5_lsqos"]
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
@@ -89,6 +90,8 @@ gm = NodePath("..")
 pivot = NodePath("../WorldPivot")
 
 [node name="WorldPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+script = ExtResource("4_r5hh3")
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
 material_override = ExtResource("4_5055k")
