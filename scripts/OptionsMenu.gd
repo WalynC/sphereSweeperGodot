@@ -34,6 +34,7 @@ func _change_confirm_mode(_toggle, mode):
 	for i in range(0,3):
 		modeButtons[i].button_pressed = false
 	modeButtons[mode].button_pressed = true
+	if (TutorialMode.instance != null): TutorialMode.instance.UpdateText()
 	called = false
 
 func enter_screen():
