@@ -36,6 +36,7 @@ func exit_screen():
 
 func _menu_pressed():
 	VisualTheme.instance.buttonPress.play()
+	WorldPivotMover.instance.Leave()
 	exit_screen().tween_callback(returnToMenu)
 
 func returnToMenu():

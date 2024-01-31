@@ -37,4 +37,5 @@ func toMainMenu():
 
 func _menu_pressed():
 	VisualTheme.instance.buttonPress.play()
+	WorldPivotMover.instance.Leave()
 	exit_screen().tween_callback(toMainMenu)

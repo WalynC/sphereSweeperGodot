@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=16 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
@@ -9,6 +9,20 @@
 [ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="6_kedia"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
 [ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="8_0ivn8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qopnp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_k8eft"]
+sky_material = SubResource("ProceduralSkyMaterial_qopnp")
+
+[sub_resource type="Environment" id="Environment_h4grc"]
+background_mode = 1
+background_color = Color(0.188235, 0.603922, 0.741176, 1)
+sky = SubResource("Sky_k8eft")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="Environment" id="Environment_sixj6"]
 ambient_light_source = 2
@@ -31,9 +45,13 @@ disable_receive_shadows = true
 
 [node name="MenuScene" type="Node"]
 
-[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere") instance=ExtResource("7_csdbo")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h4grc")
+
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere", "worldEnv") instance=ExtResource("7_csdbo")]
 controlRoot = NodePath("../menu root")
 mainMenuSphere = NodePath("../menu root/mainMenu/SubViewportContainer/SubViewport/MeshInstance3D")
+worldEnv = NodePath("../WorldEnvironment")
 
 [node name="UserSettings" type="Node" parent="."]
 script = ExtResource("1_0stym")
@@ -116,3 +134,5 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 1024.0
 previousUI = NodePath("../mainMenu")
+
+[node name="Camera3D" type="Camera3D" parent="."]

@@ -143,9 +143,10 @@ mesh = SubResource("ArrayMesh_cy6in")
 script = ExtResource("8_jmfnr")
 gm = NodePath("..")
 
-[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot") instance=ExtResource("14_o12r5")]
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "worldEnv") instance=ExtResource("14_o12r5")]
 scene = 1
 controlRoot = NodePath("../ControlRoot")
+worldEnv = NodePath("../WorldEnvironment")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

@@ -18,6 +18,7 @@ func newGameSignal():
 	
 func go_to_main_menu():
 	VisualTheme.instance.buttonPress.play()
+	WorldPivotMover.instance.Leave()
 	if (gm.board.boardGenerated):
 		SaveManager.saveData.time = GameTimer.elapsed
 		SaveManager.save_game()
