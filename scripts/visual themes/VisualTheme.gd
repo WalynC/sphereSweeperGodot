@@ -16,10 +16,12 @@ const gold = (1 + sqrt(5))/2
 @export var failSelect : AudioStreamPlayer
 @export var select : AudioStreamPlayer
 @export var borderColor := Color.BLACK
+@export var backgroundColor := Color.DARK_TURQUOISE
 
 func LoadVisualTheme():
 	instance = self
 	VisualLoader.instance.controlRoot.theme = theme
+	VisualLoader.instance.worldEnv.environment.background_color = backgroundColor
 	match VisualLoader.instance.scene:
 		VisualLoader.SceneType.MainMenu:
 			LoadMainMenuVisuals()

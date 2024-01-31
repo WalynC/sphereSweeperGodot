@@ -24,6 +24,7 @@ buttonPress = NodePath("ButtonPress")
 failSelect = NodePath("FailClearAction")
 select = NodePath("ClearAction")
 borderColor = Color(0, 0.141176, 0.556863, 1)
+backgroundColor = Color(0.152941, 0.129412, 0.372549, 1)
 
 [node name="FireworksEffect" type="Node" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("3_ldqnx")
