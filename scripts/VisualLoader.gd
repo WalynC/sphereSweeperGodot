@@ -18,7 +18,6 @@ func _ready():
 	init()
 	if (scene == SceneType.MainMenu):
 		loadTheme()
-		mainMenuSphere.Build()
 
 func init():
 	instance = self
@@ -46,5 +45,3 @@ func changeTheme(i):
 		GameManager.instance.reset_visual_rng()
 	theme = i
 	loadTheme()
-	if (scene == SceneType.MainMenu):
-		mainMenuSphere.BuildBoardVisuals()

@@ -1,15 +1,16 @@
-[gd_scene load_steps=46 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=48 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
 [ext_resource type="Material" uid="uid://dxfngky0b820a" path="res://iconMat.tres" id="3_3hapr"]
-[ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="4_5055k"]
 [ext_resource type="Script" path="res://scripts/WorldPivotMover.gd" id="4_r5hh3"]
 [ext_resource type="Material" uid="uid://bjf7ju8dgqwi1" path="res://glowShader.tres" id="4_w2e11"]
+[ext_resource type="Shader" uid="uid://caokd5lbnelk4" path="res://boardVShader.tres" id="5_guow5"]
 [ext_resource type="Script" path="res://scripts/GlowSphere.gd" id="5_lsqos"]
 [ext_resource type="PackedScene" uid="uid://rwawmt27ljkw" path="res://uiScenes/lose_screen.tscn" id="5_ya7ol"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="6_h0wn7"]
 [ext_resource type="Script" path="res://scripts/Controls.gd" id="6_pd3oa"]
+[ext_resource type="Texture2D" uid="uid://lxllurc0jbjm" path="res://texture.png" id="6_tq8nr"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="7_su4m3"]
 [ext_resource type="PackedScene" uid="uid://15o8kkohojx5" path="res://uiScenes/pause_menu.tscn" id="8_6obnv"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_jmfnr"]
@@ -35,6 +36,11 @@
 [ext_resource type="AudioStream" uid="uid://o38dtq2oatym" path="res://Sounds/xylB.wav" id="30_866r4"]
 [ext_resource type="AudioStream" uid="uid://c7552iopov3fc" path="res://Sounds/xylC2.wav" id="31_5mdfl"]
 [ext_resource type="AudioStream" uid="uid://blx7bqr1tl2xm" path="res://Sounds/wind woosh loop.ogg" id="33_yumah"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdkek"]
+render_priority = 0
+shader = ExtResource("5_guow5")
+shader_parameter/Texture2DParameter = ExtResource("6_tq8nr")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jt1kb"]
 
@@ -94,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("4_r5hh3")
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
-material_override = ExtResource("4_5055k")
+material_override = SubResource("ShaderMaterial_sdkek")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jt1kb")
 skeleton = NodePath("../..")
