@@ -65,7 +65,7 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwbbn"]
 shader = ExtResource("11_xtyvi")
-shader_parameter/lod = 5.0
+shader_parameter/lod = 3.6
 
 [sub_resource type="FontVariation" id="FontVariation_rljuc"]
 variation_embolden = 0.66
