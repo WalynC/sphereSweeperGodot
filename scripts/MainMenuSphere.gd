@@ -118,4 +118,4 @@ func GetGeodesicPoints(amount,a,b):
 	return ret
 
 func _process(delta):
-	rotate(Vector3.UP, .2*delta)
+	rotate(Vector3.UP, -.075*delta)
