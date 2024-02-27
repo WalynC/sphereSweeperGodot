@@ -265,7 +265,7 @@ optionsUI = NodePath("../options_menu")
 [node name="options_menu" parent="ControlRoot" node_paths=PackedStringArray("previousUI") instance=ExtResource("17_d6i8j")]
 layout_mode = 1
 offset_top = 1024.0
-offset_bottom = 1024.0
+offset_bottom = 2048.0
 previousUI = NodePath("../tutorial_pause_menu")
 
 [node name="chainClearText" type="Label" parent="ControlRoot"]

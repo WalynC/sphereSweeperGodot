@@ -112,13 +112,14 @@ customGameUI = NodePath("../customGameMenu")
 [node name="customGameMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI") instance=ExtResource("3_m8si6")]
 layout_mode = 1
 offset_top = 1024.0
-offset_bottom = 1024.0
+offset_bottom = 2048.0
+scale = Vector2(0.5, 0.5)
 basicGameUI = NodePath("../newGameBasicMenu")
 
 [node name="options_menu" parent="menu root" node_paths=PackedStringArray("previousUI") instance=ExtResource("4_dlvh5")]
 layout_mode = 1
 offset_top = 1024.0
-offset_bottom = 1024.0
+offset_bottom = 2048.0
 previousUI = NodePath("../mainMenu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
