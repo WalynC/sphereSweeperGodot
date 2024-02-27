@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://dyyvms48jutj5" path="res://visualThemes/dayVisualTheme/Day_pressedStyleBox.tres" id="4_iatxw"]
 
 [resource]
+Button/font_sizes/font_size = 40
 Button/styles/disabled = ExtResource("1_1p4wx")
 Button/styles/hover = ExtResource("2_cunrk")
 Button/styles/normal = ExtResource("3_o2434")
