@@ -10,4 +10,4 @@ func _ready():
 
 func Leave():
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector3(0,10,0),.5)
+	tween.tween_property(self, "position", Vector3(0,-20,0),.5)

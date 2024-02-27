@@ -96,7 +96,7 @@ gm = NodePath("..")
 pivot = NodePath("../WorldPivot")
 
 [node name="WorldPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 script = ExtResource("4_r5hh3")
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
