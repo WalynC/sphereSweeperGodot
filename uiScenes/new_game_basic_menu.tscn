@@ -11,6 +11,7 @@ offset_right = 600.0
 offset_bottom = 1024.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_i18yl")
 densities = [NodePath("5p"), NodePath("10p"), NodePath("15p")]
 sizes = [NodePath("sm"), NodePath("me"), NodePath("la")]
