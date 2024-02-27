@@ -184,7 +184,7 @@ worldEnv = NodePath("../WorldEnvironment")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-fov = 30.0
+fov = 110.0
 
 [node name="ControlRoot" type="Control" parent="."]
 layout_mode = 3
