@@ -81,7 +81,7 @@ func handle_touch(event: InputEventScreenTouch):
 func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
 	if touch_points.size() == 1:
-		inertia = event.relative * -0.005
+		inertia = event.relative * 0.005
 		WindSound.instance.Spin(inertia.length(), decel)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
