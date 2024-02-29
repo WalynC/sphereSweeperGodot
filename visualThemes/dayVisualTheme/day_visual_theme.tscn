@@ -21,7 +21,7 @@ theme = ExtResource("2_f58ti")
 buttonPress = NodePath("ButtonPress")
 failSelect = NodePath("FailClearAction")
 select = NodePath("ClearAction")
-backgroundColor = Color(0.0901961, 0.439216, 0.627451, 1)
+backgroundColor = Color(0.227451, 0.619608, 0.952941, 1)
 
 [node name="FireworksEffect" type="Node" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("2_p3pj7")
