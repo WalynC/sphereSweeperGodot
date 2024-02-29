@@ -3,7 +3,9 @@
 [ext_resource type="StyleBox" uid="uid://c213432vcecjo" path="res://visualThemes/nightVisualTheme/buttonStylebox.tres" id="1_s87gc"]
 
 [resource]
+Button/font_sizes/font_size = 40
 Button/styles/disabled = ExtResource("1_s87gc")
 Button/styles/focus = ExtResource("1_s87gc")
 Button/styles/hover = ExtResource("1_s87gc")
 Button/styles/normal = ExtResource("1_s87gc")
+Button/styles/pressed = ExtResource("1_s87gc")
