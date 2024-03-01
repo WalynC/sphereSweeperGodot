@@ -8,6 +8,7 @@ class_name GameUI
 @export var flagButton : Button
 @export var gm : GameManager
 @export var controls : Controls
+@export var bombLabel : Label
 
 @export var pauseScreen : Control
 @export var tutorial : Control
@@ -89,3 +90,4 @@ func toggle_time_display():
 func toggle_mine_display():
 	VisualTheme.instance.buttonPress.play()
 	useMines = !useMines
+	bombLabel.text = "Bombs Remaining" if useMines else "Spaces Remaining"
