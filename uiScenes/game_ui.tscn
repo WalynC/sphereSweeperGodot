@@ -11,7 +11,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath("..:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,12 +44,12 @@ timerButton = NodePath("Timer")
 neighborButton = NodePath("NeighborButton")
 mineButton = NodePath("BombCounter")
 confirmButton = NodePath("ConfirmButton")
-flagButton = NodePath("LockRevealToggle")
+flagButton = NodePath("Panel/LockRevealToggle")
 bombLabel = NodePath("BombCounterPanel/Label")
 multiSelectOn = ExtResource("2_2k6y5")
 multiSelectOff = ExtResource("2_5e4df")
-revealButton = NodePath("LockRevealToggle/RevealButton")
-lockButton = NodePath("LockRevealToggle/LockButton")
+revealButton = NodePath("Panel/RevealButton")
+lockButton = NodePath("Panel/LockButton")
 
 [node name="NeighborButton" type="Button" parent="."]
 layout_mode = 1
@@ -117,23 +117,32 @@ anchor_bottom = 1.0
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="LockRevealToggle" type="Button" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.470588, 0.470588, 0.470588, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.9
 anchor_right = 0.8
 anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LockRevealToggle" type="Button" parent="Panel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 toggle_mode = true
 button_mask = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LockRevealToggle"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/LockRevealToggle"]
 libraries = {
 "": SubResource("AnimationLibrary_amicg")
 }
 
-[node name="RevealButton" type="Button" parent="LockRevealToggle"]
+[node name="RevealButton" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
@@ -141,7 +150,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 text = "Reveal"
 
-[node name="LockButton" type="Button" parent="LockRevealToggle"]
+[node name="LockButton" type="Button" parent="Panel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -184,5 +193,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Pause" to="." method="pause"]
 [connection signal="pressed" from="ConfirmButton" to="." method="confirm"]
 [connection signal="pressed" from="BombCounter" to="." method="toggle_mine_display"]
-[connection signal="toggled" from="LockRevealToggle" to="." method="SetFlag"]
+[connection signal="toggled" from="Panel/LockRevealToggle" to="." method="SetFlag"]
 [connection signal="pressed" from="Timer" to="." method="toggle_time_display"]
