@@ -4,8 +4,8 @@ extends Control
 signal again_button()
 
 @export var gm:GameManager
-@export var time:RichTextLabel
-@export var bombs:RichTextLabel
+@export var time:Label
+@export var bombs:Label
 
 @export var gameUI:Control
 

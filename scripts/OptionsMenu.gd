@@ -4,7 +4,7 @@ extends Control
 @export var modeButtons: Array[Button]
 var called = false
 @export var previousUI:Control
-@export var volText:RichTextLabel
+@export var volText:Label
 @export var volSlider:Slider
 @export var themeText:Label
 

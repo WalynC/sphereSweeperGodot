@@ -1,7 +1,7 @@
 extends Control
 
-@export var densText: RichTextLabel
-@export var sizeText: RichTextLabel
+@export var densText: Label
+@export var sizeText: Label
 @export var densRange: Range
 @export var sizeRange: Range
 

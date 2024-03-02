@@ -23,6 +23,7 @@ anchor_left = 0.4
 anchor_top = 0.7
 anchor_right = 0.6
 anchor_bottom = 0.75
+focus_mode = 0
 text = "play again"
 
 [node name="menu" type="Button" parent="."]
@@ -32,9 +33,10 @@ anchor_left = 0.4
 anchor_top = 0.8
 anchor_right = 0.6
 anchor_bottom = 0.85
+focus_mode = 0
 text = "menu"
 
-[node name="loseLabel" type="RichTextLabel" parent="."]
+[node name="loseLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -43,7 +45,7 @@ anchor_right = 0.8
 anchor_bottom = 0.2
 text = "you win"
 
-[node name="time" type="RichTextLabel" parent="."]
+[node name="time" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -52,7 +54,7 @@ anchor_right = 0.8
 anchor_bottom = 0.3
 text = "time: 0"
 
-[node name="bombs hit" type="RichTextLabel" parent="."]
+[node name="bombs hit" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
