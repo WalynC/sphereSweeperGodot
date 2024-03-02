@@ -26,7 +26,7 @@ _data = {
 "glow": SubResource("Animation_j3iip")
 }
 
-[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton", "bombLabel", "revealButton", "lockButton")]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton", "bombLabel", "revealPanel", "lockPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,8 +48,8 @@ flagButton = NodePath("Panel/LockRevealToggle")
 bombLabel = NodePath("BombCounterPanel/Label")
 multiSelectOn = ExtResource("2_2k6y5")
 multiSelectOff = ExtResource("2_5e4df")
-revealButton = NodePath("Panel/RevealButton")
-lockButton = NodePath("Panel/LockButton")
+revealPanel = NodePath("Panel/RevealPanel")
+lockPanel = NodePath("Panel/LockPanel")
 
 [node name="NeighborButton" type="Button" parent="."]
 layout_mode = 1
@@ -142,15 +142,14 @@ libraries = {
 "": SubResource("AnimationLibrary_amicg")
 }
 
-[node name="RevealButton" type="Button" parent="Panel"]
+[node name="RevealPanel" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
 mouse_filter = 2
-text = "Reveal"
 
-[node name="LockButton" type="Button" parent="Panel"]
+[node name="LockPanel" type="Panel" parent="Panel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -158,7 +157,29 @@ anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="RevealLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reveal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LockLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Lock"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TimerPanel" type="Panel" parent="."]
 layout_mode = 1

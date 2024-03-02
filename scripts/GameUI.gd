@@ -16,8 +16,8 @@ class_name GameUI
 @export var multiSelectOn : CompressedTexture2D
 @export var multiSelectOff : CompressedTexture2D
 
-@export var revealButton : Button
-@export var lockButton : Button
+@export var revealPanel : Panel
+@export var lockPanel : Panel
 
 static var useMines = false
 static var secondsOnly = false
@@ -90,8 +90,8 @@ func toggle_neighborSelect():
 	controls.neighborSelect %= 3
 
 func SetFlag(val):
-	revealButton.visible = !val
-	lockButton.visible = val
+	revealPanel.visible = !val
+	lockPanel.visible = val
 	controls.SetFlag(val)
 
 func toggle_time_display():
