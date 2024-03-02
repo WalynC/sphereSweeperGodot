@@ -13,6 +13,9 @@ class_name GameUI
 @export var pauseScreen : Control
 @export var tutorial : Control
 
+@export var multiSelectOn : CompressedTexture2D
+@export var multiSelectOff : CompressedTexture2D
+
 static var useMines = false
 static var secondsOnly = false
 
@@ -35,11 +38,14 @@ func _process(_delta):
 	#display neighbor select text
 	match controls.neighborSelect:
 		0:
-			neighborButton.text = "no neighbor"
+			neighborButton.icon = multiSelectOff
+			neighborButton.modulate = Color.WHITE
 		1:
-			neighborButton.text = "once"
+			neighborButton.icon = multiSelectOn
+			neighborButton.modulate = Color.WHITE
 		2:
-			neighborButton.text = "many"
+			neighborButton.icon = multiSelectOn
+			neighborButton.modulate = Color.GREEN
 	#display mines
 	if useMines:
 		mineButton.text = str(gm.board.mines)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://31bhtpbuqpqp"]
+[gd_scene load_steps=6 format=3 uid="uid://31bhtpbuqpqp"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_3xq2l"]
+[ext_resource type="Texture2D" uid="uid://ctg33xiab8urd" path="res://multiSelectOn.png" id="2_2k6y5"]
+[ext_resource type="Texture2D" uid="uid://b3h40pvwxaw3t" path="res://multiSelectOff.png" id="2_5e4df"]
 
 [sub_resource type="Animation" id="Animation_j3iip"]
 resource_name = "glow"
@@ -44,15 +46,19 @@ mineButton = NodePath("BombCounter")
 confirmButton = NodePath("ConfirmButton")
 flagButton = NodePath("LockButton")
 bombLabel = NodePath("BombCounterPanel/Label")
+multiSelectOn = ExtResource("2_2k6y5")
+multiSelectOff = ExtResource("2_5e4df")
 
 [node name="NeighborButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.8
-anchor_right = 0.2
+anchor_top = 0.9
 anchor_bottom = 0.9
+grow_vertical = 0
 button_mask = 3
+icon = ExtResource("2_5e4df")
 text_overrun_behavior = 1
+icon_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NeighborButton"]
