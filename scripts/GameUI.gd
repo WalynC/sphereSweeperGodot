@@ -101,4 +101,4 @@ func toggle_time_display():
 func toggle_mine_display():
 	VisualTheme.instance.buttonPress.play()
 	useMines = !useMines
-	bombLabel.text = "Bombs Remaining" if useMines else "Spaces Remaining"
+	bombLabel.text = "Bombs Left" if useMines else "Safe Spaces Left"
