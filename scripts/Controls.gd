@@ -30,6 +30,8 @@ var rotated = false
 
 func SetFlag(val):
 	flag = val
+	ResetTriangleHit()
+	SelectIndicator.inst.EndIndicate()
 
 func _ready():
 	instance = self
