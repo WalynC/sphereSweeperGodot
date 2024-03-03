@@ -92,6 +92,7 @@ func toggle_neighborSelect():
 func SetFlag(val):
 	revealPanel.visible = !val
 	lockPanel.visible = val
+	VisualTheme.instance.buttonPress.play()
 	controls.SetFlag(val)
 
 func toggle_time_display():
