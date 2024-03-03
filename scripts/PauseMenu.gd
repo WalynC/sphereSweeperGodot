@@ -32,6 +32,7 @@ func options_pressed():
 	exit_screen().tween_callback(optionsUI.enter_screen)
 
 func unpause():
+	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(gameUI.enter_screen)
 
 func enter_screen():
