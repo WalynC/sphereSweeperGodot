@@ -21,7 +21,7 @@ op_type = 2
 output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
-operator = 1
+operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jqoam"]
 input_name = "uv"
@@ -75,7 +75,7 @@ void fragment() {
 
 
 // VectorOp:13
-	vec4 n_out13p0 = n_out16p0 - n_out2p0;
+	vec4 n_out13p0 = n_out16p0 * n_out2p0;
 
 
 // VectorOp:9
@@ -106,7 +106,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-397.638, 62.8021)
+graph_offset = Vector2(-465.066, -58.0594)
 modes/diffuse = 3
 modes/specular = 1
 flags/shadows_disabled = true
