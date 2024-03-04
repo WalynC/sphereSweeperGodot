@@ -15,6 +15,8 @@ func Spin(_speed, _decel, clampSpeedToHighest = false):
 	decel = _decel
 	
 func _process(delta):
-	source.volume_db = linear_to_db(clamp(speed*10,0,1))
-	source.pitch_scale = clamp(speed*5, 1, 2)
+	var s = speed*10
+	source.volume_db = linear_to_db(clamp(s,0,1))
+	s -= 1
+	source.pitch_scale = clamp(s, 1, 3)
 	if (speed > 0): speed -= decel * delta
