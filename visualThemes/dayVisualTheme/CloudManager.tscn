@@ -24,12 +24,10 @@ mesh = SubResource("SphereMesh_jnuc5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_c12y4")
 mesh = SubResource("SphereMesh_jnuc5")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_c12y4")
 mesh = SubResource("SphereMesh_jnuc5")
