@@ -4,11 +4,13 @@ class_name GameTimer
 
 @export var gm: Node3D
 
-static var elapsed = 0
+static var elapsed : int : 
+	get:
+		return SaveManager.saveData.time
 
 func _process(delta):
 	if (!gm.paused):
-		if (gm.board.boardGenerated): elapsed += delta
+		if (gm.board.boardGenerated): SaveManager.saveData.time += delta
 	SaveManager.saveData.visualTime += delta
 
 static func GetHMSString():

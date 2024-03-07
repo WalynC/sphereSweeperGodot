@@ -99,7 +99,6 @@ func reset_save_game():
 	newData.visualTime = SaveManager.saveData.visualTime
 	newData.visualSeed = SaveManager.saveData.visualSeed
 	SaveManager.saveData = newData
-	GameTimer.elapsed = 0
 	SaveManager.saveData.percentMined = board.percentMined
 	SaveManager.saveData.size = board.subdiv
 	#set seed
