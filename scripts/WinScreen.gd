@@ -14,7 +14,8 @@ func _ready():
 
 func win():
 	gameUI.exit_screen().tween_callback(enter_screen)
-	bombs.text = "bombs hit: "+str(gm.board.minesHit)
+	bombs.text = "Bombs Hit: "+str(gm.board.minesHit)
+	time.text = "Time: "+str(GameTimer.elapsed as int) if GameUI.secondsOnly else GameTimer.GetHMSString()
 	
 func enter_screen():
 	var tween = create_tween()
