@@ -9,8 +9,8 @@ static var elapsed : int :
 		return SaveManager.saveData.time
 
 func _process(delta):
-	if (!gm.paused):
-		if (gm.board.boardGenerated): SaveManager.saveData.time += delta
+	if (!gm.paused && WorldPivotMover.entered && gm.board.boardGenerated): 
+		SaveManager.saveData.time += delta
 	SaveManager.saveData.visualTime += delta
 
 static func GetHMSString():
