@@ -7,12 +7,18 @@ var called = false
 @export var mainMenuUI:Control
 @export var customGameUI:Control
 
+var color = [Color.GREEN, Color.YELLOW, Color.RED]
+
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
 	called = true
-	densities[(GameManager.density/5)-1].button_pressed = true
-	sizes[(GameManager.size-3)/2].button_pressed = true
+	var densVal = (GameManager.density/5)-1
+	var sizeVal = (GameManager.size-3)/2
+	densities[densVal].button_pressed = true
+	densities[densVal].self_modulate = color[densVal]
+	sizes[sizeVal].button_pressed = true
+	sizes[sizeVal].self_modulate = color[sizeVal]
 	called = false
 
 func exit_screen():
@@ -28,7 +34,9 @@ func _change_density(_toggle, density):
 	called = true
 	for i in range(0,3):
 		densities[i].button_pressed = false
-	densities[density].button_pressed = true
+		densities[i].self_modulate = Color.WHITE
+	#densities[density].button_pressed = true
+	densities[density].self_modulate = color[density]
 	called = false
 
 func _change_size(_toggle, boardSize):
@@ -38,7 +46,9 @@ func _change_size(_toggle, boardSize):
 	called = true
 	for i in range(0,3):
 		sizes[i].button_pressed = false
-	sizes[boardSize].button_pressed = true
+		sizes[i].self_modulate = Color.WHITE
+	#sizes[boardSize].button_pressed = true
+	sizes[boardSize].self_modulate = color[boardSize]
 	called = false
 
 func _new_game_basic():

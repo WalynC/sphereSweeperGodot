@@ -25,7 +25,17 @@ anchor_right = 0.35
 anchor_bottom = 0.5
 focus_mode = 0
 toggle_mode = true
+
+[node name="Label" type="Label" parent="5p"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "5%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="10p" type="Button" parent="."]
 layout_mode = 1
@@ -36,7 +46,17 @@ anchor_right = 0.65
 anchor_bottom = 0.5
 focus_mode = 0
 toggle_mode = true
+
+[node name="Label" type="Label" parent="10p"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "10%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="15p" type="Button" parent="."]
 layout_mode = 1
@@ -47,7 +67,17 @@ anchor_right = 0.95
 anchor_bottom = 0.5
 focus_mode = 0
 toggle_mode = true
+
+[node name="Label" type="Label" parent="15p"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "15%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="sm" type="Button" parent="."]
 layout_mode = 1
@@ -58,7 +88,17 @@ anchor_right = 0.35
 anchor_bottom = 0.65
 focus_mode = 0
 toggle_mode = true
-text = "small"
+
+[node name="Label" type="Label" parent="sm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Small"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="me" type="Button" parent="."]
 layout_mode = 1
@@ -69,7 +109,17 @@ anchor_right = 0.65
 anchor_bottom = 0.65
 focus_mode = 0
 toggle_mode = true
-text = "med"
+
+[node name="Label" type="Label" parent="me"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Medium"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="la" type="Button" parent="."]
 layout_mode = 1
@@ -80,7 +130,17 @@ anchor_right = 0.95
 anchor_bottom = 0.65
 focus_mode = 0
 toggle_mode = true
-text = "large"
+
+[node name="Label" type="Label" parent="la"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Large"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="back" type="Button" parent="."]
 layout_mode = 1
