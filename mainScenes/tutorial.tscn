@@ -13,8 +13,8 @@
 [ext_resource type="Script" path="res://scripts/tutorial/TutorialIndicator.gd" id="10_h2jcx"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="10_o8y3b"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="11_2clgv"]
-[ext_resource type="PackedScene" uid="uid://c61xurvr1hpv4" path="res://indicator.tscn" id="11_q0stj"]
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="12_dvn5q"]
+[ext_resource type="PackedScene" uid="uid://brb8vvgb5maju" path="res://tutorialIndicator.tscn" id="12_xlt47"]
 [ext_resource type="PackedScene" uid="uid://bwue6rvli2gbi" path="res://uiScenes/win_screen.tscn" id="14_e8obx"]
 [ext_resource type="PackedScene" uid="uid://dny37jal4ohdg" path="res://uiScenes/tutorial_pause_menu.tscn" id="15_kkf3v"]
 [ext_resource type="PackedScene" uid="uid://31bhtpbuqpqp" path="res://uiScenes/game_ui.tscn" id="15_vnmci"]
@@ -172,7 +172,7 @@ mesh = SubResource("ArrayMesh_cy6in")
 
 [node name="TutorialIndicator" type="Node3D" parent="WorldPivot"]
 script = ExtResource("10_h2jcx")
-indicatorObject = ExtResource("11_q0stj")
+indicatorObject = ExtResource("12_xlt47")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("10_o8y3b")
