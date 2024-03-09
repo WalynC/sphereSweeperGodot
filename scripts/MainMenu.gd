@@ -26,6 +26,7 @@ func continue_game_pressed():
 	exit_screen().tween_callback(continue_game)
 
 func tutorial_button_pressed():
+	GameManager.gameMode = 2
 	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(tutorial)
 

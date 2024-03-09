@@ -19,7 +19,7 @@ func newGameSignal():
 func go_to_main_menu():
 	VisualTheme.instance.buttonPress.play()
 	WorldPivotMover.instance.Leave()
-	if (gm.board.boardGenerated):
+	if (gm.board.boardGenerated && GameManager.gameMode != 2):
 		SaveManager.save_game()
 	exit_screen().tween_callback(ToMenu)
 

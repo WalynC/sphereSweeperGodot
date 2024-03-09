@@ -34,7 +34,6 @@ func exit_screen():
 
 func toMainMenu():
 	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
-	
 
 func _menu_pressed():
 	VisualTheme.instance.buttonPress.play()
