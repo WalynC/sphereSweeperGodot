@@ -11,13 +11,11 @@ func Begin():
 	controls.allowSelect = true
 	controls.selectStep = self
 	moves = movesNeeded.duplicate()
-	print(moves)
 	#turn on button glow if needed
 	for i in moves:
 		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
 
 func Check():
-	print(moves)
 	if moves.size() == 0: End()
 
 func End():
