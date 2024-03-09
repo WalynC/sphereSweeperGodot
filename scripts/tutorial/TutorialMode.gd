@@ -15,6 +15,13 @@ func GetCurrentStep():
 	if current == -1 || current >= steps.size(): return null
 	return steps[current]
 
+func Reset():
+	GameUI.instance.flagButton.disabled = true
+	GameUI.instance.neighborButton.disabled = true
+	GameManager.instance.board.LoadPreset()
+	current = -1
+	NextStep()
+
 func _ready():
 	GameUI.instance.flagButton.disabled = true
 	GameUI.instance.neighborButton.disabled = true

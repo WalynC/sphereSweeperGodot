@@ -309,6 +309,7 @@ func BuildIconBoard():
 	gm.isphere.Init()
 
 func LoadPreset():
+	ResetBoard()
 	boardGenerated = true
 	mines = gm.preset.size()
 	nonMines = triangles.size() - mines

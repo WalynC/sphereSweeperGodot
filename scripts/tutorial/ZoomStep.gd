@@ -12,6 +12,8 @@ var zoomedOut = false
 
 func Begin():
 	checkUpdate = true
+	zoomedIn = false
+	zoomedOut = false
 	var start = zoomTarget.fov
 	outReq = clampf(start + req, controls.minZoom, controls.maxZoom)
 	inReq = clampf(start - req, controls.minZoom, controls.maxZoom)

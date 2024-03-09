@@ -26,7 +26,7 @@ func handle_touch(event: InputEventScreenTouch):
 				if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
 					CompleteTap()
 				elif (tapStep != null && tapStep.movesNeeded.has(triangleHit)):
-					tapStep.movesNeeded.erase(triangleHit)
+					tapStep.moves.erase(triangleHit)
 					tapStep.Check()
 					VisualTheme.instance.buttonPress.play()
 			touch_points.erase(event.index)
@@ -42,7 +42,7 @@ func CompleteTap():
 	if (gm.paused): return
 	if flag:
 		Flag()
-		selectStep.movesNeeded.erase(triangleHit) #we are on a flag step, so remove flag
+		selectStep.moves.erase(triangleHit) #we are on a flag step, so remove flag
 		selectStep.Check()
 		VisualTheme.instance.buttonPress.play()
 	else:
@@ -68,6 +68,6 @@ func Confirm():
 	if (triangleHit == -1): return
 	Select()
 	previousTriangleHit = -1
-	selectStep.movesNeeded.erase(triangleHit)
+	selectStep.moves.erase(triangleHit)
 	selectStep.Check()
 	SelectIndicator.inst.EndIndicate()

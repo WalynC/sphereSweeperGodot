@@ -434,3 +434,4 @@ playSoundOnCompletion = false
 stream = ExtResource("32_leoju")
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
+[connection signal="new_game" from="ControlRoot/tutorial_pause_menu" to="Tutorial" method="Reset"]

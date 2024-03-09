@@ -5,15 +5,20 @@ class_name SelectStep
 @export var controls: TutorialControls
 @export var textVariants: Array[String]
 
+var moves : Array[int]
+
 func Begin():
 	controls.allowSelect = true
 	controls.selectStep = self
+	moves = movesNeeded.duplicate()
+	print(moves)
 	#turn on button glow if needed
-	for i in movesNeeded:
+	for i in moves:
 		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
 
 func Check():
-	if movesNeeded.size() == 0: End()
+	print(moves)
+	if moves.size() == 0: End()
 
 func End():
 	controls.allowSelect = false
