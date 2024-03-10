@@ -18,7 +18,7 @@ func _ready():
 	volSlider.value = UserSettings.volume
 	called = false
 
-func playDragSound():
+func playButtonSound():
 	VisualTheme.instance.buttonPress.play()
 
 func volume_changed(vol):
@@ -50,9 +50,9 @@ func exit_screen():
 
 func change_theme_pressed(val):
 	VisualLoader.instance.change_button_pressed(val)
-	VisualTheme.instance.buttonPress.play()
+	playButtonSound()
 	themeText.text = VisualLoader.instance.GetCurrentThemeName()
 
 func back_button_pressed():
-	VisualTheme.instance.buttonPress.play()
+	playButtonSound()
 	exit_screen().tween_callback(previousUI.enter_screen)

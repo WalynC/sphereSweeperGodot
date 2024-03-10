@@ -9,7 +9,7 @@ extends Control
 
 
 func _new_game_adv():
-	VisualTheme.instance.buttonPress.play()
+	playButtonSound()
 	GameManager.gameMode = 1
 	exit_screen().tween_callback(toGame)
 	
@@ -17,10 +17,10 @@ func toGame():
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 	
 func back_button_pressed():
-	VisualTheme.instance.buttonPress.play()
+	playButtonSound()
 	exit_screen().tween_callback(basicGameUI.enter_screen)
 
-func playDragSound():
+func playButtonSound():
 	VisualTheme.instance.buttonPress.play()
 
 func density_changed(dens):

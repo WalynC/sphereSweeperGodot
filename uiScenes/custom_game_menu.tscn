@@ -81,9 +81,11 @@ anchor_top = 0.45
 anchor_right = 0.6
 anchor_bottom = 0.5
 
-[connection signal="drag_ended" from="density" to="." method="playDragSound" unbinds=1]
+[connection signal="drag_ended" from="density" to="." method="playButtonSound" unbinds=1]
+[connection signal="drag_started" from="density" to="." method="playButtonSound"]
 [connection signal="value_changed" from="density" to="." method="density_changed"]
-[connection signal="drag_ended" from="size" to="." method="playDragSound" unbinds=1]
+[connection signal="drag_ended" from="size" to="." method="playButtonSound" unbinds=1]
+[connection signal="drag_started" from="size" to="." method="playButtonSound"]
 [connection signal="value_changed" from="size" to="." method="size_changed"]
 [connection signal="pressed" from="back" to="." method="back_button_pressed"]
 [connection signal="pressed" from="play" to="." method="_new_game_adv"]
