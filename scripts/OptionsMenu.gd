@@ -18,13 +18,14 @@ func _ready():
 	volSlider.value = UserSettings.volume
 	called = false
 
+func playDragSound():
+	VisualTheme.instance.buttonPress.play()
 
 func volume_changed(vol):
 	volText.text = "Volume: "+str(int(vol))
 	UserSettings.volume = vol
 	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,vol/100)))
 	if called: return
-	VisualTheme.instance.buttonPress.play()
 
 func _change_confirm_mode(_toggle, mode):
 	Controls.confirmSelect = mode

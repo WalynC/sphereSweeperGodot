@@ -20,13 +20,14 @@ func back_button_pressed():
 	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(basicGameUI.enter_screen)
 
-func density_changed(dens):
+func playDragSound():
 	VisualTheme.instance.buttonPress.play()
+
+func density_changed(dens):
 	GameManager.advDensity = int(dens)
 	densText.text = str(GameManager.advDensity)
 	
 func size_changed(boardSize):
-	VisualTheme.instance.buttonPress.play()
 	GameManager.advSize = int(boardSize)
 	sizeText.text = str(GameManager.advSize)
 

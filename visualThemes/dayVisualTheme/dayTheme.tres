@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cafactgbmt"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cafactgbmt"]
 
 [ext_resource type="StyleBox" uid="uid://d4ifo8fd3d3rg" path="res://visualThemes/dayVisualTheme/Day_disabledStyleBox.tres" id="1_1p4wx"]
 [ext_resource type="StyleBox" uid="uid://c2i1yhtl2xqsc" path="res://visualThemes/dayVisualTheme/Day_hoverStyleBox.tres" id="2_cunrk"]
 [ext_resource type="StyleBox" uid="uid://cajvgrd33diak" path="res://visualThemes/dayVisualTheme/Day_normalStyleBox.tres" id="3_o2434"]
 [ext_resource type="StyleBox" uid="uid://dyyvms48jutj5" path="res://visualThemes/dayVisualTheme/Day_pressedStyleBox.tres" id="4_iatxw"]
+[ext_resource type="Texture2D" uid="uid://c117fvktd7rap" path="res://cloudBoxUIBevel.png" id="5_dfhsw"]
+[ext_resource type="StyleBox" uid="uid://ba7pcnwk1dowq" path="res://visualThemes/dayVisualTheme/Day_sliderLeft.tres" id="6_qpytv"]
 
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -13,6 +15,11 @@ Button/styles/disabled = ExtResource("1_1p4wx")
 Button/styles/hover = ExtResource("2_cunrk")
 Button/styles/normal = ExtResource("3_o2434")
 Button/styles/pressed = ExtResource("4_iatxw")
+HSlider/icons/grabber = ExtResource("5_dfhsw")
+HSlider/icons/grabber_highlight = ExtResource("5_dfhsw")
+HSlider/styles/grabber_area = ExtResource("6_qpytv")
+HSlider/styles/grabber_area_highlight = ExtResource("6_qpytv")
+HSlider/styles/slider = ExtResource("3_o2434")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 10
 Label/font_sizes/font_size = 40
