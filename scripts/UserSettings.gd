@@ -9,9 +9,7 @@ static var volume = 50.0
 func _ready():
 	var err = config.load(path) #check for save
 	if (err != OK): SetDefaultSettings()
-	err = config.get_value("Settings", "density") #check for missing values
-	if (err != OK): SetDefaultSettings()
-	else: GameManager.density = err
+	config.get_value("Settings", "density", GameManager.density)
 	GameManager.size = config.get_value("Settings", "size")
 	GameManager.advDensity = config.get_value("Settings", "advDensity")
 	GameManager.advSize = config.get_value("Settings", "advSize")
