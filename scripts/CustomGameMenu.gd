@@ -25,17 +25,15 @@ func playButtonSound():
 
 func density_changed(dens):
 	GameManager.advDensity = int(dens)
-	densText.text = str(GameManager.advDensity)
+	densText.text = "Bomb Density: "+str(GameManager.advDensity)
 	
 func size_changed(boardSize):
 	GameManager.advSize = int(boardSize)
-	sizeText.text = str(GameManager.advSize)
+	sizeText.text = "Size: "+str(GameManager.advSize)
 
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
-	densText.text = str(GameManager.advDensity)
-	sizeText.text = str(GameManager.advSize)
 	densRange.value = GameManager.advDensity
 	sizeRange.value = GameManager.advSize
 
