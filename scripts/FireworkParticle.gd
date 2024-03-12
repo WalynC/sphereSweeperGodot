@@ -8,7 +8,7 @@ var home
 var used = false
 
 func setParticleScale():
-	var scale = lerp(1,2,float(GameManager.instance.board.subdiv)/20.0)
+	var scale = lerpf(.5, 1.5,float(GameManager.instance.board.subdiv)/20.0)
 	setScales(self, scale)
 	setScales(star, scale)
 	setScales(explosion, scale)
