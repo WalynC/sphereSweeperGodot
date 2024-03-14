@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SphereSweeperGodotGS"
-run/main_scene="res://mainScenes/game.tscn"
+run/main_scene="res://mainScenes/menu_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
