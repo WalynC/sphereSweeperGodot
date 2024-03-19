@@ -27,6 +27,8 @@ static var instance
 signal pause_game()
 
 func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
 	instance = self
 	confirmButton.visible = controls.confirmSelect == 2
 	enter_screen()
@@ -72,7 +74,7 @@ func exit_screen():
 	UserSettings.SaveGameUISettings()
 	gm.paused = true
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween
 
 func pause():

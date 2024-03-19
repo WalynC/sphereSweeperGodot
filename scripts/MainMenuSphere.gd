@@ -37,7 +37,6 @@ var faces := [0, 11, 5,
 	6,8,  7, #18
 	8,9,  1]
 
-
 func Build():
 	var pointsPerFace = 1
 	var trisPerFace = 0

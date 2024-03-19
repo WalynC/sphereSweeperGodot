@@ -1,26 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=8 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="1_uymrd"]
 [ext_resource type="PackedScene" uid="uid://b3tq7nhujaby" path="res://uiScenes/new_game_basic_menu.tscn" id="2_0f0tg"]
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
-[ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="4_6pvk7"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
-[ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="6_kedia"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
-[ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="8_0ivn8"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_1miag"]
 
 [node name="MenuScene" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_uymrd")
 
-[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuSphere", "worldEnv") instance=ExtResource("7_csdbo")]
+[node name="VisualLoader" parent="." node_paths=PackedStringArray("controlRoot", "mainMenuUI", "worldEnv") instance=ExtResource("7_csdbo")]
 controlRoot = NodePath("../menu root")
-mainMenuSphere = NodePath("../menu root/mainMenu/TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D")
+mainMenuUI = NodePath("../menu root/mainMenu")
 worldEnv = NodePath("../WorldEnvironment")
 
 [node name="UserSettings" type="Node" parent="."]
@@ -33,72 +28,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
-layout_mode = 1
-offset_top = 1024.0
-offset_bottom = 2048.0
-basicGameUI = NodePath("../newGameBasicMenu")
-optionsMenuUI = NodePath("../options_menu")
-
-[node name="TextureRect2" type="Control" parent="menu root/mainMenu"]
-layout_mode = 1
-anchor_left = 0.15
-anchor_top = 0.2
-anchor_right = 0.85
-anchor_bottom = 0.35
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="menu root/mainMenu/TextureRect2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.175
-anchor_top = 0.5
-anchor_right = 0.175
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(100, 100)
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="menu root/mainMenu/TextureRect2/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(200, 200)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="menu root/mainMenu/TextureRect2/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.34887)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="menu root/mainMenu/TextureRect2/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623311)
-material_override = ExtResource("4_6pvk7")
-cast_shadow = 0
-gi_mode = 0
-mesh = SubResource("ArrayMesh_1miag")
-script = ExtResource("6_kedia")
-
-[node name="DirectionalLight" type="DirectionalLight3D" parent="menu root/mainMenu/TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.97218)
-light_bake_mode = 0
-shadow_enabled = true
-
-[node name="TextureRect" type="TextureRect" parent="menu root/mainMenu/TextureRect2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_0ivn8")
-expand_mode = 5
-stretch_mode = 4
 
 [node name="newGameBasicMenu" parent="menu root" node_paths=PackedStringArray("mainMenuUI", "customGameUI") instance=ExtResource("2_0f0tg")]
 layout_mode = 1
@@ -118,5 +47,12 @@ layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 2048.0
 previousUI = NodePath("../mainMenu")
+
+[node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 2048.0
+basicGameUI = NodePath("../newGameBasicMenu")
+optionsMenuUI = NodePath("../options_menu")
 
 [node name="Camera3D" type="Camera3D" parent="."]

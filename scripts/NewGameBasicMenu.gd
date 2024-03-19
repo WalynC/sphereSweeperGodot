@@ -9,6 +9,10 @@ var called = false
 
 var color = [Color.GREEN, Color.YELLOW, Color.RED]
 
+func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
+	
 func enter_screen():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(0,0),.5)
@@ -24,7 +28,7 @@ func enter_screen():
 func exit_screen():
 	UserSettings.SaveBasicSettings()
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween
 
 func _change_density(_toggle, density):

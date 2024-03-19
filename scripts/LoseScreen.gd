@@ -7,6 +7,8 @@ signal continue_button()
 @export var gameUI:Control
 
 func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
 	gm.loseEvent.connect(lose)
 
 func lose():
@@ -31,7 +33,7 @@ func _continue_pressed():
 
 func exit_screen():
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween
 
 func _menu_pressed():

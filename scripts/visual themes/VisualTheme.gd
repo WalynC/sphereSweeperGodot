@@ -44,8 +44,8 @@ func UnloadGameVisuals():
 	pass
 
 func LoadMainMenuVisuals():
-	VisualLoader.instance.mainMenuSphere.Build()
-	VisualLoader.instance.mainMenuSphere.set_instance_shader_parameter("BorderColor", borderColor)
+	VisualLoader.instance.mainMenuUI.mainMenuSphere.Build()
+	VisualLoader.instance.mainMenuUI.mainMenuSphere.set_instance_shader_parameter("BorderColor", borderColor)
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()

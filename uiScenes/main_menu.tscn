@@ -1,19 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp2rlrqracaje"]
+[gd_scene load_steps=6 format=3 uid="uid://cp2rlrqracaje"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_lohpg"]
+[ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="2_77f7n"]
+[ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="3_pavm3"]
+[ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="4_ubjsw"]
 
-[node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_r3g3q"]
+
+[node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton", "mainMenuSphere")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 600.0
-offset_bottom = 1024.0
+offset_right = 720.0
+offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_lohpg")
 continueButton = NodePath("cont")
+mainMenuSphere = NodePath("TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D")
 
 [node name="cont" type="Button" parent="."]
 layout_mode = 1
@@ -65,6 +71,69 @@ anchor_bottom = 0.75
 focus_mode = 0
 text = "quit
 "
+
+[node name="TextureRect2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.275
+anchor_right = 0.5
+anchor_bottom = 0.275
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.5
+anchor_right = 0.175
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(100, 100)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect2/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="TextureRect2/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.34887)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TextureRect2/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623311)
+material_override = ExtResource("2_77f7n")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("ArrayMesh_r3g3q")
+script = ExtResource("3_pavm3")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.97218)
+light_bake_mode = 0
+shadow_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ubjsw")
+expand_mode = 5
+stretch_mode = 4
 
 [connection signal="pressed" from="cont" to="." method="continue_game_pressed"]
 [connection signal="pressed" from="new" to="." method="new_game_button_pressed"]

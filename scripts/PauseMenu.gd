@@ -7,6 +7,10 @@ extends Control
 
 signal new_game()
 
+func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
+
 func _on_new_game_pressed():
 	VisualTheme.instance.buttonPress.play()
 	var tween = exit_screen()
@@ -40,5 +44,5 @@ func enter_screen():
 
 func exit_screen():
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween

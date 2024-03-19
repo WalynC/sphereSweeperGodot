@@ -7,6 +7,7 @@ signal new_game_button()
 @export var continueButton:Button
 @export var basicGameUI:Control
 @export var optionsMenuUI:Control
+@export var mainMenuSphere : MeshInstance3D
 
 func new_game_button_pressed():
 	VisualTheme.instance.buttonPress.play()
@@ -17,6 +18,8 @@ func options_button_pressed():
 	exit_screen().tween_callback(optionsMenuUI.enter_screen)
 	
 func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
 	#load save, if there is a save, continue button should be enabled
 	continueButton.disabled = !SaveManager.load_data()
 	enter_screen()
@@ -43,5 +46,5 @@ func enter_screen():
 
 func exit_screen():
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween

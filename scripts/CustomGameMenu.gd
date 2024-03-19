@@ -8,6 +8,10 @@ extends Control
 @export var basicGameUI:Control
 
 
+func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
+	
 func _new_game_adv():
 	playButtonSound()
 	GameManager.gameMode = 1
@@ -40,5 +44,5 @@ func enter_screen():
 func exit_screen():
 	UserSettings.SaveCustomGameSettings()
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween

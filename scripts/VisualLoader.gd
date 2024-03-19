@@ -9,7 +9,7 @@ enum SceneType {MainMenu, Game, Tutorial}
 @export var themePaths: Array[PackedScene]
 @export var themeNames: Array[String]
 @export var controlRoot: Control
-@export var mainMenuSphere : MeshInstance3D
+@export var mainMenuUI : Control
 @export var worldEnv : WorldEnvironment
 
 static var instance

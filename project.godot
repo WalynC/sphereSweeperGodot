@@ -17,10 +17,14 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=600
-window/size/viewport_height=1024
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/mode=2
+window/size/initial_position_type=0
+window/size/initial_position=Vector2i(0, 250)
+window/size/window_height_override=800
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [global]

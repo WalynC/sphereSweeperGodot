@@ -9,6 +9,8 @@ var called = false
 @export var themeText:Label
 
 func _ready():
+	size = get_parent_control().size *2
+	position = Vector2(0,get_parent_control().size.y)
 	for i in range(0,3):
 		modeButtons[i].button_pressed = false
 	called = true
@@ -45,7 +47,7 @@ func enter_screen():
 func exit_screen():
 	UserSettings.SaveOptionsMenuSettings()
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,1024),.5)
+	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
 	return tween
 
 func change_theme_pressed(val):
