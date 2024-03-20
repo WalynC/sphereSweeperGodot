@@ -78,9 +78,9 @@ anchor_left = 0.5
 anchor_top = 0.275
 anchor_right = 0.5
 anchor_bottom = 0.275
-offset_left = -400.0
+offset_left = -600.0
 offset_top = -200.0
-offset_right = 400.0
+offset_right = 600.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -92,20 +92,18 @@ anchor_left = 0.175
 anchor_top = 0.5
 anchor_right = 0.175
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -245.0
+offset_top = -250.0
+offset_right = 255.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(100, 100)
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="TextureRect2/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(200, 200)
+size = Vector2i(500, 500)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="TextureRect2/SubViewportContainer/SubViewport"]
