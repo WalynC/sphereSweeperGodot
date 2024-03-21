@@ -33,6 +33,9 @@ func tutorial_button_pressed():
 	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(tutorial)
 
+func quit_game():
+	get_tree().quit()
+
 func tutorial():
 	get_tree().change_scene_to_file("res://mainScenes/tutorial.tscn")
 
