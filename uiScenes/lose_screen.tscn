@@ -22,7 +22,7 @@ anchor_top = 0.6
 anchor_right = 0.7
 anchor_bottom = 0.65
 focus_mode = 0
-text = "restart"
+text = "Restart"
 
 [node name="continue" type="Button" parent="."]
 layout_mode = 1
@@ -32,7 +32,7 @@ anchor_top = 0.675
 anchor_right = 0.7
 anchor_bottom = 0.725
 focus_mode = 0
-text = "continue"
+text = "Continue"
 
 [node name="menu" type="Button" parent="."]
 layout_mode = 1
@@ -42,7 +42,7 @@ anchor_top = 0.75
 anchor_right = 0.7
 anchor_bottom = 0.8
 focus_mode = 0
-text = "menu"
+text = "Menu"
 
 [node name="loseLabel" type="Label" parent="."]
 layout_mode = 1

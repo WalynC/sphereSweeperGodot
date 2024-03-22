@@ -150,7 +150,7 @@ anchor_top = 0.7
 anchor_right = 0.5
 anchor_bottom = 0.8
 focus_mode = 0
-text = "back"
+text = "Back"
 
 [node name="custom" type="Button" parent="."]
 layout_mode = 1
@@ -160,7 +160,7 @@ anchor_top = 0.7
 anchor_right = 0.8
 anchor_bottom = 0.8
 focus_mode = 0
-text = "custom"
+text = "Custom"
 
 [node name="play" type="Button" parent="."]
 layout_mode = 1
@@ -170,7 +170,7 @@ anchor_top = 0.8
 anchor_right = 0.8
 anchor_bottom = 0.9
 focus_mode = 0
-text = "play"
+text = "Play"
 
 [connection signal="toggled" from="5p" to="." method="_change_density" binds= [0]]
 [connection signal="toggled" from="10p" to="." method="_change_density" binds= [1]]

@@ -59,7 +59,7 @@ anchor_top = 0.7
 anchor_right = 0.5
 anchor_bottom = 0.8
 focus_mode = 0
-text = "back"
+text = "Back"
 
 [node name="volume" type="HSlider" parent="."]
 layout_mode = 1
