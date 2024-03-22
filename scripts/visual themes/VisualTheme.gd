@@ -36,6 +36,8 @@ func UnloadVisualTheme():
 			UnloadMainMenuVisuals()
 		VisualLoader.SceneType.Game:
 			UnloadGameVisuals()
+		VisualLoader.SceneType.Tutorial:
+			UnloadGameVisuals()
 
 func UnloadMainMenuVisuals():
 	pass
