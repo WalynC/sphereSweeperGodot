@@ -3,7 +3,6 @@
 class_name Trail3D extends MeshInstance3D
 
 var _points = []
-var _widths = []
 var _lifePoints = []
 
 @export var _trailEnabled : bool = true
@@ -20,29 +19,28 @@ var _lifePoints = []
 
 var _oldPos : Vector3
 var _oldPosArr : Array[Vector3]
+var camPos
 
 func _ready():
+	camPos = get_viewport().get_camera_3d().position
 	_oldPos = get_global_transform().origin
 	mesh = ImmediateMesh.new()
 
 func AppendPoint():
 	_points.append(get_global_transform().origin)
-	_widths.append([
-		get_global_transform().basis.x * _fromWidth, 
-		get_global_transform().basis.x * _fromWidth - get_global_transform().basis.x * _toWidth])
 	_oldPosArr.append(_oldPos)
 	_lifePoints.append(0.0)
 
 func RemovePoint(i):
 	_points.remove_at(i)
-	_widths.remove_at(i)
 	_lifePoints.remove_at(i)
 	_oldPosArr.remove_at(i)
 
 func _process(delta):
-	if (_oldPos - get_global_transform().origin).length() > _motionDelta and _trailEnabled:
+	var newPos = get_global_transform().origin
+	if (_oldPos - newPos).length() > _motionDelta and _trailEnabled:
 		AppendPoint()
-		_oldPos = get_global_transform().origin
+		_oldPos = newPos
 	var p = 0
 	var max_points = _points.size()
 	while p < max_points:
@@ -55,24 +53,24 @@ func _process(delta):
 		p += 1
 	mesh.clear_surfaces()
 	if _points.size() < 2: return
-	_points.append(get_global_transform().origin)
-	_oldPosArr.append(_points[_points.size()-2])
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
+	var size = _points.size()
 	for i in range(_points.size()):
-		var t = float(i) / (_points.size() - 1.0)
-		var currColor = _startColor.lerp(_endColor, 1-t)
-		mesh.surface_set_color(currColor)
-		var camPos = get_viewport().get_camera_3d().position
-		var camDir = camPos - _points[i]
-		var oldDir = _points[i] - _oldPosArr[i]
-		var viewDir = camDir.cross(oldDir).normalized()
-		var currWidth = (viewDir*_fromWidth) - pow(1-t, _scaleAcceleration) * (viewDir*_fromWidth-viewDir*_toWidth)
-		var t0 = (i/_points.size())/2
-		var t1 = 1-t0
-		mesh.surface_set_uv(Vector2(t0, 0))
-		mesh.surface_add_vertex(to_local(_points[i]+currWidth))
-		mesh.surface_set_uv(Vector2(t1, 1))
-		mesh.surface_add_vertex(to_local(_points[i]-currWidth))
-	_points.remove_at(_points.size()-1)
-	_oldPosArr.remove_at(_oldPosArr.size()-1)
+		AddVertex(_points[i], _oldPosArr[i], size, camPos, i)
+	AddVertex(newPos, _points[_points.size()-1], size, camPos, size)
 	mesh.surface_end()
+
+func AddVertex(point, oldPos, pointsSize, camPos, i):
+	var t = float(i) / (pointsSize)
+	var currColor = _startColor.lerp(_endColor, 1-t)
+	var camDir = camPos - point
+	var oldDir = point - oldPos
+	var widthDir = camDir.cross(oldDir).normalized()
+	var currWidth = (widthDir*_fromWidth) * (t)
+	var lpoint = to_local(point)
+	mesh.surface_set_color(currColor)
+	mesh.surface_set_uv(Vector2.ZERO)
+	mesh.surface_add_vertex(lpoint+currWidth)
+	mesh.surface_set_color(currColor)
+	mesh.surface_set_uv(Vector2.ONE)
+	mesh.surface_add_vertex(lpoint-currWidth)

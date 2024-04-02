@@ -3,9 +3,10 @@ class_name StarLoader
 
 @export var star : PackedScene
 var objects = []
+const halfpi = PI/2
 
 func Generate():
-	for i in range(250):
+	for i in range(125):
 		var o = star.instantiate()
 		objects.append(o)
 		GameManager.instance.worldPivot.add_child(o)
@@ -15,7 +16,7 @@ func GetRandomPointOnUnitSphereSurface(rng:RandomNumberGenerator):
 	#https://math.stackexchange.com/questions/1585975/how-to-generate-random-points-on-a-sphere/1586185#1586185
 	var u1 = rng.randf_range(0,1)
 	var u2 = rng.randf_range(0,1)
-	var phi = acos(2*u1-1)-(PI/2)
+	var phi = acos(2*u1-1)-(halfpi)
 	var lambda = 2*PI*u2
 	return Vector3(cos(phi)*cos(lambda), cos(phi)*sin(lambda), sin(phi))
 
