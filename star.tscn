@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pjjgk8s8k82g"]
+[gd_scene load_steps=8 format=3 uid="uid://pjjgk8s8k82g"]
 
 [ext_resource type="Texture2D" uid="uid://c6cwsbpd4j3vw" path="res://star.png" id="1_sdoxm"]
 [ext_resource type="Texture2D" uid="uid://cwj754524ns8j" path="res://trail - Copy.png" id="2_dac2q"]
@@ -24,15 +24,25 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_dac2q")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_kxq17"]
 
 [node name="Star" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50735, 0, 0)
 mesh = SubResource("PlaneMesh_03mqr")
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_oxpbe")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("ImmediateMesh_kxq17")
 script = ExtResource("3_84rb5")
-_fromWidth = 0.05
+_fromWidth = 0.075
+_motionDelta = 0.01
 _lifespan = 0.1
