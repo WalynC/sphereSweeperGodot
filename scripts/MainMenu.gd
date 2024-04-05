@@ -7,6 +7,7 @@ signal new_game_button()
 @export var continueButton:Button
 @export var basicGameUI:Control
 @export var optionsMenuUI:Control
+@export var creditsUI:Control
 @export var mainMenuSphere : MeshInstance3D
 
 func new_game_button_pressed():
@@ -27,6 +28,10 @@ func _ready():
 func continue_game_pressed():
 	VisualTheme.instance.buttonPress.play()
 	exit_screen().tween_callback(continue_game)
+	
+func credits_pressed():
+	VisualTheme.instance.buttonPress.play()
+	exit_screen().tween_callback(creditsUI.enter_screen)
 
 func tutorial_button_pressed():
 	GameManager.gameMode = 2

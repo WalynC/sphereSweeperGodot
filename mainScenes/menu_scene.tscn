@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://di55ecqry3xcg"]
+[gd_scene load_steps=9 format=3 uid="uid://di55ecqry3xcg"]
 
 [ext_resource type="Script" path="res://scripts/UserSettings.gd" id="1_0stym"]
 [ext_resource type="PackedScene" uid="uid://cp2rlrqracaje" path="res://uiScenes/main_menu.tscn" id="1_6ny5j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6t1icjq8ahl8" path="res://uiScenes/custom_game_menu.tscn" id="3_m8si6"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="4_dlvh5"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="7_csdbo"]
+[ext_resource type="PackedScene" uid="uid://318dccwpc4d7" path="res://uiScenes/credits.tscn" id="8_dj22n"]
 
 [node name="MenuScene" type="Node"]
 
@@ -48,11 +49,18 @@ offset_top = 1024.0
 offset_bottom = 2048.0
 previousUI = NodePath("../mainMenu")
 
-[node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI") instance=ExtResource("1_6ny5j")]
+[node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI", "creditsUI") instance=ExtResource("1_6ny5j")]
 layout_mode = 1
 offset_top = 1024.0
 offset_bottom = 2048.0
 basicGameUI = NodePath("../newGameBasicMenu")
 optionsMenuUI = NodePath("../options_menu")
+creditsUI = NodePath("../credits")
+
+[node name="credits" parent="menu root" node_paths=PackedStringArray("mainMenuUI") instance=ExtResource("8_dj22n")]
+layout_mode = 1
+offset_top = 1280.0
+offset_bottom = 2560.0
+mainMenuUI = NodePath("../mainMenu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
