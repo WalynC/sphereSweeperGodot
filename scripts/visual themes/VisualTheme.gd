@@ -22,6 +22,7 @@ func LoadVisualTheme():
 	instance = self
 	VisualLoader.instance.controlRoot.theme = theme
 	VisualLoader.instance.worldEnv.environment.background_color = backgroundColor
+	RenderingServer.set_default_clear_color(backgroundColor)
 	match VisualLoader.instance.scene:
 		VisualLoader.SceneType.MainMenu:
 			LoadMainMenuVisuals()
