@@ -19,9 +19,9 @@ func enter_screen():
 	called = true
 	var densVal = (GameManager.density/5)-1
 	var sizeVal = (GameManager.size-3)/2
-	densities[densVal].button_pressed = true
+	#densities[densVal].button_pressed = true
 	densities[densVal].self_modulate = color[densVal]
-	sizes[sizeVal].button_pressed = true
+	#sizes[sizeVal].button_pressed = true
 	sizes[sizeVal].self_modulate = color[sizeVal]
 	called = false
 
