@@ -33,7 +33,9 @@ Programming and Art by Walyn Curtis
 Made using Godot Engine
 https://godotengine.org/license/
 
-Sound effects from https://opengameart.org/"
+Sound effects from https://opengameart.org/
+
+Portions of this software are copyright © 1996-2023 The FreeType Project (www.freetype.org). All rights reserved."
 horizontal_alignment = 1
 
 [node name="creditsLabel" type="Label" parent="."]
