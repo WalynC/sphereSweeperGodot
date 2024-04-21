@@ -22,6 +22,7 @@ window/size/viewport_height=1280
 window/size/mode=2
 window/size/initial_position_type=0
 window/size/initial_position=Vector2i(0, 250)
+window/size/resizable=false
 window/size/window_height_override=800
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
