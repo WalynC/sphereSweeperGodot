@@ -261,10 +261,10 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="ControlRoot/game_ui/tutorialBox"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.8
+anchor_left = 0.7
 anchor_top = 0.25
 anchor_right = 0.9
-anchor_bottom = 0.275
+anchor_bottom = 0.3
 text = "Next"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ControlRoot/game_ui/tutorialBox/Button"]
