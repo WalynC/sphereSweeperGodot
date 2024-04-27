@@ -85,8 +85,12 @@ func pause():
 	gm.controlBlocker.visible = true
 	exit_screen().tween_callback(pauseScreen.enter_screen)
 
+func confirmDown():
+	controls.confirmDown = true
+
 func confirm():
 	controls.Confirm()
+	controls.confirmDown = false
 
 func toggle_neighborSelect():
 	VisualTheme.instance.buttonPress.play()

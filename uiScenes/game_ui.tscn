@@ -224,6 +224,7 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="NeighborButton" to="." method="toggle_neighborSelect"]
 [connection signal="pressed" from="Pause" to="." method="pause"]
+[connection signal="button_down" from="ConfirmButton" to="." method="confirmDown"]
 [connection signal="pressed" from="ConfirmButton" to="." method="confirm"]
 [connection signal="pressed" from="BombCounter" to="." method="toggle_mine_display"]
 [connection signal="toggled" from="Panel/LockRevealToggle" to="." method="SetFlag"]

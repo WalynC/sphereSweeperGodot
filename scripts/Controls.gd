@@ -11,6 +11,8 @@ var touch_ending = {}
 var start_distance
 var start_zoom
 
+var confirmDown = false
+
 static var instance:Controls
 
 var inertia = Vector2.ZERO
@@ -62,7 +64,7 @@ func handle_touch(event: InputEventScreenTouch):
 		inertia = Vector2.ZERO
 		WindSound.instance.Spin(.5, 1, true)
 		touch_points[event.index] = event.position
-		if (touch_points.size() == 1):
+		if (touch_points.size() == 1 && !confirmDown):
 			triangleHit = GetTriangleHit(event.position)
 			if (triangleHit < 0):
 				ResetTriangleHit()
