@@ -20,6 +20,7 @@ func handle_touch(event: InputEventScreenTouch):
 				SelectIndicator.inst.EndIndicate()
 	else:
 		if (allowSelect):
+			print("allowSelect")
 			var endHit = GetTriangleHit(event.position)
 			if (triangleHit == endHit):
 				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
@@ -29,7 +30,7 @@ func handle_touch(event: InputEventScreenTouch):
 					tapStep.moves.erase(triangleHit)
 					tapStep.Check()
 					VisualTheme.instance.buttonPress.play()
-			touch_points.erase(event.index)
+		touch_points.erase(event.index)
 	
 	if touch_points.size() == 2:
 		var touch_point_positions = touch_points.values()
