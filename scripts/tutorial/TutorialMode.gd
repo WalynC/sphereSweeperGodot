@@ -27,6 +27,7 @@ func Reset():
 	controls.allowSelect = false
 	controls.selectStep = null
 	controls.tapStep = null
+	controls.flag = false
 	current = -1
 	controls.triangleHit = -999
 	NextStep()

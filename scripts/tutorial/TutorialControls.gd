@@ -24,7 +24,6 @@ func handle_touch(event: InputEventScreenTouch):
 				SelectIndicator.inst.EndIndicate()
 	else:
 		if (allowSelect):
-			print("allowSelect")
 			var endHit = GetTriangleHit(event.position)
 			if (triangleHit == endHit):
 				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
