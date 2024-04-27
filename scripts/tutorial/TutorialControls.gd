@@ -14,7 +14,11 @@ func handle_touch(event: InputEventScreenTouch):
 		WindSound.instance.Spin(.5, 1, true)
 		touch_points[event.index] = event.position
 		if (touch_points.size() == 1 && !confirmDown):
-			triangleHit = GetTriangleHit(event.position)
+			var hit = GetTriangleHit(event.position)
+			if ((selectStep != null && selectStep.movesNeeded.has(hit)) || (tapStep != null && tapStep.movesNeeded.has(hit))):
+				triangleHit = hit
+			else:
+				triangleHit = -999
 			if (triangleHit < 0):
 				ResetTriangleHit()
 				SelectIndicator.inst.EndIndicate()
