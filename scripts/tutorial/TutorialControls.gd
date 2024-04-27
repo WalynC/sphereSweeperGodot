@@ -2,7 +2,7 @@ extends Controls
 
 class_name TutorialControls
 
-var allowSelect = true
+var allowSelect = false
 var selectStep = null
 var tapStep = null
 
