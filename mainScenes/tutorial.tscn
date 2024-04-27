@@ -312,10 +312,13 @@ source = NodePath("AudioStreamPlayer")
 stream = ExtResource("34_52dg4")
 autoplay = true
 
-[node name="Tutorial" type="Node" parent="." node_paths=PackedStringArray("tutorialStepContainer", "instructionsText", "nextStepSound")]
+[node name="Tutorial" type="Node" parent="." node_paths=PackedStringArray("tutorialStepContainer", "instructionsText", "sIndicat", "tIndicat", "controls", "nextStepSound")]
 script = ExtResource("35_t3qiy")
 tutorialStepContainer = NodePath(".")
 instructionsText = NodePath("../ControlRoot/game_ui/tutorialBox/tutorialText")
+sIndicat = NodePath("../WorldPivot/SelectIndicator")
+tIndicat = NodePath("../WorldPivot/TutorialIndicator")
+controls = NodePath("../Controls")
 nextStepSound = NodePath("../TutorialSound")
 
 [node name="intro" type="Node" parent="Tutorial" node_paths=PackedStringArray("button")]

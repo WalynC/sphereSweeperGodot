@@ -8,6 +8,9 @@ var update = false
 
 @export var tutorialStepContainer : Node
 @export var instructionsText : Label
+@export var sIndicat: SelectIndicator
+@export var tIndicat : TutorialIndicator
+@export var controls : TutorialControls
 
 @export var nextStepSound : AudioStreamPlayer
 
@@ -19,7 +22,13 @@ func Reset():
 	GameUI.instance.flagButton.disabled = true
 	GameUI.instance.neighborButton.disabled = true
 	GameManager.instance.board.LoadPreset()
+	sIndicat.EndIndicate()
+	tIndicat.EndIndicate()
+	controls.allowSelect = false
+	controls.selectStep = null
+	controls.tapStep = null
 	current = -1
+	controls.triangleHit = -999
 	NextStep()
 
 func _ready():
