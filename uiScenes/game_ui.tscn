@@ -94,6 +94,11 @@ button_mask = 3
 text = "Confirm"
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ConfirmButton"]
+libraries = {
+"": SubResource("AnimationLibrary_amicg")
+}
+
 [node name="BombCounterPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
