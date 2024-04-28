@@ -30,6 +30,8 @@ func Reset():
 	controls.flag = false
 	current = -1
 	controls.triangleHit = -999
+	GameUI.instance.revealPanel.visible = true
+	GameUI.instance.lockPanel.visible = false
 	NextStep()
 
 func _ready():
