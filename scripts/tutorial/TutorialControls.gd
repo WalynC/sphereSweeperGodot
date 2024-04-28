@@ -14,25 +14,25 @@ func handle_touch(event: InputEventScreenTouch):
 		WindSound.instance.Spin(.5, 1, true)
 		touch_points[event.index] = event.position
 		if (touch_points.size() == 1 && !confirmDown):
-			var hit = GetTriangleHit(event.position)
-			if ((selectStep != null && selectStep.movesNeeded.has(hit)) || (tapStep != null && tapStep.movesNeeded.has(hit))):
-				triangleHit = hit
-			else:
-				triangleHit = -999
+			triangleHit = GetTriangleHit(event.position)
 			if (triangleHit < 0):
 				ResetTriangleHit()
 				SelectIndicator.inst.EndIndicate()
 	else:
 		if (allowSelect):
 			var endHit = GetTriangleHit(event.position)
-			if (triangleHit == endHit):
-				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
-				if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
-					CompleteTap()
-				elif (tapStep != null && tapStep.movesNeeded.has(triangleHit)):
-					tapStep.moves.erase(triangleHit)
-					tapStep.Check()
-					VisualTheme.instance.buttonPress.play()
+			if ((selectStep != null && selectStep.movesNeeded.has(endHit)) || (tapStep != null && tapStep.movesNeeded.has(endHit))):
+				if (triangleHit == endHit):
+					GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
+					if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
+						CompleteTap()
+					elif (tapStep != null && tapStep.movesNeeded.has(triangleHit)):
+						tapStep.moves.erase(triangleHit)
+						tapStep.Check()
+						VisualTheme.instance.buttonPress.play()
+			else:
+				ResetTriangleHit()
+				SelectIndicator.inst.EndIndicate()
 		touch_points.erase(event.index)
 	
 	if touch_points.size() == 2:
@@ -69,7 +69,7 @@ func CompleteTap():
 				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
 
 func Confirm():
-	if (triangleHit == -1): return
+	if (triangleHit < 0): return
 	Select()
 	previousTriangleHit = -1
 	selectStep.moves.erase(triangleHit)
