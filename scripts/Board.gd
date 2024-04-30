@@ -368,7 +368,7 @@ func ResetBoard():
 		t.flagged = false
 		t.ChangeIcon(2,4,gm)
 		for i in range(0,3):
-			colors[t.vertIndices[i]] = VisualTheme.instance.GetBaseColor(vertices[i])
+			colors[t.vertIndices[i]] = VisualTheme.instance.GetBaseColor(vertices[t.vertIndices[i]])
 	colorsChanged = true
 	
 func Flag(selected):
