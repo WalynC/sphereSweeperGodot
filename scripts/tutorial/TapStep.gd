@@ -11,7 +11,7 @@ func Begin():
 	controls.tapStep = self
 	moves = movesNeeded.duplicate()
 	for i in movesNeeded:
-		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
+		controls.tIndicator.Indicate(GameManager.instance.board.triangles[i])
 		
 func Check():
 	if moves.size() == 0: End()
@@ -19,5 +19,5 @@ func Check():
 func End():
 	controls.allowSelect = false
 	controls.selectStep = null
-	TutorialIndicator.tutorialInst.EndIndicate()
+	controls.tIndicator.EndIndicate()
 	super.End()

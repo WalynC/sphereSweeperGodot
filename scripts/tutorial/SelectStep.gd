@@ -18,7 +18,7 @@ func Begin():
 	anim = GameUI.instance.confirmButton.get_node("AnimationPlayer")
 	#turn on button glow if needed
 	for i in moves:
-		TutorialIndicator.tutorialInst.Indicate(GameManager.instance.board.triangles[i])
+		controls.tIndicator.Indicate(GameManager.instance.board.triangles[i])
 
 func _process(delta):
 	if (!active): return
@@ -42,7 +42,7 @@ func End():
 	anim.stop()
 	#activate timer if timer is not on
 	#turn off glow if needed
-	TutorialIndicator.tutorialInst.EndIndicate()
+	controls.tIndicator.EndIndicate()
 	super.End()
 
 func GetText():
