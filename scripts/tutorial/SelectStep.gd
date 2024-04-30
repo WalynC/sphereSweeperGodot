@@ -34,6 +34,9 @@ func _process(delta):
 func Check():
 	if moves.size() == 0: End()
 
+func EraseStep(index):
+	moves.erase(index)
+
 func End():
 	active = false
 	controls.allowSelect = false

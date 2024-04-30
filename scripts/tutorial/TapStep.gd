@@ -16,6 +16,9 @@ func Begin():
 func Check():
 	if moves.size() == 0: End()
 
+func EraseStep(index):
+	moves.erase(index)
+
 func End():
 	controls.allowSelect = false
 	controls.selectStep = null
