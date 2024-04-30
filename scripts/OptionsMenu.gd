@@ -9,7 +9,7 @@ var called = false
 @export var themeText:Label
 
 func _ready():
-	size = get_parent_control().size *2
+	set_deferred("size", get_parent_control().size*2)
 	position = Vector2(0,get_parent_control().size.y)
 	for i in range(0,3):
 		modeButtons[i].button_pressed = false

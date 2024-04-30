@@ -19,8 +19,8 @@ func options_button_pressed():
 	exit_screen().tween_callback(optionsMenuUI.enter_screen)
 	
 func _ready():
-	size = get_parent_control().size *2
-	position = Vector2(0,get_parent_control().size.y)
+	set_deferred("size", get_parent_control().size*2)
+	#position = Vector2(0,get_parent_control().size.y)
 	#load save, if there is a save, continue button should be enabled
 	continueButton.disabled = !SaveManager.load_data()
 	enter_screen()
