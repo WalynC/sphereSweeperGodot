@@ -6,7 +6,7 @@ var allowSelect = false
 var selectStep = null
 var tapStep = null
 
-@export var test : int
+@export var tIndicator : TutorialIndicator
 
 func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
@@ -17,7 +17,7 @@ func handle_touch(event: InputEventScreenTouch):
 			triangleHit = GetTriangleHit(event.position)
 			if (triangleHit < 0):
 				ResetTriangleHit()
-				SelectIndicator.inst.EndIndicate()
+				sIndicator.EndIndicate()
 	else:
 		if (allowSelect):
 			var endHit = GetTriangleHit(event.position)
@@ -32,7 +32,7 @@ func handle_touch(event: InputEventScreenTouch):
 						VisualTheme.instance.buttonPress.play()
 			else:
 				ResetTriangleHit()
-				SelectIndicator.inst.EndIndicate()
+				sIndicator.EndIndicate()
 		touch_points.erase(event.index)
 	
 	if touch_points.size() == 2:
@@ -42,6 +42,7 @@ func handle_touch(event: InputEventScreenTouch):
 	elif touch_points.size() < 2:
 		start_distance = 0
 
+
 func CompleteTap():
 	if (gm.paused): return
 	if flag:
@@ -50,7 +51,7 @@ func CompleteTap():
 		selectStep.Check()
 		VisualTheme.instance.buttonPress.play()
 	else:
-		SelectIndicator.inst.EndIndicate()
+		sIndicator.EndIndicate()
 		match confirmSelect:
 			0:
 				previousTriangleHit = triangleHit
@@ -59,14 +60,14 @@ func CompleteTap():
 				if (previousTriangleHit != triangleHit):
 					VisualTheme.instance.buttonPress.play()
 					previousTriangleHit = triangleHit
-					if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
-					else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
+					if (neighborSelect > 0): sIndicator.IndicateNeighbors(gm.board.triangles[triangleHit])
+					else: sIndicator.Indicate(gm.board.triangles[triangleHit])
 				else: Confirm()
 			2:
 				VisualTheme.instance.buttonPress.play()
 				previousTriangleHit = triangleHit
-				if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
-				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
+				if (neighborSelect > 0): sIndicator.IndicateNeighbors(gm.board.triangles[triangleHit])
+				else: sIndicator.Indicate(gm.board.triangles[triangleHit])
 
 func Confirm():
 	if (triangleHit < 0): return
@@ -74,4 +75,4 @@ func Confirm():
 	previousTriangleHit = -1
 	selectStep.moves.erase(triangleHit)
 	selectStep.Check()
-	SelectIndicator.inst.EndIndicate()
+	sIndicator.EndIndicate()

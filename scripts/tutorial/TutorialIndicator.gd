@@ -1,7 +1,6 @@
 extends SelectIndicator
 class_name TutorialIndicator
 
-static var tutorialInst
 var inUse : Array[MeshInstance3D]
 var uvs : PackedVector2Array
 var tris : PackedInt32Array
@@ -9,7 +8,6 @@ var tris : PackedInt32Array
 @export var indicatorObject : PackedScene
 
 func _ready():
-	tutorialInst = self
 	uvs.resize(36)
 	for i in range(0,6):
 		uvs[0 + (6 * i)] = Vector2(0, 1);

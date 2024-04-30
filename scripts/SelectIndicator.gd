@@ -1,14 +1,12 @@
 extends Node
 class_name SelectIndicator
 
-static var inst
 @export var inner : MeshInstance3D
 @export var outer : MeshInstance3D
 var innerArrays
 var outerArrays
 
 func _ready():
-	inst = self
 	innerArrays = []
 	innerArrays.resize(Mesh.ARRAY_MAX)
 	outerArrays = []

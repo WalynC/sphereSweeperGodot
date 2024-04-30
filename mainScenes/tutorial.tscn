@@ -115,10 +115,12 @@ preset = Array[int]([495, 471, 483, 102])
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_o1heu")
 
-[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
+[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("tIndicator", "gm", "pivot", "sIndicator")]
 script = ExtResource("3_lnfho")
+tIndicator = NodePath("../WorldPivot/TutorialIndicator")
 gm = NodePath("..")
 pivot = NodePath("../WorldPivot")
+sIndicator = NodePath("../WorldPivot/SelectIndicator")
 
 [node name="WorldPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)

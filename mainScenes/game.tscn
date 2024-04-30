@@ -90,10 +90,11 @@ controlBlocker = NodePath("ControlRoot/controlBlocker")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_87th6")
 
-[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot")]
+[node name="Controls" type="Node3D" parent="." node_paths=PackedStringArray("gm", "pivot", "sIndicator")]
 script = ExtResource("6_pd3oa")
 gm = NodePath("..")
 pivot = NodePath("../WorldPivot")
+sIndicator = NodePath("../WorldPivot/SelectIndicator")
 
 [node name="WorldPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)

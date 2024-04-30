@@ -4,6 +4,7 @@ class_name Controls
 
 @export var gm: Node3D
 @export var pivot: Node3D
+@export var sIndicator: SelectIndicator
 
 var cam
 var touch_points = {}
@@ -33,7 +34,7 @@ var rotated = false
 func SetFlag(val):
 	flag = val
 	ResetTriangleHit()
-	SelectIndicator.inst.EndIndicate()
+	sIndicator.EndIndicate()
 
 func _ready():
 	instance = self
@@ -68,7 +69,7 @@ func handle_touch(event: InputEventScreenTouch):
 			triangleHit = GetTriangleHit(event.position)
 			if (triangleHit < 0):
 				ResetTriangleHit()
-				SelectIndicator.inst.EndIndicate()
+				sIndicator.EndIndicate()
 	else:
 		var endHit = GetTriangleHit(event.position)
 		if (triangleHit == endHit):
@@ -105,7 +106,7 @@ func CompleteTap():
 		Flag()
 		VisualTheme.instance.buttonPress.play()
 	else:
-		SelectIndicator.inst.EndIndicate()
+		sIndicator.EndIndicate()
 		match confirmSelect:
 			0:
 				previousTriangleHit = triangleHit
@@ -114,14 +115,14 @@ func CompleteTap():
 				if (previousTriangleHit != triangleHit):
 					VisualTheme.instance.buttonPress.play()
 					previousTriangleHit = triangleHit
-					if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
-					else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
+					if (neighborSelect > 0): sIndicator.IndicateNeighbors(gm.board.triangles[triangleHit])
+					else: sIndicator.Indicate(gm.board.triangles[triangleHit])
 				else: Confirm()
 			2:
 				VisualTheme.instance.buttonPress.play()
 				previousTriangleHit = triangleHit
-				if (neighborSelect > 0): SelectIndicator.inst.IndicateNeighbors(gm.board.triangles[triangleHit])
-				else: SelectIndicator.inst.Indicate(gm.board.triangles[triangleHit])
+				if (neighborSelect > 0): sIndicator.IndicateNeighbors(gm.board.triangles[triangleHit])
+				else: sIndicator.Indicate(gm.board.triangles[triangleHit])
 
 func Flag():
 	if (neighborSelect == 0):
@@ -147,7 +148,7 @@ func Confirm():
 	if (triangleHit == -1): return
 	Select()
 	previousTriangleHit = -1
-	SelectIndicator.inst.EndIndicate()
+	sIndicator.EndIndicate()
 	
 func Select():
 	if (!gm.board.boardGenerated):
