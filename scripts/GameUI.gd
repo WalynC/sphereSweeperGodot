@@ -88,6 +88,9 @@ func pause():
 func confirmDown():
 	controls.confirmDown = true
 
+func confirmUp():
+	controls.confirmDown = false
+
 func confirm():
 	controls.Confirm()
 	controls.confirmDown = false
