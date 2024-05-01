@@ -11,7 +11,7 @@ var color = [Color.GREEN, Color.YELLOW, Color.RED]
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
-	position = Vector2(0,get_parent_control().size.y)
+	set_deferred("position", Vector2(0,get_parent_control().size.y))
 	
 func enter_screen():
 	var tween = create_tween()

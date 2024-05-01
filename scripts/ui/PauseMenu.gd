@@ -9,7 +9,8 @@ signal new_game()
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
-	position = Vector2(0,get_parent_control().size.y)
+	set_deferred("position", Vector2(0,get_parent_control().size.y))
+	pass
 
 func _on_new_game_pressed():
 	VisualTheme.instance.buttonPress.play()

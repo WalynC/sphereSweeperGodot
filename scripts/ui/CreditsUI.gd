@@ -12,4 +12,4 @@ func enter_screen():
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
-	position = Vector2(0,get_parent_control().size.y)
+	set_deferred("position", Vector2(0,get_parent_control().size.y))
