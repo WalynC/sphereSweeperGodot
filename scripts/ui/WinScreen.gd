@@ -10,8 +10,8 @@ signal again_button()
 @export var gameUI:Control
 
 func _ready():
-	#set_deferred("size", get_parent_control().size*2)
-	#set_deferred("position", Vector2(0,get_parent_control().size.y))
+	set_deferred("size", get_parent_control().size*2)
+	set_deferred("position", Vector2(0,get_parent_control().size.y))
 	gm.winEvent.connect(win)
 
 func win():
