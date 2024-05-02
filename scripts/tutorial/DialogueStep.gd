@@ -6,7 +6,7 @@ var anim
 
 func Begin():
 	anim = button.get_node("AnimationPlayer")
-	button.button_up.connect(End)
+	if (!button.button_up.is_connected(End)): button.button_up.connect(End)
 	button.show()
 	anim.play("glow")
 	

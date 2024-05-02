@@ -8,15 +8,15 @@ var home
 var used = false
 
 func setParticleScale():
-	var scale = lerpf(.5, 1.5,float(GameManager.instance.board.subdiv)/20.0)
-	setScales(self, scale)
-	setScales(star, scale)
-	setScales(explosion, scale)
+	var _scale = lerpf(.5, 1.5,float(GameManager.instance.board.subdiv)/20.0)
+	setScales(self, _scale)
+	setScales(star, _scale)
+	setScales(explosion, _scale)
 
-func setScales(particle, scale):
+func setScales(particle, _scale):
 	#particle.process_material.scale_min /= scale
 	#particle.process_material.scale_max /= scale
-	particle.draw_pass_1.size /= scale
+	particle.draw_pass_1.size /= _scale
 
 func reset_values():
 	if (used):

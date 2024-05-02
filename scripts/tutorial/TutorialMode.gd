@@ -68,5 +68,5 @@ func UpdateText():
 	if current < steps.size() && current >= 0:
 		instructionsText.text = steps[current].GetText()
 
-func _process(delta):
+func _process(_delta):
 	if (update): steps[current].Check()

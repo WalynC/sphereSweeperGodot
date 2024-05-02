@@ -79,24 +79,24 @@ func IndicateNeighbors(t):
 				uvs[5 + (6 * i)] = Vector2(1, 0)
 			endUVs.append_array(uvs)
 		else:
-			var set = []
+			var verticesSet = []
 			mid = Vector3.ZERO
 			for i in range(0,3):
-				set.append(GameManager.instance.board.vertices[n.vertIndices[i]])
+				verticesSet.append(GameManager.instance.board.vertices[n.vertIndices[i]])
 				if (!orig.has(n.sharedIndices[i])):
-					mid = set[set.size()-1]
-					set.remove_at(set.size()-1)
-			endVerts.append_array([mid, ((set[0]+mid)/2)*1.05, ((set[1]+mid)/2)*1.05])
+					mid = verticesSet[verticesSet.size()-1]
+					verticesSet.remove_at(verticesSet.size()-1)
+			endVerts.append_array([mid, ((verticesSet[0]+mid)/2)*1.05, ((verticesSet[1]+mid)/2)*1.05])
 			endUVs.append_array([Vector2(0,1), Vector2.ZERO, Vector2(1,0)])
 	var tris : PackedInt32Array
 	tris.resize(endVerts.size())
 	for i in range(0,tris.size()): tris[i]=i
-	var verts : PackedVector3Array
-	verts = endVerts
-	var uvs : PackedVector3Array
-	uvs = endUVs
-	outerArrays[Mesh.ARRAY_TEX_UV] = uvs
-	outerArrays[Mesh.ARRAY_VERTEX] = verts
+	var packedverts : PackedVector3Array
+	packedverts = endVerts
+	var packeduvs : PackedVector3Array
+	packeduvs = endUVs
+	outerArrays[Mesh.ARRAY_TEX_UV] = packeduvs
+	outerArrays[Mesh.ARRAY_VERTEX] = packedverts
 	outerArrays[Mesh.ARRAY_INDEX] = tris
 	outer.mesh.clear_surfaces()
 	outer.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, outerArrays)

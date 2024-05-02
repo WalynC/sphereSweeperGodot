@@ -5,7 +5,6 @@ class_name GameManager
 @export var mainMesh: MeshInstance3D
 @export var iconMesh: MeshInstance3D
 @export var glowMesh: MeshInstance3D
-var Board = load("res://scripts/Board.gd")
 var board = Board.new()
 var IconSphere = load("res://scripts/IconSphere.gd")
 var isphere = IconSphere.new()

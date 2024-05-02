@@ -8,8 +8,6 @@ var _lifePoints = []
 @export var _trailEnabled : bool = true
 
 @export var _fromWidth : float = 0.5
-@export var _toWidth : float = 0.0
-@export_range(0.5, 1.5) var _scaleAcceleration : float = 1.0
 
 @export var _motionDelta : float = 0.1
 @export var _lifespan : float = 1
@@ -56,11 +54,11 @@ func _process(delta):
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
 	var size = _points.size()
 	for i in range(_points.size()):
-		AddVertex(_points[i], _oldPosArr[i], size, camPos, i)
-	AddVertex(newPos, _points[_points.size()-1], size, camPos, size)
+		AddVertex(_points[i], _oldPosArr[i], size, i)
+	AddVertex(newPos, _points[_points.size()-1], size, size)
 	mesh.surface_end()
 
-func AddVertex(point, oldPos, pointsSize, camPos, i):
+func AddVertex(point, oldPos, pointsSize, i):
 	var t = float(i) / (pointsSize)
 	var currColor = _startColor.lerp(_endColor, 1-t)
 	var camDir = camPos - point

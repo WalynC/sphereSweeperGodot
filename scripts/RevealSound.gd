@@ -15,7 +15,6 @@ static var currentSound = 0
 func _ready():
 	sourcePool.clear()
 	inUse.clear()
-	var obj = AudioStreamPlayer.new()
 
 static func Play(clearWaves, topClear):
 	clearWavesRemaining = clearWaves
@@ -24,7 +23,7 @@ static func Play(clearWaves, topClear):
 	if (currentSound < 0): currentSound = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (inUse.size() > 0):
 		var next = inUse[0]
 		if (next.playing):

@@ -57,9 +57,9 @@ func GetBaseColor_int(i):
 	return GetBaseColor(GameManager.instance.board.vertices[i])
 
 func GetBaseColor(vector):
-	return Color(lerpf(0, 1, invlerp(-gold, gold, vector.x)),lerpf(0, 1, invlerp(-gold, gold, vector.y)),lerpf(0, 1, invlerp(-gold, gold, vector.z)))
+	return Color(lerpf(0, 1, VisualTheme.invlerp(-gold, gold, vector.x)),lerpf(0, 1, VisualTheme.invlerp(-gold, gold, vector.y)),lerpf(0, 1, VisualTheme.invlerp(-gold, gold, vector.z)))
 
-func GetClearedColor(vector):
+func GetClearedColor(_vector):
 	return Color.DIM_GRAY
 
 func GetClearedColor_int(i):

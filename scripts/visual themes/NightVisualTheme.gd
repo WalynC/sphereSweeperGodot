@@ -6,14 +6,14 @@ var randColor = Color.RED
 
 @export var starLoader : StarLoader
 
-func GetBaseColor(vector):
+func GetBaseColor(_vector):
 	if (randomCount == 0):
 		randomCount = 3
 		randColor = randomColors[GameManager.visRNG.randi_range(0,randomColors.size()-1)]
 	randomCount-=1
 	return randColor
 
-func GetClearedColor(vector):
+func GetClearedColor(_vector):
 	return Color.BLACK
 
 func LoadGameVisuals():
