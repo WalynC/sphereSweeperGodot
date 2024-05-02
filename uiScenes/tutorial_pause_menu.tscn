@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dny37jal4ohdg"]
 
-[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_5r30l"]
+[ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="1_ky047"]
 
 [node name="tutorial_pause_menu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_5r30l")
+script = ExtResource("1_ky047")
 
 [node name="continue" type="Button" parent="."]
 layout_mode = 1

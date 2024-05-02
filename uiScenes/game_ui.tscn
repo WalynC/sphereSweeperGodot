@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://31bhtpbuqpqp"]
 
-[ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_3xq2l"]
+[ext_resource type="Script" path="res://scripts/ui/GameUI.gd" id="1_o7p7k"]
 [ext_resource type="Texture2D" uid="uid://ctg33xiab8urd" path="res://multiSelectOn.png" id="2_2k6y5"]
 [ext_resource type="Texture2D" uid="uid://b3h40pvwxaw3t" path="res://multiSelectOff.png" id="2_5e4df"]
 
@@ -39,7 +39,7 @@ scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-script = ExtResource("1_3xq2l")
+script = ExtResource("1_o7p7k")
 timerButton = NodePath("Timer")
 neighborButton = NodePath("NeighborButton")
 mineButton = NodePath("BombCounter")

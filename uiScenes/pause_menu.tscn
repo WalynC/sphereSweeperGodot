@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://15o8kkohojx5"]
 
-[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_m1scm"]
+[ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="1_dpd08"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_m1scm")
+script = ExtResource("1_dpd08")
 
 [node name="continue" type="Button" parent="."]
 layout_mode = 1

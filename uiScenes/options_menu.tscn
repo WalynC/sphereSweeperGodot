@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://16sbkfghev5"]
 
-[ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_g7l5b"]
+[ext_resource type="Script" path="res://scripts/ui/OptionsMenu.gd" id="1_fk8w8"]
 
 [node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider", "themeText")]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_g7l5b")
+script = ExtResource("1_fk8w8")
 modeButtons = [NodePath("one"), NodePath("double"), NodePath("button")]
 volText = NodePath("volumeText")
 volSlider = NodePath("volume")

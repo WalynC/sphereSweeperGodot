@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwue6rvli2gbi"]
 
-[ext_resource type="Script" path="res://scripts/WinScreen.gd" id="1_m8m2m"]
+[ext_resource type="Script" path="res://scripts/ui/WinScreen.gd" id="1_xs5l8"]
 
 [node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs")]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_m8m2m")
+script = ExtResource("1_xs5l8")
 time = NodePath("time")
 bombs = NodePath("bombs hit")
 
