@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://318dccwpc4d7"]
 
-[ext_resource type="Script" path="res://scripts/CreditsUI.gd" id="1_of7bo"]
+[ext_resource type="Script" path="res://scripts/ui/CreditsUI.gd" id="1_15xl2"]
 [ext_resource type="Script" path="res://scripts/UITransition.gd" id="2_wse3g"]
 
 [node name="credits" type="Control" node_paths=PackedStringArray("uiTransition")]
@@ -13,7 +13,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_of7bo")
+script = ExtResource("1_15xl2")
 uiTransition = NodePath("UITransition")
 
 [node name="Label" type="Label" parent="."]

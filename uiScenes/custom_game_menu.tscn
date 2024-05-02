@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6t1icjq8ahl8"]
 
-[ext_resource type="Script" path="res://scripts/CustomGameMenu.gd" id="1_dj66g"]
+[ext_resource type="Script" path="res://scripts/ui/CustomGameMenu.gd" id="1_tsws7"]
 
 [node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText", "densRange", "sizeRange")]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_dj66g")
+script = ExtResource("1_tsws7")
 densText = NodePath("densText")
 sizeText = NodePath("sizeText")
 densRange = NodePath("density")
