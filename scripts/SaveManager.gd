@@ -44,5 +44,5 @@ static func load_data():
 			saveData.LoadFromData(data)
 			return true
 	else:
-		printerr("cannot open non-existent file at %s" %[path])
+		#printerr("cannot open non-existent file at %s" %[path])
 		return false
