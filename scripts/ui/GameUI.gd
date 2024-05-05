@@ -62,6 +62,7 @@ func _process(_delta):
 	#change confirm button behavior
 	confirmButton.visible = controls.confirmSelect == 2
 	confirmButton.disabled = controls.previousTriangleHit == -1
+	if (controls.confirmDown): controls.confirmDown = !confirmButton.disabled
 
 func enter_screen():
 	uiTransition.enter_screen().tween_callback(unpause)
