@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/UITransition.gd" id="1_cj0ak"]
 
-[node name="UITransition" type="Control" node_paths=PackedStringArray("control")]
+[node name="UITransition" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_cj0ak")
-control = NodePath("")

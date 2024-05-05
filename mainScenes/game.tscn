@@ -192,14 +192,6 @@ mouse_filter = 1
 gm = NodePath("../..")
 gameUI = NodePath("../game_ui")
 
-[node name="game_ui" parent="ControlRoot" node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_su4m3")]
-layout_mode = 1
-offset_top = 1024.0
-offset_bottom = 2048.0
-gm = NodePath("../..")
-controls = NodePath("../../Controls")
-pauseScreen = NodePath("../PauseMenu")
-
 [node name="PauseMenu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("8_6obnv")]
 layout_mode = 1
 offset_top = 1024.0
@@ -214,6 +206,14 @@ offset_top = 1024.0
 offset_bottom = 2048.0
 previousUI = NodePath("../PauseMenu")
 
+[node name="game_ui" parent="ControlRoot" node_paths=PackedStringArray("gm", "controls", "pauseScreen") instance=ExtResource("7_su4m3")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 2048.0
+gm = NodePath("../..")
+controls = NodePath("../../Controls")
+pauseScreen = NodePath("../PauseMenu")
+
 [node name="chainClearText" type="Label" parent="ControlRoot"]
 layout_mode = 1
 anchors_preset = -1
@@ -227,6 +227,15 @@ theme = SubResource("Theme_l0gl4")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("18_fkkoe")
+
+[node name="blocker" type="Control" parent="ControlRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
 
 [node name="RevealSound" type="Node" parent="."]
 script = ExtResource("19_26ntl")

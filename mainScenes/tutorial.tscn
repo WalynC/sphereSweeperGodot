@@ -215,6 +215,20 @@ mouse_filter = 1
 gm = NodePath("../..")
 gameUI = NodePath("../game_ui")
 
+[node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 2048.0
+gm = NodePath("../..")
+gameUI = NodePath("../game_ui")
+optionsUI = NodePath("../options_menu")
+
+[node name="options_menu" parent="ControlRoot" node_paths=PackedStringArray("previousUI") instance=ExtResource("17_d6i8j")]
+layout_mode = 1
+offset_top = 1024.0
+offset_bottom = 2048.0
+previousUI = NodePath("../tutorial_pause_menu")
+
 [node name="game_ui" parent="ControlRoot" node_paths=PackedStringArray("gm", "controls", "pauseScreen", "tutorial") instance=ExtResource("15_vnmci")]
 layout_mode = 1
 offset_top = 1024.0
@@ -274,20 +288,6 @@ libraries = {
 "": SubResource("AnimationLibrary_amicg")
 }
 
-[node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
-layout_mode = 1
-offset_top = 1024.0
-offset_bottom = 2048.0
-gm = NodePath("../..")
-gameUI = NodePath("../game_ui")
-optionsUI = NodePath("../options_menu")
-
-[node name="options_menu" parent="ControlRoot" node_paths=PackedStringArray("previousUI") instance=ExtResource("17_d6i8j")]
-layout_mode = 1
-offset_top = 1024.0
-offset_bottom = 2048.0
-previousUI = NodePath("../tutorial_pause_menu")
-
 [node name="chainClearText" type="Label" parent="ControlRoot"]
 layout_mode = 1
 anchors_preset = -1
@@ -301,6 +301,15 @@ theme = SubResource("Theme_l0gl4")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("18_uscf3")
+
+[node name="blocker" type="Control" parent="ControlRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
 
 [node name="RevealSound" type="Node" parent="."]
 script = ExtResource("19_ni5lf")
