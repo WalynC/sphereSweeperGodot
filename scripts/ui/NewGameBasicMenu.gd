@@ -6,6 +6,7 @@ var called = false
 
 @export var mainMenuUI:Control
 @export var customGameUI:Control
+@export var uiTransition : UITransition
 
 var color = [Color.GREEN, Color.YELLOW, Color.RED]
 
@@ -14,8 +15,7 @@ func _ready():
 	set_deferred("position", Vector2(0,get_parent_control().size.y))
 	
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 	called = true
 	var densVal = (GameManager.density/5)-1
 	var sizeVal = (GameManager.size-3)/2
@@ -27,9 +27,7 @@ func enter_screen():
 
 func exit_screen():
 	UserSettings.SaveBasicSettings()
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()
 
 func _change_density(_toggle, density):
 	GameManager.density = (density+1)*5

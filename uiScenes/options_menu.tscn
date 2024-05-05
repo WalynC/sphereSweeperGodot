@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://16sbkfghev5"]
+[gd_scene load_steps=3 format=3 uid="uid://16sbkfghev5"]
 
 [ext_resource type="Script" path="res://scripts/ui/OptionsMenu.gd" id="1_fk8w8"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_42oe2"]
 
-[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider", "themeText")]
+[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider", "themeText", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ modeButtons = [NodePath("one"), NodePath("double"), NodePath("button")]
 volText = NodePath("volumeText")
 volSlider = NodePath("volume")
 themeText = NodePath("themeText")
+uiTransition = NodePath("UITransition")
 
 [node name="one" type="Button" parent="."]
 layout_mode = 1
@@ -112,6 +114,9 @@ anchor_bottom = 0.65
 text = "theme"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("2_42oe2")]
+control = NodePath("..")
 
 [connection signal="toggled" from="one" to="." method="_change_confirm_mode" binds= [0]]
 [connection signal="toggled" from="double" to="." method="_change_confirm_mode" binds= [1]]

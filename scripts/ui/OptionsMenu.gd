@@ -7,6 +7,7 @@ var called = false
 @export var volText:Label
 @export var volSlider:Slider
 @export var themeText:Label
+@export var uiTransition : UITransition
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
@@ -41,14 +42,11 @@ func _change_confirm_mode(_toggle, mode):
 	called = false
 
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 
 func exit_screen():
 	UserSettings.SaveOptionsMenuSettings()
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()
 
 func change_theme_pressed(val):
 	VisualLoader.instance.change_button_pressed(val)

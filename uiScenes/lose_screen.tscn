@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://rwawmt27ljkw"]
+[gd_scene load_steps=3 format=3 uid="uid://rwawmt27ljkw"]
 
 [ext_resource type="Script" path="res://scripts/ui/LoseScreen.gd" id="1_gu8nf"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_7qohj"]
 
-[node name="lose_screen" type="Control"]
+[node name="lose_screen" type="Control" node_paths=PackedStringArray("uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gu8nf")
+uiTransition = NodePath("UITransition")
 
 [node name="restart" type="Button" parent="."]
 layout_mode = 1
@@ -56,6 +58,9 @@ theme_override_font_sizes/font_size = 72
 text = "YOU LOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("2_7qohj")]
+control = NodePath("..")
 
 [connection signal="pressed" from="restart" to="." method="_restart_pressed"]
 [connection signal="pressed" from="continue" to="." method="_continue_pressed"]

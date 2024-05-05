@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3tq7nhujaby"]
+[gd_scene load_steps=3 format=3 uid="uid://b3tq7nhujaby"]
 
 [ext_resource type="Script" path="res://scripts/ui/NewGameBasicMenu.gd" id="1_las7m"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_huhcg"]
 
-[node name="newGameBasicMenu" type="Control" node_paths=PackedStringArray("densities", "sizes")]
+[node name="newGameBasicMenu" type="Control" node_paths=PackedStringArray("densities", "sizes", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_las7m")
 densities = [NodePath("5p"), NodePath("10p"), NodePath("15p")]
 sizes = [NodePath("sm"), NodePath("me"), NodePath("la")]
+uiTransition = NodePath("UITransition")
 
 [node name="5p" type="Button" parent="."]
 layout_mode = 1
@@ -171,6 +173,9 @@ anchor_right = 0.8
 anchor_bottom = 0.9
 focus_mode = 0
 text = "Play"
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("2_huhcg")]
+control = NodePath("..")
 
 [connection signal="toggled" from="5p" to="." method="_change_density" binds= [0]]
 [connection signal="toggled" from="10p" to="." method="_change_density" binds= [1]]

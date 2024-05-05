@@ -18,6 +18,7 @@ class_name GameUI
 
 @export var revealPanel : Panel
 @export var lockPanel : Panel
+@export var uiTransition : UITransition
 
 static var useMines = false
 static var secondsOnly = false
@@ -63,9 +64,7 @@ func _process(_delta):
 	confirmButton.disabled = controls.previousTriangleHit == -1
 
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
-	tween.tween_callback(unpause)
+	uiTransition.enter_screen().tween_callback(unpause)
 
 func unpause():
 	if (tutorial != null): tutorial.visible = true
@@ -75,9 +74,7 @@ func unpause():
 func exit_screen():
 	UserSettings.SaveGameUISettings()
 	gm.paused = true
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()
 
 func pause():
 	if (tutorial != null): tutorial.visible = false

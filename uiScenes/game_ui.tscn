@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://31bhtpbuqpqp"]
+[gd_scene load_steps=7 format=3 uid="uid://31bhtpbuqpqp"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameUI.gd" id="1_o7p7k"]
 [ext_resource type="Texture2D" uid="uid://ctg33xiab8urd" path="res://multiSelectOn.png" id="2_2k6y5"]
 [ext_resource type="Texture2D" uid="uid://b3h40pvwxaw3t" path="res://multiSelectOff.png" id="2_5e4df"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="4_wn3kb"]
 
 [sub_resource type="Animation" id="Animation_j3iip"]
 resource_name = "glow"
@@ -26,7 +27,7 @@ _data = {
 "glow": SubResource("Animation_j3iip")
 }
 
-[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton", "bombLabel", "revealPanel", "lockPanel")]
+[node name="game_ui" type="Control" node_paths=PackedStringArray("timerButton", "neighborButton", "mineButton", "confirmButton", "flagButton", "bombLabel", "revealPanel", "lockPanel", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,6 +51,7 @@ multiSelectOn = ExtResource("2_2k6y5")
 multiSelectOff = ExtResource("2_5e4df")
 revealPanel = NodePath("Panel/RevealPanel")
 lockPanel = NodePath("Panel/LockPanel")
+uiTransition = NodePath("UITransition")
 
 [node name="NeighborButton" type="Button" parent="."]
 layout_mode = 1
@@ -226,6 +228,9 @@ anchor_bottom = 1.0
 focus_mode = 0
 button_mask = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("4_wn3kb")]
+control = NodePath("..")
 
 [connection signal="pressed" from="NeighborButton" to="." method="toggle_neighborSelect"]
 [connection signal="pressed" from="Pause" to="." method="pause"]

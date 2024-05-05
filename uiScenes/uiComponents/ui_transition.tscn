@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bhkd2epc32x"]
+
+[ext_resource type="Script" path="res://scripts/UITransition.gd" id="1_cj0ak"]
+
+[node name="UITransition" type="Control" node_paths=PackedStringArray("control")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cj0ak")
+control = NodePath("")

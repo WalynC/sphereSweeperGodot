@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp2rlrqracaje"]
+[gd_scene load_steps=7 format=3 uid="uid://cp2rlrqracaje"]
 
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_7w8nn"]
 [ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="2_77f7n"]
 [ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="3_pavm3"]
 [ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="4_ubjsw"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="5_fu8m8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r3g3q"]
 
-[node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton", "mainMenuSphere")]
+[node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton", "mainMenuSphere", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +21,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_7w8nn")
 continueButton = NodePath("cont")
 mainMenuSphere = NodePath("TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D")
+uiTransition = NodePath("UITransition")
 
 [node name="cont" type="Button" parent="."]
 layout_mode = 1
@@ -142,6 +144,9 @@ grow_vertical = 2
 texture = ExtResource("4_ubjsw")
 expand_mode = 5
 stretch_mode = 4
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("5_fu8m8")]
+control = NodePath("..")
 
 [connection signal="pressed" from="cont" to="." method="continue_game_pressed"]
 [connection signal="pressed" from="new" to="." method="new_game_button_pressed"]

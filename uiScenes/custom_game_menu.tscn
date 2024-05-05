@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6t1icjq8ahl8"]
+[gd_scene load_steps=3 format=3 uid="uid://b6t1icjq8ahl8"]
 
 [ext_resource type="Script" path="res://scripts/ui/CustomGameMenu.gd" id="1_tsws7"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_0atvh"]
 
-[node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText", "densRange", "sizeRange")]
+[node name="customGameMenu" type="Control" node_paths=PackedStringArray("densText", "sizeText", "densRange", "sizeRange", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ densText = NodePath("densText")
 sizeText = NodePath("sizeText")
 densRange = NodePath("density")
 sizeRange = NodePath("size")
+uiTransition = NodePath("UITransition")
 
 [node name="density" type="HSlider" parent="."]
 layout_mode = 1
@@ -82,6 +84,9 @@ anchor_top = 0.45
 anchor_right = 0.8
 anchor_bottom = 0.5
 horizontal_alignment = 1
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("2_0atvh")]
+control = NodePath("..")
 
 [connection signal="drag_ended" from="density" to="." method="playButtonSound" unbinds=1]
 [connection signal="drag_started" from="density" to="." method="playButtonSound"]

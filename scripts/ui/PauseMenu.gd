@@ -4,6 +4,7 @@ extends Control
 
 @export var gameUI : Control
 @export var optionsUI : Control
+@export var uiTransition : UITransition
 
 signal new_game()
 
@@ -40,10 +41,7 @@ func unpause():
 	exit_screen().tween_callback(gameUI.enter_screen)
 
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 
 func exit_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()

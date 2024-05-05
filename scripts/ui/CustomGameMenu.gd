@@ -6,6 +6,7 @@ extends Control
 @export var sizeRange: Range
 
 @export var basicGameUI:Control
+@export var uiTransition : UITransition
 
 
 func _ready():
@@ -36,13 +37,10 @@ func size_changed(boardSize):
 	sizeText.text = "Size: "+str(GameManager.advSize)
 
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 	densRange.value = GameManager.advDensity
 	sizeRange.value = GameManager.advSize
 
 func exit_screen():
 	UserSettings.SaveCustomGameSettings()
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()

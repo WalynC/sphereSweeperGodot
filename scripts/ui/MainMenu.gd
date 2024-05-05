@@ -9,6 +9,7 @@ signal new_game_button()
 @export var optionsMenuUI:Control
 @export var creditsUI:Control
 @export var mainMenuSphere : MeshInstance3D
+@export var uiTransition : UITransition
 
 func new_game_button_pressed():
 	VisualTheme.instance.buttonPress.play()
@@ -49,10 +50,7 @@ func continue_game():
 	get_tree().change_scene_to_file("res://mainScenes/game.tscn")
 
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 
 func exit_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y),.5)
-	return tween
+	return uiTransition.exit_screen()

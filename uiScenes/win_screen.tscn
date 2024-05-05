@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwue6rvli2gbi"]
+[gd_scene load_steps=3 format=3 uid="uid://bwue6rvli2gbi"]
 
 [ext_resource type="Script" path="res://scripts/ui/WinScreen.gd" id="1_xs5l8"]
+[ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_pxelx"]
 
-[node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs")]
+[node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs", "uiTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xs5l8")
 time = NodePath("time")
 bombs = NodePath("bombs hit")
+uiTransition = NodePath("UITransition")
 
 [node name="play again" type="Button" parent="."]
 layout_mode = 1
@@ -73,6 +75,9 @@ theme_override_font_sizes/font_size = 48
 text = "bombs hit: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("2_pxelx")]
+control = NodePath("..")
 
 [connection signal="pressed" from="play again" to="." method="_again_pressed"]
 [connection signal="pressed" from="menu" to="." method="_menu_pressed"]

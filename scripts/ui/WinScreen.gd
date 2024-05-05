@@ -8,6 +8,7 @@ signal again_button()
 @export var bombs:Label
 
 @export var gameUI:Control
+@export var uiTransition : UITransition
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
@@ -20,8 +21,7 @@ func win():
 	time.text = "Time: "+(str(GameTimer.elapsed) if GameUI.secondsOnly else GameTimer.GetHMSString())
 	
 func enter_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,0),.5)
+	uiTransition.enter_screen()
 
 func _again_pressed():
 	VisualTheme.instance.buttonPress.play()
@@ -30,9 +30,7 @@ func _again_pressed():
 	exit_screen().tween_callback(gameUI.enter_screen)
 	
 func exit_screen():
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(0,get_parent_control().size.y*2),.5)
-	return tween
+	return uiTransition.exit_screen()
 
 func toMainMenu():
 	get_tree().change_scene_to_file("res://mainScenes/menu_scene.tscn")
