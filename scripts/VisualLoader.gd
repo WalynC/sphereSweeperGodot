@@ -1,7 +1,7 @@
 extends Node
 class_name VisualLoader
 
-static var theme = 0
+static var theme = -1
 
 enum SceneType {MainMenu, Game, Tutorial}
 @export var scene : SceneType
@@ -40,8 +40,10 @@ func change_button_pressed(increase):
 	changeTheme((theme+next)%themePaths.size())
 
 func changeTheme(i):
+	if (i == theme): return
 	unloadTheme()
 	if (scene != SceneType.MainMenu):
 		GameManager.instance.reset_visual_rng()
 	theme = i
 	loadTheme()
+	VisualTheme.instance.InitialLoad()

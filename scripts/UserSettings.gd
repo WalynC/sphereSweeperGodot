@@ -18,8 +18,8 @@ func _ready():
 	AudioServer.set_bus_volume_db(0,linear_to_db(lerpf(0,1,volume/100)))
 	GameUI.useMines = config.get_value("Settings", "useMines")
 	GameUI.secondsOnly = config.get_value("Settings", "secondsOnly")
-	VisualLoader.theme = config.get_value("Settings", "theme", 0)
-	VisualLoader.instance.changeTheme(VisualLoader.theme)
+	var theme = config.get_value("Settings", "theme", 0)
+	VisualLoader.instance.changeTheme(theme)
 
 static func SetDefaultSettings():
 	config.set_value("Settings", "density", GameManager.density)
