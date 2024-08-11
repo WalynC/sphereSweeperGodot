@@ -11,4 +11,3 @@ sky_material = SubResource("ProceduralSkyMaterial_f4sy1")
 background_mode = 1
 background_color = Color(0, 0.270588, 0.592157, 1)
 sky = SubResource("Sky_yista")
-tonemap_mode = 2

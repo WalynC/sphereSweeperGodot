@@ -18,7 +18,6 @@ func GetClearedColor(_vector):
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
-	GameManager.instance.mainMesh.set_instance_shader_parameter("BorderColor", borderColor)
 	starLoader.Generate()
 
 func UnloadGameVisuals():

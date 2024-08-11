@@ -51,5 +51,20 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+reflections/sky_reflections/texture_array_reflections=false
+driver/depth_prepass/enable=false
+renderer/renderer/rendering_method.mobiletextures/vram_compression/import_etc2_astc=true
+
+[shader_globals]
+
+BorderColor={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+BorderTexture={
+"type": "sampler2D",
+"value": "res://texture.png"
+}

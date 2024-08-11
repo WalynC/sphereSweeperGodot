@@ -67,7 +67,6 @@ resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwbbn"]
 shader = ExtResource("12_dvn5q")
-shader_parameter/lod = 5.0
 
 [sub_resource type="Animation" id="Animation_j3iip"]
 resource_name = "glow"
@@ -149,7 +148,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("6_et1kc")
-transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_oukfc")
 skeleton = NodePath("../icosphere")
@@ -206,6 +204,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.654902)
 
 [node name="win_screen" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI") instance=ExtResource("14_e8obx")]
 layout_mode = 1

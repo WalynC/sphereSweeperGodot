@@ -20,6 +20,7 @@ const gold = (1 + sqrt(5))/2
 
 func LoadVisualTheme():
 	instance = self
+	RenderingServer.global_shader_parameter_set_override("BorderColor", borderColor)
 	VisualLoader.instance.controlRoot.theme = theme
 	VisualLoader.instance.worldEnv.environment.background_color = backgroundColor
 	match VisualLoader.instance.scene:
@@ -50,7 +51,6 @@ func UnloadGameVisuals():
 
 func LoadMainMenuVisuals():
 	VisualLoader.instance.mainMenuUI.mainMenuSphere.Build()
-	VisualLoader.instance.mainMenuUI.mainMenuSphere.set_instance_shader_parameter("BorderColor", borderColor)
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()

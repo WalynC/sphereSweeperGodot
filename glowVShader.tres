@@ -11,7 +11,7 @@ op_type = 2
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_lambert, specular_disabled, fog_disabled;
 
 
 
@@ -35,9 +35,12 @@ void fragment() {
 
 }
 "
+modes/depth_draw = 1
+modes/specular = 2
+flags/fog_disabled = true
 nodes/fragment/0/position = Vector2(600, 100)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_vas3y")
 nodes/fragment/2/position = Vector2(-560, 260)
 nodes/fragment/3/node = SubResource("VisualShaderNodeVectorDecompose_vg0j4")
 nodes/fragment/3/position = Vector2(-160, 320)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 2, 0, 0, 0, 3, 3, 0, 1)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 3, 0, 1, 2, 0, 3, 0)
