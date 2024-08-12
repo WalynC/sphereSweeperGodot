@@ -42,6 +42,7 @@ func ToData():
 	return data
 
 func LoadFromData(data):
+	flagActs.clear()
 	for i in range(0, data.flagActs.size()):
 		var act = FlagAction.new()
 		act.FromData(data.flagActs[i])
