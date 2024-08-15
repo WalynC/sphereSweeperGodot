@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj4ohkf7aeu2l"]
+
+[ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="1_l4b7w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3m4hf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mcsk0"]
+sky_material = SubResource("ProceduralSkyMaterial_3m4hf")
+
+[sub_resource type="Environment" id="Environment_k4ade"]
+background_mode = 2
+sky = SubResource("Sky_mcsk0")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k4ade")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.9128)
+
+[node name="Firework" parent="." instance=ExtResource("1_l4b7w")]
+
+[node name="Firework2" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+transform = Transform3D(0.162541, 0.914843, 0.369651, 0.77482, 0.113617, -0.621888, -0.610929, 0.387495, -0.690372, 0, 0, 0)
+star = NodePath("../Firework/star")
+explosion = NodePath("../Firework/explode")
+trail = NodePath("../Firework/trailOffset/trail")
+trailOffset = NodePath("../Firework/trailOffset")
+
+[node name="Firework3" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+transform = Transform3D(0.382458, 0.52734, -0.758708, 0.718616, 0.346382, 0.603001, 0.58079, -0.775843, -0.246478, 0, 0, 0)
+star = NodePath("../Firework/star")
+explosion = NodePath("../Firework/explode")
+trail = NodePath("../Firework/trailOffset/trail")
+trailOffset = NodePath("../Firework/trailOffset")
+
+[node name="Firework4" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+transform = Transform3D(-0.353671, -0.90308, -0.243647, 0.872467, -0.22459, -0.434004, 0.33722, -0.366069, 0.867339, 0, 0, 0)
+star = NodePath("../Firework/star")
+explosion = NodePath("../Firework/explode")
+trail = NodePath("../Firework/trailOffset/trail")
+trailOffset = NodePath("../Firework/trailOffset")
+
+[node name="Firework5" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+transform = Transform3D(-0.234192, 0.587329, -0.774724, 0.872467, -0.22459, -0.434004, -0.428899, -0.777563, -0.459829, 0, 0, 0)
+star = NodePath("../Firework/star")
+explosion = NodePath("../Firework/explode")
+trail = NodePath("../Firework/trailOffset/trail")
+trailOffset = NodePath("../Firework/trailOffset")
+
+[node name="Firework6" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+transform = Transform3D(0.707106, -1.49012e-08, -0.707107, -0.400764, 0.823879, -0.400764, 0.58257, 0.566766, 0.58257, 0, 0, 0)
+star = NodePath("../Firework/star")
+explosion = NodePath("../Firework/explode")
+trail = NodePath("../Firework/trailOffset/trail")
+trailOffset = NodePath("../Firework/trailOffset")

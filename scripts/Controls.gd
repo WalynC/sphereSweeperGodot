@@ -6,7 +6,7 @@ class_name Controls
 @export var pivot: Node3D
 @export var sIndicator: SelectIndicator
 
-var cam
+static var cam
 var touch_points = {}
 var touch_ending = {}
 var start_distance

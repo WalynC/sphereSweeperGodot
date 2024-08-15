@@ -11,5 +11,6 @@ func enter_screen():
 	uiTransition.enter_screen()
 
 func _ready():
+	pass
 	set_deferred("size", get_parent_control().size*2)
 	set_deferred("position", Vector2(0,get_parent_control().size.y))

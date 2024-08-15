@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://usiusro6nnqg"]
+[gd_scene load_steps=53 format=3 uid="uid://usiusro6nnqg"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_phl8j"]
 [ext_resource type="Environment" uid="uid://cjlyjiv35f4y3" path="res://environmentNormal.tres" id="2_87th6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/SelectIndicator.gd" id="10_oj52j"]
 [ext_resource type="PackedScene" uid="uid://16sbkfghev5" path="res://uiScenes/options_menu.tscn" id="11_uimh0"]
 [ext_resource type="Shader" path="res://uiblur.gdshader" id="11_xtyvi"]
+[ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="13_j2h4m"]
 [ext_resource type="Texture2D" uid="uid://85dhyno4g68b" path="res://selectEffect.png" id="14_6773y"]
 [ext_resource type="PackedScene" uid="uid://bo5ntnh4m0fh2" path="res://visualThemes/visual_loader.tscn" id="14_o12r5"]
 [ext_resource type="Script" path="res://scripts/ChainClearText.gd" id="18_fkkoe"]
@@ -61,6 +62,40 @@ resource_local_to_scene = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cy6in"]
 
+[sub_resource type="Curve" id="Curve_01fs7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.06017, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d4wwc"]
+texture_mode = 1
+curve = SubResource("Curve_01fs7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ggxbf"]
+resource_local_to_scene = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+alpha_curve = SubResource("CurveTexture_d4wwc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vggfs"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("13_j2h4m")
+disable_receive_shadows = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_1di8m"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vggfs")
+size = Vector2(0.1, 0.1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwbbn"]
 shader = ExtResource("11_xtyvi")
 
@@ -94,7 +129,6 @@ pivot = NodePath("../WorldPivot")
 sIndicator = NodePath("../WorldPivot/SelectIndicator")
 
 [node name="WorldPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 script = ExtResource("4_r5hh3")
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
@@ -141,6 +175,17 @@ mesh = SubResource("ArrayMesh_hijw3")
 [node name="outer" type="MeshInstance3D" parent="WorldPivot/SelectIndicator"]
 material_override = SubResource("StandardMaterial3D_fihdx")
 mesh = SubResource("ArrayMesh_cy6in")
+
+[node name="explode" type="GPUParticles3D" parent="WorldPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+amount = 25
+explosiveness = 1.0
+randomness = 1.0
+collision_base_size = 0.0
+visibility_aabb = AABB(-120, -120, -120, 240, 240, 240)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ggxbf")
+draw_pass_1 = SubResource("QuadMesh_1di8m")
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("gm")]
 script = ExtResource("8_jmfnr")
