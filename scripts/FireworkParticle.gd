@@ -4,6 +4,7 @@ extends Node3D
 @export var explosion:GPUParticles3D
 @export var trail:MeshInstance3D
 @export var trailOffset:Node3D
+@export var anim:AnimationPlayer
 
 var timePassed = 0
 var home
@@ -34,9 +35,11 @@ func restart():
 
 func begin(color, direction):
 	used = true
-	
-	transform.origin = direction
-	transform.basis.y = direction
+	anim.play("trailAnim")
+	trail.mesh.surface_get_material(0).albedo_color = color
+	transform.basis = get_parent_node_3d().basis
+	position = direction
+	transform = transform.looking_at(direction*2)
 	orthonormalize()
 	#draw_pass_1.surface_get_material(0).albedo_color = color
 	#process_material.direction = direction

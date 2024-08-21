@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bodelg7ahssyr"]
+[gd_scene load_steps=16 format=3 uid="uid://bodelg7ahssyr"]
 
 [ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="1_dq0o4"]
 [ext_resource type="Script" path="res://scripts/FireworkParticle.gd" id="2_2s7y5"]
-[ext_resource type="Texture2D" uid="uid://blug5h5xwdlrb" path="res://trailToPoint.png" id="3_24mns"]
 
 [sub_resource type="Curve" id="Curve_j3jpl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.06017, 0.0, 0, 0]
@@ -39,7 +38,7 @@ material = SubResource("StandardMaterial3D_35j8a")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gvf4"]
-direction = Vector3(0, 1, 0)
+direction = Vector3(0, 0, -1)
 spread = 0.0
 initial_velocity_min = 2.0
 initial_velocity_max = 2.0
@@ -61,7 +60,10 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t10r0")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o00ia"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j2pl8"]
+load_path = "res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbtmo"]
 transparency = 1
 cull_mode = 2
 depth_draw_mode = 2
@@ -70,25 +72,56 @@ diffuse_mode = 3
 specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = ExtResource("3_24mns")
+albedo_texture = SubResource("CompressedTexture2D_j2pl8")
 texture_filter = 0
 texture_repeat = false
 disable_receive_shadows = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nq3qt"]
-material = SubResource("StandardMaterial3D_o00ia")
+[sub_resource type="PlaneMesh" id="PlaneMesh_qrv4c"]
+material = SubResource("StandardMaterial3D_pbtmo")
 size = Vector2(0.05, 4)
 orientation = 2
 
-[node name="Firework" type="Node3D" node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset")]
+[sub_resource type="Animation" id="Animation_42i01"]
+resource_name = "trailAnim"
+length = 3.0
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("trailOffset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 0, 1, 2, 1, 1, 1, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trailOffset/trail")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 2, 0, 1, 1, 0, 2, 0, 3, 1, 0, 4, 0)
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("trailOffset/trail")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge8yb"]
+_data = {
+"trailAnim": SubResource("Animation_42i01")
+}
+
+[node name="Firework" type="Node3D" node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset", "anim")]
 script = ExtResource("2_2s7y5")
 star = NodePath("star")
 explosion = NodePath("explode")
 trail = NodePath("trailOffset/trail")
 trailOffset = NodePath("trailOffset")
+anim = NodePath("AnimationPlayer")
 
 [node name="explode" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 emitting = false
 amount = 25
 explosiveness = 1.0
@@ -109,8 +142,14 @@ process_material = SubResource("ParticleProcessMaterial_0gvf4")
 draw_pass_1 = SubResource("QuadMesh_bkqdt")
 
 [node name="trailOffset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="trail" type="MeshInstance3D" parent="trailOffset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-mesh = SubResource("PlaneMesh_nq3qt")
+mesh = SubResource("PlaneMesh_qrv4c")
 skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ge8yb")
+}
