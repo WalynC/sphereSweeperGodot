@@ -19,8 +19,14 @@ static var instance:Controls
 var inertia = Vector2.ZERO
 var decel = .1
 
-var triangleHit = -1
-var previousTriangleHit = -1
+var triangleHit = -1:
+	set(value):
+		print("triangleHit changed to "+str(value)+" from "+str(triangleHit))
+		triangleHit = value
+var previousTriangleHit = -1:
+	set(value):
+		print("previousTriangleHit changed to "+str(value)+" from "+str(previousTriangleHit))
+		previousTriangleHit = value
 
 var minZoom = 10
 var maxZoom = 150
@@ -145,25 +151,25 @@ func Flag():
 				gm.board.Flag(flagged[i])
 
 func Confirm():
-	if (triangleHit == -1): return
+	if (previousTriangleHit == -1): return
 	Select()
 	previousTriangleHit = -1
 	sIndicator.EndIndicate()
 	
 func Select():
 	if (!gm.board.boardGenerated):
-		gm.board.GenerateNewBoard(triangleHit)
-		gm.board.SelectTriangle(triangleHit)
+		gm.board.GenerateNewBoard(previousTriangleHit)
+		gm.board.SelectTriangle(previousTriangleHit)
 	elif (neighborSelect == 0):
-		if (gm.board.triangles[triangleHit].flagged || gm.board.triangles[triangleHit].reveal):
+		if (gm.board.triangles[previousTriangleHit].flagged || gm.board.triangles[previousTriangleHit].reveal):
 			VisualTheme.instance.failSelect.play()
 			return
 		VisualTheme.instance.select.play()
-		gm.board.SelectTriangle(triangleHit)
+		gm.board.SelectTriangle(previousTriangleHit)
 	else:
 		if (neighborSelect == 1): neighborSelect = 0 #mode 1 is to only use neighbor select once
-		var neighbors = gm.board.triangles[triangleHit].neighbors.duplicate()
-		neighbors[gm.board.triangles[triangleHit]] = null
+		var neighbors = gm.board.triangles[previousTriangleHit].neighbors.duplicate()
+		neighbors[gm.board.triangles[previousTriangleHit]] = null
 		var indexList = []
 		for t in neighbors:
 			if (t.flagged || t.reveal): continue
@@ -173,7 +179,7 @@ func Select():
 			indexList.append(t.vertIndices[0]/3)
 		if (indexList.size() > 0):
 			VisualTheme.instance.select.play()
-			gm.board.SelectTriangle_List(indexList, triangleHit)
+			gm.board.SelectTriangle_List(indexList, previousTriangleHit)
 		else:
 			VisualTheme.instance.failSelect.play()
 
