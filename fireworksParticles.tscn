@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bodelg7ahssyr"]
+[gd_scene load_steps=15 format=3 uid="uid://bodelg7ahssyr"]
 
 [ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="1_dq0o4"]
 [ext_resource type="Script" path="res://scripts/FireworkParticle.gd" id="2_2s7y5"]
+[ext_resource type="Material" uid="uid://comd2g4yytoq5" path="res://fireworkTrail.tres" id="3_d7edo"]
 
 [sub_resource type="Curve" id="Curve_j3jpl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.06017, 0.0, 0, 0]
@@ -60,25 +61,8 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t10r0")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j2pl8"]
-load_path = "res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbtmo"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 2
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 2
-disable_ambient_light = true
-disable_fog = true
-albedo_texture = SubResource("CompressedTexture2D_j2pl8")
-texture_filter = 0
-texture_repeat = false
-disable_receive_shadows = true
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_qrv4c"]
-material = SubResource("StandardMaterial3D_pbtmo")
+material = ExtResource("3_d7edo")
 size = Vector2(0.05, 4)
 orientation = 2
 

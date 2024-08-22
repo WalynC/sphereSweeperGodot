@@ -33,13 +33,14 @@ func reset_values():
 func restart():
 	pass
 
-func begin(color, direction):
+func begin(colorNum, direction, fireworkSource):
+	var color = VisualTheme.instance.numberColors[colorNum]
 	used = true
 	anim.play("trailAnim")
-	trail.mesh.surface_get_material(0).albedo_color = color
 	transform.basis = get_parent_node_3d().basis
 	position = direction
 	transform = transform.looking_at(direction*2)
+	trail.mesh.surface_set_material(0, fireworkSource.trailMats[colorNum])
 	orthonormalize()
 	#draw_pass_1.surface_get_material(0).albedo_color = color
 	#process_material.direction = direction

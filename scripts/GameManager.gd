@@ -113,4 +113,3 @@ func _process(delta):
 	
 func update_mainMesh():
 	mainMesh.mesh.clear_surfaces()
-

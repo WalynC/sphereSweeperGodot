@@ -3,6 +3,7 @@ class_name FireworksEffect
 
 @export var firework : PackedScene
 @export var sound : AudioStreamPlayer
+@export var baseTrail : BaseMaterial3D
 
 var timeToExplodeAll = 10.0
 var timeSinceLastExplosion = -1.0
@@ -14,8 +15,18 @@ var playSound = false
 
 var pool = []
 
-func _ready():
+var trailMats = []
+var initialized = false
+
+func init():
+	if (initialized): return
+	initialized = true
 	timeToExplodeAll = sound.stream.get_length() * int(timeToExplodeAll / sound.stream.get_length())
+	trailMats.clear()
+	for i in range(0,VisualTheme.instance.numberColors.size()):
+		var trail = baseTrail.duplicate(true)
+		trail.albedo_color = VisualTheme.instance.numberColors[i]
+		trailMats.append(trail)
 
 func Reset():
 	#return in use objects to pool
@@ -30,6 +41,7 @@ func Reset():
 	explosions.clear()
 
 func StartExplosion():
+	init()
 	var mined = []
 	playSound = true
 	for i in range(0, GameManager.instance.board.numbered.size()):
@@ -55,17 +67,18 @@ func _process(_delta):
 func Explode(explo):
 	var obj = GetExplosion()
 	inUse.append(obj)
-	obj.begin(VisualTheme.instance.numberColors[explo.mineCount], 
+	obj.begin(explo.mineCount, 
 	(GameManager.instance.board.vertices[explo.vertIndices[0]] +
 	GameManager.instance.board.vertices[explo.vertIndices[1]] +
 	GameManager.instance.board.vertices[explo.vertIndices[2]]) /
-	3.0)
+	3.0, self)
 
 func GetExplosion():
 	if (pool.size() == 0):
 		var n = firework.instantiate()
 		GameManager.instance.worldPivot.add_child(n)
 		n.home = self
+		n.trail.mesh = n.trail.mesh.duplicate()
 		n.setParticleScale()
 		n.reset_values()
 		return n

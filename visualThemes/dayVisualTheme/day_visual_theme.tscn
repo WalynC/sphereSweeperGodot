@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b10grb17d2j0h"]
+[gd_scene load_steps=14 format=3 uid="uid://b10grb17d2j0h"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/DayVisualTheme.gd" id="1_larij"]
 [ext_resource type="PackedScene" uid="uid://ly6v5kdqotjd" path="res://visualThemes/dayVisualTheme/CloudManager.tscn" id="2_3neiw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="4_utmo8"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="5_coj37"]
 [ext_resource type="AudioStream" uid="uid://rg2v2pdrfifr" path="res://Sounds/fw_04.ogg" id="6_1n7pj"]
+[ext_resource type="Material" uid="uid://comd2g4yytoq5" path="res://fireworkTrail.tres" id="6_qtexi"]
 [ext_resource type="AudioStream" uid="uid://b30olikw45ukg" path="res://Sounds/cannon_fire_modified.ogg" id="8_ofb4e"]
 [ext_resource type="AudioStream" uid="uid://buugj3hak0mh1" path="res://Sounds/click_2.ogg" id="10_ruqcv"]
 [ext_resource type="AudioStream" uid="uid://cm1dliylav0xr" path="res://Sounds/click_3_modified.ogg" id="11_i1nd5"]
@@ -27,6 +28,7 @@ backgroundColor = Color(0.227451, 0.619608, 0.952941, 1)
 script = ExtResource("2_p3pj7")
 firework = ExtResource("3_mjqkn")
 sound = NodePath("AudioStreamPlayer")
+baseTrail = ExtResource("6_qtexi")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FireworksEffect"]
 stream = ExtResource("6_1n7pj")

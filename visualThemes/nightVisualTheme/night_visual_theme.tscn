@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://37pv38vmtiag"]
+[gd_scene load_steps=15 format=3 uid="uid://37pv38vmtiag"]
 
 [ext_resource type="Script" path="res://scripts/visual themes/NightVisualTheme.gd" id="1_k8isp"]
 [ext_resource type="Theme" uid="uid://bchh2rjn1dcmx" path="res://visualThemes/nightVisualTheme/nightTheme.tres" id="2_14pb6"]
 [ext_resource type="Script" path="res://scripts/FireworksEffect.gd" id="3_ldqnx"]
 [ext_resource type="PackedScene" uid="uid://bodelg7ahssyr" path="res://fireworksParticles.tscn" id="4_bb0qw"]
 [ext_resource type="AudioStream" uid="uid://rg2v2pdrfifr" path="res://Sounds/fw_04.ogg" id="5_7isth"]
+[ext_resource type="Material" uid="uid://comd2g4yytoq5" path="res://fireworkTrail.tres" id="5_65gvk"]
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="5_fxv7w"]
 [ext_resource type="PackedScene" uid="uid://c3yt7115p46nf" path="res://explosionParticles.tscn" id="6_3gh2b"]
 [ext_resource type="Script" path="res://scripts/visual themes/night/StarLoader.gd" id="7_uo1x5"]
@@ -30,6 +31,7 @@ backgroundColor = Color(0.0862745, 0.105882, 0.333333, 1)
 script = ExtResource("3_ldqnx")
 firework = ExtResource("4_bb0qw")
 sound = NodePath("AudioStreamPlayer")
+baseTrail = ExtResource("5_65gvk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FireworksEffect"]
 stream = ExtResource("5_7isth")
