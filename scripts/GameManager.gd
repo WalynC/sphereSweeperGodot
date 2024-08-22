@@ -57,6 +57,10 @@ func _ready():
 	if (preset.size() > 0):
 		board.LoadPreset()
 
+func _exit_tree():
+	for i in board.triangles:
+		i.clear()
+
 func win():
 	emit_signal("winEvent")
 	VisualTheme.won()

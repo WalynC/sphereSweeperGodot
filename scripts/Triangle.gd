@@ -35,6 +35,9 @@ func GetSquareInTriangle(gm):
 	ret[0] = mid + (-dir - cross).normalized() * gm.iconSize;
 	return ret;
 
+func clear():
+	neighbors.clear()
+
 func UpdateVisuals(gm):
 	if reveal:
 		if mine:
