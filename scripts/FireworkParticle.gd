@@ -22,16 +22,12 @@ func setScales(particle, _scale):
 
 func reset_values():
 	if (used):
-		restart()
 		star.restart()
 		explosion.restart()
 	show()
 	set_process(true)
 	timePassed = 0
 	#speed_scale = 1
-
-func restart():
-	pass
 
 func begin(colorNum, direction, fireworkSource):
 	var color = VisualTheme.instance.numberColors[colorNum]
@@ -63,4 +59,4 @@ func _process(delta):
 		explosion.emitting = false
 		hide()
 		set_process(false)
-		#home.ReturnExplosion(self)
+		home.ReturnExplosion(self)
