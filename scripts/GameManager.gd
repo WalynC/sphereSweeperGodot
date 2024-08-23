@@ -79,7 +79,7 @@ func new_game(): #called from _ready if not loading save data
 		board.subdiv = GameManager.advSize
 		board.percentMined = GameManager.advDensity
 	else:
-		board.subdiv = GameManager.advSize
+		board.subdiv = 3
 		board.percentMined = GameManager.advDensity
 	SaveManager.saveData.gameSeed = Time.get_unix_time_from_system()
 	SaveManager.saveData.visualSeed = SaveManager.saveData.gameSeed
