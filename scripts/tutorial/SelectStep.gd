@@ -37,15 +37,16 @@ func Check():
 func EraseStep(index):
 	moves.erase(index)
 
-func End():
+func Reset():
 	active = false
 	controls.allowSelect = false
 	controls.selectStep = null
 	playingAnim = false
 	anim.stop()
-	#activate timer if timer is not on
-	#turn off glow if needed
 	controls.tIndicator.EndIndicate()
+
+func End():
+	Reset()
 	super.End()
 
 func GetText():

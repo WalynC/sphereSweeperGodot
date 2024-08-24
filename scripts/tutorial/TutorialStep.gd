@@ -11,6 +11,9 @@ func Begin():
 func End():
 	TutorialMode.instance.NextStep()
 
+func Reset():
+	pass
+
 func Check():
 	pass
 

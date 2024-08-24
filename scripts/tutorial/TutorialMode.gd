@@ -29,6 +29,7 @@ func Reset():
 	controls.selectStep = null
 	controls.tapStep = null
 	controls.flag = false
+	steps[current].Reset()
 	current = -1
 	controls.triangleHit = -999
 	GameUI.instance.revealPanel.visible = true

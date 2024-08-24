@@ -17,9 +17,11 @@ func Begin():
 	button.disabled = false
 	button.button_up.connect(End)
 
-func End():
-	#stop animation
+func Reset():
 	anim.stop()
 	button.disabled = true
 	button.button_up.disconnect(End)
+
+func End():
+	Reset()
 	super.End()

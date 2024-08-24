@@ -19,8 +19,11 @@ func Check():
 func EraseStep(index):
 	moves.erase(index)
 
-func End():
+func Reset():
 	controls.allowSelect = false
 	controls.selectStep = null
 	controls.tIndicator.EndIndicate()
+
+func End():
+	Reset()
 	super.End()

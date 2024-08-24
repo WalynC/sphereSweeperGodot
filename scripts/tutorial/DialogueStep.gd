@@ -9,10 +9,12 @@ func Begin():
 	if (!button.button_up.is_connected(End)): button.button_up.connect(End)
 	button.show()
 	anim.play("glow")
-	
 
-func End():
+func Reset():
 	button.button_up.disconnect(End)
 	button.hide()
 	anim.stop()
+
+func End():
+	Reset()
 	super.End()
