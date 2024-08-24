@@ -5,7 +5,7 @@ class_name FireworksEffect
 @export var sound : AudioStreamPlayer
 @export var baseTrail : BaseMaterial3D
 
-var timeToExplodeAll = 10.0
+var timeToExplodeAll = 12.0
 var timeSinceLastExplosion = -1.0
 var timeBetweenExplosions = 0.0
 
@@ -21,7 +21,7 @@ var initialized = false
 func init():
 	if (initialized): return
 	initialized = true
-	timeToExplodeAll = sound.stream.get_length() * int(timeToExplodeAll / sound.stream.get_length())
+	timeToExplodeAll = sound.stream.get_length() * int((timeToExplodeAll / sound.stream.get_length()) - 1) +3 
 	trailMats.clear()
 	for i in range(0,VisualTheme.instance.numberColors.size()):
 		var trail = baseTrail.duplicate(true)
