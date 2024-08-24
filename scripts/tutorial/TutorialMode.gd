@@ -30,7 +30,7 @@ func Reset():
 	controls.tapStep = null
 	controls.flag = false
 	controls.neighborSelect = 0
-	steps[current].Reset()
+	if (current < steps.size()): steps[current].Reset()
 	current = -1
 	controls.triangleHit = -999
 	GameUI.instance.revealPanel.visible = true

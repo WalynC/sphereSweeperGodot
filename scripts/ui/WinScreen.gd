@@ -9,10 +9,13 @@ signal again_button()
 
 @export var gameUI:Control
 @export var uiTransition : UITransition
+@export var playAgainButton : Button
+@export var playAgainText = "Play Again"
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
 	set_deferred("position", Vector2(0,get_parent_control().size.y))
+	playAgainButton.text = playAgainText
 	gm.winEvent.connect(win)
 
 func win():

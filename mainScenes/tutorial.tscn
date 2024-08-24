@@ -213,6 +213,7 @@ offset_bottom = 2048.0
 mouse_filter = 1
 gm = NodePath("../..")
 gameUI = NodePath("../game_ui")
+playAgainText = "Replay Tutorial"
 
 [node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
 layout_mode = 1
@@ -446,5 +447,5 @@ playSoundOnCompletion = false
 [node name="TutorialSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_leoju")
 
-[connection signal="again_button" from="ControlRoot/win_screen" to="." method="reset_game"]
+[connection signal="again_button" from="ControlRoot/win_screen" to="Tutorial" method="Reset"]
 [connection signal="new_game" from="ControlRoot/tutorial_pause_menu" to="Tutorial" method="Reset"]

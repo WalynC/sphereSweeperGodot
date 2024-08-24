@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/WinScreen.gd" id="1_xs5l8"]
 [ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_pxelx"]
 
-[node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs", "uiTransition")]
+[node name="win_screen" type="Control" node_paths=PackedStringArray("time", "bombs", "uiTransition", "playAgainButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ script = ExtResource("1_xs5l8")
 time = NodePath("time")
 bombs = NodePath("bombs hit")
 uiTransition = NodePath("UITransition")
+playAgainButton = NodePath("play again")
 
 [node name="play again" type="Button" parent="."]
 layout_mode = 1
