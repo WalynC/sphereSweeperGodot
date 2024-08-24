@@ -31,6 +31,7 @@ func reset_values():
 
 func begin(colorNum, direction, fireworkSource):
 	var color = VisualTheme.instance.numberColors[colorNum]
+	explosion.emitting = false
 	used = true
 	anim.play("trailAnim")
 	transform.basis = get_parent_node_3d().basis
@@ -41,7 +42,6 @@ func begin(colorNum, direction, fireworkSource):
 	#draw_pass_1.surface_get_material(0).albedo_color = color
 	#process_material.direction = direction
 	#emit_particle(transform, Vector3.ZERO, Color.WHITE, Color.WHITE, 0)
-	star.process_material.direction = Vector3.UP
 	star.draw_pass_1.surface_get_material(0).albedo_color = color
 	#star.emit_particle(transform, Vector3.ZERO, Color.WHITE, Color.WHITE, 0)
 	explosion.draw_pass_1.surface_get_material(0).albedo_color = color
