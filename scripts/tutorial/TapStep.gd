@@ -21,7 +21,7 @@ func EraseStep(index):
 
 func Reset():
 	controls.allowSelect = false
-	controls.selectStep = null
+	controls.tapStep = null
 	controls.tIndicator.EndIndicate()
 
 func End():
