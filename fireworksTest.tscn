@@ -29,37 +29,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.9128)
 
 [node name="Firework" parent="." instance=ExtResource("1_l4b7w")]
 
-[node name="Firework2" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+[node name="Firework2" parent="." node_paths=PackedStringArray("star", "explosion", "trailOffset") instance=ExtResource("1_l4b7w")]
 transform = Transform3D(0.162541, 0.914843, 0.369651, 0.77482, 0.113617, -0.621888, -0.610929, 0.387495, -0.690372, 0, 0, 0)
 star = NodePath("../Firework/star")
 explosion = NodePath("../Firework/explode")
-trail = NodePath("../Firework/trailOffset/trail")
 trailOffset = NodePath("../Firework/trailOffset")
 
-[node name="Firework3" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+[node name="Firework3" parent="." node_paths=PackedStringArray("star", "explosion", "trailOffset") instance=ExtResource("1_l4b7w")]
 transform = Transform3D(0.382458, 0.52734, -0.758708, 0.718616, 0.346382, 0.603001, 0.58079, -0.775843, -0.246478, 0, 0, 0)
 star = NodePath("../Firework/star")
 explosion = NodePath("../Firework/explode")
-trail = NodePath("../Firework/trailOffset/trail")
 trailOffset = NodePath("../Firework/trailOffset")
 
-[node name="Firework4" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+[node name="Firework4" parent="." node_paths=PackedStringArray("star", "explosion", "trailOffset") instance=ExtResource("1_l4b7w")]
 transform = Transform3D(-0.353671, -0.90308, -0.243647, 0.872467, -0.22459, -0.434004, 0.33722, -0.366069, 0.867339, 0, 0, 0)
 star = NodePath("../Firework/star")
 explosion = NodePath("../Firework/explode")
-trail = NodePath("../Firework/trailOffset/trail")
 trailOffset = NodePath("../Firework/trailOffset")
 
-[node name="Firework5" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+[node name="Firework5" parent="." node_paths=PackedStringArray("star", "explosion", "trailOffset") instance=ExtResource("1_l4b7w")]
 transform = Transform3D(-0.234192, 0.587329, -0.774724, 0.872467, -0.22459, -0.434004, -0.428899, -0.777563, -0.459829, 0, 0, 0)
 star = NodePath("../Firework/star")
 explosion = NodePath("../Firework/explode")
-trail = NodePath("../Firework/trailOffset/trail")
 trailOffset = NodePath("../Firework/trailOffset")
 
-[node name="Firework6" parent="." node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset") instance=ExtResource("1_l4b7w")]
+[node name="Firework6" parent="." node_paths=PackedStringArray("star", "explosion", "trailOffset") instance=ExtResource("1_l4b7w")]
 transform = Transform3D(0.707106, -1.49012e-08, -0.707107, -0.400764, 0.823879, -0.400764, 0.58257, 0.566766, 0.58257, 0, 0, 0)
 star = NodePath("../Firework/star")
 explosion = NodePath("../Firework/explode")
-trail = NodePath("../Firework/trailOffset/trail")
 trailOffset = NodePath("../Firework/trailOffset")

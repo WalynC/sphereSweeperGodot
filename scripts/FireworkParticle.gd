@@ -2,7 +2,7 @@ extends Node3D
 
 @export var star:GPUParticles3D
 @export var explosion:GPUParticles3D
-@export var trail:MeshInstance3D
+@export var trails:Array[MeshInstance3D]
 @export var trailOffset:Node3D
 @export var anim:AnimationPlayer
 
@@ -37,7 +37,8 @@ func begin(colorNum, direction, fireworkSource):
 	transform.basis = get_parent_node_3d().basis
 	position = direction
 	transform = transform.looking_at(direction*2)
-	trail.mesh.surface_set_material(0, fireworkSource.trailMats[colorNum])
+	for trail in trails:
+		trail.mesh.surface_set_material(0, fireworkSource.trailMats[colorNum])
 	orthonormalize()
 	#draw_pass_1.surface_get_material(0).albedo_color = color
 	#process_material.direction = direction

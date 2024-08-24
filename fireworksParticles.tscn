@@ -96,11 +96,11 @@ _data = {
 "trailAnim": SubResource("Animation_42i01")
 }
 
-[node name="Firework" type="Node3D" node_paths=PackedStringArray("star", "explosion", "trail", "trailOffset", "anim")]
+[node name="Firework" type="Node3D" node_paths=PackedStringArray("star", "explosion", "trails", "trailOffset", "anim")]
 script = ExtResource("2_2s7y5")
 star = NodePath("star")
 explosion = NodePath("explode")
-trail = NodePath("trailOffset/trail")
+trails = [NodePath("trailOffset/trail"), NodePath("trailOffset/trail/trail2")]
 trailOffset = NodePath("trailOffset")
 anim = NodePath("AnimationPlayer")
 
@@ -132,6 +132,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("PlaneMesh_qrv4c")
 skeleton = NodePath("../..")
+
+[node name="trail2" type="MeshInstance3D" parent="trailOffset/trail"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_qrv4c")
+skeleton = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

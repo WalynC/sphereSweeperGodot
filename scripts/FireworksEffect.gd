@@ -78,7 +78,8 @@ func GetExplosion():
 		var n = firework.instantiate()
 		GameManager.instance.worldPivot.add_child(n)
 		n.home = self
-		n.trail.mesh = n.trail.mesh.duplicate()
+		for i in range(0, n.trails.size()):
+			n.trails[i].mesh = n.trails[i].mesh.duplicate()
 		n.setParticleScale()
 		n.reset_values()
 		return n
