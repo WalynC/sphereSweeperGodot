@@ -19,14 +19,8 @@ static var instance:Controls
 var inertia = Vector2.ZERO
 var decel = .1
 
-var triangleHit = -1:
-	set(value):
-		print("triangleHit changed to "+str(value)+" from "+str(triangleHit))
-		triangleHit = value
-var previousTriangleHit = -1:
-	set(value):
-		print("previousTriangleHit changed to "+str(value)+" from "+str(previousTriangleHit))
-		previousTriangleHit = value
+var triangleHit = -1
+var previousTriangleHit = -1
 
 var minZoom = 10
 var maxZoom = 150
