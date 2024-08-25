@@ -24,7 +24,6 @@ func _process(delta):
 	if (!active): return
 	if (controls.triangleHit >= 0):
 		if (!playingAnim):
-			print("should be glowing")
 			anim.play("glow")
 			playingAnim = true
 	else:
