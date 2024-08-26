@@ -18,7 +18,7 @@ clouds = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D2"), NodePath("Mes
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.126666, -0.599586, 0.41343)
-material_override = ExtResource("2_akwwm")
+material_override = SubResource("StandardMaterial3D_c12y4")
 mesh = SubResource("SphereMesh_jnuc5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
