@@ -1,10 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://comd2g4yytoq5"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j2pl8"]
-load_path = "res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.s3tc.ctex"
+[ext_resource type="Texture2D" uid="uid://hemo2qn3ycev" path="res://trailToPoint2.png" id="1_lgxf5"]
 
 [resource]
-resource_local_to_scene = true
 transparency = 1
 cull_mode = 2
 depth_draw_mode = 2
@@ -13,7 +11,7 @@ diffuse_mode = 3
 specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = SubResource("CompressedTexture2D_j2pl8")
+albedo_texture = ExtResource("1_lgxf5")
 texture_filter = 0
 texture_repeat = false
 disable_receive_shadows = true

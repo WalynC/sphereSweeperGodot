@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blda24e0nn2es" path="res://firework.png" id="1_dq0o4"]
 [ext_resource type="Script" path="res://scripts/FireworkParticle.gd" id="2_2s7y5"]
-[ext_resource type="Material" uid="uid://comd2g4yytoq5" path="res://fireworkTrail.tres" id="3_d7edo"]
+[ext_resource type="Material" uid="uid://comd2g4yytoq5" path="res://fireworkTrail.tres" id="3_dmnus"]
 
 [sub_resource type="Curve" id="Curve_j3jpl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.06017, 0.0, 0, 0]
@@ -62,7 +62,7 @@ material = SubResource("StandardMaterial3D_t10r0")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qrv4c"]
-material = ExtResource("3_d7edo")
+material = ExtResource("3_dmnus")
 size = Vector2(0.05, 4)
 orientation = 2
 

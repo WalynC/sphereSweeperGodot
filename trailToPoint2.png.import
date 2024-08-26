@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blug5h5xwdlrb"
-path.s3tc="res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.s3tc.ctex"
-path.etc2="res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.etc2.ctex"
+uid="uid://hemo2qn3ycev"
+path.s3tc="res://.godot/imported/trailToPoint2.png-ab71d8515f647a7ae0ef280068e947cc.s3tc.ctex"
+path.etc2="res://.godot/imported/trailToPoint2.png-ab71d8515f647a7ae0ef280068e947cc.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://trailToPoint.png"
-dest_files=["res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.s3tc.ctex", "res://.godot/imported/trailToPoint.png-5ee31fa19040415b93abfc0e59305e02.etc2.ctex"]
+source_file="res://trailToPoint2.png"
+dest_files=["res://.godot/imported/trailToPoint2.png-ab71d8515f647a7ae0ef280068e947cc.s3tc.ctex", "res://.godot/imported/trailToPoint2.png-ab71d8515f647a7ae0ef280068e947cc.etc2.ctex"]
 
 [params]
 

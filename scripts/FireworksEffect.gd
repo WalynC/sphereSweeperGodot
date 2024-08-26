@@ -19,12 +19,13 @@ var trailMats = []
 var initialized = false
 
 func init():
+	print("init called")
 	if (initialized): return
 	initialized = true
 	timeToExplodeAll = sound.stream.get_length() * int((timeToExplodeAll / sound.stream.get_length()) - 1) +3 
 	trailMats.clear()
 	for i in range(0,VisualTheme.instance.numberColors.size()):
-		var trail = baseTrail.duplicate(true)
+		var trail = baseTrail.duplicate()
 		trail.albedo_color = VisualTheme.instance.numberColors[i]
 		trailMats.append(trail)
 
