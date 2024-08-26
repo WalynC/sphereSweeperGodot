@@ -37,6 +37,7 @@ Sound effects from https://opengameart.org/
 
 Portions of this software are copyright © 1996-2023 The FreeType Project (www.freetype.org). All rights reserved."
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="creditsLabel" type="Label" parent="."]
 layout_mode = 1
