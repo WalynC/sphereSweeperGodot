@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://318dccwpc4d7"]
+[gd_scene load_steps=4 format=3 uid="uid://318dccwpc4d7"]
 
 [ext_resource type="Script" path="res://scripts/ui/CreditsUI.gd" id="1_15xl2"]
 [ext_resource type="Script" path="res://scripts/UITransition.gd" id="2_wse3g"]
+[ext_resource type="Script" path="res://scripts/GodotCredits.gd" id="3_k84p0"]
 
 [node name="credits" type="Control" node_paths=PackedStringArray("uiTransition")]
 layout_mode = 3
@@ -33,9 +34,7 @@ Programming and Art by Walyn Curtis
 Made using Godot Engine
 https://godotengine.org/license/
 
-Sound effects from https://opengameart.org/
-
-Portions of this software are copyright © 1996-2023 The FreeType Project (www.freetype.org). All rights reserved."
+Sound effects from https://opengameart.org/"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -69,5 +68,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_wse3g")
 control = NodePath("..")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 1200.0
+offset_right = -100.0
+offset_bottom = -660.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="RichTextLabel" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "test test test"
+script = ExtResource("3_k84p0")
 
 [connection signal="pressed" from="back" to="." method="back_button_pressed"]

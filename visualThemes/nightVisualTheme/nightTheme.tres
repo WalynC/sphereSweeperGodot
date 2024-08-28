@@ -23,3 +23,5 @@ Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 10
 Label/font_sizes/font_size = 40
 Panel/styles/panel = ExtResource("1_s87gc")
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/font_sizes/normal_font_size = 40

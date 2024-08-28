@@ -19,7 +19,6 @@ var trailMats = []
 var initialized = false
 
 func init():
-	print("init called")
 	if (initialized): return
 	initialized = true
 	timeToExplodeAll = sound.stream.get_length() * int((timeToExplodeAll / sound.stream.get_length()) - 1) +3 
