@@ -8,6 +8,8 @@ var unflagRanges:Array
 
 static func Start():
 	currentFlagAct = FlagAction.new()
+	newFlags.clear()
+	newUnflags.clear()
 	SaveManager.saveData.flagActs.append(currentFlagAct)
 
 func Load(gm):
