@@ -54,7 +54,6 @@ func StartExplosion():
 		mined.remove_at(rando)
 
 func _process(_delta):
-	#print(str(timeSinceLastExplosion < Time.get_ticks_msec())+" "+str(explosions.size()))
 	if (timeSinceLastExplosion < Time.get_ticks_msec() && explosions.size() > 0):
 		timeSinceLastExplosion = Time.get_ticks_msec() + timeBetweenExplosions
 		Explode(explosions[explosions.size()-1])
