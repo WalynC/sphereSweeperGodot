@@ -18,6 +18,7 @@ static var instance:Controls
 
 var inertia = Vector2.ZERO
 var decel = .1
+var maxSpeed =250
 
 var triangleHit = -1
 var previousTriangleHit = -1
@@ -86,7 +87,8 @@ func handle_touch(event: InputEventScreenTouch):
 func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
 	if touch_points.size() == 1:
-		inertia = event.relative * 0.005
+		var speed = min(event.relative.length(), maxSpeed)
+		inertia = event.relative.normalized() * speed * 0.005
 		WindSound.instance.Spin(inertia.length(), decel)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.x), inertia.y)
 		pivot.rotate(to_global(cam.get_camera_transform().basis.y), inertia.x)
