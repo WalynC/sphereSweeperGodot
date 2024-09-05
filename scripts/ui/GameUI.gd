@@ -58,7 +58,7 @@ func _process(_delta):
 		bombLabel.text = "Bombs Left"
 	else:
 		mineButton.text = str(gm.board.nonMines)
-		bombLabel.text = "Safe Spaces Left"
+		bombLabel.text = "Clears Left"
 	#change confirm button behavior
 	confirmButton.visible = controls.confirmSelect == 2
 	confirmButton.disabled = controls.previousTriangleHit == -1

@@ -13,6 +13,8 @@ func _ready():
 	pass
 	set_deferred("size", get_parent_control().size*2)
 	set_deferred("position", Vector2(0,get_parent_control().size.y))
+	densText.text = "Bomb Density: "+str(GameManager.advDensity)
+	sizeText.text = "Size: "+str(GameManager.advSize)
 	
 func _new_game_adv():
 	playButtonSound()

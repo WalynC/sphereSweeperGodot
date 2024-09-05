@@ -10,7 +10,7 @@
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 10
-Button/font_sizes/font_size = 40
+Button/font_sizes/font_size = 80
 Button/styles/disabled = ExtResource("1_1p4wx")
 Button/styles/hover = ExtResource("2_cunrk")
 Button/styles/normal = ExtResource("3_o2434")
@@ -22,7 +22,7 @@ HSlider/styles/grabber_area_highlight = ExtResource("6_qpytv")
 HSlider/styles/slider = ExtResource("3_o2434")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 10
-Label/font_sizes/font_size = 40
+Label/font_sizes/font_size = 80
 Panel/styles/panel = ExtResource("3_o2434")
 RichTextLabel/constants/outline_size = 10
-RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/font_sizes/normal_font_size = 80
