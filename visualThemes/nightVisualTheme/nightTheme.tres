@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bchh2rjn1dcmx"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bchh2rjn1dcmx"]
 
 [ext_resource type="StyleBox" uid="uid://c213432vcecjo" path="res://visualThemes/nightVisualTheme/Night_panel.tres" id="1_s87gc"]
 [ext_resource type="Texture2D" uid="uid://bc3pf5qrr28e4" path="res://darkUI2.png" id="2_kq7qg"]
+[ext_resource type="StyleBox" uid="uid://c2ya0scdxnmed" path="res://visualThemes/nightVisualTheme/Night_panel_dim.tres" id="2_x4cw8"]
 [ext_resource type="StyleBox" uid="uid://dog2d50icaoa2" path="res://visualThemes/nightVisualTheme/Night_sliderLeft.tres" id="3_froqt"]
 
 [resource]
@@ -12,7 +13,7 @@ Button/styles/disabled = ExtResource("1_s87gc")
 Button/styles/focus = ExtResource("1_s87gc")
 Button/styles/hover = ExtResource("1_s87gc")
 Button/styles/normal = ExtResource("1_s87gc")
-Button/styles/pressed = ExtResource("1_s87gc")
+Button/styles/pressed = ExtResource("2_x4cw8")
 HSlider/icons/grabber = ExtResource("2_kq7qg")
 HSlider/icons/grabber_disabled = ExtResource("2_kq7qg")
 HSlider/icons/grabber_highlight = ExtResource("2_kq7qg")
