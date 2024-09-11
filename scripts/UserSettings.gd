@@ -32,7 +32,7 @@ static func SetDefaultSettings():
 	config.set_value("Settings", "advSize", GameManager.advSize)
 	config.set_value("Settings", "useMines", GameUI.useMines)
 	config.set_value("Settings", "secondsOnly", GameUI.secondsOnly)
-	config.set_value("Settings", "theme", VisualLoader.theme)
+	config.set_value("Settings", "theme", 0)
 
 static func SaveBasicSettings():
 	config.set_value("Settings", "density", GameManager.density)
