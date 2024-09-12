@@ -5,6 +5,7 @@ var randomCount = 0
 var randColor = Color.RED
 
 @export var starLoader : StarLoader
+@export var explosionEffect : ExplosionEffect
 
 func GetBaseColor(_vector):
 	if (randomCount == 0):
@@ -19,6 +20,8 @@ func GetClearedColor(_vector):
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
 	starLoader.Generate()
+	explosionEffect.PreloadExplosions()
 
 func UnloadGameVisuals():
 	starLoader.Cleanup()
+	explosionEffect.Cleanup()

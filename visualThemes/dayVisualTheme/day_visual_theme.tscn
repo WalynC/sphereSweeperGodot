@@ -14,9 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://cm1dliylav0xr" path="res://Sounds/click_3_modified.ogg" id="11_i1nd5"]
 [ext_resource type="AudioStream" uid="uid://dyxaevd4glktf" path="res://Sounds/click_4.ogg" id="12_1riux"]
 
-[node name="VisualTheme" type="Node" node_paths=PackedStringArray("buttonPress", "failSelect", "select")]
+[node name="VisualTheme" type="Node" node_paths=PackedStringArray("explosionEffect", "buttonPress", "failSelect", "select")]
 script = ExtResource("1_larij")
 clouds = ExtResource("2_3neiw")
+explosionEffect = NodePath("ExplosionEffect")
 numberColors = Array[Color]([Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(0.5, 0, 1, 1), Color(0, 0.5, 1, 1), Color(0, 1, 0.5, 1), Color(0.5, 1, 0, 1), Color(1, 0.5, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 1)])
 theme = ExtResource("2_f58ti")
 buttonPress = NodePath("ButtonPress")
