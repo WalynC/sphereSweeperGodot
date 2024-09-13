@@ -215,6 +215,11 @@ gm = NodePath("../..")
 gameUI = NodePath("../game_ui")
 playAgainText = "Replay Tutorial"
 
+[node name="play again" parent="ControlRoot/win_screen" index="0"]
+anchor_left = 0.2
+anchor_right = 0.8
+clip_text = true
+
 [node name="tutorial_pause_menu" parent="ControlRoot" node_paths=PackedStringArray("gm", "gameUI", "optionsUI") instance=ExtResource("15_kkf3v")]
 layout_mode = 1
 offset_top = 1024.0
@@ -268,7 +273,7 @@ offset_left = 30.0
 offset_top = 30.0
 offset_right = -30.0
 offset_bottom = -30.0
-theme_override_font_sizes/font_size = 65
+theme_override_font_sizes/font_size = 55
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -449,3 +454,5 @@ stream = ExtResource("32_leoju")
 
 [connection signal="again_button" from="ControlRoot/win_screen" to="Tutorial" method="Reset"]
 [connection signal="new_game" from="ControlRoot/tutorial_pause_menu" to="Tutorial" method="Reset"]
+
+[editable path="ControlRoot/win_screen"]
