@@ -137,7 +137,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_s1hfp")
 
 [node name="icosphere" type="MeshInstance3D" parent="WorldPivot"]
-transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 1.001, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("5_3gfps")
 cast_shadow = 0
@@ -145,7 +145,7 @@ mesh = SubResource("ArrayMesh_53dkf")
 skeleton = NodePath("../..")
 
 [node name="glowsphere" type="MeshInstance3D" parent="WorldPivot"]
-transform = Transform3D(1.0201, 0, 0, 0, 1.0201, 0, 0, 0, 1.0201, 0, 0, 0)
+transform = Transform3D(1.002, 0, 0, 0, 1.002, 0, 0, 0, 1.002, 0, 0, 0)
 sorting_offset = 1.0
 material_override = ExtResource("6_et1kc")
 cast_shadow = 0
