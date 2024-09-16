@@ -96,6 +96,9 @@ func handle_drag(event: InputEventScreenDrag):
 	elif touch_points.size() == 2:
 		var touch_point_positions = touch_points.values()
 		var curDist = touch_point_positions[0].distance_to(touch_point_positions[1])
+		if (start_zoom == null): #sometimes we skip to handle_drag so we need to make sure this is set
+			start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
+			start_zoom = cam.fov
 		var zoom_factor = start_distance/curDist
 		var fov = start_zoom/zoom_factor
 		fov = clamp(fov, minZoom, maxZoom)
