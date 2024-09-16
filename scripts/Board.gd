@@ -447,6 +447,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 				SaveManager.saveData.nonMines = nonMines
 				SaveManager.saveData.selectArr.append(indexArr)
 				SaveManager.saveData.selected.append(index)
+				SaveManager.save_game()
 	
 func PutMinesOnBoard(loc):
 	boardGenerated = true
