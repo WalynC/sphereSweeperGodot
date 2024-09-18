@@ -32,35 +32,35 @@ grow_vertical = 2
 
 [node name="newGameBasicMenu" parent="menu root" node_paths=PackedStringArray("mainMenuUI", "customGameUI") instance=ExtResource("2_0f0tg")]
 layout_mode = 1
-offset_top = 2560.0
-offset_bottom = 3840.0
+offset_top = 1280.0
+offset_bottom = 2560.0
 mainMenuUI = NodePath("../mainMenu")
 customGameUI = NodePath("../customGameMenu")
 
 [node name="customGameMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI") instance=ExtResource("3_m8si6")]
 layout_mode = 1
-offset_top = 2560.0
-offset_bottom = 3840.0
+offset_top = 1280.0
+offset_bottom = 2560.0
 basicGameUI = NodePath("../newGameBasicMenu")
 
 [node name="options_menu" parent="menu root" node_paths=PackedStringArray("previousUI") instance=ExtResource("4_dlvh5")]
 layout_mode = 1
-offset_top = 2560.0
-offset_bottom = 3840.0
+offset_top = 1280.0
+offset_bottom = 2560.0
 previousUI = NodePath("../mainMenu")
 
 [node name="mainMenu" parent="menu root" node_paths=PackedStringArray("basicGameUI", "optionsMenuUI", "creditsUI") instance=ExtResource("1_6ny5j")]
 layout_mode = 1
-offset_top = 2560.0
-offset_bottom = 3840.0
+offset_top = 1280.0
+offset_bottom = 2560.0
 basicGameUI = NodePath("../newGameBasicMenu")
 optionsMenuUI = NodePath("../options_menu")
 creditsUI = NodePath("../credits")
 
 [node name="credits" parent="menu root" node_paths=PackedStringArray("mainMenuUI") instance=ExtResource("8_dj22n")]
 layout_mode = 1
-offset_top = 2560.0
-offset_bottom = 3840.0
+offset_top = 1280.0
+offset_bottom = 2560.0
 mainMenuUI = NodePath("../mainMenu")
 
 [node name="blocker" type="Control" parent="menu root"]
