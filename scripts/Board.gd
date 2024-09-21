@@ -436,7 +436,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 		for t in revealed: doneCheck.erase(t)
 		if (doneCheck.size() > indexArr.size()): ChainClearText.instance.UpdateText(doneCheck.size())
 		if doneCheck.size() > 0:
-			RevealSound.Play(waves, high)
+			RevealSound.Play(high)
 			if nonMines == 0:
 				won = true
 				gm.paused = true

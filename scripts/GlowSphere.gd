@@ -3,7 +3,7 @@ extends MeshInstance3D
 var colors : PackedColorArray
 var array = []
 
-var glowSpeed = 3.0
+var glowSpeed = 2.
 var timeBetweenWaves = .1*1000
 var startTransparency = .66
 
@@ -37,6 +37,7 @@ func Add(orig, valid):
 	array[Mesh.ARRAY_COLOR] = colors
 	mesh.clear_surfaces()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
+	RevealSound.numRequestingPlay +=1
 
 func Reset():
 	for c in colors: c = Color(1,1,1,0)
@@ -46,7 +47,10 @@ func Reset():
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
 
 func _process(delta):
-	for g in toRemove: glows.erase(g)
+	for g in toRemove:
+		glows.erase(g)
+		RevealSound.numRequestingPlay -=1
+	toRemove.clear()
 	for g in glows: g.Update(delta)
 	if needsUpdating:
 		needsUpdating = false
