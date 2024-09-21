@@ -32,6 +32,7 @@ func BeginNextWave():
 	previous = current
 	for u in previous: next.erase(u)
 	current = next
+	if next.size() == 0 && sound: RevealSound.numRequestingPlay -=1
 	for n in next:
 		for t in GameManager.instance.board.pointTriangleNeighbors[n]:
 			if !valid.has(t): continue

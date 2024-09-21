@@ -50,7 +50,6 @@ func Reset():
 
 func _process(delta):
 	for g in toRemove:
-		if (g.sound): RevealSound.numRequestingPlay -=1
 		glows.erase(g)
 	toRemove.clear()
 	for g in glows: g.Update(delta)
