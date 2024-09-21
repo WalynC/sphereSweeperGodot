@@ -23,7 +23,7 @@ func handle_touch(event: InputEventScreenTouch):
 			var endHit = GetTriangleHit(event.position)
 			if (triangleHit == endHit):
 				VisualTheme.instance.buttonPress.play()
-				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null})
+				GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null}, false)
 				if ((selectStep != null && selectStep.movesNeeded.has(endHit)) || (tapStep != null && tapStep.movesNeeded.has(endHit))):
 					if (selectStep != null && selectStep.movesNeeded.has(triangleHit)):
 						CompleteTap()

@@ -432,7 +432,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 			nonMines -= 1
 		toCheck = nextCheck.duplicate()
 	if !loading:
-		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate())
+		var playSound = false
 		for t in revealed: doneCheck.erase(t)
 		if (doneCheck.size() > indexArr.size()): ChainClearText.instance.UpdateText(doneCheck.size())
 		if doneCheck.size() > 0:
@@ -443,11 +443,13 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 				if (GameManager.gameMode != 2): SaveManager.save_game()
 				gm.win()
 			else:
+				playSound = true
 				FlagAction.Start()
 				SaveManager.saveData.nonMines = nonMines
 				SaveManager.saveData.selectArr.append(indexArr)
 				SaveManager.saveData.selected.append(index)
 				if (GameManager.instance.gameMode != 2): SaveManager.save_game() #only save outside tutorial
+		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate(), playSound)
 	
 func PutMinesOnBoard(loc):
 	boardGenerated = true

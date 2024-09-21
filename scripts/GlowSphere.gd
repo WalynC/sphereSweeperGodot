@@ -19,13 +19,15 @@ func Setup(vertices, tris):
 	array[Mesh.ARRAY_INDEX] = tris
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
 
-func Add(orig, valid):
+func Add(orig, valid, playSound):
+	print(playSound)
 	for t in valid.keys():
 		var color = VisualTheme.instance.numberColors[t.mineCount] if (t.reveal and !t.mine) else Color.WHITE
 		colors[t.vertIndices[0]] = color
 		colors[t.vertIndices[1]] = color
 		colors[t.vertIndices[2]] = color
 	var glow = Glow.new()
+	glow.sound = playSound
 	glow.valid = valid.duplicate()
 	glow.lastChange = Time.get_ticks_msec() + timeBetweenWaves
 	for i in orig.sharedIndices:
@@ -37,7 +39,7 @@ func Add(orig, valid):
 	array[Mesh.ARRAY_COLOR] = colors
 	mesh.clear_surfaces()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
-	RevealSound.numRequestingPlay +=1
+	if (playSound): RevealSound.numRequestingPlay +=1
 
 func Reset():
 	for c in colors: c = Color(1,1,1,0)
@@ -48,8 +50,8 @@ func Reset():
 
 func _process(delta):
 	for g in toRemove:
+		if (g.sound): RevealSound.numRequestingPlay -=1
 		glows.erase(g)
-		RevealSound.numRequestingPlay -=1
 	toRemove.clear()
 	for g in glows: g.Update(delta)
 	if needsUpdating:

@@ -5,6 +5,7 @@ var current = {}
 var glowing = {}
 var valid = {}
 var lastChange = 0.0
+var sound = false
 
 func Update(delta):
 	var clear = {}
