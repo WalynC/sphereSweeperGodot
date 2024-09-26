@@ -33,6 +33,7 @@ func Reset():
 	if (current < steps.size()): steps[current].Reset()
 	current = -1
 	controls.triangleHit = -999
+	controls.previousTriangleHit = -999
 	GameUI.instance.revealPanel.visible = true
 	GameUI.instance.lockPanel.visible = false
 	for i in animationList:

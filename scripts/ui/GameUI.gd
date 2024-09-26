@@ -61,7 +61,7 @@ func _process(_delta):
 		bombLabel.text = "Clears Left"
 	#change confirm button behavior
 	confirmButton.visible = controls.confirmSelect == 2
-	confirmButton.disabled = controls.previousTriangleHit == -1
+	confirmButton.disabled = controls.previousTriangleHit < 0
 	if (controls.confirmDown): controls.confirmDown = !confirmButton.disabled
 
 func enter_screen():
