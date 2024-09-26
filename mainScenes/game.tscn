@@ -94,6 +94,7 @@ pivot = NodePath("../WorldPivot")
 sIndicator = NodePath("../WorldPivot/SelectIndicator")
 
 [node name="WorldPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 script = ExtResource("4_r5hh3")
 
 [node name="board" type="MeshInstance3D" parent="WorldPivot"]
