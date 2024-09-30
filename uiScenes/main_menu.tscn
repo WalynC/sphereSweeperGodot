@@ -147,6 +147,7 @@ stretch_mode = 4
 
 [node name="UITransition" parent="." node_paths=PackedStringArray("control") instance=ExtResource("5_fu8m8")]
 control = NodePath("..")
+delay = true
 
 [connection signal="pressed" from="cont" to="." method="continue_game_pressed"]
 [connection signal="pressed" from="new" to="." method="new_game_button_pressed"]
