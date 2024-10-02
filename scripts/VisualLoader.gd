@@ -16,8 +16,6 @@ static var instance
 
 func _ready():
 	init()
-	if (scene == SceneType.MainMenu):
-		loadTheme()
 
 func init():
 	instance = self
@@ -31,6 +29,7 @@ func loadTheme():
 	tInst.LoadVisualTheme()
 
 func unloadTheme():
+	if (VisualTheme.instance == null): return
 	VisualTheme.instance.UnloadVisualTheme()
 	VisualTheme.instance.queue_free()
 

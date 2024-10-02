@@ -52,7 +52,6 @@ func _ready():
 	else:
 		new_game()
 	board._ready()
-	visLoad.loadTheme()
 	if (loading): board.LoadSave()
 	if (preset.size() > 0):
 		board.LoadPreset()
