@@ -41,6 +41,7 @@ func change_button_pressed(increase):
 
 func changeTheme(i):
 	if (i == theme): return
+	VisualTheme.menuSphereNeedsUpdating = true
 	unloadTheme()
 	if (scene != SceneType.MainMenu):
 		GameManager.instance.reset_visual_rng()

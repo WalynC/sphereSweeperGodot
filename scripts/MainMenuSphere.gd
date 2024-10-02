@@ -112,6 +112,7 @@ func BuildBoardVisuals():
 	rotate(Vector3.FORWARD, randf_range(-180, 180))
 
 func UpdateColors():
+	VisualTheme.menuSphereNeedsUpdating = false
 	print("update")
 	var arr = mesh.surface_get_arrays(0)
 	var x = 0

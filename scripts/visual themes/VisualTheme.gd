@@ -18,6 +18,8 @@ const gold = (1 + sqrt(5))/2
 @export var borderColor := Color.BLACK
 @export var backgroundColor := Color.DARK_TURQUOISE
 
+static var menuSphereNeedsUpdating = false
+
 func LoadVisualTheme():
 	instance = self
 	RenderingServer.global_shader_parameter_set_override("BorderColor", borderColor)
@@ -50,7 +52,7 @@ func UnloadGameVisuals():
 	pass
 
 func LoadMainMenuVisuals():
-	VisualLoader.instance.mainMenuUI.mainMenuSphere.Build()
+	if (menuSphereNeedsUpdating): VisualLoader.instance.mainMenuUI.mainMenuSphere.UpdateColors()
 
 func LoadGameVisuals():
 	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
