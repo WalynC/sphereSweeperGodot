@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_7w8nn"]
 [ext_resource type="Material" uid="uid://b33iutaojgfki" path="res://boardMaterial.tres" id="2_77f7n"]
+[ext_resource type="ArrayMesh" path="res://sphereMesh.tres" id="3_ax55i"]
 [ext_resource type="Script" path="res://scripts/MainMenuSphere.gd" id="3_pavm3"]
 [ext_resource type="Texture2D" uid="uid://c64lpledsynbl" path="res://logo.png" id="4_ubjsw"]
 [ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="5_fu8m8"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_r3g3q"]
 
 [node name="mainMenu" type="Control" node_paths=PackedStringArray("continueButton", "mainMenuSphere", "uiTransition")]
 layout_mode = 3
@@ -126,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.623311)
 material_override = ExtResource("2_77f7n")
 cast_shadow = 0
 gi_mode = 0
-mesh = SubResource("ArrayMesh_r3g3q")
+mesh = ExtResource("3_ax55i")
 script = ExtResource("3_pavm3")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="TextureRect2/SubViewportContainer/SubViewport/MeshInstance3D"]

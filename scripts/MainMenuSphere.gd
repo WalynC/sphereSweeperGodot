@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 var subdiv = 3
-var vertices : PackedVector3Array
+static var vertices : PackedVector3Array
 
 var gold: float = (1 + sqrt(5)) / 2
 var verts := [Vector3(-1, gold , 0).normalized(),
@@ -37,7 +37,11 @@ var faces := [0, 11, 5,
 	6,8,  7, #18
 	8,9,  1]
 
+static var colors : PackedColorArray
+
 func Build():
+	UpdateColors()
+	return #The mesh is generated, no need for all this generating code, leaving it in case it is needed again
 	var pointsPerFace = 1
 	var trisPerFace = 0
 	for i in range(subdiv):
@@ -102,9 +106,21 @@ func BuildBoardVisuals():
 	arrays[Mesh.ARRAY_INDEX] = tris
 	arrays[Mesh.ARRAY_COLOR] = colors
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	ResourceSaver.save(mesh, "res://sphereMesh.tres", ResourceSaver.FLAG_COMPRESS)
 	rotate(Vector3.UP, randf_range(-180, 180))
 	rotate(Vector3.RIGHT, randf_range(-180, 180))
 	rotate(Vector3.FORWARD, randf_range(-180, 180))
+
+func UpdateColors():
+	print("update")
+	var arr = mesh.surface_get_arrays(0)
+	var x = 0
+	colors.clear()
+	colors.resize(arr[0].size())
+	for i in arr[0].size():
+		colors[i] = VisualTheme.instance.GetBaseColor(arr[0][i])
+	arr[Mesh.ARRAY_COLOR] = colors
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arr)
 
 func GetGeodesicPoints(amount,a,b):
 	var ret = []
