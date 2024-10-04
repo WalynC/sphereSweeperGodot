@@ -13,8 +13,7 @@ static func save_data():
 	var path = pathString + fileName
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, "walyn is a winner")
 	if file == null:
-		print("err")
-		print(FileAccess.get_open_error())
+		#print(FileAccess.get_open_error())
 		return
 	
 	var data = JSON.stringify(saveData.ToData())
@@ -34,13 +33,13 @@ static func load_data():
 	if FileAccess.file_exists(path):
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, "walyn is a winner")
 		if (file == null):
-			print(FileAccess.get_open_error())
+			#print(FileAccess.get_open_error())
 			return false
 		var content = file.get_as_text()
 		file.close()
 		var data = JSON.parse_string(content)
 		if data == null:
-			printerr("cannot parse %s as json_string: (%s)"%[path, content])
+			#printerr("cannot parse %s as json_string: (%s)"%[path, content])
 			return false
 		else:
 			saveData = SaveData.new()

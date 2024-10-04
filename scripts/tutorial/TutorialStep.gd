@@ -6,7 +6,7 @@ var checkUpdate = false
 @export var playSoundOnCompletion = true
 
 func Begin():
-	print("begin")
+	pass
 
 func End():
 	TutorialMode.instance.NextStep()

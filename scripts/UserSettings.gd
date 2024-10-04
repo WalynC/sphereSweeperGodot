@@ -9,7 +9,6 @@ static var volume = 50.0
 func _ready():
 	var err = config.load(path) #check for save
 	if (err != OK): 
-		print("err")
 		UserSettings.SetDefaultSettings()
 	config.get_value("Settings", "density", GameManager.density)
 	GameManager.size = config.get_value("Settings", "size")

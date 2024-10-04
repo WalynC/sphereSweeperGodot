@@ -20,7 +20,6 @@ func Setup(vertices, tris):
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
 
 func Add(orig, valid, playSound):
-	print(playSound)
 	for t in valid.keys():
 		var color = VisualTheme.instance.numberColors[t.mineCount] if (t.reveal and !t.mine) else Color.WHITE
 		colors[t.vertIndices[0]] = color

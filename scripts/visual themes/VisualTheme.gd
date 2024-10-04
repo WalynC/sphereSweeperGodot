@@ -19,7 +19,6 @@ const gold = (1 + sqrt(5))/2
 @export var backgroundColor := Color.DARK_TURQUOISE
 
 func LoadVisualTheme():
-	print("loading visual theme")
 	instance = self
 	RenderingServer.global_shader_parameter_set_override("BorderColor", borderColor)
 	VisualLoader.instance.controlRoot.theme = theme
@@ -51,7 +50,6 @@ func UnloadGameVisuals():
 	pass
 
 func LoadMainMenuVisuals():
-	print("loading")
 	VisualLoader.instance.mainMenuUI.mainMenuSphere.UpdateColors()
 
 func LoadGameVisuals():

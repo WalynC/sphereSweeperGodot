@@ -20,4 +20,3 @@ func _process(_delta):
 		arr[Mesh.ARRAY_TEX_UV] = uvs
 		gm.iconMesh.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arr)
 		changed = false
-

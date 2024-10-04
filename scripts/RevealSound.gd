@@ -29,7 +29,6 @@ func _process(_delta):
 			sourcePool.push_back(next)
 			inUse.pop_front()
 	if (numRequestingPlay > 0 && nextSoundTime < Time.get_ticks_msec()):
-		print("Play New Sound")
 		nextSoundTime = Time.get_ticks_msec() + timeBetweenSounds * 1000
 		if (sourcePool.size() == 0):
 			#create new audio object
