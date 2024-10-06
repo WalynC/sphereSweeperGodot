@@ -449,7 +449,7 @@ func SelectTriangle_List(indexArr, selected, loading = false):
 				SaveManager.saveData.selectArr.append(indexArr)
 				SaveManager.saveData.selected.append(index)
 				if (GameManager.instance.gameMode != 2): SaveManager.save_game() #only save outside tutorial
-		GameManager.instance.glowMesh.Add(triangles[index], doneCheck.duplicate(), playSound)
+		GameManager.instance.glowMesh.Add(indexArr, doneCheck.duplicate(), playSound)
 	
 func PutMinesOnBoard(loc):
 	boardGenerated = true

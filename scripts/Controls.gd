@@ -108,7 +108,7 @@ func handle_drag(event: InputEventScreenDrag):
 
 func CompleteTap():
 	if (gm.paused): return
-	GameManager.instance.glowMesh.Add(GameManager.instance.board.triangles[triangleHit], {GameManager.instance.board.triangles[triangleHit]:null}, false)
+	GameManager.instance.glowMesh.Add([triangleHit], {GameManager.instance.board.triangles[triangleHit]:null}, false)
 	if flag:
 		Flag()
 		VisualTheme.instance.buttonPress.play()

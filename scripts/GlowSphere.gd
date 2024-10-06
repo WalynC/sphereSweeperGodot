@@ -29,11 +29,12 @@ func Add(orig, valid, playSound):
 	glow.sound = playSound
 	glow.valid = valid.duplicate()
 	glow.lastChange = Time.get_ticks_msec() + timeBetweenWaves
-	for i in orig.sharedIndices:
-		glow.current[i]=null
-		for t in GameManager.instance.board.pointTriangleNeighbors[i]:
-			if (!valid.has(t)): continue
-			for v in t.vertIndices: glow.glowing[v] = null
+	for h in orig:
+		for i in GameManager.instance.board.triangles[h].sharedIndices:
+			glow.current[i]=null
+			for t in GameManager.instance.board.pointTriangleNeighbors[i]:
+				if (!valid.has(t)): continue
+				for v in t.vertIndices: glow.glowing[v] = null
 	glows[glow] = null
 	array[Mesh.ARRAY_COLOR] = colors
 	mesh.clear_surfaces()
