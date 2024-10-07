@@ -53,8 +53,11 @@ data = PackedVector3Array(-0.4339, 0.8627, 0.2599, -0.6938, 0.702, 0.1606, -0.52
 transparency = 1
 cull_mode = 2
 shading_mode = 0
+specular_mode = 2
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("14_6773y")
+texture_filter = 0
+disable_receive_shadows = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hijw3"]
 resource_local_to_scene = true

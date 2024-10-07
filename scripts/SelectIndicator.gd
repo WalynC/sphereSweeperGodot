@@ -27,7 +27,7 @@ func _ready():
 	innerArrays[Mesh.ARRAY_INDEX] = tris
 
 func Indicate(t):
-	var closeVerts = [GameManager.instance.board.vertices[t.vertIndices[0]],GameManager.instance.board.vertices[t.vertIndices[1]],GameManager.instance.board.vertices[t.vertIndices[2]]]
+	var closeVerts = [GameManager.instance.board.vertices[t.vertIndices[0]] *1.001,GameManager.instance.board.vertices[t.vertIndices[1]] *1.001,GameManager.instance.board.vertices[t.vertIndices[2]] *1.001]
 	var upVerts = [closeVerts[0]*1.1, closeVerts[1]*1.1, closeVerts[2]*1.1 ]
 	var mid = closeVerts[0]+closeVerts[1]+closeVerts[2]
 	mid/=3
