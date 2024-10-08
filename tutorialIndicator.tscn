@@ -8,6 +8,7 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 1, 0, 1)
 albedo_texture = ExtResource("1_et7ad")
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hijw3"]
 resource_local_to_scene = true
