@@ -6,7 +6,7 @@ func _ready():
 	var license_text = "\n\n\nGODOT LICENSE\n\n" + Engine.get_license_text()
 
 	var components = Engine.get_copyright_info()
-	license_text += "\n\n\nTHIRD PARTY LIBRARIES\n\nWe are required to display license text for the following libraries included in the Godot Engine:"
+	license_text += "\n\n\nTHIRD PARTY LIBRARIES\n\nGames developed in the Godot Engine are required to include license text for the following libraries included in the Godot Engine:"
 	var license_list = {}
 	for component in components:
 		var name = component.name
