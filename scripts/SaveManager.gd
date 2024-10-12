@@ -2,12 +2,7 @@ class_name SaveManager
 
 static var pathString := "user://saves/"
 static var fileName := "save.json"
-static var saveData : SaveData :
-	get:
-		if newGame:
-			saveData = SaveData.new()
-			newGame = false
-		return saveData
+static var saveData : SaveData
 static var loaded = false
 static var newGame = false
 

@@ -72,7 +72,6 @@ func lose():
 	VisualTheme.lost()
 
 func new_game(): #called from _ready if not loading save data
-	SaveManager.newGame = true
 	if gameMode == 0: #basic
 		board.subdiv = GameManager.size
 		board.percentMined = GameManager.density
