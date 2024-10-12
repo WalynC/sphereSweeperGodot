@@ -43,6 +43,7 @@ func _ready():
 	isphere.gm = self
 	visLoad.init()
 	if (loading):
+		SaveManager.newGame = false
 		gameRNG.seed = SaveManager.saveData.gameSeed
 		reset_visual_rng()
 		board.subdiv = SaveManager.saveData.size
@@ -71,7 +72,7 @@ func lose():
 	VisualTheme.lost()
 
 func new_game(): #called from _ready if not loading save data
-	SaveManager.saveData = SaveData.new()
+	SaveManager.newGame = true
 	if gameMode == 0: #basic
 		board.subdiv = GameManager.size
 		board.percentMined = GameManager.density

@@ -2,8 +2,14 @@ class_name SaveManager
 
 static var pathString := "user://saves/"
 static var fileName := "save.json"
-static var saveData : SaveData
+static var saveData : SaveData :
+	get:
+		if newGame:
+			saveData = SaveData.new()
+			newGame = false
+		return saveData
 static var loaded = false
+static var newGame = false
 
 static func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
@@ -27,7 +33,7 @@ static func save_game():
 	save_data()
 
 static func load_data():
-	if (saveData != null): return true
+	if (saveData != null && saveData.selected.size() > 0): return true
 	verify_save_directory(pathString)
 	var path = pathString + fileName
 	if FileAccess.file_exists(path):
