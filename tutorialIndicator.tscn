@@ -6,9 +6,11 @@
 transparency = 1
 cull_mode = 2
 shading_mode = 0
+specular_mode = 2
 albedo_color = Color(0, 1, 0, 1)
 albedo_texture = ExtResource("1_et7ad")
 texture_filter = 0
+disable_receive_shadows = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hijw3"]
 resource_local_to_scene = true
