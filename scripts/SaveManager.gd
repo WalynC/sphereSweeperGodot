@@ -28,7 +28,6 @@ static func save_game():
 	save_data()
 
 static func load_data():
-	if (saveData != null && saveData.selected.size() > 0): return true
 	verify_save_directory(pathString)
 	var path = pathString + fileName
 	if FileAccess.file_exists(path):
