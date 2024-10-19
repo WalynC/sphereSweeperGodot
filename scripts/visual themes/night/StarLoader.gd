@@ -6,7 +6,7 @@ var objects = []
 const halfpi = PI/2
 
 func Generate():
-	for i in range(125):
+	for i in range(75):
 		var o = star.instantiate()
 		objects.append(o)
 		GameManager.instance.worldPivot.add_child(o)
