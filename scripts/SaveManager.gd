@@ -2,7 +2,7 @@ class_name SaveManager
 
 static var pathString := "user://saves/"
 static var fileName := "save.json"
-static var saveData : SaveData
+static var saveData : SaveData = SaveData.new()
 static var loaded = false
 static var newGame = false
 
