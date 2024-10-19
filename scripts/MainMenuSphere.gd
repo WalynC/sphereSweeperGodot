@@ -113,6 +113,7 @@ func BuildBoardVisuals():
 
 func UpdateColors():
 	var arr = mesh.surface_get_arrays(0)
+	mesh.clear_surfaces()
 	colors.clear()
 	colors.resize(arr[0].size())
 	for i in arr[0].size():

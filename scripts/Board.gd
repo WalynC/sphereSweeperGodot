@@ -303,6 +303,7 @@ func BuildIconBoard():
 
 func UpdateColors():
 	var arr = gm.mainMesh.mesh.surface_get_arrays(0)
+	gm.mainMesh.mesh.clear_surfaces()
 	colors.clear()
 	colors.resize(arr[0].size())
 	for t in triangles:
