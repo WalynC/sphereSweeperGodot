@@ -18,7 +18,7 @@ func GetClearedColor(_vector):
 	return Color.BLACK
 
 func LoadGameVisuals():
-	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
+	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.UpdateColors()
 	starLoader.Generate()
 	explosionEffect.PreloadExplosions()
 

@@ -35,6 +35,7 @@ func _ready():
 	mined.clear()
 	numbered.clear()
 	build_board()
+	BuildBoardVisuals()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -271,11 +272,6 @@ func BuildBoardVisuals():
 		for i in t.vertIndices:
 			tris[i] = i
 			uvs[i] = uvForEmpty[i%3]
-			if t.reveal:
-				if t.mine: colors[i] = Color.RED
-				else: colors[i] = VisualTheme.instance.GetClearedColor(vertices[i])
-			else:
-				colors[i] = VisualTheme.instance.GetBaseColor(vertices[i])
 			gm.glowMesh.colors[i] = Color(1,1,1,0)
 	#build main mesh
 	var arrays = []
@@ -283,7 +279,6 @@ func BuildBoardVisuals():
 	arrays[Mesh.ARRAY_VERTEX] = vertices
 	arrays[Mesh.ARRAY_TEX_UV] = uvs
 	arrays[Mesh.ARRAY_INDEX] = tris
-	arrays[Mesh.ARRAY_COLOR] = colors
 	gm.mainMesh.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	gm.glowMesh.Setup(vertices, tris)
 	BuildIconBoard()
@@ -305,6 +300,20 @@ func BuildIconBoard():
 	gm.isphere.arr[Mesh.ARRAY_INDEX] = itris
 	gm.isphere.arr[Mesh.ARRAY_VERTEX] = vecs
 	gm.isphere.Init()
+
+func UpdateColors():
+	var arr = gm.mainMesh.mesh.surface_get_arrays(0)
+	colors.clear()
+	colors.resize(arr[0].size())
+	for t in triangles:
+		for i in t.vertIndices:
+			if t.reveal:
+				if t.mine: colors[i] = Color.RED
+				else: colors[i] = VisualTheme.instance.GetClearedColor(vertices[i])
+			else:
+				colors[i] = VisualTheme.instance.GetBaseColor(vertices[i])
+	arr[Mesh.ARRAY_COLOR] = colors
+	gm.mainMesh.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arr)
 
 func LoadPreset():
 	ResetBoard()

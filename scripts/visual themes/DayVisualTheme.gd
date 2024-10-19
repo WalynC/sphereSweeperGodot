@@ -5,7 +5,7 @@ var cloudInstance
 @export var explosionEffect : ExplosionEffect
 
 func LoadGameVisuals():
-	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.BuildBoardVisuals()
+	if (GameManager.instance.board.vertices.size() > 0): GameManager.instance.board.UpdateColors()
 	cloudInstance = clouds.instantiate()
 	add_child(cloudInstance)
 	explosionEffect.PreloadExplosions()
