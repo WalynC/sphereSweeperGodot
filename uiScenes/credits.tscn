@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://318dccwpc4d7"]
+[gd_scene load_steps=3 format=3 uid="uid://318dccwpc4d7"]
 
 [ext_resource type="Script" path="res://scripts/ui/CreditsUI.gd" id="1_15xl2"]
 [ext_resource type="Script" path="res://scripts/UITransition.gd" id="2_wse3g"]
-[ext_resource type="Script" path="res://scripts/GodotCredits.gd" id="3_k84p0"]
 
 [node name="credits" type="Control" node_paths=PackedStringArray("uiTransition")]
 layout_mode = 3
@@ -65,23 +64,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_wse3g")
 control = NodePath("..")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.5
-anchor_right = 0.9
-anchor_bottom = 0.7
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="RichTextLabel" parent="ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 50
-text = "test test test"
-script = ExtResource("3_k84p0")
 
 [connection signal="pressed" from="back" to="." method="back_button_pressed"]
