@@ -8,6 +8,7 @@ var called = false
 @export var volSlider:Slider
 @export var themeText:Label
 @export var uiTransition : UITransition
+@export var changeButtons:Array[Button]
 
 func _ready():
 	set_deferred("size", get_parent_control().size*2)
@@ -49,9 +50,12 @@ func exit_screen():
 	return uiTransition.exit_screen()
 
 func change_theme_pressed(val):
+	for i in changeButtons: i.disabled = true
 	VisualLoader.instance.change_button_pressed(val)
 	playButtonSound()
 	themeText.text = VisualLoader.instance.GetCurrentThemeName()
+	await get_tree().create_timer(.2).timeout
+	for i in changeButtons: i.disabled = false
 
 func back_button_pressed():
 	playButtonSound()

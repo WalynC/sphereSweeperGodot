@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/OptionsMenu.gd" id="1_fk8w8"]
 [ext_resource type="PackedScene" uid="uid://b6bhkd2epc32x" path="res://uiScenes/uiComponents/ui_transition.tscn" id="2_42oe2"]
 
-[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider", "themeText", "uiTransition")]
+[node name="options_menu" type="Control" node_paths=PackedStringArray("modeButtons", "volText", "volSlider", "themeText", "uiTransition", "changeButtons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ volText = NodePath("volumeText")
 volSlider = NodePath("volume")
 themeText = NodePath("themeText")
 uiTransition = NodePath("UITransition")
+changeButtons = [NodePath("prev"), NodePath("next")]
 
 [node name="volumeText" type="Label" parent="."]
 layout_mode = 1
